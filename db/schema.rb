@@ -15,6 +15,22 @@ ActiveRecord::Schema.define(version: 2019_05_27_165524) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "cooking_list_items", force: :cascade do |t|
+    t.bigint "cooking_list_id"
+    t.bigint "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cooking_list_id"], name: "index_cooking_list_items_on_cooking_list_id"
+    t.index ["recipe_id"], name: "index_cooking_list_items_on_recipe_id"
+  end
+
+  create_table "cooking_lists", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cooking_lists_on_user_id"
+  end
+
   create_table "favorite_items", force: :cascade do |t|
     t.bigint "favorite_id"
     t.bigint "recipe_id"
@@ -48,15 +64,15 @@ ActiveRecord::Schema.define(version: 2019_05_27_165524) do
     t.index ["user_id"], name: "index_fridges_on_user_id"
   end
 
-  create_table "grocery__list_items", force: :cascade do |t|
+  create_table "grocery_list_items", force: :cascade do |t|
     t.bigint "grocery_list_id"
     t.bigint "ingredient_id"
     t.integer "quantity"
     t.boolean "checked"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["grocery_list_id"], name: "index_grocery__list_items_on_grocery_list_id"
-    t.index ["ingredient_id"], name: "index_grocery__list_items_on_ingredient_id"
+    t.index ["grocery_list_id"], name: "index_grocery_list_items_on_grocery_list_id"
+    t.index ["ingredient_id"], name: "index_grocery_list_items_on_ingredient_id"
   end
 
   create_table "grocery_lists", force: :cascade do |t|
@@ -109,35 +125,19 @@ ActiveRecord::Schema.define(version: 2019_05_27_165524) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "wishlist_items", force: :cascade do |t|
-    t.bigint "wishlist_id"
-    t.bigint "recipe_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["recipe_id"], name: "index_wishlist_items_on_recipe_id"
-    t.index ["wishlist_id"], name: "index_wishlist_items_on_wishlist_id"
-  end
-
-  create_table "wishlists", force: :cascade do |t|
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_wishlists_on_user_id"
-  end
-
+  add_foreign_key "cooking_list_items", "cooking_lists"
+  add_foreign_key "cooking_list_items", "recipes"
+  add_foreign_key "cooking_lists", "users"
   add_foreign_key "favorite_items", "favorites"
   add_foreign_key "favorite_items", "recipes"
   add_foreign_key "favorites", "users"
   add_foreign_key "fridge_items", "fridges"
   add_foreign_key "fridge_items", "ingredients"
   add_foreign_key "fridges", "users"
-  add_foreign_key "grocery__list_items", "grocery_lists"
-  add_foreign_key "grocery__list_items", "ingredients"
+  add_foreign_key "grocery_list_items", "grocery_lists"
+  add_foreign_key "grocery_list_items", "ingredients"
   add_foreign_key "grocery_lists", "users"
   add_foreign_key "recipe_items", "ingredients"
   add_foreign_key "recipe_items", "recipes"
   add_foreign_key "recipes", "users"
-  add_foreign_key "wishlist_items", "recipes"
-  add_foreign_key "wishlist_items", "wishlists"
-  add_foreign_key "wishlists", "users"
 end
