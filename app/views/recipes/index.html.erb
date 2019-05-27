@@ -5,11 +5,8 @@
 
     <% @recipes.each do |recipe| %>
 
-      <div class="recipe-card">
+      <div class="recipe-card" data-recipe-id="<%= recipe.id %>">
         <h4><%= recipe.name %></h4>
-        <% recipe.ingredients.each do |ingredient| %>
-          <li><%= ingredient.name %></li>
-        <% end %>
       </div>
 
     <% end %>
@@ -17,3 +14,5 @@
   </div>
 
 </div>
+
+
