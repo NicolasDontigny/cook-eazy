@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_27_165524) do
+ActiveRecord::Schema.define(version: 2019_05_27_185709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cooking_list_items", force: :cascade do |t|
+    t.bigint "cooking_list_id"
+    t.bigint "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cooking_list_id"], name: "index_cooking_list_items_on_cooking_list_id"
+    t.index ["recipe_id"], name: "index_cooking_list_items_on_recipe_id"
+  end
+
+  create_table "cooking_lists", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cooking_lists_on_user_id"
+  end
 
   create_table "favorite_items", force: :cascade do |t|
     t.bigint "favorite_id"
@@ -94,6 +110,7 @@ ActiveRecord::Schema.define(version: 2019_05_27_165524) do
     t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "difficulty"
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
@@ -109,22 +126,9 @@ ActiveRecord::Schema.define(version: 2019_05_27_165524) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "wishlist_items", force: :cascade do |t|
-    t.bigint "wishlist_id"
-    t.bigint "recipe_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["recipe_id"], name: "index_wishlist_items_on_recipe_id"
-    t.index ["wishlist_id"], name: "index_wishlist_items_on_wishlist_id"
-  end
-
-  create_table "wishlists", force: :cascade do |t|
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_wishlists_on_user_id"
-  end
-
+  add_foreign_key "cooking_list_items", "cooking_lists"
+  add_foreign_key "cooking_list_items", "recipes"
+  add_foreign_key "cooking_lists", "users"
   add_foreign_key "favorite_items", "favorites"
   add_foreign_key "favorite_items", "recipes"
   add_foreign_key "favorites", "users"
@@ -137,7 +141,4 @@ ActiveRecord::Schema.define(version: 2019_05_27_165524) do
   add_foreign_key "recipe_items", "ingredients"
   add_foreign_key "recipe_items", "recipes"
   add_foreign_key "recipes", "users"
-  add_foreign_key "wishlist_items", "recipes"
-  add_foreign_key "wishlist_items", "wishlists"
-  add_foreign_key "wishlists", "users"
 end
