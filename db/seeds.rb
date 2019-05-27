@@ -33,3 +33,11 @@ end
     p recipe_item
   end
 end
+
+
+10.times do
+  item = GroceryListItem.new(quantity: rand(10))
+  item.user = nic
+  item.ingredient = ingredients.sample
+  item.save
+end
