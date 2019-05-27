@@ -1,0 +1,9 @@
+<div class="container">
+
+  <h1>My Grocery items</h1>
+
+  <% @grocery_list_items.each do |item| %>
+    <li><%= item.ingredient.name %> - <%= item.quantity %></li>
+  <% end %>
+
+</div>
