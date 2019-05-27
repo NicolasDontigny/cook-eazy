@@ -7,7 +7,7 @@ User.destroy_all
 
 nic = User.create(
   email: 'nic@gmail.com',
-  password: '123456'
+  password: '1'
 )
 
 ingredients = []
