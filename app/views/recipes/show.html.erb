@@ -1,2 +1,19 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<!-- <h1>Recipes#show</h1>
+<p>Find me in app/views/recipes/show.html.erb</p> -->
+<!-- class="fas fa-leaf" -->
+<div class="cookeazy-navbar">
+  <ul Style="in-line-block">
+    <li class="fas fa-leaf"></li>
+    <li>Fridge</li>
+    <li>Grocery</li>
+    <li>avatar</li>
+  </ul>
+</div>
+  <div class="recipe-image">
+  </div>
+<div>
+  <h4><%= @recipe.name %></h4>
+  <p>prep time <%= @recipe.prep_time %></p>
+  <p>difficulty <%= @recipe.difficulty %></p>
+</div>
+

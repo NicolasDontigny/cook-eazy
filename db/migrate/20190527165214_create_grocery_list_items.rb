@@ -5,7 +5,7 @@ class CreateGroceryListItems < ActiveRecord::Migration[5.2]
 
       t.references :ingredient, foreign_key: true
       t.integer :quantity
-      t.boolean :checked
+      t.boolean :checked, default: false
 
       t.timestamps
     end

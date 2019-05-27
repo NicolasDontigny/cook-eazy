@@ -3,3 +3,18 @@
 @import "avatar";
 @import "navbar";
 @import "recipe_card";
+@import "simple_form";
+
+
+.no-link {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.shadow {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,36 @@
+#grocery-items-list {
+  font-size: 24px;
+  list-style: none;
+  padding: 0;
+  // line-height: 2;
+
+  i.checkbox {
+    margin-right: 8px;
+  }
+
+  .quantity {
+    margin-left: 16px;
+  }
+
+  i.math {
+    font-size: 18px;
+    margin: 0 8px;
+  }
+}
+
+.grocery-item-card {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: white;
+  margin: 16px auto;
+  padding: 16px;
+}
+
+.new_grocery_list_item {
+  width: 400px;
+  margin: 16px auto 32px auto;
+  text-align: center;
+}

@@ -18,7 +18,14 @@ end
 
 10.times do
   recipe = Recipe.new(
-    name: Faker::Food.dish
+    name: Faker::Food.dish,
+    prep_time: rand(20),
+    cook_time: rand(30),
+    servings: rand(4),
+    steps: "cut,slice,boil,and cook",
+    rating: rand(5),
+    photo: "url",
+    difficulty: "easy"
   )
 
   recipe.user = nic
@@ -32,6 +39,7 @@ end
     recipe_item.save
     p recipe_item
   end
+  p recipe
 end
 
 

@@ -2,8 +2,12 @@
 
   <h1>My Grocery items</h1>
 
-  <% @grocery_list_items.each do |item| %>
-    <li><%= item.ingredient.name %> - <%= item.quantity %></li>
-  <% end %>
+  <%= render "form" %>
+
+  <ul id="grocery-items-list" class="mt-3">
+    <% @grocery_list_items.each do |item| %>
+      <%= render "grocery_item", item: item %>
+    <% end %>
+  </ul>
 
 </div>

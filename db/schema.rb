@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2019_05_27_185709) do
     t.bigint "user_id"
     t.bigint "ingredient_id"
     t.integer "quantity"
-    t.boolean "checked"
+    t.boolean "checked", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ingredient_id"], name: "index_grocery_list_items_on_ingredient_id"
