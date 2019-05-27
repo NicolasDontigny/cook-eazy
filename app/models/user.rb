@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-  has_one :fridge
-  has_one :grocery_list
-  has_one :cooking_list
-  has_many :recipes
+  has_one :fridge, dependent: :destroy
+  has_one :grocery_list, dependent: :destroy
+  has_one :cooking_list, dependent: :destroy
+  has_many :recipes, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
