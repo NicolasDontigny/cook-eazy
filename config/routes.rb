@@ -16,11 +16,12 @@ Rails.application.routes.draw do
 
   # Grocery Lists Routes
   get 'grocery-list' => 'grocery_list_items#index', as: :grocery_list
-  patch 'grocery-list/add' => 'users#add_grocery_list_item', as: :add_grocery_item
-  patch 'grocery-list/check' => 'grocery_list_items#check', as: :check_grocery_item
-  patch 'grocery-list/increase' => 'grocery_list_items#increase', as: :increase_grocery_item
-  patch 'grocery-list/decrease' => 'grocery_list_items#decrease', as: :decrease_grocery_item
-  patch 'grocery-list' => 'users#update_grocery_list'
+  post 'grocery-list' => 'grocery_list_items#create', as: :new_grocery_item
+  patch 'grocery-list/:id/check' => 'grocery_list_items#check', as: :check_grocery_item
+  patch 'grocery-list/:id/uncheck' => 'grocery_list_items#uncheck', as: :uncheck_grocery_item
+  patch 'grocery-list/:id/increase' => 'grocery_list_items#increase', as: :increase_grocery_item
+  patch 'grocery-list/:id/decrease' => 'grocery_list_items#decrease', as: :decrease_grocery_item
+  patch 'grocery-list' => 'grocery_list_items#update'
 
   # Fridge Routes
   get 'fridge' => 'fridge#show', as: :fridge
