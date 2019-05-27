@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  get 'fridge/show'
-  get 'grocery_lists/show'
-  get 'recipes/index'
-  get 'recipes/steps'
-  get 'recipes/show'
   devise_for :users
   root to: 'pages#landing'
 
@@ -31,9 +26,9 @@ Rails.application.routes.draw do
   patch 'fridge/fill' => 'fridge#fill'
   patch 'fridge/empty' => 'fridge#empty'
 
-
   # Cooking Lists Routes
-  patch 'recipes/:id/add-to-cooking-list' => 'cooking_lists#add', as: :add_recipe_to_cooking_list
+  get 'cooking_list' => 'cooking_lists_items#add'
+  patch 'recipes/:id/add-to-cooking-list' => 'cooking_lists_items#add', as: :add_recipe_to_cooking_list
 
 
 end
