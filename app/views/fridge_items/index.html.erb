@@ -4,16 +4,16 @@
 
   <div class="form-group search-form-group">
     <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Add an ingredient"
+      params[:query],
+      class: "form-control",
+      placeholder: "Add an ingredient"
     %>
   </div>
 <% end %>
 
 
-<% @fridge_items.each do |fridge.item| %>
-  <%= link_to recipe_path(fridge.item.ingredient) %>
-    <h2><%= fridge.item.ingredient.name %></h2>
-    <p><%= fridge.item.ingredient.unit_of_measure %> <%= fridge.item.quantity %> </p>
+<% @fridge_items.each do |item| %>
+  <%= link_to recipe_path(item.ingredient) %>
+    <h2><%= item.ingredient.name %></h2>
+    <p><%= item.ingredient.unit_of_measure %> <%= item.quantity %> </p>
 <% end %>
