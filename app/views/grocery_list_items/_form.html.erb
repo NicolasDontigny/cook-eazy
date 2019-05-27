@@ -1,4 +1,4 @@
-<%= simple_form_for [@user, @grocery_list_item], url: 'grocery-list' do |form| %>
+<%= simple_form_for [@user, @grocery_list_item], url: 'grocery-list', remote: true do |form| %>
   <%= form.association :ingredient %>
   <%= form.input :quantity %>
   <%= form.submit "Add Ingredient", class: "btn btn-primary" %>

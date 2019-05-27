@@ -1,0 +1,9 @@
+var insertItem = (itemHTML) => {
+  const id = <%= @grocery_list_item.id %>;
+  grocery_list = document.querySelector('#grocery-items-list');
+  grocery_list.insertAdjacentHTML("afterbegin",
+    itemHTML
+  );
+}
+
+insertItem('<%= j render "grocery_item", item: @grocery_list_item %>');
