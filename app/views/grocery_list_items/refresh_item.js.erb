@@ -1,0 +1,10 @@
+var refreshItem = (itemHTML) => {
+  const id = <%= @grocery_item.id %>;
+  grocery_item = document.querySelector(`li[data-item-id='${id}']`)
+  grocery_item.insertAdjacentHTML("afterend",
+    itemHTML
+  );
+  grocery_item.remove();
+}
+
+refreshItem('<%= j render "grocery_item", item: @grocery_item %>');
