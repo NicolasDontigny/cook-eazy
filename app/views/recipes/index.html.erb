@@ -1,10 +1,19 @@
 <div class="container">
   <h1>Recipes for You</h1>
 
-  <% @recipes.each do |recipe| %>
-    <h4><%= recipe.name %></h4>
-    <% recipe.ingredients.each do |ingredient| %>
-      <li><%= ingredient.name %></li>
+  <div class="recipes-container">
+
+    <% @recipes.each do |recipe| %>
+
+      <div class="recipe-card">
+        <h4><%= recipe.name %></h4>
+        <% recipe.ingredients.each do |ingredient| %>
+          <li><%= ingredient.name %></li>
+        <% end %>
+      </div>
+
     <% end %>
-  <% end %>
+
+  </div>
+
 </div>

@@ -1,0 +1,12 @@
+.recipes-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.recipe-card {
+  background: white;
+  margin: 8px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 16px;
+}
