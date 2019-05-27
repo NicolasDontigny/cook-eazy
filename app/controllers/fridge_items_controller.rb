@@ -1,6 +1,6 @@
 class FridgeItemsController < ApplicationController
   def index
-    @fridge_items = FridgeItem.where(user: current_user)
+    @fridge_items = FridgeItem.where(user: current_user).order('created_at DESC')
   end
 
   def create
