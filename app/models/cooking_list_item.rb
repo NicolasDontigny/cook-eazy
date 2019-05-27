@@ -1,4 +1,4 @@
 class CookingListItem < ApplicationRecord
-  belongs_to :cooking_list
+  belongs_to :user
   belongs_to :recipe
 end
