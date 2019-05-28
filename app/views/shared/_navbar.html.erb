@@ -8,15 +8,17 @@
   </button>
 
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to "Home", "/", class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Recipes", "/recipes", class: "nav-link" %>
+      </li>
+    </ul>
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "Home", "/", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Recipes", "/recipes", class: "nav-link" %>
-        </li>
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
