@@ -26,12 +26,10 @@ class FridgeItemsController < ApplicationController
   def delete
     @fridge_item.destroy!
 
-    redirect_to fridge_path
-
-    # respond_to do |format|
-    #   format.html { redirect_to fridge_path }
-    #   format.js { render 'refresh_item.js.erb' }
-    # end
+    respond_to do |format|
+      format.html { redirect_to fridge_path }
+      format.js { render 'delete_item.js.erb' }
+    end
   end
 
   def increase
@@ -55,10 +53,18 @@ class FridgeItemsController < ApplicationController
   end
 
   def fill
+    @fridge_items = FridgeItem.where(user: current_user)
     @grocery_list_items.each do |ingredient|
-      @fridge_item = FridgeItem.where(ingredient: ingredient)
-      @fridge_item.user = current_user
-      @fridge_item.save
+      @fridge_items.each do |item|
+        if item.ingredient == ingredient
+          item.ingredient.quantity += ingredient.quantity
+          item.save!
+        else
+          @fridge_item = FridgeItem.new(ingredient)
+          @fridge_item.user = current_user
+          @fridge_item.save!
+        end
+      end
     end
   end
 

@@ -1,0 +1,7 @@
+var refreshItem = (itemHTML) => {
+  const id = <%= @fridge_item.id %>;
+  fridge_item = document.querySelector(`li[data-item-id='${id}']`)
+  fridge_item.remove();
+}
+
+refreshItem('<%= j render "fridge_item", item: @fridge_item %>');
