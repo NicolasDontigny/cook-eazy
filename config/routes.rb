@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   # Fridge Routes
   get 'fridge' => 'fridge_items#index', as: :fridge
   post 'fridge' => 'fridge_items#create', as: :add_fridge_item
-  patch 'fridge/:id/delete' => 'fridge_items#delete', as: :delete_fridge_item
+  delete 'fridge/:id/delete' => 'fridge_items#delete', as: :delete_fridge_item
   patch 'fridge/:id/increase' => 'fridge_items#increase', as: :increase_fridge_item
   patch 'fridge/:id/decrease' => 'fridge_items#decrease', as: :decrease_fridge_item
   patch 'fridge/fill' => 'fridge_items#fill'

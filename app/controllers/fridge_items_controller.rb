@@ -11,43 +11,60 @@ class FridgeItemsController < ApplicationController
     @fridge_item.user = current_user
 
     if @fridge_item.save
-      redirect_to fridge_path
+      respond_to do |format|
+        format.html { redirect_to fridge_path }
+        format.js
+      end
     else
-      render 'fridge_items/index'
+      respond_to do |format|
+        format.html { render :index }
+        format.js
+      end
     end
   end
 
   def delete
     @fridge_item.destroy!
+
+    respond_to do |format|
+      format.html { redirect_to fridge_path }
+      format.js { render 'delete_item.js.erb' }
+    end
   end
 
   def increase
     @fridge_item.quantity += 1
-    @fridge_item.save
+    @fridge_item.save!
 
-    if @fridge_item.save
-      redirect_to fridge_path
-    else
-      render 'fridge_items/index'
+    respond_to do |format|
+      format.html { redirect_to fridge_path }
+      format.js { render 'refresh_item.js.erb' }
     end
   end
 
   def decrease
     @fridge_item.quantity -= 1
-    @fridge_item.save
+    @fridge_item.save!
 
-    if @fridge_item.save
-      redirect_to fridge_path
-    else
-      render 'fridge_items/index'
+    respond_to do |format|
+      format.html { redirect_to fridge_path }
+      format.js { render 'refresh_item.js.erb' }
     end
   end
 
   def fill
+    @fridge_items = FridgeItem.where(user: current_user)
     @grocery_list_items.each do |ingredient|
-      @fridge_item = FridgeItem.where(ingredient: ingredient)
-      @fridge_item.user = current_user
-      @fridge_item.save
+      @fridge_items.each do |item|
+        if item.ingredient == ingredient
+          item.ingredient.quantity += ingredient.quantity
+          item.save!
+        else
+          @fridge_item = FridgeItem.new(ingredient)
+          @fridge_item.user = current_user
+          @fridge_item.save!
+        end
+      end
     end
   end
 
