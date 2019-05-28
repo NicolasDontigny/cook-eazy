@@ -1,0 +1,38 @@
+var stopPropagation = event => event.stopPropagation();
+
+var removeGroceryItemCard = (card) => {
+  card.remove();
+}
+
+var fadeOutGroceryItemCard = (card, ms) => {
+  card.style.opacity = 0;
+  setTimeout(() => { card.remove() }, ms);
+}
+
+var closePopup = (event) => {
+  var opacityCard = document.querySelector('.opacity-background');
+  opacityCard.remove();
+}
+
+var addClickEventToBackground = () => {
+  var opacityBackground = document.querySelector('.opacity-background');
+  opacityBackground.addEventListener("click", closePopup, false);
+
+  var opacityCard = document.querySelector('.recipe-card-popup');
+  opacityCard.addEventListener("click", stopPropagation, true);
+}
+
+var addClickEventToCloseButton = () => {
+  var closeButton = document.querySelector('.close-popup');
+  closeButton.addEventListener("click", closePopup);
+}
+
+var showPopup = (popupHTML) => {
+  var container = document.querySelector('.container');
+  container.insertAdjacentHTML("afterend", popupHTML);
+
+  addClickEventToCloseButton();
+  addClickEventToBackground();
+}
+
+showPopup('<%= j render "recipe_popup", recipe: @recipe %>');

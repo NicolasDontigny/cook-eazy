@@ -1,10 +1,16 @@
 <div class="opacity-background">
 
   <div class="recipe-card-popup">
-    <h4><%= recipe.name %></h4>
-    <% recipe.ingredients.each do |ingredient| %>
-      <li><%= ingredient.name %></li>
-    <% end %>
+    <div class="sub-container">
+      <div class="close-popup">
+        <i class="fas fa-times"></i>
+      </div>
+
+      <h4><%= recipe.name %></h4>
+      <% recipe.ingredients.each do |ingredient| %>
+        <li><%= ingredient.name %></li>
+      <% end %>
+    </div>
   </div>
 
 </div>

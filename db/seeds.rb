@@ -10,9 +10,13 @@ nic = User.create(
   password: '1'
 )
 
+units_of_measure = ['mL', '', 'g', 'oz', 'L']
+
 ingredients = []
 40.times do
-  ingredient = Ingredient.create(name: Faker::Food.ingredient)
+  ingredient = Ingredient.new(name: Faker::Food.ingredient)
+  ingredient.unit_of_measure = units_of_measure.sample
+  ingredient.save
   ingredients << ingredient
 end
 
@@ -43,11 +47,11 @@ end
 end
 
 
-10.times do
-  item = GroceryListItem.new(quantity: rand(10))
+15.times do
+  item = GroceryItem.new(quantity: rand(10))
   item.user = nic
   item.ingredient = ingredients.sample
-  item.save
+  item.save unless GroceryItem.where(user: nic).find_by(ingredient_id: item.ingredient.id)
 end
 
 10.times do

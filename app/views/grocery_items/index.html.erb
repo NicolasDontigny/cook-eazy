@@ -1,0 +1,15 @@
+<div class="container">
+
+  <h1>My Grocery items</h1>
+
+  <%= render "form", user: current_user, grocery_item: GroceryItem.new %>
+
+  <ul id="grocery-items-list" class="mt-3">
+    <% @grocery_items.each do |item| %>
+      <%= render "grocery_item", item: item %>
+    <% end %>
+  </ul>
+
+  <%= link_to "Update Grocery List", grocery_items_path, method: :patch, class: "btn btn-warning btn-lg", id: "update-grocery", remote: true %>
+
+</div>

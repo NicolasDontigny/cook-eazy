@@ -10,6 +10,12 @@
 
   .quantity {
     margin-left: 16px;
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+    .quantity-text {
+
+    }
   }
 
   i.math {
@@ -19,7 +25,6 @@
 }
 
 .grocery-item-card {
-  width: 400px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,10 +32,19 @@
   background-color: white;
   margin: 16px auto;
   padding: 16px;
+  transition: opacity 500ms ease;
 }
 
-.new_grocery_list_item {
-  width: 400px;
+.new_grocery_item {
   margin: 16px auto 32px auto;
   text-align: center;
+}
+
+.grocery-item-card, .new_grocery_item, #update-grocery {
+  width: 700px;
+}
+
+#update-grocery {
+  display: block;
+  margin: 16px auto;
 }

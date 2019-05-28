@@ -1,0 +1,17 @@
+<li style="opacity: 0">
+  <div>
+    <p><strong><%= review.user.email %></strong></p>
+    <p><%= review.date.strftime("%b %d, %Y") %></p>
+  </div>
+  <div>
+    <% review.rating.times do %>
+      <i class="fas fa-star"></i>
+    <% end %>
+    <% (5 - review.rating).times do %>
+      <i class="far fa-star"></i>
+    <% end %>
+  </div>
+  <div>
+    <%= review.content %>
+  </div>
+</li>

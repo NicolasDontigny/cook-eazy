@@ -1,54 +1,43 @@
 class FridgeItemsController < ApplicationController
+  before_action :set_fridge, only: %i[index create fill]
   before_action :set_fridge_item, only: %i[delete decrease increase]
 
   def index
-    @fridge_items = FridgeItem.where(user: current_user).order('created_at DESC')
     @fridge_item = FridgeItem.new
   end
 
   def create
-    @fridge_item = FridgeItem.new(params_permit)
-    @fridge_item.user = current_user
+    @fridge_item = FridgeItem.where(user: current_user).find_by(ingredient_id: params[:fridge_item][:ingredient_id])
 
-    if @fridge_item.save
-      redirect_to fridge_path
+    if @fridge_item
+      @fridge_item.quantity += params[:fridge_item][:quantity].to_i
+      render_refresh_js
     else
-      render 'fridge_items/index'
+      @fridge_item = FridgeItem.new(params_permit)
+      @fridge_item.user = current_user
+      render_create_js
     end
   end
 
   def delete
     @fridge_item.destroy!
+
+    respond_to do |format|
+      format.html { redirect_to fridge_path }
+      format.js { render 'delete_item.js.erb' }
+    end
   end
 
   def increase
     @fridge_item.quantity += 1
-    @fridge_item.save
 
-    if @fridge_item.save
-      redirect_to fridge_path
-    else
-      render 'fridge_items/index'
-    end
+    render_refresh_js
   end
 
   def decrease
-    @fridge_item.quantity -= 1
-    @fridge_item.save
+    @fridge_item.quantity -= 1 unless @fridge_item.quantity.zero?
 
-    if @fridge_item.save
-      redirect_to fridge_path
-    else
-      render 'fridge_items/index'
-    end
-  end
-
-  def fill
-    @grocery_list_items.each do |ingredient|
-      @fridge_item = FridgeItem.where(ingredient: ingredient)
-      @fridge_item.user = current_user
-      @fridge_item.save
-    end
+    render_refresh_js
   end
 
   def empty
@@ -66,5 +55,32 @@ class FridgeItemsController < ApplicationController
 
   def set_fridge_item
     @fridge_item = FridgeItem.find(params[:id])
+  end
+
+  def set_fridge
+    @fridge_items = FridgeItem.where(user: current_user).order('created_at DESC')
+  end
+
+  def render_create_js
+    if @fridge_item.save
+      respond_to do |format|
+        format.html { redirect_to fridge_path_path }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render 'index' }
+        format.js
+      end
+    end
+  end
+
+  def render_refresh_js
+    @fridge_item.save!
+
+    respond_to do |format|
+      format.html { redirect_to fridge_path }
+      format.js { render 'refresh_item.js.erb' }
+    end
   end
 end
