@@ -1,0 +1,70 @@
+.item2 { grid-area: ingredient; }
+.item3 { grid-area: summary; }
+.item4 { grid-area: image; }
+.item5 { grid-area: steps; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'ingredient summary summary image image image'
+    'ingredient summary summary image image image'
+    'ingredient steps steps steps steps steps';
+  grid-gap: 1px;
+  background-color: white;
+  padding: 1px;
+  border:lightgrey solid;
+}
+
+.grid-container > div {
+  text-align: center;
+}
+.item2 #title {
+  font-size: larger;
+  margin-bottom: 20px;
+}
+
+.item2 {
+  padding: 0px;
+  margin:1px;
+}
+.item3 {
+  padding: 10px 0;
+  margin:10px;
+}
+
+ul {
+  text-align: left;
+}
+
+.item4 > img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+}
+
+.recipe-title {
+  margin-left: 20px;
+  text-align: left;
+}
+
+.recipe-info {
+  padding: 10px;
+}
+.recipe-details{
+  margin-top: 100px;
+  margin-right: 25px;
+}
+.recipe-preptime {
+  padding-right: 40px;
+}
+.recipe-difficulty {
+  padding-right: 40px;
+}
+.recipe-calories {
+  padding-right: 40px;
+}
+.item5 {
+  padding: 10px;
+}
+
