@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show]
+  skip_before_action :authenticate_user!, only: %i[index show popup]
   before_action :set_recipe, only: %i[popup]
 
   def index
@@ -18,6 +18,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    # @recipe = Recipe.find(5)
     @reviews = @recipe.reviews
   end
 
