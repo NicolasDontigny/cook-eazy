@@ -49,3 +49,10 @@ end
   item.ingredient = ingredients.sample
   item.save
 end
+
+10.times do
+  item = FridgeItem.new(quantity: rand(10))
+  item.user = nic
+  item.ingredient = ingredients.sample
+  item.save
+end
