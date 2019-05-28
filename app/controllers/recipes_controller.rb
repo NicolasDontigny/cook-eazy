@@ -4,6 +4,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
+    @fridge_items = FridgeItem.where(user: current_user)
   end
 
   def popup
