@@ -10,6 +10,19 @@
         <div class="recipe-card" data-recipe-id="<%= recipe.id %>">
           <img src="<%= recipe.photo %>" alt="food image">
           <h4><%= recipe.name %></h4>
+          <p>Missing Ingredients: </p>
+          <ul>
+            <% recipe.missing_ingredients(@fridge_items).each do |recipe_item| %>
+              <li><%= recipe_item.ingredient.name %></li>
+            <% end %>
+          </ul>
+
+          <p>Insufficient Ingredients: </p>
+          <ul>
+            <% recipe.insufficient_ingredients(@fridge_items).each do |recipe_item| %>
+              <li><%= recipe_item.ingredient.name %></li>
+            <% end %>
+          </ul>
         </div>
 
       <% end %>

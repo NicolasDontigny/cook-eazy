@@ -49,15 +49,15 @@ end
 
 
 
-  4.times do
-    recipe_item = RecipeItem.new()
+  7.times do
+    recipe_item = RecipeItem.new(quantity: rand(15))
     recipe_item.recipe = recipe
     recipe_item.ingredient = ingredients.sample
     recipe_item.save
-    p recipe_item
   end
-  p recipe
 end
+
+
 
 
 15.times do

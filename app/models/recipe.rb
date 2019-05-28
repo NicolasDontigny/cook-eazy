@@ -9,4 +9,31 @@ class Recipe < ApplicationRecord
   has_many :users, through: :cooking_list_items
 
   # validates :steps, length: { minimum: 1 }
+
+  def missing_ingredients(fridge_items)
+    missing_ingredients = []
+
+    recipe_items.each do |recipe_item|
+      if fridge_items.none? { |item| item.ingredient == recipe_item.ingredient }
+        missing_ingredients << recipe_item
+      end
+    end
+
+    return missing_ingredients
+  end
+
+  def insufficient_ingredients(fridge_items)
+    insufficient_ingredients = []
+
+    recipe_items.each do |recipe_item|
+      if fridge_items.any? { |item| item.ingredient == recipe_item.ingredient && item.quantity < recipe_item.quantity }
+        insufficient_ingredients << recipe_item
+      end
+    end
+    return insufficient_ingredients
+  end
+
+  def matching_ingredients(fridge_items)
+
+  end
 end
