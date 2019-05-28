@@ -31,3 +31,14 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      grocery_item:
+        quantity: "Quantity"
+    errors:
+      models:
+        grocery_item:
+          attributes:
+            quantity:
+              blank: "is required"
+

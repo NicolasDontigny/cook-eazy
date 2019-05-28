@@ -10,13 +10,13 @@ Rails.application.routes.draw do
   get 'recipes/:id' => 'recipes#show', as: :recipe
 
   # Grocery Lists Routes
-  get 'grocery-list' => 'grocery_list_items#index', as: :grocery_list
-  post 'grocery-list' => 'grocery_list_items#create', as: :new_grocery_item
-  patch 'grocery-list/:id/check' => 'grocery_list_items#check', as: :check_grocery_item
-  patch 'grocery-list/:id/uncheck' => 'grocery_list_items#uncheck', as: :uncheck_grocery_item
-  patch 'grocery-list/:id/increase' => 'grocery_list_items#increase', as: :increase_grocery_item
-  patch 'grocery-list/:id/decrease' => 'grocery_list_items#decrease', as: :decrease_grocery_item
-  patch 'grocery-list' => 'grocery_list_items#update'
+  get 'grocery-list' => 'grocery_items#index', as: :grocery_items
+  post 'grocery-list' => 'grocery_items#create', as: :new_grocery_item
+  patch 'grocery-list/:id/check' => 'grocery_items#check', as: :check_grocery_item
+  patch 'grocery-list/:id/uncheck' => 'grocery_items#uncheck', as: :uncheck_grocery_item
+  patch 'grocery-list/:id/increase' => 'grocery_items#increase', as: :increase_grocery_item
+  patch 'grocery-list/:id/decrease' => 'grocery_items#decrease', as: :decrease_grocery_item
+  patch 'grocery-list' => 'grocery_items#update'
 
   # Fridge Routes
   get 'fridge' => 'fridge_items#index', as: :fridge
