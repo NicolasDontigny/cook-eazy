@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show popup]
-  before_action :set_recipe, only: %i[popup, done!]
+  before_action :set_recipe, only: %i[popup done!]
 
   def index
     @recipes = Recipe.all
@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
   def popup
     respond_to do |format|
       format.html { redirect_to recipe_path(@recipe) }
-      format.js { render 'show_popup.js.erb' }
+      format.js { render 'show_popup.js.erb', recipe: @recipe }
     end
   end
 
