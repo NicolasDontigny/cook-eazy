@@ -34,6 +34,14 @@ class Recipe < ApplicationRecord
   end
 
   def matching_ingredients(fridge_items)
+    
+  end
 
+  def update_ratings!
+    all_ratings = []
+    self.reviews.each do |review|
+      all_ratings << review.rating
+    end
+    self.rating = all_ratings.reduce(:+) / all_ratings.size.to_f
   end
 end

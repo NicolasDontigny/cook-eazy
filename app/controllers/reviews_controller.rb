@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
     @review.date = Date.today
 
     if @review.save
+      @recipe.update_ratings!
       respond_to do |format|
         format.html { redirect_to recipe_path(@recipe.id) }
         format.js
