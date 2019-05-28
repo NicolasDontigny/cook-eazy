@@ -9,4 +9,12 @@ class Recipe < ApplicationRecord
   has_many :users, through: :cooking_list_items
 
   # validates :steps, length: { minimum: 1 }
+
+  def update_ratings!
+    all_ratings = []
+    self.reviews.each do |review|
+      all_ratings << review.rating
+    end
+    self.rating = all_ratings.reduce(:+) / all_ratings.size.to_f
+  ends
 end
