@@ -23,17 +23,30 @@ end
 10.times do
   recipe = Recipe.new(
     name: Faker::Food.dish,
-    prep_time: rand(20),
-    cook_time: rand(30),
+    prep_time: rand(80),
+    cook_time: rand(80),
     servings: rand(4),
-    steps: "cut,slice,boil,and cook",
     rating: rand(5),
-    photo: "url",
-    difficulty: "easy"
+    photo: "https://source.unsplash.com/collection/251966/1600x900",
+    difficulty: ["Easy", "Moderate", "Hard"].sample
   )
 
   recipe.user = nic
   recipe.save
+
+  step = Step.new(content: 'This is a first step', order: 1)
+  step.recipe = recipe
+  step.save
+
+  step = Step.new(content: 'This is a second step', order: 2)
+  step.recipe = recipe
+  step.save
+
+  step = Step.new(content: 'This is a third step', order: 3)
+  step.recipe = recipe
+  step.save
+
+
 
 
   4.times do
@@ -47,7 +60,7 @@ end
 end
 
 
-10.times do
+15.times do
   item = GroceryItem.new(quantity: rand(10))
   item.user = nic
   item.ingredient = ingredients.sample
