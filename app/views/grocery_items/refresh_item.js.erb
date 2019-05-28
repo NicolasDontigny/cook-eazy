@@ -1,0 +1,20 @@
+var refreshForm = (innerHTML) => {
+  const newGroceryItemForm = document.getElementById('new_grocery_item');
+  newGroceryItemForm.innerHTML = innerHTML;
+}
+
+var refreshItem = (itemHTML) => {
+  const id = <%= @grocery_item.id %>;
+  grocery_item = document.querySelector(`li[data-item-id='${id}']`)
+  grocery_item.insertAdjacentHTML("afterend",
+    itemHTML
+  );
+  grocery_item.remove();
+}
+
+<% if @grocery_item.errors.any? %>
+  refreshForm('<%= j render "form", user: current_user, grocery_item: @grocery_item %>');
+<% else %>
+  refreshItem('<%= j render "grocery_item", item: @grocery_item %>');
+  refreshForm('<%= j render "form", user: current_user, grocery_item: GroceryItem.new %>');
+<% end %>

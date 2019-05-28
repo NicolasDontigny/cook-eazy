@@ -1,6 +1,6 @@
-class CreateGroceryListItems < ActiveRecord::Migration[5.2]
+class CreateGroceryItems < ActiveRecord::Migration[5.2]
   def change
-    create_table :grocery_list_items do |t|
+    create_table :grocery_items do |t|
       t.references :user, foreign_key: true
 
       t.references :ingredient, foreign_key: true

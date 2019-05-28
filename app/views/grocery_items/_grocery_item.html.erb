@@ -1,0 +1,26 @@
+<li class="grocery-item-card shadow" data-item-id="<%= item.id %>">
+  <div>
+    <% if item.checked %>
+      <%= link_to uncheck_grocery_item_path(item), method: 'patch', remote: true, class: "no-link" do %>
+        <i class="far fa-check-square checkbox"></i>
+      <% end %>
+    <% else %>
+      <%= link_to check_grocery_item_path(item), method: 'patch', remote: true, class: "no-link" do %>
+        <i class="far fa-square checkbox"></i>
+      <% end %>
+    <% end %>
+    <%= item.ingredient.name %>
+  </div>
+  <div class="quantity">
+    <%= link_to decrease_grocery_item_path(item), method: 'patch', remote: true, class: "no-link" do %>
+      <i class='fas fa-minus math'></i>
+    <% end %>
+    <div class="quantity-text">
+      <%= item.quantity %>
+      <%= item.ingredient.unit_of_measure %>
+    </div>
+    <%= link_to increase_grocery_item_path(item), method: 'patch', remote: true, class: "no-link" do %>
+      <i class='fas fa-plus math'></i>
+    <% end %>
+  </div>
+</li>
