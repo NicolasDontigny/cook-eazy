@@ -5,10 +5,13 @@
 
     <% @recipes.each do |recipe| %>
 
-      <div class="recipe-card" data-recipe-id="<%= recipe.id %>">
-        <h4><%= recipe.name %></h4>
-        <%= link_to 'link', recipe_path(recipe.id) %>
-      </div>
+      <%= link_to recipe_popup_path(recipe), class: "no-link", remote: true do %>
+
+        <div class="recipe-card" data-recipe-id="<%= recipe.id %>">
+          <h4><%= recipe.name %></h4>
+        </div>
+
+      <% end %>
 
     <% end %>
 

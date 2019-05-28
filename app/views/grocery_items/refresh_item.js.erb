@@ -5,11 +5,11 @@ var refreshForm = (innerHTML) => {
 
 var refreshItem = (itemHTML) => {
   const id = <%= @grocery_item.id %>;
-  grocery_item = document.querySelector(`li[data-item-id='${id}']`)
-  grocery_item.insertAdjacentHTML("afterend",
+  groceryItem = document.querySelector(`li[data-item-id='${id}']`)
+  groceryItem.insertAdjacentHTML("afterend",
     itemHTML
   );
-  grocery_item.remove();
+  groceryItem.remove();
 }
 
 <% if @grocery_item.errors.any? %>

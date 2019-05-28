@@ -4,8 +4,8 @@ var refreshForm = (innerHTML) => {
 }
 
 var insertItem = (itemHTML) => {
-  grocery_list = document.querySelector('#grocery-items-list');
-  grocery_list.insertAdjacentHTML("afterbegin",
+  const groceryList = document.querySelector('#grocery-items-list');
+  groceryList.insertAdjacentHTML("afterbegin",
     itemHTML
   );
 }

@@ -5,10 +5,9 @@ Rails.application.routes.draw do
 
   # Recipes Routes
   get 'recipes' => 'recipes#index', as: :recipes
-  get 'recipes/:id/steps' => 'recipes#steps', as: :recipe_steps
   get 'recipes/:id' => 'recipes#show', as: :recipe
-
-  # Reviews Routes
+  get 'recipes/:id/popup' => 'recipes#popup', as: :recipe_popup
+  get 'recipes/:id/steps' => 'recipes#steps', as: :recipe_steps
   post 'recipes/:id/reviews' => 'reviews#create', as: :recipe_reviews
 
   # Grocery Lists Routes

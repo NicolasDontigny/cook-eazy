@@ -47,7 +47,7 @@ end
 end
 
 
-10.times do
+15.times do
   item = GroceryItem.new(quantity: rand(10))
   item.user = nic
   item.ingredient = ingredients.sample
