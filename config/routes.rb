@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
+  get 'reviews/create'
   devise_for :users
   root to: 'pages#landing'
 
   # Recipes Routes
   get 'recipes' => 'recipes#index', as: :recipes
-
   get 'recipes/:id/steps' => 'recipes#steps', as: :recipe_steps
-
   get 'recipes/:id' => 'recipes#show', as: :recipe
+
+  # Reviews Routes
+  post 'recipes/:id/reviews' => 'reviews#create', as: :recipe_reviews
 
   # Grocery Lists Routes
   get 'grocery-list' => 'grocery_items#index', as: :grocery_items
