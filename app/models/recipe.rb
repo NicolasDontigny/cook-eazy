@@ -34,7 +34,7 @@ class Recipe < ApplicationRecord
   end
 
   def matching_ingredients(fridge_items)
-    
+
   end
 
   def update_ratings!
