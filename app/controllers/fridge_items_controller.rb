@@ -1,13 +1,14 @@
 class FridgeItemsController < ApplicationController
+  before_action :set_fridge, only: %i[index create fill]
   before_action :set_fridge_item, only: %i[delete decrease increase]
 
   def index
-    @fridge_items = FridgeItem.where(user: current_user).order('created_at DESC')
     @fridge_item = FridgeItem.new
   end
 
   def create
     @fridge_item = FridgeItem.new(params_permit)
+
     @fridge_item.user = current_user
 
     if @fridge_item.save
@@ -53,7 +54,6 @@ class FridgeItemsController < ApplicationController
   end
 
   def fill
-    @fridge_items = FridgeItem.where(user: current_user)
     @grocery_list_items.each do |ingredient|
       @fridge_items.each do |item|
         if item.ingredient == ingredient
@@ -83,5 +83,9 @@ class FridgeItemsController < ApplicationController
 
   def set_fridge_item
     @fridge_item = FridgeItem.find(params[:id])
+  end
+
+  def set_fridge
+    @fridge_items = FridgeItem.where(user: current_user).order('created_at DESC')
   end
 end
