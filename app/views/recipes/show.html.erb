@@ -1,19 +1,27 @@
 <!-- <h1>Recipes#show</h1>
 <p>Find me in app/views/recipes/show.html.erb</p> -->
 <!-- class="fas fa-leaf" -->
-<div class="cookeazy-navbar">
-  <ul Style="in-line-block">
-    <li class="fas fa-leaf"></li>
-    <li>Fridge</li>
-    <li>Grocery</li>
-    <li>avatar</li>
-  </ul>
-</div>
+<div class="recipe-card">
   <div class="recipe-image">
+    <img src="https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Smiley face" height="400" width="400">
   </div>
-<div>
-  <h4><%= @recipe.name %></h4>
-  <p>prep time <%= @recipe.prep_time %></p>
-  <p>difficulty <%= @recipe.difficulty %></p>
+  <div class="recipe-info"
+  style="display: flex; width: 400px; justify-content: space-between;'">
+    <div class="recipe-name">
+      <h4><%= @recipe.name %></h4>
+    </div>
+    <div class="recipe-details">
+      <p>prep time <%= @recipe.prep_time %></p>
+      <p>difficulty <%= @recipe.difficulty %></p>
+    </div>
+  </div>
+  <div class="recipe-ingredients">
+    <h4>Ingredients</h4>
+    <% recipe_items = RecipeItem.where("recipe_id=" + @recipe.id.to_s) %>
+    <% recipe_items.each do |item| %>
+      <% i = Ingredient.find(item.ingredient_id) %>
+      <li><%= i.name %></li>
+    <% end %>
+  </div>
 </div>
 
