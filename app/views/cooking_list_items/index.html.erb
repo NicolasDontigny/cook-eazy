@@ -1,10 +1,10 @@
 <h1>Cooking_List_Items#index</h1>
 
-<% @cooking_list_items.recipes.each do |recipe| %>
-  <%= link_to recipe_path(recipe.id)%>
-    <h2><%= recipe.name %></h2>
-    <p><%= recipe.prep_time %></p>
-    <p><%= recipe.cook_time %></p>
-    <p><%= recipe.servings %></p>
-    <p><%= recipe.rating %></p>
+<% @cooking_list_items.each do |item| %>
+    <h2><%= item.recipe.name %></h2>
+    <p><%= item.recipe.prep_time %></p>
+    <p><%= item.recipe.cook_time %></p>
+    <p><%= item.recipe.servings %></p>
+    <p><%= item.recipe.rating %></p>
+    <%= link_to recipe_path(item.recipe.id)%>
 <% end %>

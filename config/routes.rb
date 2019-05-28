@@ -20,16 +20,14 @@ Rails.application.routes.draw do
 
   # Fridge Routes
   get 'fridge' => 'fridge_items#index', as: :fridge
-  patch 'fridge/create' => 'fridge_items#create', as: :add_fridge_item
-  patch 'fridge/delete' => 'fridge_items#delete', as: :delete_fridge_item
-  patch 'fridge/increase' => 'fridge_items#increase', as: :increase_fridge_item
-  patch 'fridge/decrease' => 'fridge_items#decrease', as: :decrease_fridge_item
+  post 'fridge' => 'fridge_items#create', as: :add_fridge_item
+  delete 'fridge/:id/delete' => 'fridge_items#delete', as: :delete_fridge_item
+  patch 'fridge/:id/increase' => 'fridge_items#increase', as: :increase_fridge_item
+  patch 'fridge/:id/decrease' => 'fridge_items#decrease', as: :decrease_fridge_item
   patch 'fridge/fill' => 'fridge_items#fill'
   patch 'fridge/empty' => 'fridge_items#empty'
 
   # Cooking Lists Routes
-  get 'cooking_list' => 'cooking_lists_items#index'
-  patch 'recipes/:id/add-to-cooking-list' => 'cooking_lists_items#create', as: :add_recipe_to_cooking_list
-
-
+  get 'cooking_list' => 'cooking_list_items#index'
+  patch 'recipes/:id/add-to-cooking-list' => 'cooking_list_items#create', as: :add_recipe_to_cooking_list
 end

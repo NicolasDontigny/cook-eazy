@@ -1,0 +1,15 @@
+<li class="grocery-item-card shadow" data-item-id="<%= item.id %>">
+  <%= item.ingredient.name %>
+  <span class="quantity">
+    <%= link_to decrease_fridge_item_path(item), method: 'patch', remote: true, class: "no-link" do %>
+      <i class='fas fa-minus math'></i>
+    <% end %>
+    <%= item.quantity %> <%= item.ingredient.unit_of_measure %>
+    <%= link_to increase_fridge_item_path(item), method: 'patch', remote: true, class: "no-link" do %>
+      <i class='fas fa-plus math'></i>
+    <% end %>
+    <%= link_to delete_fridge_item_path(item), method: 'delete', remote: true, class: "no-link" do %>
+      <i class="fas fa-trash-alt"></i>
+    <% end %>
+  </span>
+</li>

@@ -1,0 +1,6 @@
+var insertItem = (itemHTML) => {
+  fridge_list = document.querySelector('#fridge-items-list');
+  fridge_list.insertAdjacentHTML("afterbegin",itemHTML);
+}
+
+insertItem('<%= j render "fridge_item", item: @fridge_item %>');

@@ -53,3 +53,10 @@ end
   item.ingredient = ingredients.sample
   item.save unless GroceryItem.where(user: nic).find_by(ingredient_id: item.ingredient.id)
 end
+
+10.times do
+  item = FridgeItem.new(quantity: rand(10))
+  item.user = nic
+  item.ingredient = ingredients.sample
+  item.save
+end
