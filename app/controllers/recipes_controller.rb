@@ -17,8 +17,8 @@ class RecipesController < ApplicationController
   end
 
   def show
-    # @recipe = Recipe.find(params[:id])
-    @recipe = Recipe.find(24)
+    @recipe = Recipe.find(params[:id])
+    @reviews = @recipe.reviews
   end
 
   def set_recipe

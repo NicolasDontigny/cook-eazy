@@ -1,0 +1,28 @@
+function refreshForm(innerHTML) {
+  const newReviewForm = document.getElementById('new_review'); // id provided by simple_form
+  newReviewForm.innerHTML = innerHTML;
+}
+
+function addReview(reviewHTML) {
+  const reviews = document.getElementById('reviews-list');
+  const title = document.querySelector('.no-reviews');
+
+  if (title) {
+    reviews.removeChild(reviews.children[0]);
+    reviews.insertAdjacentHTML('afterbegin', '<h4 class="fade_in">What users say about this recipe</h4>');
+    const titleFade = document.querySelector('.fade_in');
+    setTimeout(() => { titleFade.style.opacity = 1 }, 200);
+  }
+
+  reviews.insertAdjacentHTML('beforeend', reviewHTML);
+  new_review = reviews.querySelector('li:last-child');
+
+  setTimeout(() => { new_review.style.opacity = 1 }, 200);
+}
+
+<% if @review.errors.any? %>
+  refreshForm('<%= j render "reviews/form", recipe: @recipe, review: @review %>');
+<% else %>
+  addReview('<%= j render "reviews/show", review: @review %>');
+  refreshForm('<%= j render "reviews/form", recipe: @recipe, review: Review.new %>');
+<% end %>
