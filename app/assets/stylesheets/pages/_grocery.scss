@@ -39,6 +39,11 @@
   text-align: center;
 }
 
-.grocery-item-card, .new_grocery_item {
+.grocery-item-card, .new_grocery_item, #update-grocery {
   width: 700px;
+}
+
+#update-grocery {
+  display: block;
+  margin: 16px auto;
 }

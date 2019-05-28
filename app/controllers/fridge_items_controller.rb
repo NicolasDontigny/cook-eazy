@@ -40,21 +40,6 @@ class FridgeItemsController < ApplicationController
     render_refresh_js
   end
 
-  def fill
-    @grocery_list_items.each do |ingredient|
-      @fridge_items.each do |item|
-        if item.ingredient == ingredient
-          item.ingredient.quantity += ingredient.quantity
-          item.save!
-        else
-          @fridge_item = FridgeItem.new(ingredient)
-          @fridge_item.user = current_user
-          @fridge_item.save!
-        end
-      end
-    end
-  end
-
   def empty
     @recipe_ingredients.each do |ingredient|
       @fridge_item = FridgeItem.where(ingredient: ingredient)

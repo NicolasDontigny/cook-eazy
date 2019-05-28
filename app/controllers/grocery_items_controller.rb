@@ -45,6 +45,12 @@ class GroceryItemsController < ApplicationController
 
   def update
     @grocery_items = GroceryItem.where(checked: true)
+
+    fill_fridge(@grocery_items)
+
+    @grocery_items.each(&:destroy)
+
+    render_refresh_js
   end
 
   private
@@ -74,7 +80,7 @@ class GroceryItemsController < ApplicationController
   end
 
   def render_refresh_js
-    @grocery_item.save
+    @grocery_item&.save
 
     respond_to do |format|
       format.html { redirect_to grocery_items_path }
