@@ -16,5 +16,5 @@ class Recipe < ApplicationRecord
       all_ratings << review.rating
     end
     self.rating = all_ratings.reduce(:+) / all_ratings.size.to_f
-  ends
+  end
 end
