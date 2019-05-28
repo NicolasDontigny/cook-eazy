@@ -10,6 +10,6 @@ class RecipesController < ApplicationController
 
   def show
     # @recipe = Recipe.find(params[:id])
-    @recipe = Recipe.find(24)
+    @recipe = Recipe.find(22)
   end
 end
