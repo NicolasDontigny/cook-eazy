@@ -20,6 +20,7 @@
   right: 0;
   left: 0;
   z-index: 500;
+  cursor: pointer;
 }
 
 .recipe-card-popup {
@@ -36,4 +37,24 @@
   background: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   padding: 16px;
+
+  cursor: default;
+
+  .sub-container {
+    position: relative;
+    .close-popup {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      i {
+        opacity: 0.7;
+        font-size: 20px;
+        &:hover {
+          opacity: 0.9;
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }

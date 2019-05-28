@@ -50,7 +50,7 @@ class GroceryItemsController < ApplicationController
 
     @grocery_items.each(&:destroy)
 
-    render_refresh_js
+    render_update_js
   end
 
   private
@@ -85,6 +85,13 @@ class GroceryItemsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to grocery_items_path }
       format.js { render 'refresh_item.js.erb' }
+    end
+  end
+
+  def render_update_js
+    respond_to do |format|
+      format.html { redirect_to grocery_items_path }
+      format.js { render 'update_grocery_list.js.erb' }
     end
   end
 end
