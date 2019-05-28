@@ -24,15 +24,15 @@ var addClickEventToBackground = () => {
 
 var addClickEventToCloseButton = () => {
   var closeButton = document.querySelector('.close-popup');
-  closeButton.addEventListener("click", closePopup);
+  closeButton.addEventListener("click", closePopup, true);
 }
 
 var showPopup = (popupHTML) => {
   var container = document.querySelector('.container');
   container.insertAdjacentHTML("afterend", popupHTML);
 
-  addClickEventToCloseButton();
   addClickEventToBackground();
+  addClickEventToCloseButton();
 }
 
 showPopup('<%= j render "recipe_popup", recipe: @recipe %>');
