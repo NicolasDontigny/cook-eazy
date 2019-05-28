@@ -20,4 +20,19 @@ class ApplicationController < ActionController::Base
       fridge_item.save!
     end
   end
+
+  def empty_fridge(ingredients)
+    ingredients.each do |ingredient|
+      fridge_item = FridgeItem.find_by(ingredient_id: ingredient.id)
+
+      next unless fridge_item
+
+      if fridge_item.quantity <= ingredient.quantity
+        fridge_item.destroy
+      else
+        fridge_item.quantity -= ingredient.quantity
+      end
+      fridge_item.save!
+    end
+  end
 end
