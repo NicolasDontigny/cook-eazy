@@ -11,35 +11,46 @@ class FridgeItemsController < ApplicationController
     @fridge_item.user = current_user
 
     if @fridge_item.save
-      redirect_to fridge_path
+      respond_to do |format|
+        format.html { redirect_to fridge_path }
+        format.js
+      end
     else
-      render 'fridge_items/index'
+      respond_to do |format|
+        format.html { render :index }
+        format.js
+      end
     end
   end
 
   def delete
     @fridge_item.destroy!
+
+    redirect_to fridge_path
+
+    # respond_to do |format|
+    #   format.html { redirect_to fridge_path }
+    #   format.js { render 'refresh_item.js.erb' }
+    # end
   end
 
   def increase
     @fridge_item.quantity += 1
-    @fridge_item.save
+    @fridge_item.save!
 
-    if @fridge_item.save
-      redirect_to fridge_path
-    else
-      render 'fridge_items/index'
+    respond_to do |format|
+      format.html { redirect_to fridge_path }
+      format.js { render 'refresh_item.js.erb' }
     end
   end
 
   def decrease
     @fridge_item.quantity -= 1
-    @fridge_item.save
+    @fridge_item.save!
 
-    if @fridge_item.save
-      redirect_to fridge_path
-    else
-      render 'fridge_items/index'
+    respond_to do |format|
+      format.html { redirect_to fridge_path }
+      format.js { render 'refresh_item.js.erb' }
     end
   end
 

@@ -8,7 +8,7 @@
     <%= link_to increase_fridge_item_path(item), method: 'patch', remote: true, class: "no-link" do %>
       <i class='fas fa-plus math'></i>
     <% end %>
-    <%= link_to delete_fridge_item_path(item), method: 'patch', remote: true, class: "no-link" do %>
+    <%= link_to delete_fridge_item_path(item), method: 'delete', class: "no-link" do %>
       <i class="fas fa-trash-alt"></i>
     <% end %>
   </span>
