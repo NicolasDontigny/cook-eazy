@@ -8,10 +8,6 @@ class CookingListItemsController < ApplicationController
     @cooking_list_item = CookingListItem.new
     @cooking_list_item.recipe = @recipe
     @cooking_list_item.user = current_user
-    if @cooking_list_item.save
-      redirect_to cooking_list_path
-    else
-      render 'cooking_list_items/index'
-    end
+    @cooking_list_item.save!
   end
 end
