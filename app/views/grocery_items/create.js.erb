@@ -1,0 +1,18 @@
+var refreshForm = (innerHTML) => {
+  const newGroceryItemForm = document.getElementById('new_grocery_item');
+  newGroceryItemForm.innerHTML = innerHTML;
+}
+
+var insertItem = (itemHTML) => {
+  grocery_list = document.querySelector('#grocery-items-list');
+  grocery_list.insertAdjacentHTML("afterbegin",
+    itemHTML
+  );
+}
+
+<% if @grocery_item.errors.any? %>
+  refreshForm('<%= j render "form", user: current_user, grocery_item: @grocery_item %>');
+<% else %>
+  insertItem('<%= j render "grocery_item", item: @grocery_item %>');
+  refreshForm('<%= j render "form", user: current_user, grocery_item: GroceryItem.new %>');
+<% end %>

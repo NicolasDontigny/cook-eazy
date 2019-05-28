@@ -43,15 +43,15 @@ ActiveRecord::Schema.define(version: 2019_05_27_185709) do
     t.index ["user_id"], name: "index_fridge_items_on_user_id"
   end
 
-  create_table "grocery_list_items", force: :cascade do |t|
+  create_table "grocery_items", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "ingredient_id"
     t.integer "quantity"
     t.boolean "checked", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["ingredient_id"], name: "index_grocery_list_items_on_ingredient_id"
-    t.index ["user_id"], name: "index_grocery_list_items_on_user_id"
+    t.index ["ingredient_id"], name: "index_grocery_items_on_ingredient_id"
+    t.index ["user_id"], name: "index_grocery_items_on_user_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -104,8 +104,8 @@ ActiveRecord::Schema.define(version: 2019_05_27_185709) do
   add_foreign_key "favorite_items", "users"
   add_foreign_key "fridge_items", "ingredients"
   add_foreign_key "fridge_items", "users"
-  add_foreign_key "grocery_list_items", "ingredients"
-  add_foreign_key "grocery_list_items", "users"
+  add_foreign_key "grocery_items", "ingredients"
+  add_foreign_key "grocery_items", "users"
   add_foreign_key "recipe_items", "ingredients"
   add_foreign_key "recipe_items", "recipes"
   add_foreign_key "recipes", "users"
