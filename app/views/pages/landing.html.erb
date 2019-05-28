@@ -1,16 +1,16 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<div class="landing-page" style="background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1549047825-a81dc3f57c7d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=639&q=80);">
-  <div class="landing-container">
+<%# <h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p> %>
+<div class="landing-page" style="background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1544510808-91bcbee1df55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=764&q=80);">
+  <div class="landing-typed">
     <h1>
       <span id="banner-typed-text"><strong></strong></span>
     </h1>
+  </div>
     <!-- # views/devise/menu/_login_items.html.erb -->
+  <div class="landing-btn">
     <% if !user_signed_in? %>
-      <li>
-      <%= link_to('Register', new_user_registration_path, class: "btn btn-light")  %>
-      <%= link_to('Browse', recipes_path, class: "btn btn-light") %>
-      </li>
+      <%= link_to('Browse', recipes_path, class: "btn btn-outline-secondary") %>
+      <%= link_to('Sign Up', new_user_registration_path, class: "btn btn-outline-secondary")  %>
     <% end %>
   </div>
 </div>
