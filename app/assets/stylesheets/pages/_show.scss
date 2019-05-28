@@ -1,0 +1,8 @@
+.fade_in {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+#reviews-list > li {
+  transition: opacity 1s ease;
+}
