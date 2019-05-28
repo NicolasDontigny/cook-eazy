@@ -10,6 +10,10 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   padding: 16px;
   cursor: pointer;
+
+  img {
+    width: 100%;
+  }
 }
 
 .opacity-background {
@@ -24,10 +28,10 @@
 }
 
 .recipe-card-popup {
-  width: 400px;
-  height: 400px;
-  margin-top: -200px;
-  margin-left: -200px;
+  width: 800px;
+  height: 500px;
+  margin-top: -250px;
+  margin-left: -400px;
 
   position: fixed;
   top: 50%;
@@ -39,6 +43,12 @@
   padding: 16px;
 
   cursor: default;
+
+  img {
+    width: 100%;
+    border-radius: 5px;
+    // height: 200px;
+  }
 
   .sub-container {
     position: relative;
