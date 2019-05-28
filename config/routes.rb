@@ -28,6 +28,6 @@ Rails.application.routes.draw do
   patch 'fridge/empty' => 'fridge_items#empty'
 
   # Cooking Lists Routes
-  get 'cooking_list' => 'cooking_lists_items#index'
-  patch 'recipes/:id/add-to-cooking-list' => 'cooking_lists_items#create', as: :add_recipe_to_cooking_list
+  get 'cooking_list' => 'cooking_list_items#index'
+  patch 'recipes/:id/add-to-cooking-list' => 'cooking_list_items#create', as: :add_recipe_to_cooking_list
 end
