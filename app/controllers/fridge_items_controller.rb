@@ -7,20 +7,15 @@ class FridgeItemsController < ApplicationController
   end
 
   def create
-    @fridge_item = FridgeItem.new(params_permit)
+    @fridge_item = FridgeItem.where(user: current_user).find_by(ingredient_id: params[:fridge_item][:ingredient_id])
 
-    @fridge_item.user = current_user
-
-    if @fridge_item.save
-      respond_to do |format|
-        format.html { redirect_to fridge_path }
-        format.js
-      end
+    if @fridge_item
+      @fridge_item.quantity += params[:fridge_item][:quantity].to_i
+      render_refresh_js
     else
-      respond_to do |format|
-        format.html { render :index }
-        format.js
-      end
+      @fridge_item = FridgeItem.new(params_permit)
+      @fridge_item.user = current_user
+      render_create_js
     end
   end
 
@@ -35,22 +30,14 @@ class FridgeItemsController < ApplicationController
 
   def increase
     @fridge_item.quantity += 1
-    @fridge_item.save!
 
-    respond_to do |format|
-      format.html { redirect_to fridge_path }
-      format.js { render 'refresh_item.js.erb' }
-    end
+    render_refresh_js
   end
 
   def decrease
-    @fridge_item.quantity -= 1
-    @fridge_item.save!
+    @fridge_item.quantity -= 1 unless @fridge_item.quantity.zero?
 
-    respond_to do |format|
-      format.html { redirect_to fridge_path }
-      format.js { render 'refresh_item.js.erb' }
-    end
+    render_refresh_js
   end
 
   def fill
@@ -87,5 +74,28 @@ class FridgeItemsController < ApplicationController
 
   def set_fridge
     @fridge_items = FridgeItem.where(user: current_user).order('created_at DESC')
+  end
+
+  def render_create_js
+    if @fridge_item.save
+      respond_to do |format|
+        format.html { redirect_to fridge_path_path }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render 'index' }
+        format.js
+      end
+    end
+  end
+
+  def render_refresh_js
+    @fridge_item.save!
+
+    respond_to do |format|
+      format.html { redirect_to fridge_path }
+      format.js { render 'refresh_item.js.erb' }
+    end
   end
 end
