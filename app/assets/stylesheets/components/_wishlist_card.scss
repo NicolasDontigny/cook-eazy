@@ -3,7 +3,17 @@
 }
 
 .wishlist-link {
-  width: 33.333%;
-  margin: 0 8px;
-  padding: 0 16px;
+  width: 30%;
+  padding: 16px 32px;
+  // margin: 0 8px;
+  // padding: 0 16px;
+}
+
+.chevron-div {
+  padding: 16px;
+  height: 100%;
+  i {
+    font-size: 32px;
+    cursor: pointer;
+  }
 }
