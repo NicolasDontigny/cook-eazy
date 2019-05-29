@@ -12,8 +12,9 @@
     <div class="popup-card-container p-3">
       <div class="row justify-content-between">
         <div class="col-7">
-          <div class="row">
+          <div class="row justify-content-between">
             <h4><%= recipe.name %></h4>
+            <%= link_to "See Preparation Steps", recipe_path(recipe), class: "btn btn-primary mr-5", id: "show-page-button" %>
           </div>
 
           <div class="row">
