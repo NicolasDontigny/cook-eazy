@@ -12,6 +12,8 @@ nic = User.create(
 
 units_of_measure = ['mL', '', 'g', 'oz', 'L']
 
+big_step = "Eleifend ad dolor lorem habitant. Praesent lacus taciti, mollis aptent. Justo consectetur magnis ad cubilia ante mi consequat dolor turpis eleifend! Conubia, inceptos a condimentum tristique? Fringilla egestas tellus quam dui magnis a mus montes natoque? Torquent class eget porttitor maecenas cras ante. Dictum sociosqu eget euismod! Porta mollis ante ultricies enim orci adipiscing. Viverra ligula ante aptent nec viverra suspendisse; habitasse ultrices. Ridiculus bibendum eget, bibendum fringilla congue vivamus. Rutrum sollicitudin pulvinar eu elit. "
+
 ingredients = []
 40.times do
   ingredient = Ingredient.new(name: Faker::Food.ingredient)
@@ -34,30 +36,30 @@ end
   recipe.user = nic
   recipe.save
 
-  step = Step.new(content: 'This is a first step', order: 1)
+  step = Step.new(content: big_step, order: 1)
   step.recipe = recipe
   step.save
 
-  step = Step.new(content: 'This is a second step', order: 2)
+  step = Step.new(content: big_step, order: 2)
   step.recipe = recipe
   step.save
 
-  step = Step.new(content: 'This is a third step', order: 3)
+  step = Step.new(content: big_step, order: 3)
   step.recipe = recipe
   step.save
 
 
 
 
-  4.times do
-    recipe_item = RecipeItem.new()
+  7.times do
+    recipe_item = RecipeItem.new(quantity: rand(15) + 1)
     recipe_item.recipe = recipe
     recipe_item.ingredient = ingredients.sample
-    recipe_item.save
-    p recipe_item
+    recipe_item.save unless RecipeItem.where(recipe: recipe).find_by(ingredient_id: recipe_item.ingredient.id)
   end
-  p recipe
 end
+
+
 
 
 15.times do

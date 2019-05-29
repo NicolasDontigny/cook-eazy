@@ -5,14 +5,7 @@
 
     <% @recipes.each do |recipe| %>
 
-      <%= link_to recipe_popup_path(recipe), class: "no-link", remote: true do %>
-
-        <div class="recipe-card" data-recipe-id="<%= recipe.id %>">
-          <img src="<%= recipe.photo %>" alt="food image">
-          <h4><%= recipe.name %></h4>
-        </div>
-
-      <% end %>
+      <%= render "recipe_card", recipe: recipe %>
 
     <% end %>
 

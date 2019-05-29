@@ -1,64 +1,100 @@
 <div class="opacity-background">
 
-  <div class="recipe-card-popup">
-    <div class="sub-container">
-      <div class="close-popup">
-        <i class="fas fa-times"></i>
-      </div>
-
-      <div class="popup-card-container p-3">
-        <div class="row justify-content-between">
-          <div class="col-7">
-            <div class="row">
-              <h4><%= recipe.name %></h4>
-            </div>
-
-            <div class="row">
-              <div class="rating-stars">
-                <% recipe.rating.times do %>
-                  <i class="fas fa-star"></i>
-                <% end %>
-                <% (5 - recipe.rating).times do %>
-                  <i class="far fa-star"></i>
-                <% end %>
-                (<%= rand(100) %>)
-              </div>
-            </div>
-
-            <div class="row py-5">
-              <div class="col-4 text-center">
-                <%= recipe.prep_time %> min
-                <div>Prep Time</div>
-              </div>
-
-              <div class="col-4 text-center">
-                <%= recipe.cook_time %> min
-                <div>Cooking Time</div>
-              </div>
-
-              <div class="col-4 text-center">
-                <%= recipe.difficulty %>
-                <div>Difficulty</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-5 p-0">
-            <img src="<%= recipe.photo %>" alt="food image">
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <% recipe.ingredients.each do |ingredient| %>
-            <li><%= ingredient.name %></li>
-          <% end %>
-
-          <%= link_to "Go to Recipe Page", recipe_path(recipe), class: "btn btn-primary mt-3" %>
-        </div>
-      </div>
-
-
-    </div>
-  </div>
 
 </div>
 
+<div class="recipe-card-popup">
+  <div class="sub-container">
+    <div class="close-popup">
+      <i class="fas fa-times"></i>
+    </div>
+
+    <div class="popup-card-container p-3">
+      <div class="row justify-content-between">
+        <div class="col-7">
+          <div class="row justify-content-between">
+            <h4><%= recipe.name %></h4>
+            <%= link_to "See Preparation Steps", recipe_path(recipe), class: "btn btn-primary mr-5", id: "show-page-button" %>
+          </div>
+
+          <div class="row">
+            <div class="rating-stars">
+              <% recipe.rating.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+              <% (5 - recipe.rating).times do %>
+                <i class="far fa-star"></i>
+              <% end %>
+              (<%= rand(100) %>)
+            </div>
+          </div>
+
+          <div class="row py-5">
+            <div class="col-4 text-center">
+              <% if recipe.prep_time > 60 %>
+                <%= (recipe.prep_time / 60).floor %> h
+                <% unless recipe.prep_time % 60 == 0 %>
+                  <%= recipe.prep_time % 60 %> min
+                <% end %>
+              <% else %>
+                <%= recipe.prep_time %> min
+              <% end %>
+              <div>Prep Time</div>
+            </div>
+
+            <div class="col-4 text-center">
+              <% if recipe.cook_time > 60 %>
+                <%= (recipe.cook_time / 60).floor %> h
+                <% unless recipe.cook_time % 60 == 0 %>
+                  <%= recipe.cook_time % 60 %> min
+                <% end %>
+              <% else %>
+                <%= recipe.cook_time %> min
+              <% end %>
+              <div>Cooking Time</div>
+            </div>
+
+            <div class="col-4 text-center">
+              <%= recipe.difficulty %>
+              <div>Difficulty</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-5 p-0">
+          <img src="<%= recipe.photo %>" alt="food image">
+        </div>
+      </div>
+
+      <!-- Display Ingredients, with color according to Missing, Insufficient or Matching -->
+      <p>Ingredients:</p>
+      <div id="ingredients-container">
+        <ul id="popup-ingredients-list">
+          <% recipe.insufficient_ingredients(fridge_items).each do |recipe_item| %>
+            <li class="ingredient-orange">
+              <i class="far fa-times-circle"></i>
+              <%= recipe_item.ingredient.name %>
+              (<%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %> missing)
+            </li>
+          <% end %>
+
+          <% recipe.missing_ingredients(fridge_items).each do |recipe_item| %>
+            <li class="ingredient-red">
+              <i class="far fa-times-circle"></i>
+              <%= recipe_item.ingredient.name %>
+              (need <%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %>)
+            </li>
+          <% end %>
+
+          <% recipe.matching_ingredients(fridge_items).each do |recipe_item| %>
+            <li class="ingredient-green">
+              <i class="far fa-check-circle"></i>
+              <%= recipe_item.ingredient.name %>
+              (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
