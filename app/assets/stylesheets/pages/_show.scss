@@ -6,3 +6,24 @@
 #reviews-list > li {
   transition: opacity 1s ease;
 }
+
+.grid-container {
+  .recipe-image {
+    position: relative;
+
+    .add-to-wishlist {
+      position: absolute;
+      top:15px;
+      right:15px;
+      width: 32px;
+      height: 32px;
+
+      i {
+        position: absolute;
+        top:0px;
+        right:0px;
+      }
+    }
+  }
+
+}
