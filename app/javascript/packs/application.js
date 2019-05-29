@@ -12,3 +12,5 @@ addStep();
 import { loadDynamicBannerText } from '../components/banner';
 loadDynamicBannerText();
 
+import swal from 'sweetalert';
+

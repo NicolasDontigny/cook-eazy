@@ -1,0 +1,7 @@
+var deletedItemCard = document.querySelector(`li[data-item-id='<%= @id %>']`);
+
+deletedItemCard.style.opacity = 0;
+
+setTimeout(() => { deletedItemCard.remove() }, 500);
+
+

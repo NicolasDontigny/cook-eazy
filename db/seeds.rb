@@ -52,10 +52,10 @@ end
 
 
   7.times do
-    recipe_item = RecipeItem.new(quantity: rand(15))
+    recipe_item = RecipeItem.new(quantity: rand(15) + 1)
     recipe_item.recipe = recipe
     recipe_item.ingredient = ingredients.sample
-    recipe_item.save
+    recipe_item.save unless RecipeItem.where(recipe: recipe).find_by(ingredient_id: recipe_item.ingredient.id)
   end
 end
 

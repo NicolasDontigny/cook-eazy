@@ -1,9 +1,26 @@
 class GroceryItemsController < ApplicationController
-  before_action :set_grocery_item, only: %i[check uncheck decrease increase]
+  before_action :set_grocery_item, only: %i[check uncheck decrease increase destroy]
 
   def index
     @grocery_items = GroceryItem.where(user: current_user).order('created_at DESC')
     # @grocery_item = GroceryItem.new
+  end
+
+  def add
+    @recipe = Recipe.find(params[:recipe_id])
+    @fridge_items = FridgeItem.where(user: current_user)
+    @missing_ingredients = @recipe.missing_ingredients(@fridge_items)
+    @insufficient_ingredients = @recipe.insufficient_ingredients(@fridge_items)
+
+    @missing_ingredients.each do |recipe_item|
+      add_item_to_grocery_list(recipe_item)
+    end
+
+    @insufficient_ingredients.each do |recipe_item|
+      add_item_to_grocery_list(recipe_item)
+    end
+
+    redirect_to grocery_items_path
   end
 
   def create
@@ -53,6 +70,16 @@ class GroceryItemsController < ApplicationController
     render_update_js
   end
 
+  def destroy
+    @id = @grocery_item.id
+    @grocery_item.destroy
+
+    respond_to do |format|
+      format.html { render 'index' }
+      format.js { render 'destroy.js.erb' }
+    end
+  end
+
   private
 
   def params_permit
@@ -93,5 +120,25 @@ class GroceryItemsController < ApplicationController
       format.html { redirect_to grocery_items_path }
       format.js { render 'update_grocery_list.js.erb' }
     end
+  end
+
+  def add_item_to_grocery_list(recipe_item)
+    # Check if recipe_item is already in the Grocery List
+    @grocery_item = GroceryItem.where(user: current_user).find_by(ingredient: recipe_item.ingredient)
+
+    # If it is, update its quantity
+    if @grocery_item
+      @grocery_item.quantity += recipe_item.how_many_missing
+    # If it's not, create a new Grocery Item with the correct quantity
+    else
+      quantity = recipe_item.how_many_missing
+      @grocery_item = GroceryItem.new(
+        quantity: quantity,
+        ingredient: recipe_item.ingredient,
+        user: current_user
+      )
+    end
+
+    @grocery_item.save!
   end
 end

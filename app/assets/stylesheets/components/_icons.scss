@@ -1,0 +1,14 @@
+.add-to-wishlist {
+  color: $pink;
+  font-size: 32px;
+  &:hover {
+    color: $pink-hover;
+  }
+}
+
+.delete-icon {
+  color: $red;
+  &:hover {
+    color: $red-hover;
+  }
+}

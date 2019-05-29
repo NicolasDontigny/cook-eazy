@@ -1,10 +1,16 @@
 class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show popup]
   before_action :set_recipe, only: %i[popup done!]
+  before_action :set_fridge_items, only: %i[index popup]
 
   def index
-    @recipes = Recipe.all
-    @fridge_items = FridgeItem.where(user: current_user)
+    @recipes = Recipe.all.sort do |recipe1, recipe2|
+      if recipe1.how_many_ingredients_to_buy(@fridge_items) == recipe2.how_many_ingredients_to_buy(@fridge_items)
+        recipe2.matching_ingredients(@fridge_items).count <=> recipe1.matching_ingredients(@fridge_items).count
+      else
+        recipe1.how_many_ingredients_to_buy(@fridge_items) <=> recipe2.how_many_ingredients_to_buy(@fridge_items)
+      end
+    end
   end
 
   def index_owner
@@ -57,5 +63,8 @@ class RecipesController < ApplicationController
 
   def params_permit
     params.require(:recipe).permit(:name, :prep_time, :cook_time, :servings, steps_attributes: [:order, :content])
+
+  def set_fridge_items
+    @fridge_items = FridgeItem.where(user: current_user)
   end
 end
