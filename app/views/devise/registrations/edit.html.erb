@@ -23,13 +23,15 @@
                 input_html: { autocomplete: "current-password" } %>
     <% if current_user.avatar.url.present? %>
       <%= f.input_field :remove_avatar, as: :boolean, boolean_style: :inline, label: "Remove Avatar" %>
+      <label for="remove_avatar"> Remove Avatar</label><br>
     <% end %>
+    <label for="avatar"> Update Avatar</label><br>
     <%= f.file_field :avatar %>
     <%= f.hidden_field :avatar_cache %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Save" %>
   </div>
 <% end %>
 
