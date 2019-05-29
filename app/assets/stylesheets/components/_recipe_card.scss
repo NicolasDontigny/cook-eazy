@@ -9,8 +9,10 @@
   margin: 8px 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   cursor: pointer;
+  border-radius: 5px;
 
   img {
+    border-radius: 5px 5px 0 0;
     width: 100%;
   }
 
@@ -49,6 +51,8 @@
   cursor: default;
 
   overflow: auto;
+
+  // border-radius: 5px;
 
   img {
     width: 100%;

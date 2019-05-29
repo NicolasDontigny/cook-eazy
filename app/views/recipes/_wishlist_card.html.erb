@@ -1,6 +1,6 @@
-<%= link_to recipe_popup_path(recipe), class: "no-link", remote: true do %>
+<%= link_to recipe_popup_path(recipe), class: "no-link wishlist-link", remote: true do %>
 
-  <div class="recipe-card" data-recipe-id="<%= recipe.id %>">
+  <div class="recipe-card wishlist-card" data-recipe-id="<%= recipe.id %>">
 
     <img src="<%= recipe.photo %>" alt="food image">
     <div class="recipe-details">

@@ -5,7 +5,7 @@ class Recipe < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :steps, dependent: :destroy
 
-  has_many :wishlist_items
+  has_many :wishlist_items, dependent: :destroy
   has_many :users, through: :wishlist_items
 
   # validates :steps, length: { minimum: 1 }
