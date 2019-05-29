@@ -15,10 +15,10 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.label :avatar do
-      = f.file_field :avatar 
-      = f.hidden_field :avatar_cache %>
-    <% end %>
+    <%# f.label 'Profile picture', :avatar %>
+    <%= f.input :avatar, label: 'Profile Picture' %>
+    <%= f.hidden_field :avatar_cache %>
+
   </div>
 
   <div class="form-actions">
