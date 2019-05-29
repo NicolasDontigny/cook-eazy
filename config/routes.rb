@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get 'recipes/:id/popup' => 'recipes#popup', as: :recipe_popup
   get 'recipes/:id/steps' => 'recipes#steps', as: :recipe_steps
   post 'recipes/:id/reviews' => 'reviews#create', as: :recipe_reviews
+  get 'my-recipes', to: "recipes#index_owner", as: :my_recipes
+  get 'recipe/new', to: 'recipes#new', as: :new_recipe
+  post 'recipes', to: 'recipes#create'
 
   # Grocery Lists Routes
   get 'grocery-list' => 'grocery_items#index', as: :grocery_items

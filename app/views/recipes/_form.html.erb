@@ -1,0 +1,11 @@
+<%= simple_form_for @recipe do |form| %>
+  <%= form.input :name %>
+  <%= form.input :prep_time %>
+  <%= form.input :cook_time %>
+  <%= form.input :servings %>
+  <%= form.input :steps %>
+
+  <%#= form.input :photo, class: "btn btn-primary" %>
+  <%#= form.input :photo_cache, as: :hidden %>
+  <%= form.submit "Create recipe", class: "btn btn-primary" %>
+<% end %>

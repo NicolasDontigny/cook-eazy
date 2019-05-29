@@ -7,11 +7,31 @@ class RecipesController < ApplicationController
     @fridge_items = FridgeItem.where(user: current_user)
   end
 
+  def index_owner
+    @current_user = current_user
+    @recipes = Recipe.where(user: current_user)
+  end
+
   def popup
     respond_to do |format|
       format.html { redirect_to recipe_path(@recipe) }
       format.js { render 'show_popup.js.erb', recipe: @recipe }
     end
+  end
+
+  def new
+    @recipe = Recipe.new
+  end
+
+  def create
+    new_recipe = Recipe.new(params_permit)
+    new_recipe.user = current_user
+
+    new_recipe.save!
+
+    flash[:just_created] = "Created \"#{new_recipe.name}\" Successfully!"
+
+    redirect_to my_recipes_path
   end
 
   def steps
@@ -24,7 +44,6 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    # @recipe = Recipe.find(5)
     @reviews = @recipe.reviews
   end
 

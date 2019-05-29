@@ -1,0 +1,45 @@
+<div class="d-flex justify-content-between align-items-center my-3 top-header">
+  <h1>My Recipes</h1>
+
+  <%= link_to "Add your own recipe!", new_recipe_path, class: "btn btn-success btn-lg" %>
+</div>
+
+<% @recipes.each do |recipe| %>
+
+<div class="recipe-card" data-recipe-id="<%= recipe.id %>">
+  <img src="<%= recipe.photo %>" alt="food image">
+  <h4><%= recipe.name %></h4>
+  <ul>
+    <li>Prep. time: <% if recipe.prep_time > 60 %>
+                    <%= (recipe.prep_time / 60).floor %>
+                    <% unless recipe.prep_time % 60 == 0 %>
+                      <%= recipe.prep_time % 60 %> min
+                    <% end %>
+                    <% else %>
+                      <%= recipe.prep_time %> min
+                    <% end %>
+    </li>
+    <li>Cook. time: <% if recipe.cook_time > 60 %>
+                      <%= (recipe.cook_time / 60).floor %>
+                      <% unless recipe.cook_time % 60 == 0 %>
+                        <%= recipe.cook_time % 60 %> min
+                      <% end %>
+                      <% else %>
+                        <%= recipe.cook_time %> min
+                      <% end %>
+    </li>
+    <li>serves: <%= recipe.servings %> people</li>
+    <li><%= recipe['steps'].split(',').length %> steps</li>
+    <li><% recipe.rating.times do %>
+          <i class="fas fa-star"></i>
+        <% end %>
+        <% (5 - recipe.rating).times do %>
+          <i class="far fa-star"></i>
+        <% end %>
+    </li>
+    <li>(<%= recipe.reviews.count %> reviews)</li>
+  </ul>
+  <%= link_to "More info", recipe_path(recipe), class: "btn btn-primary" %>
+</div>
+
+<% end %>
