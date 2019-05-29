@@ -21,6 +21,8 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @recipe.steps.build
+    @step_number = 1
   end
 
   def create
@@ -51,5 +53,9 @@ class RecipesController < ApplicationController
 
   def set_recipe
     @recipe = Recipe.find(params[:id])
+  end
+
+  def params_permit
+    params.require(:recipe).permit(:name, :prep_time, :cook_time, :servings, steps_attributes: [%i[content order]])
   end
 end
