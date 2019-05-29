@@ -25,6 +25,7 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "My grocery list", "/grocery-list", class: "dropdown-item" %>
             <%= link_to "My fridge", fridge_path, class: "dropdown-item" %>
+            <%= link_to "My recipes", my_recipes_path, class: "dropdown-item" %>
             <%= link_to "Account Settings", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>

@@ -8,6 +8,8 @@ class Recipe < ApplicationRecord
   has_many :wishlist_items, dependent: :destroy
   has_many :users, through: :wishlist_items
 
+  accepts_nested_attributes_for :steps
+
   # validates :steps, length: { minimum: 1 }
 
   def missing_ingredients(fridge_items)
