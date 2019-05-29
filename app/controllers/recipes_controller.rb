@@ -31,7 +31,7 @@ class RecipesController < ApplicationController
 
     new_recipe.save!
 
-    # flash[:just_created] = "Created \"#{new_recipe.name}\" Successfully!"
+    flash[:notice] = "Created \"#{new_recipe.name}\" Successfully!"
 
     redirect_to my_recipes_path
   end
