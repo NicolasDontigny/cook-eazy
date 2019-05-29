@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
+
   has_many :recipes
   has_many :grocery_items
   has_many :fridge_items
