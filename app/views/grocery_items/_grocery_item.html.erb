@@ -1,3 +1,4 @@
+
 <li class="grocery-item-card shadow" data-item-id="<%= item.id %>">
   <div>
     <% if item.checked %>
@@ -23,4 +24,10 @@
       <i class='fas fa-plus math'></i>
     <% end %>
   </div>
+  <div class="delete-grocery-item">
+    <%= link_to grocery_item_path(item), class: "delete-icon", method: :delete, remote: true do %>
+      <i class="fas fa-trash-alt"></i>
+    <% end %>
+  </div>
 </li>
+

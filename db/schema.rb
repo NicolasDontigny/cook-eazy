@@ -15,24 +15,6 @@ ActiveRecord::Schema.define(version: 2019_05_28_203637) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cooking_list_items", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "recipe_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["recipe_id"], name: "index_cooking_list_items_on_recipe_id"
-    t.index ["user_id"], name: "index_cooking_list_items_on_user_id"
-  end
-
-  create_table "favorite_items", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "recipe_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["recipe_id"], name: "index_favorite_items_on_recipe_id"
-    t.index ["user_id"], name: "index_favorite_items_on_user_id"
-  end
-
   create_table "fridge_items", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "ingredient_id"
@@ -119,10 +101,15 @@ ActiveRecord::Schema.define(version: 2019_05_28_203637) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "cooking_list_items", "recipes"
-  add_foreign_key "cooking_list_items", "users"
-  add_foreign_key "favorite_items", "recipes"
-  add_foreign_key "favorite_items", "users"
+  create_table "wishlist_items", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_wishlist_items_on_recipe_id"
+    t.index ["user_id"], name: "index_wishlist_items_on_user_id"
+  end
+
   add_foreign_key "fridge_items", "ingredients"
   add_foreign_key "fridge_items", "users"
   add_foreign_key "grocery_items", "ingredients"
@@ -132,4 +119,6 @@ ActiveRecord::Schema.define(version: 2019_05_28_203637) do
   add_foreign_key "recipes", "users"
   add_foreign_key "reviews", "recipes"
   add_foreign_key "reviews", "users"
+  add_foreign_key "wishlist_items", "recipes"
+  add_foreign_key "wishlist_items", "users"
 end

@@ -10,3 +10,5 @@ import { closeButton } from '../plugins/close_button'
 import { loadDynamicBannerText } from '../components/banner';
 loadDynamicBannerText();
 
+import swal from 'sweetalert';
+

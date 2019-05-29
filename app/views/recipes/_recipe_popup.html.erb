@@ -14,7 +14,9 @@
         <div class="col-7">
           <div class="row justify-content-between">
             <h4><%= recipe.name %></h4>
-            <%= link_to "See Preparation Steps", recipe_path(recipe), class: "btn btn-primary mr-5", id: "show-page-button" %>
+            <%= link_to new_wishlist_item_path(recipe), method: :post, remote: true do %>
+              <i class="fas fa-heart mr-5 add-to-wishlist"></i>
+            <% end %>
           </div>
 
           <div class="row">
@@ -29,7 +31,7 @@
             </div>
           </div>
 
-          <div class="row py-5">
+          <div class="row py-3">
             <div class="col-4 text-center">
               <% if recipe.prep_time > 60 %>
                 <%= (recipe.prep_time / 60).floor %> h
@@ -59,15 +61,22 @@
               <div>Difficulty</div>
             </div>
           </div>
+
         </div>
         <div class="col-5 p-0">
           <img src="<%= recipe.photo %>" alt="food image">
         </div>
       </div>
 
+
+      <div class="row mt-5 justify-content-around">
+        <%= link_to "See Preparation Steps", recipe_path(recipe), class: "btn btn-primary", id: "show-page-button" %>
+        <%= link_to "Add Ingredients to Grocery List", add_grocery_items_path(recipe), class: "btn btn-warning", method: :post %>
+      </div>
+
       <!-- Display Ingredients, with color according to Missing, Insufficient or Matching -->
-      <p>Ingredients:</p>
-      <div id="ingredients-container">
+      <div id="ingredients-container" class="mt-5">
+        <p>Ingredients:</p>
         <ul id="popup-ingredients-list">
           <% recipe.insufficient_ingredients(fridge_items).each do |recipe_item| %>
             <li class="ingredient-orange">
