@@ -31,7 +31,7 @@ class RecipesController < ApplicationController
 
     new_recipe.save!
 
-    flash[:just_created] = "Created \"#{new_recipe.name}\" Successfully!"
+    # flash[:just_created] = "Created \"#{new_recipe.name}\" Successfully!"
 
     redirect_to my_recipes_path
   end
@@ -56,6 +56,6 @@ class RecipesController < ApplicationController
   end
 
   def params_permit
-    params.require(:recipe).permit(:name, :prep_time, :cook_time, :servings, steps_attributes: [%i[content order]])
+    params.require(:recipe).permit(:name, :prep_time, :cook_time, :servings, steps_attributes: [:order, :content])
   end
 end

@@ -29,15 +29,19 @@
                       <% end %>
     </li>
     <li>serves: <%= recipe.servings %> people</li>
-    <li><%= recipe['steps'].split(',').length %> steps</li>
-    <li><% recipe.rating.times do %>
-          <i class="fas fa-star"></i>
-        <% end %>
-        <% (5 - recipe.rating).times do %>
-          <i class="far fa-star"></i>
-        <% end %>
-    </li>
+    <li><%= recipe.steps.length %> steps</li>
+      <% if recipe.rating %>
+        <li><% recipe.rating.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
+            <% (5 - recipe.rating).times do %>
+              <i class="far fa-star"></i>
+            <% end %>
+        </li>
+      <% end %>
+    <% if recipe.reviews %>
     <li>(<%= recipe.reviews.count %> reviews)</li>
+    <% end %>
   </ul>
   <%= link_to "More info", recipe_path(recipe), class: "btn btn-primary" %>
 </div>

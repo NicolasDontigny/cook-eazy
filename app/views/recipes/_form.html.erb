@@ -1,4 +1,4 @@
-<%= simple_form_for [@recipe] do |form| %>
+<%= simple_form_for [@recipe], remote: true do |form| %>
   <%= form.input :name %>
   <%= form.input :prep_time %>
   <%= form.input :cook_time %>
@@ -6,7 +6,7 @@
 
   <%= form.simple_fields_for :steps do |step|  %>
 
-    <div class="d-flex" id="<%= @step_number %>">
+    <div class="d-flex" id="steps_container">
       <%= render "add_step", step: step, step_number: @step_number %>
     </div>
     <div>
