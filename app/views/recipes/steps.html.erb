@@ -1,2 +1,22 @@
-<h1>Recipes#steps</h1>
-<p>Find me in app/views/recipes/steps.html.erb</p>
+<div class="d-flex container ml-3">
+  <!-- List the Ingredients -->
+  <div class="list-ingredients ">
+    <div id="title">Ingredients</div>
+    <ul>
+      <% recipe_items = RecipeItem.where("recipe_id=" + @recipe.id.to_s) %>
+        <% recipe_items.each do |item| %>
+          <% i = Ingredient.find(item.ingredient_id) %>
+          <li><%= i.name %></li>
+      <% end %>
+    </ul>
+  </div>
+  <!-- list the steps -->
+  <div class="recipe-steps ml-3 bg-light">
+    <% step = @steps[params[:step_number].to_i] %>
+    <p><%= step.order %> - <%= step.content %></p>
+  </div>
+</div>
+  <!-- on click  -->
+  <%= link_to_if params[:step_number].to_i > 0, "previous", "/recipes/#{@recipe.id}/steps/#{params[:step_number].to_i - 1}", method: :get ,:class => "btn btn-primary" %>
+  <%= link_to_if  params[:step_number].to_i < @length, "next", "/recipes/#{@recipe.id}/steps/#{params[:step_number].to_i + 1}", method: :get ,:class => "btn btn-primary" %>
+

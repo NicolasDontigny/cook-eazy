@@ -58,4 +58,9 @@
 
       <%= render "reviews/form", recipe: @recipe, review: Review.new %>
   </div>
+  <div class="steps">
+  <!-- PATH = /recipes/:id/steps,   controller#action = @recipe     -->
+  <%= link_to "start", recipe_steps_path(@recipe),:class => "btn btn-primary",:button_id => "start" %>|
+</div>
+
 </div>
