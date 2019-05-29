@@ -5,8 +5,10 @@ class Recipe < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :steps, dependent: :destroy
 
-  has_many :cooking_list_items
-  has_many :users, through: :cooking_list_items
+  has_many :wishlist_items, dependent: :destroy
+  has_many :users, through: :wishlist_items
+
+  accepts_nested_attributes_for :steps
 
   # validates :steps, length: { minimum: 1 }
 
@@ -34,7 +36,18 @@ class Recipe < ApplicationRecord
   end
 
   def matching_ingredients(fridge_items)
+    matching_ingredients = []
 
+    recipe_items.each do |recipe_item|
+      if fridge_items.any? { |item| item.ingredient == recipe_item.ingredient && item.quantity >= recipe_item.quantity }
+        matching_ingredients << recipe_item
+      end
+    end
+    return matching_ingredients
+  end
+
+  def how_many_ingredients_to_buy(fridge_items)
+    missing_ingredients(fridge_items).count + insufficient_ingredients(fridge_items).count
   end
 
   def update_ratings!

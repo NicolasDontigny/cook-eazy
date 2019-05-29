@@ -11,7 +11,7 @@ const loadDynamicBannerText = () => {
             fadeOut: true,
             backSpeed: 0,
             backDelay: 0,
-            startDelay: 1600,
+            // startDelay: 1600,
             cursorChar: "",
             loop: true
         });

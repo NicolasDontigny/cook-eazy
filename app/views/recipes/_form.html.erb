@@ -1,0 +1,21 @@
+<%= simple_form_for [@recipe] do |form| %>
+  <%= form.input :name %>
+  <%= form.input :prep_time %>
+  <%= form.input :cook_time %>
+  <%= form.input :servings %>
+
+  <%= form.simple_fields_for :steps do |step|  %>
+
+    <div class="d-flex" id="steps_container">
+      <%= render "add_step", step: step, step_number: @step_number %>
+    </div>
+    <div>
+    add more steps
+    <a href="#", id="add_step"><i class="far fa-plus-square"></i></a>
+    </div>
+
+  <% end %>
+  <%#= form.input :photo, class: "btn btn-primary" %>
+  <%#= form.input :photo_cache, as: :hidden %>
+  <%= form.submit "Create recipe", class: "btn btn-primary" %>
+<% end %>

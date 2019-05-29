@@ -1,0 +1,17 @@
+<%= link_to recipe_popup_path(recipe), class: "no-link wishlist-link", remote: true do %>
+
+  <div class="recipe-card wishlist-card" data-recipe-id="<%= recipe.id %>">
+
+    <img src="<%= recipe.photo %>" alt="food image">
+    <div class="recipe-details">
+      <h4><%= recipe.name %></h4>
+      <p>
+        I need to buy <%= recipe.how_many_ingredients_to_buy(@fridge_items) %> ingredients
+      </p>
+      <p>
+        I have <%= recipe.matching_ingredients(@fridge_items).count %> ingredients in my fridge
+      </p>
+    </div>
+  </div>
+
+<% end %>

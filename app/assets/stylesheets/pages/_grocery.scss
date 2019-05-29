@@ -33,6 +33,20 @@
   margin: 16px auto;
   padding: 16px;
   transition: opacity 500ms ease;
+  position: relative;
+
+  .delete-grocery-item {
+    position: absolute;
+    right: -45px;
+    top: 14px;
+    opacity: 0;
+  }
+
+  &:hover {
+    .delete-grocery-item {
+      opacity: 1;
+    }
+  }
 }
 
 .new_grocery_item {
