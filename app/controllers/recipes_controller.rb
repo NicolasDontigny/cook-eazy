@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show popup]
-  before_action :set_recipe, only: %i[popup done!]
+  before_action :set_recipe, only: %i[popup done! steps]
 
   def index
     @recipes = Recipe.all
@@ -15,6 +15,8 @@ class RecipesController < ApplicationController
   end
 
   def steps
+    @steps = @recipe.steps.order(order: :asc)
+    @length = @steps.length - 1
   end
 
   def done!
@@ -24,7 +26,6 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    # @recipe = Recipe.find(5)
     @reviews = @recipe.reviews
   end
 

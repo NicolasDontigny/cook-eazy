@@ -7,7 +7,6 @@
           <% i = Ingredient.find(item.ingredient_id) %>
           <li><%= i.name %></li>
       <% end %>
-          <li> spinash long ingredient </li>
     </ul>
   </div>
   <div class="recipe-info">
@@ -57,4 +56,9 @@
 
       <%= render "reviews/form", recipe: @recipe, review: Review.new %>
   </div>
+  <div class="steps">
+  <!-- PATH = /recipes/:id/steps,   controller#action = @recipe     -->
+  <%= link_to "start", recipe_steps_path(@recipe),:class => "btn btn-primary",:button_id => "start" %>|
+</div>
+
 </div>
