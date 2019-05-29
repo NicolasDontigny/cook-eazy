@@ -63,6 +63,7 @@ class RecipesController < ApplicationController
 
   def params_permit
     params.require(:recipe).permit(:name, :prep_time, :cook_time, :servings, steps_attributes: [:order, :content])
+  end
 
   def set_fridge_items
     @fridge_items = FridgeItem.where(user: current_user)
