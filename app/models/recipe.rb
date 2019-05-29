@@ -34,7 +34,18 @@ class Recipe < ApplicationRecord
   end
 
   def matching_ingredients(fridge_items)
+    matching_ingredients = []
 
+    recipe_items.each do |recipe_item|
+      if fridge_items.any? { |item| item.ingredient == recipe_item.ingredient && item.quantity >= recipe_item.quantity }
+        matching_ingredients << recipe_item
+      end
+    end
+    return matching_ingredients
+  end
+
+  def how_many_ingredients_to_buy(fridge_items)
+    missing_ingredients(fridge_items).count + insufficient_ingredients(fridge_items).count
   end
 
   def update_ratings!
