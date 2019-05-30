@@ -3,11 +3,11 @@
   <div>
     <% if item.checked %>
       <%= link_to uncheck_grocery_item_path(item), method: 'patch', remote: true, class: "no-link" do %>
-        <i class="far fa-check-square checkbox"></i>
+        <i class="far fa-check-square checkbox color-main-green"></i>
       <% end %>
     <% else %>
       <%= link_to check_grocery_item_path(item), method: 'patch', remote: true, class: "no-link" do %>
-        <i class="far fa-square checkbox"></i>
+        <i class="far fa-square checkbox color-main-red"></i>
       <% end %>
     <% end %>
     <%= item.ingredient.name %>

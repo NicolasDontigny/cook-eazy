@@ -1,0 +1,24 @@
+<div class="rating-stars rating-main-green">
+  <% if recipe.reviews.empty? %>
+    No reviews yet
+  <% else %>
+    <% if (recipe.rating % 1).zero? %>
+      <% recipe.rating.round.times do %>
+        <i class="fas fa-star"></i>
+      <% end %>
+      <% (5 - recipe.rating.round).times do %>
+        <i class="far fa-star"></i>
+      <% end %>
+      (<%= recipe.reviews.count %>)
+    <% else %>
+      <% recipe.rating.floor.times do %>
+        <i class="fas fa-star"></i>
+      <% end %>
+      <i class="fas fa-star-half-alt"></i>
+      <% (5 - recipe.rating.ceil).times do %>
+        <i class="far fa-star"></i>
+      <% end %>
+      (<%= recipe.reviews.count %>)
+    <% end %>
+  <% end %>
+</div>

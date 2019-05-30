@@ -27,8 +27,7 @@ end
     name: Faker::Food.dish,
     prep_time: rand(80),
     cook_time: rand(80),
-    servings: rand(4),
-    rating: rand(5),
+    servings: rand(5) + 1,
     photo: "https://source.unsplash.com/collection/251966/1600x900",
     difficulty: ["Easy", "Moderate", "Hard"].sample
   )

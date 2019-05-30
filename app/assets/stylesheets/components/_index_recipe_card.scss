@@ -1,0 +1,136 @@
+.container.owner__container {
+  padding: 0 1rem;
+
+  @media screen and (min-width: 576px) {
+
+  }
+
+  @media screen and (min-width: 900px) {
+    padding: 0;
+  }
+}
+
+.card-product {
+  overflow: hidden;
+  height: 70vh;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-radius: 5px;
+  color: $gray;
+
+  & ul {
+    padding-left: 0;
+  }
+  & li {
+    list-style: none;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+
+    @media screen and (min-width: 576px) {
+      font-size: 1.5rem;
+    }
+
+    @media screen and (min-width: 900px) {
+      font-size: 1.75rem;
+    }
+  }
+
+  @media screen and (min-width: 900px) {
+    flex-direction: row;
+    height: 17rem;
+  }
+
+  .button.button-main-red {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+
+    @media screen and (min-width: 900px) {
+      display: inline;
+    }
+  }
+}
+
+.container.owner__container .button.button-main-green {
+
+  @media screen and (max-width: 900px) {
+    width: 50%;
+    height: 3rem;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+}
+
+.d-flex.justify-content-between.align-items-center.my-3.top-header h2 {
+  font-size: 1.2rem;
+
+  @media screen and (min-width: 576px) {
+    font-size: 1.5rem;
+  }
+
+  @media screen and (min-width: 900px) {
+    font-size: 1.75rem;
+  }
+}
+
+.card-product img {
+  height: 30vh;
+  width: 100%;
+  object-fit: cover;
+
+  @media screen and (min-width: 900px) {
+    width: 40%;
+    height: 100%;
+  }
+}
+
+.card-product-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.card-product .card-product-infos {
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media screen and (min-width: 900px) {
+    padding: 1rem 3rem;
+  }
+}
+
+
+.info_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+
+  @media screen and (min-width: 900px) {
+    margin-bottom: 1rem;
+  }
+}
+
+.far.fa-star,
+.fas.fa-star, {
+  color: $main-green;
+}
+
+.fas.fa-leaf {
+  color: $light-green;
+  margin-right: 0.5rem;
+}
+
+.card__button {
+  margin-bottom: 1rem;
+}

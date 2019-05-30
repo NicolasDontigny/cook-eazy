@@ -9,23 +9,27 @@
 @import "icons";
 @import "swal";
 @import "buttons";
+@import "index_recipe_card";
+@import "circle";
+@import "checkbox";
 
 
 .no-link {
   text-decoration: none;
-  color: black;
+  color: $gray;
   &:hover {
     text-decoration: none;
-    color: black;
+    color: $gray;
   }
 }
 
-.shadow {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+.shadowed {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
 .container {
-  padding: 32px 0;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 
 body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
