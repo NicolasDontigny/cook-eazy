@@ -11,9 +11,9 @@
 
     <div class="popup-card-container p-3">
       <div class="row justify-content-between">
-        <div class="col-7">
+        <div class="col-7 d-flex flex-column">
           <div class="row justify-content-between">
-            <h4><%= recipe.name %></h4>
+            <h2><%= recipe.name %></h2>
             <%= link_to new_wishlist_item_path(recipe), method: :post, remote: true do %>
               <i class="fas fa-heart mr-5 add-to-wishlist"></i>
             <% end %>
@@ -23,36 +23,35 @@
             <%= render 'star_rating', recipe: recipe %>
           </div>
 
-          <div class="row py-3">
-            <div class="col-4 text-center">
-              <% if recipe.prep_time > 60 %>
-                <%= (recipe.prep_time / 60).floor %> h
-                <% unless recipe.prep_time % 60 == 0 %>
-                  <%= recipe.prep_time % 60 %> min
-                <% end %>
-              <% else %>
-                <%= recipe.prep_time %> min
+          <div class="row mt-2">
+            <strong class="mr-2">Prep Time</strong>
+            <% if recipe.prep_time > 60 %>
+              <%= (recipe.prep_time / 60).floor %> h
+              <% unless recipe.prep_time % 60 == 0 %>
+                <%= recipe.prep_time % 60 %> min
               <% end %>
-              <div>Prep Time</div>
-            </div>
-
-            <div class="col-4 text-center">
-              <% if recipe.cook_time > 60 %>
-                <%= (recipe.cook_time / 60).floor %> h
-                <% unless recipe.cook_time % 60 == 0 %>
-                  <%= recipe.cook_time % 60 %> min
-                <% end %>
-              <% else %>
-                <%= recipe.cook_time %> min
-              <% end %>
-              <div>Cooking Time</div>
-            </div>
-
-            <div class="col-4 text-center">
-              <%= recipe.difficulty %>
-              <div>Difficulty</div>
-            </div>
+            <% else %>
+              <%= recipe.prep_time %> min
+            <% end %>
           </div>
+
+          <div class="row mt-2">
+            <strong class="mr-2">Cooking Time</strong>
+            <% if recipe.cook_time > 60 %>
+              <%= (recipe.cook_time / 60).floor %> h
+              <% unless recipe.cook_time % 60 == 0 %>
+                <%= recipe.cook_time % 60 %> min
+              <% end %>
+            <% else %>
+              <%= recipe.cook_time %> min
+            <% end %>
+          </div>
+
+          <div class="row mt-2">
+            <strong class="mr-2">Servings</strong>
+            <%= recipe.servings %>
+          </div>
+
 
         </div>
         <div class="col-5 p-0">
@@ -61,14 +60,14 @@
       </div>
 
 
-      <div class="row mt-5 justify-content-around">
-        <%= link_to "See Preparation Steps", recipe_path(recipe), class: "button button-main-red", id: "show-page-button" %>
-        <%= link_to "Add Ingredients to Grocery List", add_grocery_items_path(recipe), class: "button button-main-green", method: :post %>
+      <div class="row mt-3 justify-content-center">
+        <%= link_to "Recipe", recipe_path(recipe), class: "button button-main-red mr-1", id: "show-page-button" %>
+        <%= link_to "Add to Grocery List", add_grocery_items_path(recipe), class: "button button-main-green ml-1", method: :post %>
       </div>
 
       <!-- Display Ingredients, with color according to Missing, Insufficient or Matching -->
-      <div id="ingredients-container" class="mt-5">
-        <p>Ingredients:</p>
+      <div id="ingredients-container" class="mt-4">
+        <h4 class="mb-3">Ingredients</h4>
         <ul id="popup-ingredients-list">
           <% recipe.insufficient_ingredients(fridge_items).each do |recipe_item| %>
             <li class="ingredient-orange">

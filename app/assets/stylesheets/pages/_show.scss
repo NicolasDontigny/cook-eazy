@@ -5,6 +5,7 @@
 
 #reviews-list > li {
   transition: opacity 1s ease;
+  list-style: none;
 }
 
 .grid-container {
@@ -26,4 +27,10 @@
     }
   }
 
+}
+
+
+#ingredients-list {
+  list-style: none;
+  padding: 0;
 }

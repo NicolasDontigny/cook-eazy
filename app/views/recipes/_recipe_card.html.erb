@@ -2,20 +2,20 @@
   <div class="ingredient-icons d-flex">
     <div class="circle-icon circle-main-red mr-3">
       <div>
-        <%= recipe.matching_ingredients(@fridge_items).count %>
+        <%= recipe.how_many_ingredients_to_buy(@fridge_items) %>
       </div>
     </div>
     <div class="circle-icon circle-main-green">
       <div>
-        <%= recipe.how_many_ingredients_to_buy(@fridge_items) %>
+        <%= recipe.matching_ingredients(@fridge_items).count %>
       </div>
     </div>
   </div>
 
   <div class="recipe-card-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(<%= recipe.photo %>);"></div>
   <div class="recipe-details">
-    <h4><%= recipe.name %></h4>
-    <div>
+    <h4 class="mb-0"><%= recipe.name %></h4>
+    <div class="mt-1">
       <%= image_tag "stopwatch-gray.png", class: "stopwatch-icon" %>
       <% time = recipe.prep_time + recipe.cook_time %>
       <% if time > 60 %>
@@ -27,9 +27,9 @@
         <%= time %> min
       <% end %>
     </div>
-    <div class="mt-1">
+    <!-- <div class="mt-1">
       <%= recipe.steps.count %> steps
-    </div>
+    </div> -->
     <div class="mt-1">
       <%= render 'star_rating', recipe: recipe %>
     </div>
