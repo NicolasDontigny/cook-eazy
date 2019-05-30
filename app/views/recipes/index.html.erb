@@ -6,21 +6,15 @@
     <div class="wishlist-container row">
 
       <div id="wishlist-recipes-slider" class="col-12 d-flex">
-        <% if @wishlist_recipes.count > 100 %>
-          <div class="wishlist-link"></div>
-        <% end %>
 
         <% @wishlist_recipes.each do |recipe| %>
 
-          <%= link_to recipe_popup_path(recipe), class: "no-link wishlist-link", remote: true do %>
+          <%= link_to recipe_popup_path(recipe), class: "no-link wishlist-link px-3", remote: true do %>
             <%= render "recipe_card", recipe: recipe, wishlist: true %>
           <% end %>
 
         <% end %>
 
-        <% if @wishlist_recipes.count > 1000 %>
-          <div class="wishlist-link"></div>
-        <% end %>
       </div>
 
     </div>
