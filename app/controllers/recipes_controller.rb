@@ -58,6 +58,12 @@ class RecipesController < ApplicationController
 
     new_recipe.save!
 
+    # params[recipe_items].each do |recipe_item|
+    #   new_recipe_item = RecipeItem.new(ingredient_id: recipe_item[ingredient_id], quantity: recipe_item[quantity])
+    #   new_recipe_item.recipe = new_recipe
+    #   new_recipe_item.save!
+    # end
+
     flash[:notice] = "Created \"#{new_recipe.name}\" Successfully!"
 
     redirect_to my_recipes_path
@@ -83,7 +89,7 @@ class RecipesController < ApplicationController
   end
 
   def params_permit
-    params.require(:recipe).permit(:name, :prep_time, :cook_time, :servings, steps_attributes: [:order, :content])
+    params.require(:recipe).permit(:name, :prep_time, :cook_time, :servings, :photo, steps_attributes: [:order, :content])
   end
 
   def set_fridge_items
