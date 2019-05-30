@@ -22,7 +22,8 @@ const createIngredientInput = (ingredientNumber) => {
 
 const addField = () => {
   const ingredientContainer = document.getElementById('ingredients_container');
-  const lastChild = document.querySelector('.recipe_recipe_items_quantity input:last-child');
+  const allIngredientInputs = document.querySelectorAll('.recipe_recipe_items_quantity input');
+  const lastChild = allIngredientInputs[allIngredientInputs.length - 1]
   const ingredientNumber = parseInt(lastChild.getAttribute('step'), 10);
   const field = createIngredientInput(ingredientNumber);
   ingredientContainer.insertAdjacentHTML("beforeend", field);
