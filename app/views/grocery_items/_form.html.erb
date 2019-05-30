@@ -1,5 +1,5 @@
 <%= simple_form_for [user, grocery_item], url: 'grocery-list', remote: true do |form| %>
-  <%= form.association :ingredient %>
+  <%= form.association :ingredient, input_html: { class: "select2", multiple: false } %>
   <%= form.input :quantity %>
   <%= form.submit "Add Ingredient", class: "btn btn-primary" %>
 <% end %>
