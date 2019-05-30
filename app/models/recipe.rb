@@ -50,11 +50,13 @@ class Recipe < ApplicationRecord
     missing_ingredients(fridge_items).count + insufficient_ingredients(fridge_items).count
   end
 
-  def update_ratings!
+  def rating
     all_ratings = []
     reviews.each do |review|
       all_ratings << review.rating
     end
-    self.rating = all_ratings.reduce(:+) / all_ratings.size.to_f
+    rating = ((all_ratings.reduce(:+) / all_ratings.size.to_f) * 2).round / 2.0
+
+    return rating
   end
 end

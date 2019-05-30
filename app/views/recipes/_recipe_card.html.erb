@@ -1,17 +1,23 @@
-<%= link_to recipe_popup_path(recipe), class: "no-link", remote: true do %>
-
-  <div class="recipe-card" data-recipe-id="<%= recipe.id %>">
-
-    <img src="<%= recipe.photo %>" alt="food image">
-    <div class="recipe-details">
-      <h4><%= recipe.name %></h4>
-      <p>
-        I need to buy <%= recipe.how_many_ingredients_to_buy(@fridge_items) %> ingredients
-      </p>
-      <p>
-        I have <%= recipe.matching_ingredients(@fridge_items).count %> ingredients in my fridge
-      </p>
+<div class="recipe-card shadowed" data-recipe-id="<%= recipe.id %>">
+  <div class="ingredient-icons d-flex">
+    <div class="circle-icon circle-main-red mr-3">
+      <div>
+        <%= recipe.matching_ingredients(@fridge_items).count %>
+      </div>
+    </div>
+    <div class="circle-icon circle-main-green">
+      <div>
+        <%= recipe.how_many_ingredients_to_buy(@fridge_items) %>
+      </div>
     </div>
   </div>
 
-<% end %>
+  <div class="recipe-card-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(<%= recipe.photo %>);"></div>
+  <div class="recipe-details">
+    <h4><%= recipe.name %></h4>
+    <div class="mt-3">
+      <%= render 'star_rating', recipe: recipe %>
+    </div>
+  </div>
+</div>
+
