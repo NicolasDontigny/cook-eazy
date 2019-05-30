@@ -15,4 +15,6 @@ addStep();
 import { loadDynamicBannerText } from '../components/banner';
 loadDynamicBannerText();
 
+import { wishlistCarousel } from '../plugins/wishlist_carousel'
 
+wishlistCarousel();

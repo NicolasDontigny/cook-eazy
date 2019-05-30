@@ -1,28 +1,29 @@
 <div class="container">
+
   <h2 class="">My Wishlist</h2>
-  <div class="wishlist-container row py-3">
-    <div class="col-1 d-flex justify-content-center align-items-center">
+  <div class="wishlist-container row">
+    <!-- <div class="col-1 d-flex justify-content-center align-items-center">
       <%= link_to "#", id: "swipe-left" do %>
         <i class="fas fa-chevron-left"></i>
       <% end %>
-    </div>
-    <div class="col-10 d-flex">
+    </div> -->
+    <div id="wishlist-recipes-slider" class="col-12 d-flex">
       <% @wishlist_recipes.each do |recipe| %>
 
         <%= render "wishlist_card", recipe: recipe, wishlist: true %>
 
       <% end %>
     </div>
-    <div class="col-1 d-flex justify-content-center align-items-center">
+    <!-- <div class="col-1 d-flex justify-content-center align-items-center">
       <%= link_to "#", id: "swipe-right" do %>
         <i class="fas fa-chevron-right"></i>
       <% end %>
-    </div>
+    </div> -->
   </div>
 
-  <h2 class="mt-5">Recommendations</h2>
+  <h2 class="mt-3">Recommendations</h2>
 
-  <div class="recipes-container">
+  <div class="recipes-container mt-3">
 
     <% @recipes.each do |recipe| %>
 
