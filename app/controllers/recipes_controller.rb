@@ -49,27 +49,22 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @recipe.steps.build
+    @recipe.recipe_items.build
     @step_number = 1
+    @ingredient_number = 1
+    @ingredients = Ingredient.all.map do |ingredient|
+      {
+        id: ingredient.id,
+        name: ingredient.name
+      }
+    end
+
   end
 
   def create
     new_recipe = Recipe.new(params_permit)
     new_recipe.user = current_user
     new_recipe.save!
-
-    ingredients_ids = params['recipe']["ingredient_ids"]
-
-    if ingredients_ids.length > 1
-      ingredients_ids.each do |i_id|
-        new_recipe_item = RecipeItem.new(ingredient_id: i_id, quantity: 1)
-        new_recipe_item.recipe = new_recipe
-        new_recipe_item.save!
-      end
-    else
-      new_recipe_item = RecipeItem.new(ingredient_id: ingredients_ids, quantity: 1)
-      new_recipe_item.recipe = new_recipe
-      new_recipe_item.save!
-    end
 
     flash[:notice] = "Created \"#{new_recipe.name}\" Successfully!"
 
@@ -98,7 +93,7 @@ class RecipesController < ApplicationController
   end
 
   def params_permit
-    params.require(:recipe).permit(:name, :prep_time, :cook_time, :servings, :photo, :ingredient_ids, steps_attributes: [:order, :content])
+    params.require(:recipe).permit(:name, :prep_time, :cook_time, :servings, :photo, :ingredient_ids, steps_attributes: [:order, :content], recipe_items_attributes: [:ingredient_id, :quantity])
   end
 
   def set_fridge_items

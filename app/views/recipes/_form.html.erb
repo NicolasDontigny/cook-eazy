@@ -1,9 +1,24 @@
+<div data-ingredients="<%= @ingredients.to_json %>" id="ingredients"></div>
+
 <%= simple_form_for [@recipe] do |form| %>
   <%= form.input :name %>
   <%= form.input :prep_time %>
   <%= form.input :cook_time %>
   <%= form.input :servings %>
-  <%= form.association :ingredients, input_html: { class: "select2", multiple: false } %>
+
+  <div id="ingredients_container">
+    <%= form.simple_fields_for :recipe_items do |recipe_item|  %>
+
+      <div>
+        <%= render "add_ingredient", recipe_item: recipe_item, ingredient_number: @ingredient_number %>
+      </div>
+      <div>
+      add more ingredients
+      <a href="#", id="add_ingredient"><i class="far fa-plus-square"></i></a>
+      </div>
+
+    <% end %>
+  </div>
 
   <%= form.simple_fields_for :steps do |step|  %>
 
