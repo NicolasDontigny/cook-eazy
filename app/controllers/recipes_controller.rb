@@ -87,6 +87,7 @@ class RecipesController < ApplicationController
   end
 
   def show
+    @fridge_items = FridgeItem.where(user: current_user)
     @recipe = Recipe.find(params[:id])
     @reviews = @recipe.reviews
   end

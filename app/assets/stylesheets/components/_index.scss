@@ -8,6 +8,7 @@
 @import "sidebar";
 @import "icons";
 @import "swal";
+@import "buttons";
 
 
 .no-link {
@@ -25,4 +26,19 @@
 
 .container {
   padding: 32px 0;
+}
+
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $roboto;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+
+}
+p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  color: $gray;
+}
+
+body {
+  color: $gray;
 }

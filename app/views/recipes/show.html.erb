@@ -2,12 +2,35 @@
   <div class="list-ingredients">
     <div id="title">Ingredients</div>
     <ul>
-      <% recipe_items = RecipeItem.where("recipe_id=" + @recipe.id.to_s) %>
-        <% recipe_items.each do |item| %>
-          <% i = Ingredient.find(item.ingredient_id) %>
-          <li><%= i.name %></li>
+      <%# recipe_items = RecipeItem.where("recipe_id=" + @recipe.id.to_s) %>
+        <%# recipe_items.each do |item| %>
+          <%# i = Ingredient.find(item.ingredient_id) %>
+          <li><%#= i.name %></li>
+      <%# end %>
+      <%#= link_to "Add Ingredients to Grocery List", add_grocery_items_path(@recipe), class: "btn btn-warning mt-3", method: :post %>
+      <% @recipe.insufficient_ingredients(@fridge_items).each do |recipe_item| %>
+        <li class="ingredient-orange">
+          <i class="far fa-times-circle"></i>
+          <%= recipe_item.ingredient.name %>
+          (<%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %> missing)
+        </li>
       <% end %>
-      <%= link_to "Add Ingredients to Grocery List", add_grocery_items_path(@recipe), class: "btn btn-warning mt-3", method: :post %>
+
+      <% @recipe.missing_ingredients(@fridge_items).each do |recipe_item| %>
+        <li class="ingredient-red">
+          <i class="far fa-times-circle"></i>
+          <%= recipe_item.ingredient.name %>
+          (need <%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %>)
+        </li>
+      <% end %>
+
+      <% @recipe.matching_ingredients(@fridge_items).each do |recipe_item| %>
+        <li class="ingredient-green">
+          <i class="far fa-check-circle"></i>
+          <%= recipe_item.ingredient.name %>
+          (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
+        </li>
+      <% end %>
     </ul>
   </div>
   <div class="recipe-info">

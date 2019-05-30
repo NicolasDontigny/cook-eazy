@@ -1,7 +1,7 @@
 .list-ingredients { grid-area: ingredient; }
 .recipe-info { grid-area: summary; }
 .recipe-image { grid-area: image; }
-.recipe-steps { grid-area: steps; }
+// .recipe-steps { grid-area: steps; }
 .recipe-reviews{grid-area: reviews;}
 
 .grid-container {
@@ -27,7 +27,7 @@
 
 .list-ingredients {
   padding: 10px;
-  margin:1px;
+  // margin:1px;
 }
 .recipe-info {
   padding: 10px 0;
@@ -73,3 +73,6 @@ ul {
 
 }
 
+.ingredients-list {
+  height: 100%;
+}
