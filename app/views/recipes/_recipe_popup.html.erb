@@ -20,15 +20,7 @@
           </div>
 
           <div class="row">
-            <div class="rating-stars">
-              <% recipe.rating.times do %>
-                <i class="fas fa-star"></i>
-              <% end %>
-              <% (5 - recipe.rating).times do %>
-                <i class="far fa-star"></i>
-              <% end %>
-              (<%= rand(100) %>)
-            </div>
+            <%= render 'star_rating', recipe: recipe %>
           </div>
 
           <div class="row py-3">
