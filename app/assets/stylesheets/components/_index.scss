@@ -10,14 +10,15 @@
 @import "swal";
 @import "buttons";
 @import "circle";
+@import "checkbox";
 
 
 .no-link {
   text-decoration: none;
-  color: black;
+  color: $gray;
   &:hover {
     text-decoration: none;
-    color: black;
+    color: $gray;
   }
 }
 
