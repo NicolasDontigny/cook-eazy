@@ -5,6 +5,7 @@
 
 #reviews-list > li {
   transition: opacity 1s ease;
+  list-style: none;
 }
 
 
@@ -64,6 +65,13 @@
 .start-button {
   margin:35px;
   text-align: center;
+}
+
+
+
+#ingredients-list {
+  list-style: none;
+  padding: 0;
 }
 
 #title {
