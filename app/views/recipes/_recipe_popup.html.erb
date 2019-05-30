@@ -11,52 +11,9 @@
 
     <div class="popup-card-container p-3">
       <div class="row justify-content-between">
-        <div class="col-7 d-flex flex-column">
-          <div class="row justify-content-between">
-            <h2><%= recipe.name %></h2>
-            <%= link_to new_wishlist_item_path(recipe), method: :post, remote: true do %>
-              <i class="fas fa-heart mr-5 add-to-wishlist"></i>
-            <% end %>
-          </div>
-
-          <div class="row">
-            <%= render 'star_rating', recipe: recipe %>
-          </div>
-
-          <div class="row mt-2">
-            <strong class="mr-2">Prep Time</strong>
-            <% if recipe.prep_time > 60 %>
-              <%= (recipe.prep_time / 60).floor %> h
-              <% unless recipe.prep_time % 60 == 0 %>
-                <%= recipe.prep_time % 60 %> min
-              <% end %>
-            <% else %>
-              <%= recipe.prep_time %> min
-            <% end %>
-          </div>
-
-          <div class="row mt-2">
-            <strong class="mr-2">Cooking Time</strong>
-            <% if recipe.cook_time > 60 %>
-              <%= (recipe.cook_time / 60).floor %> h
-              <% unless recipe.cook_time % 60 == 0 %>
-                <%= recipe.cook_time % 60 %> min
-              <% end %>
-            <% else %>
-              <%= recipe.cook_time %> min
-            <% end %>
-          </div>
-
-          <div class="row mt-2">
-            <strong class="mr-2">Servings</strong>
-            <%= recipe.servings %>
-          </div>
-
-
-        </div>
-        <div class="col-5 p-0">
-          <img src="<%= recipe.photo %>" alt="food image">
-        </div>
+        <%= render 'components/recipe_header', recipe: recipe %>
+        <!-- <div class="col-5 p-0 recipe-popup-image" style="background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url(<%= recipe.photo %>);">
+        </div> -->
       </div>
 
 
