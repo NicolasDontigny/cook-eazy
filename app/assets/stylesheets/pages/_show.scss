@@ -27,3 +27,42 @@
   }
 
 }
+
+.start-button {
+  margin:10px;
+}
+
+.item-a {
+  grid-area: ingredients;
+  height: 100vh;
+  overflow: scroll;
+}
+.item-b {
+  grid-area: title;
+  height: 50vh;
+  overflow: scroll;
+}
+.item-c {
+  grid-area: image;
+  height: 50vh;
+}
+.item-d {
+  grid-area: steps;
+  height: 50vh;
+  /*overflow: scroll;*/
+}
+
+.page-container {
+  display: grid;
+  grid-template-columns: 28% 36% 36% ;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "ingredients title image"
+    "ingredients steps steps";
+}
+
+.start-button {
+  margin:35px;
+  text-align: center;
+}
+

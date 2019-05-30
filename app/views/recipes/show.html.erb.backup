@@ -1,0 +1,90 @@
+<div class="grid-container">
+  <div class="list-ingredients">
+    <div id="title">Ingredients</div>
+    <ul>
+      <%# recipe_items = RecipeItem.where("recipe_id=" + @recipe.id.to_s) %>
+        <%# recipe_items.each do |item| %>
+          <%# i = Ingredient.find(item.ingredient_id) %>
+          <li><%#= i.name %></li>
+      <%# end %>
+      <%#= link_to "Add Ingredients to Grocery List", add_grocery_items_path(@recipe), class: "btn btn-warning mt-3", method: :post %>
+      <% @recipe.insufficient_ingredients(@fridge_items).each do |recipe_item| %>
+        <li class="ingredient-orange">
+          <i class="far fa-times-circle"></i>
+          <%= recipe_item.ingredient.name %>
+          (<%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %> missing)
+        </li>
+      <% end %>
+
+      <% @recipe.missing_ingredients(@fridge_items).each do |recipe_item| %>
+        <li class="ingredient-red">
+          <i class="far fa-times-circle"></i>
+          <%= recipe_item.ingredient.name %>
+          (need <%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %>)
+        </li>
+      <% end %>
+
+      <% @recipe.matching_ingredients(@fridge_items).each do |recipe_item| %>
+        <li class="ingredient-green">
+          <i class="far fa-check-circle"></i>
+          <%= recipe_item.ingredient.name %>
+          (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="recipe-info">
+    <div class="recipe-title">
+      <h1><%= @recipe.name %></h1>
+    </div>
+    <div class="d-flex justify-content-end  recipe-details">
+      <div class="recipe-preptime">
+      <h2><%=  @recipe.prep_time %></h2>
+      <p>Minutes</p>
+      </div>
+      <div class="recipe-difficulty">
+      <h2><%=  @recipe.difficulty %></h2>
+      <p>Difficulty</p>
+      </div>
+      <div>
+      <h2 class="calories">340</h2>
+      <p>Calories</p>
+      </div>
+    </div>
+  </div>
+  <div class="recipe-image">
+      <img src="https://images.unsplash.com/photo-1543198453-ed52dc5cbfc0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1190&q=80" alt="Smiley face" >
+      <%= link_to new_wishlist_item_path(@recipe), class: "add-to-wishlist", method: :post, remote: true do %>
+        <i class="fas fa-heart"></i>
+      <% end %>
+  </div>
+  <div class="recipe-steps">
+    <% @recipe.steps.each do |step| %>
+      <p><%= step.order %> - <%= step.content %></p>
+    <% end %>
+  </div>
+  <div class= "recipe-reviews" >
+    <% if @reviews.empty? %>
+        <ul id="reviews-list">
+          <%= render "reviews/no_reviews" %>
+        </ul>
+    <% else %>
+      <h4>What users say about this recipe</h4>
+      <ul id="reviews-list">
+        <% @reviews.each do |review| %>
+          <%= render "reviews/show_opacity1", review: review %>
+        <% end %>
+      </ul>
+    <% end %>
+
+      <h4 class="specs__title">Leave a Review</h4>
+
+      <%= render "reviews/form", recipe: @recipe, review: Review.new %>
+  </div>
+  <div class="steps">
+  <!-- PATH = /recipes/:id/steps,   controller#action = @recipe     -->
+  <%= link_to "start", recipe_steps_path(@recipe),:class => "btn btn-primary",:button_id => "start" %>|
+</div>
+
+</div>
+
