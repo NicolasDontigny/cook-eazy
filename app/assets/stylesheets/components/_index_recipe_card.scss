@@ -43,7 +43,7 @@
 
   @media screen and (min-width: 900px) {
     flex-direction: row;
-    height: 16rem;
+    height: 17rem;
   }
 
   .button.button-main-red {
@@ -56,7 +56,6 @@
     }
   }
 }
-
 
 .container.owner__container .button.button-main-green {
 
@@ -115,6 +114,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 0.5rem;
 
   @media screen and (min-width: 900px) {
     margin-bottom: 1rem;
@@ -127,7 +127,7 @@
 }
 
 .fas.fa-leaf {
-  color: $main-green;
+  color: $light-green;
   margin-right: 0.5rem;
 }
 
