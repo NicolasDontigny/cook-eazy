@@ -3,7 +3,7 @@
   <%= form.input :prep_time %>
   <%= form.input :cook_time %>
   <%= form.input :servings %>
-  <%= form.association :ingredients %>
+  <%= form.association :ingredients, input_html: { class: "select2", multiple: false } %>
 
   <%= form.simple_fields_for :steps do |step|  %>
 
