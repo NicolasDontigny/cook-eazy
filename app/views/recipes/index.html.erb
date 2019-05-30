@@ -1,25 +1,31 @@
 <div class="container">
 
-  <h2 class="">My Wishlist</h2>
-  <div class="wishlist-container row">
-    <!-- <div class="col-1 d-flex justify-content-center align-items-center">
-      <%= link_to "#", id: "swipe-left" do %>
-        <i class="fas fa-chevron-left"></i>
-      <% end %>
-    </div> -->
-    <div id="wishlist-recipes-slider" class="col-12 d-flex">
-      <% @wishlist_recipes.each do |recipe| %>
+  <% if @wishlist_recipes.count.positive? %>
 
-        <%= render "wishlist_card", recipe: recipe, wishlist: true %>
+    <h2 class="">My Wishlist</h2>
+    <div class="wishlist-container row">
 
-      <% end %>
+      <div id="wishlist-recipes-slider" class="col-12 d-flex">
+        <% if @wishlist_recipes.count > 100 %>
+          <div class="wishlist-link"></div>
+        <% end %>
+
+        <% @wishlist_recipes.each do |recipe| %>
+
+          <%= link_to recipe_popup_path(recipe), class: "no-link wishlist-link", remote: true do %>
+            <%= render "recipe_card", recipe: recipe, wishlist: true %>
+          <% end %>
+
+        <% end %>
+
+        <% if @wishlist_recipes.count > 1000 %>
+          <div class="wishlist-link"></div>
+        <% end %>
+      </div>
+
     </div>
-    <!-- <div class="col-1 d-flex justify-content-center align-items-center">
-      <%= link_to "#", id: "swipe-right" do %>
-        <i class="fas fa-chevron-right"></i>
-      <% end %>
-    </div> -->
-  </div>
+
+  <% end %>
 
   <h2 class="mt-3">Recommendations</h2>
 
@@ -27,7 +33,11 @@
 
     <% @recipes.each do |recipe| %>
 
-      <%= render "recipe_card", recipe: recipe, wishlist: false %>
+      <%= link_to recipe_popup_path(recipe), class: "no-link", remote: true do %>
+
+        <%= render "recipe_card", recipe: recipe %>
+
+      <% end %>
 
     <% end %>
 

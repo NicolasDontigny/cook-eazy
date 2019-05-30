@@ -1,0 +1,13 @@
+<div class="rating-stars color-main-green">
+  <% if recipe.reviews.empty? %>
+    No reviews yet
+  <% else %>
+    <% recipe.rating.times do %>
+      <i class="fas fa-star"></i>
+    <% end %>
+    <% (5 - recipe.rating).times do %>
+      <i class="far fa-star"></i>
+    <% end %>
+    (<%= recipe.reviews.count %>)
+  <% end %>
+</div>
