@@ -24,15 +24,28 @@ $info-blue: #70C9E0;
 $info-blue-hover: #70C9E0;
 
 $main-red: rgb(127, 34, 34);
+$main-red-hover: #601515;
 $main-red-transparent: rgba(127, 34, 34, 0.1);
+
 $main-green: rgb(118, 162, 30);
+$main-green-hover: #658917;
 $main-green-transparent: rgba(118, 162, 30, 0.1);
 $light-green: #c6cf65;
 $lime: #f3ff93;
 
 
-.color-main-green {
+.rating-main-green {
   i {
     color: $main-green;
   }
 }
+
+.color-main-green {
+  color: $main-green;
+}
+
+.color-main-red {
+  color: $main-red;
+}
+
+

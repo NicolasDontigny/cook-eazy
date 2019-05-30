@@ -1,6 +1,7 @@
 .button {
-  border-radius: 5px;
-  padding: 16px;
+  border-radius: 8px;
+  padding: 12px 16px;
+  border: none;
 }
 
 .button-info {
@@ -20,6 +21,7 @@
 
   &:hover {
     background-color: $main-red;
+    opacity: 0.9;
     color: white;
     text-decoration: none;
   }
@@ -31,6 +33,7 @@
 
   &:hover {
     background-color: $main-green;
+    opacity: 0.9;
     color: white;
     text-decoration: none;
   }
