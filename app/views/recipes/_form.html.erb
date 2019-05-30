@@ -1,39 +1,45 @@
-<div data-ingredients="<%= @ingredients.to_json %>" id="ingredients"></div>
+<div class="new-recipe-container"> 
+  <div class="row"> 
+    <div class="col-xs-12 col-sm-6 offset-sm-3">
+        <div data-ingredients="<%= @ingredients.to_json %>" id="ingredients"></div>
 
-<%= simple_form_for [@recipe] do |form| %>
-  <%= form.input :name %>
-  <%= form.input :prep_time %>
-  <%= form.input :cook_time %>
-  <%= form.input :servings %>
+        <%= simple_form_for [@recipe] do |form| %>
+          <%= form.input :name %>
+          <%= form.input :prep_time %>
+          <%= form.input :cook_time %>
+          <%= form.input :servings %>
 
-  <div id="ingredients_container">
-    <%= form.simple_fields_for :recipe_items do |recipe_item|  %>
+          <div id="ingredients_container">
+            <%= form.simple_fields_for :recipe_items do |recipe_item|  %>
 
-      <div>
-        <%= render "add_ingredient", recipe_item: recipe_item, ingredient_number: @ingredient_number %>
-      </div>
-      <div>
-      add more ingredients
-      <a href="#", id="add_ingredient"><i class="far fa-plus-square"></i></a>
-      </div>
+              <div>
+                <%= render "add_ingredient", recipe_item: recipe_item, ingredient_number: @ingredient_number %>
+              </div>
+              <div>
+              add more ingredients
+              <a href="#", id="add_ingredient"><i class="far fa-plus-square"></i></a>
+              </div>
 
-    <% end %>
+            <% end %>
+          </div>
+
+          <%= form.simple_fields_for :steps do |step|  %>
+
+            <div class="d-flex" id="steps_container">
+              <%= render "add_step", step: step, step_number: @step_number %>
+            </div>
+            <div>
+            add more steps
+            <a href="#", id="add_step"><i class="far fa-plus-square"></i></a>
+            </div>
+
+          <% end %>
+
+          <%= form.input :photo, input_html: {value: "https://source.unsplash.com/collection/251966/1600x900"}, as: :hidden %>
+          <%#= form.input :photo, class: "btn btn-primary" %>
+          <%#= form.input :photo_cache, as: :hidden %>
+          <%= form.submit "Create recipe", class: "btn btn-primary" %>
+        <% end %>
+    </div>
   </div>
-
-  <%= form.simple_fields_for :steps do |step|  %>
-
-    <div class="d-flex" id="steps_container">
-      <%= render "add_step", step: step, step_number: @step_number %>
-    </div>
-    <div>
-    add more steps
-    <a href="#", id="add_step"><i class="far fa-plus-square"></i></a>
-    </div>
-
-  <% end %>
-
-  <%= form.input :photo, input_html: {value: "https://source.unsplash.com/collection/251966/1600x900"}, as: :hidden %>
-  <%#= form.input :photo, class: "btn btn-primary" %>
-  <%#= form.input :photo_cache, as: :hidden %>
-  <%= form.submit "Create recipe", class: "btn btn-primary" %>
-<% end %>
+</div>
