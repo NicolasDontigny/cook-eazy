@@ -7,13 +7,15 @@ Rails.application.routes.draw do
   get 'recipes' => 'recipes#index', as: :recipes
   get 'recipes/:id' => 'recipes#show', as: :recipe
   get 'recipes/:id/popup' => 'recipes#popup', as: :recipe_popup
-  get 'recipes/:id/steps' => 'recipes#steps', as: :recipe_steps
-  get 'recipes/:id/steps/:step_number' => 'recipes#steps'
   post 'recipes/:id/reviews' => 'reviews#create', as: :recipe_reviews
   get 'my-recipes', to: "recipes#index_owner", as: :my_recipes
   get 'recipe/new', to: 'recipes#new', as: :new_recipe
   post 'recipes', to: 'recipes#create'
   post 'recipes/:recipe_id/add-to-grocery' => 'grocery_items#add', as: :add_grocery_items
+
+  # Steps Routes
+  get 'recipes/:recipe_id/steps' => 'steps#index', as: :recipe_steps
+  # get 'recipes/:id/steps/:step_number' => 'recipes#steps'
 
   # Grocery Lists Routes
   get 'grocery-list' => 'grocery_items#index', as: :grocery_items

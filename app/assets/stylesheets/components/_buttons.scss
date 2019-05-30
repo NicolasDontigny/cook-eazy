@@ -1,0 +1,38 @@
+.button {
+  border-radius: 5px;
+  padding: 16px;
+}
+
+.button-info {
+  background-color: $info-blue;
+  color: white;
+
+  &:hover {
+    background-color: $info-blue-hover;
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.button-main-red {
+  background-color: $main-red;
+  color: white;
+
+  &:hover {
+    background-color: $main-red;
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.button-main-green {
+  background-color: $main-green;
+  color: white;
+
+  &:hover {
+    background-color: $main-green;
+    color: white;
+    text-decoration: none;
+  }
+}
+

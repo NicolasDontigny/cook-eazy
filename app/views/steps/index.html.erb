@@ -1,0 +1,28 @@
+<div class="row">
+  <!-- List the Ingredients -->
+  <!-- <div class="list-ingredients col-3"> -->
+  <div class="ingredients-list col-3">
+    <div id="title">Ingredients</div>
+    <ul>
+      <% recipe_items = RecipeItem.where("recipe_id=" + @recipe.id.to_s) %>
+        <% recipe_items.each do |item| %>
+          <% i = Ingredient.find(item.ingredient_id) %>
+          <li><%= i.name %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <!-- list the steps -->
+  <div class="col-9">
+    <div class="steps-header d-flex justify-content-between align-items-center">
+      <h1><%= @recipe.name %></h1>
+      <img src="<%= @recipe.photo %>" alt="">
+    </div>
+
+    <%= render 'steps', steps: @steps %>
+  </div>
+</div>
+  <!-- on click  -->
+  <%#= link_to_if params[:step_number].to_i > 0, "previous", "/recipes/#{@recipe.id}/steps/#{params[:step_number].to_i - 1}", method: :get ,:class => "btn btn-primary" %>
+  <%#= link_to_if  params[:step_number].to_i < @length, "next", "/recipes/#{@recipe.id}/steps/#{params[:step_number].to_i + 1}", method: :get ,:class => "btn btn-primary" %>
+

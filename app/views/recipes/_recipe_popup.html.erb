@@ -70,8 +70,8 @@
 
 
       <div class="row mt-5 justify-content-around">
-        <%= link_to "See Preparation Steps", recipe_path(recipe), class: "btn btn-primary", id: "show-page-button" %>
-        <%= link_to "Add Ingredients to Grocery List", add_grocery_items_path(recipe), class: "btn btn-warning", method: :post %>
+        <%= link_to "See Preparation Steps", recipe_path(recipe), class: "button button-main-red", id: "show-page-button" %>
+        <%= link_to "Add Ingredients to Grocery List", add_grocery_items_path(recipe), class: "button button-main-green", method: :post %>
       </div>
 
       <!-- Display Ingredients, with color according to Missing, Insufficient or Matching -->

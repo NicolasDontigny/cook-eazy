@@ -17,7 +17,7 @@
       <i class='fas fa-minus math'></i>
     <% end %>
     <div class="quantity-text">
-      <%= item.quantity %>
+      <span class="quantity-span"><%= item.quantity %></span>
       <%= item.ingredient.unit_of_measure %>
     </div>
     <%= link_to increase_grocery_item_path(item), method: 'patch', remote: true, class: "no-link" do %>
