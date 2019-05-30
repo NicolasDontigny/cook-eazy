@@ -4,7 +4,7 @@
 
   <%= render "form" %>
 
-<ul id="fridge-items-list" class="mt-3">
+<ul id="fridge-items-list" class="mt-3 fridge-items-list">
   <% @fridge_items.each do |item| %>
     <%= render "fridge_item", item: item %>
   <% end %>
