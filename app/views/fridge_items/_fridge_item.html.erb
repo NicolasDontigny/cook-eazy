@@ -1,4 +1,4 @@
-<li class="grocery-item-card shadow" data-item-id="<%= item.id %>">
+<li class="grocery-item-card fridge__item shadow" data-item-id="<%= item.id %>">
   <%= item.ingredient.name %>
   <span class="quantity">
     <%= link_to decrease_fridge_item_path(item), method: 'patch', remote: true, class: "no-link" do %>

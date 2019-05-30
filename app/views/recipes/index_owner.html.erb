@@ -13,12 +13,12 @@
       <div class="card-product-infos">
         <div class="card-product-title">
           <h3><%= recipe.name %></h3>
-          
+
         </div>
+        <%= render 'star_rating', recipe: recipe %>
         <div class="info_wrapper">
-          <div class="">
+          <div>
             <ul>
-              <li><%= render 'star_rating', recipe: recipe %></li>
               <li><i class="fas fa-leaf"></i> Prep. time: <% if recipe.prep_time > 60 %>
                               <%= (recipe.prep_time / 60).floor %>
                               <% unless recipe.prep_time % 60 == 0 %> h

@@ -1,5 +1,5 @@
 .navbar-lewagon {
-  justify-content: space-between;
+  // justify-content: space-between;
   background: white;
 }
 
@@ -9,4 +9,27 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.fas.fa-leaf.logo {
+  font-size: 1.5rem;
+}
+
+.navbar-nav.mr-auto.avatar {
+
+ @media screen and (min-width: 576px) {
+    margin: auto;
+  }
+}
+
+.collapse.navbar-collapse.justify-content-between.cookbar {
+
+  @media screen and (min-width: 576px) {
+    width: 100%;
+  }
+
+}
+
+.dropdown-item.cookdrop {
+  color: #303030;
 }
