@@ -7,26 +7,6 @@
   transition: opacity 1s ease;
 }
 
-.grid-container {
-  .recipe-image {
-    position: relative;
-
-    .add-to-wishlist {
-      position: absolute;
-      top:15px;
-      right:15px;
-      width: 32px;
-      height: 32px;
-
-      i {
-        position: absolute;
-        top:0px;
-        right:0px;
-      }
-    }
-  }
-
-}
 
 .start-button {
   margin:10px;
@@ -43,9 +23,29 @@
   overflow: scroll;
 }
 .item-c {
+  &.recipe-image {
+    max-height:100%;
+    max-width:100%;
+    position: relative;
+
+    .add-to-wishlist {
+      position: absolute;
+      top:15px;
+      right:15px;
+      width: 32px;
+      height: 32px;
+
+      i {
+        position: absolute;
+        top:0px;
+        right:0px;
+      }
+    }
+  }
   grid-area: image;
   height: 50vh;
 }
+
 .item-d {
   grid-area: steps;
   height: 50vh;
@@ -64,5 +64,12 @@
 .start-button {
   margin:35px;
   text-align: center;
+}
+
+#title {
+  margin-left: 13px;
+}
+li {
+  list-style: none;
 }
 

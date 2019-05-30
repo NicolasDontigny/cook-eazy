@@ -42,24 +42,27 @@
     </div>
     <div class="d-flex justify-content-end  recipe-details">
       <div class="recipe-preptime">
-        <h2><%=  @recipe.prep_time %></h2>
-        <p>Minutes</p>
+        <h4><%=  @recipe.prep_time %></h4>
+        <p>Prep time</p>
       </div>
-      <div class="recipe-difficulty">
-        <h2><%=  @recipe.difficulty %></h2>
-        <p>Difficulty</p>
+      <div class="recipe-cooktime">
+        <h4><%=  @recipe.cook_time %></h4>
+        <p>Cooking Time</p>
       </div>
       <div>
-        <h2 class="calories">340</h2>
-        <p>Calories</p>
+        <h4 class="servings"><%= @recipe.servings %></h4>
+        <p>Servings</p>
       </div>
     </div>
   </div>
 
 
 
-  <div class="item-c">
-    image
+  <div class="item-c recipe-image">
+      <img src="https://images.unsplash.com/photo-1543198453-ed52dc5cbfc0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1190&q=80" alt="Smiley face" >
+      <%= link_to new_wishlist_item_path(@recipe), class: "add-to-wishlist", method: :post, remote: true do %>
+        <i class="fas fa-heart"></i>
+      <% end %>
   </div>
 
 
