@@ -1,0 +1,15 @@
+<div id="recipe-steps" class="recipe-steps d-flex">
+  <% steps.each do |step| %>
+
+    <div class="recipe-step text-center">
+      <span class="recipe-order"><%= step.order %></span> - <%= step.content %>
+      <% if step == steps.last %>
+      <div id="done-cooking" class="mt-3">
+        <button class="button button-main-red">Done Cooking!</button>
+      </div>
+      <% end %>
+    </div>
+
+  <% end %>
+</div>
+<div id='steps-dots' class="text-center d-flex justify-content-center"></div>

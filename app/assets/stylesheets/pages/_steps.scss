@@ -1,0 +1,30 @@
+#recipe-steps {
+  width: 100%;
+}
+
+.steps-header {
+  padding: 16px;
+  margin-bottom: 16px;
+  img {
+    width: 200px;
+  }
+}
+
+.slick-dots {
+  list-style: none;
+  margin: auto;
+  padding: 0;
+
+  li {
+    display: inline-block !important;
+
+    button {
+      margin: 0 8px;
+      border-radius: 50%;
+      background-color: $main-green;
+      border: none;
+      width: 35px;
+      height: 35px;
+    }
+  }
+}
