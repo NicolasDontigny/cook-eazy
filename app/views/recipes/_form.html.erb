@@ -3,6 +3,7 @@
   <%= form.input :prep_time %>
   <%= form.input :cook_time %>
   <%= form.input :servings %>
+  <%= form.association :ingredients, input_html: { class: "select2", multiple: false } %>
 
   <%= form.simple_fields_for :steps do |step|  %>
 
@@ -15,6 +16,8 @@
     </div>
 
   <% end %>
+
+  <%= form.input :photo, input_html: {value: "https://source.unsplash.com/collection/251966/1600x900"}, as: :hidden %>
   <%#= form.input :photo, class: "btn btn-primary" %>
   <%#= form.input :photo_cache, as: :hidden %>
   <%= form.submit "Create recipe", class: "btn btn-primary" %>
