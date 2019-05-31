@@ -27,17 +27,6 @@ recipes = response['recipes']
 
 recipes.each do |recipe|
 
-  puts 'creating ingredients'
-
-  # ingredients = recipe["extendedIngredients"].each do |ingredient|
-  #   ingredient = Ingredient.new (
-  #     name: ingredient["name"],
-  #     unit_of_measure: ingredient["unit"]
-  #   )
-  #   ingredient.save!
-  # end
-
-
   puts 'creating recipes'
 
   new_recipe = Recipe.new(
@@ -50,7 +39,7 @@ recipes.each do |recipe|
 
   recipe["extendedIngredients"].each do |do_ingredient|
     new_recipe.recipe_items << RecipeItem.new(
-      quantity: do_ingredient["amount"],
+      quantity: do_ingredient["amount"].ceil,
       ingredient: Ingredient.find_or_create_by(name: do_ingredient["name"])
     )
   end
@@ -74,11 +63,12 @@ end
 puts 'storing first recipe in a variable'
 first_recipe = Recipe.first
 puts 'getting first recipe first 7 ingredients'
-first_recipe_7_ingredients = first_recipe.ingredients.take(7)
+first_recipe_7_recipe_items = first_recipe.recipe_items.take(7)
 puts 'storing first recipe first 7 ingredients in Nic\'s fridge'
-first_recipe_7_ingredients.each do |ingredient|
+first_recipe_7_recipe_items.each do |recipe_item|
   fitem = FridgeItem.new(
-    ingredient: ingredient,
+    ingredient: recipe_item.ingredient,
+    quantity: recipe_item.quantity,
     user: nic
     )
   fitem.save!
@@ -87,32 +77,20 @@ end
 puts 'storing second recipe in a variable'
 second_recipe = Recipe.second
 puts 'getting second recipe first 7 ingredients'
-second_recipe_7_ingredients = second_recipe.ingredients.take(7)
+second_recipe_7_recipe_items = second_recipe.recipe_items.take(7)
 puts 'storing second recipe first 7 ingredients in Nic\'s fridge'
-second_recipe_7_ingredients.each do |ingredient|
+second_recipe_7_recipe_items.each do |recipe_item|
   fitem = FridgeItem.new(
-    ingredient: ingredient,
+    ingredient: recipe_item.ingredient,
+    quantity: recipe_item.quantity,
     user: nic
     )
   fitem.save!
 end
 
 
-puts 'getting first recipe last ingredient'
-first_recipe_last_ingredient = first_recipe.ingredients.last
-puts 'storing first recipe last ingredient in Nic\'s grocery list'
 gitem = GroceryItem.new(
-    ingredient: first_recipe_last_ingredient,
-    user: nic,
-    quantity: 1
-    )
-gitem.save!
-
-puts 'getting second recipe last ingredient'
-second_recipe_last_ingredient = second_recipe.ingredients.last
-puts 'storing second recipe last ingredient in Nic\'s grocery list'
-gitem = GroceryItem.new(
-    ingredient: second_recipe_last_ingredient,
+    ingredient: Ingredient.first,
     user: nic,
     quantity: 1
     )
