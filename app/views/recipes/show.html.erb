@@ -2,11 +2,11 @@
 
 
   <div class="item-a">
-    <div class="start-button">
-      <%= link_to "start recipe", recipe_steps_path(@recipe),:class => "button button-main-red",:button_id => "Start Recipe" %>
+    <div class="add-to-groc-button">
+      <a class="button button-main-green" rel="nofollow" data-method="post" href="/recipes/10/add-to-grocery">Add to Grocery List</a>
     </div>
    <!-- Ingredients List -->
-    <div id="title"><h4>Ingredients</h4></div>
+    <div id="title">Ingredients</div>
     <ul>
       <% @recipe.insufficient_ingredients(@fridge_items).each do |recipe_item| %>
         <li class="ingredient-orange">
@@ -40,56 +40,49 @@
     <div class="recipe-title">
       <h1><%= @recipe.name %></h1>
     </div>
-    <div class="d-flex justify-content-end  recipe-details">
+    <div class="d-flex justify-content-start recipe-details">
       <div class="recipe-preptime">
-        <h4><%=  @recipe.prep_time %></h4>
+        <h5><%=  @recipe.prep_time %></h5>
         <p>Prep time</p>
       </div>
       <div class="recipe-cooktime">
-        <h4><%=  @recipe.cook_time %></h4>
+        <h5><%=  @recipe.cook_time %></h5>
         <p>Cooking Time</p>
       </div>
       <div>
-        <h4 class="servings"><%= @recipe.servings %></h4>
+        <h5 class="servings"><%= @recipe.servings %></h5>
         <p>Servings</p>
       </div>
     </div>
   </div>
 
 
-
-  <div class="item-c recipe-image">
-      <img src="https://images.unsplash.com/photo-1543198453-ed52dc5cbfc0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1190&q=80" alt="Smiley face" >
-      <%= link_to new_wishlist_item_path(@recipe), class: "add-to-wishlist", method: :post, remote: true do %>
-        <i class="fas fa-heart"></i>
-      <% end %>
-  </div>
-
-
-
-
-  <div class="item-d">
+  <div class="item-c">
     <% @recipe.steps.each do |step| %>
-        <p><%= step.order %> - <%= step.content %></p>
-      <% end %>
-    </div>
-    <div class= "recipe-reviews" >
-      <% if @reviews.empty? %>
-          <ul id="reviews-list">
-            <%= render "reviews/no_reviews" %>
-          </ul>
-      <% else %>
-        <h4>What users say about this recipe</h4>
-        <ul id="reviews-list">
-          <% @reviews.each do |review| %>
-            <%= render "reviews/show_opacity1", review: review %>
-          <% end %>
-        </ul>
-      <% end %>
-
-        <h4 class="specs__title">Leave a Review</h4>
-
-        <%= render "reviews/form", recipe: @recipe, review: Review.new %>
-
+      <p><%= step.order %> - <%= step.content %></p>
+    <% end %>
   </div>
+
+
+
+  <div class= "item-d recipe-reviews" >
+    <% if @reviews.empty? %>
+        <ul id="reviews-list">
+          <%= render "reviews/no_reviews" %>
+        </ul>
+    <% else %>
+      <h4>What users say about this recipe</h4>
+      <ul id="reviews-list">
+        <% @reviews.each do |review| %>
+          <%= render "reviews/show_opacity1", review: review %>
+        <% end %>
+      </ul>
+    <% end %>
+
+      <h4 class="specs__title">Leave a Review</h4>
+
+      <%= render "reviews/form", recipe: @recipe, review: Review.new %>
+  </div>
+
+
 </div>

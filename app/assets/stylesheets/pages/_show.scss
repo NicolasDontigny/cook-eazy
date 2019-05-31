@@ -1,28 +1,47 @@
-.fade_in {
-  opacity: 0;
-  transition: opacity 1s ease;
-}
 
-#reviews-list > li {
-  transition: opacity 1s ease;
-}
-
-
-.start-button {
-  margin:10px;
-}
-
+/* sidebar ingredients list*/
 .item-a {
   grid-area: ingredients;
-  height: 100vh;
-  overflow: scroll;
+  /*height: 100vh;*/
+  /*overflow: scroll;*/
 }
+
+/* Header with title,preptime,cooking time, servings*/
 .item-b {
-  grid-area: title;
-  height: 50vh;
-  overflow: scroll;
+  grid-area: header;
+  /*height: 50vh;*/
 }
+
+/* List of steps*/
 .item-c {
+  grid-area: steps;
+  /*height: 50vh;*/
+  /*margin: 13px;*/
+  /*overflow: scroll;*/
+}
+
+/* */
+.item-d {
+  grid-area: reviews;
+  text-align: center;
+  /*height: 50vh;*/
+  /*overflow: scroll;*/
+}
+.page-container {
+  width: 95vw;
+  display: grid;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+  grid-template-columns: 28% 72%;
+  /*grid-template-rows: 1fr 1fr 1fr;*/
+  grid-template-areas:
+    "ingredients header"
+    "ingredients steps"
+    "ingredients reviews";
+
+}
+
+/*.item-b {
   &.recipe-image {
     max-height:100%;
     max-width:100%;
@@ -42,34 +61,32 @@
       }
     }
   }
-  grid-area: image;
-  height: 50vh;
 }
+*/
 
-.item-d {
-  grid-area: steps;
-  height: 50vh;
-  /*overflow: scroll;*/
-}
 
-.page-container {
-  display: grid;
-  grid-template-columns: 28% 36% 36% ;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas:
-    "ingredients title image"
-    "ingredients steps steps";
-}
 
-.start-button {
-  margin:35px;
+
+.add-to-groc-button {
+  margin: 35px 35px 35px -15px;
   text-align: center;
+  position: sticky;
+  top: 15px;
 }
 
 #title {
-  margin-left: 13px;
+  margin: 0 0 10px 41px;
+  font-size: 24px;
+  position: sticky;
+  top: 70px;
 }
+ul {
+  position: sticky;
+  top: 100px;
+}
+
 li {
   list-style: none;
 }
+
 
