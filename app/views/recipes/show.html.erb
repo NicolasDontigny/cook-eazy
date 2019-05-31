@@ -3,9 +3,11 @@
 
 
   <div class="item-a">
-    <div class="add-to-groc-button">
-      <a class="button button-main-green" rel="nofollow" data-method="post" href="/recipes/10/add-to-grocery">Add to Grocery List</a>
-    </div>
+    <!-- change this button to Start Cooking -->
+    <div class="start-cooking mt-4">
+    <a class="button button-main-red mr-1" id="show-page-button" href="/recipes/<%= @recipe.id %>/steps">Start Cooking</a>
+  </div>
+
    <!-- Ingredients List -->
     <div id="title">Ingredients</div>
     <ul>
@@ -33,30 +35,53 @@
           (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
         </li>
       <% end %>
+    <div class="add-to-groc-button">
+      <a class="button button-main-green" rel="nofollow" data-method="post" href="/recipes/<%= @recipe.id %>/add-to-grocery">Add to Grocery List</a>
+    </div>
     </ul>
   </div>
 
 
 
-  <div class="item-b">
-    <div class="recipe-title">
-      <h1><%= @recipe.name %></h1>
-    </div>
-    <div class="d-flex justify-content-start recipe-details">
-      <div class="recipe-preptime">
-        <h5><%=  @recipe.prep_time %></h5>
-        <p>Prep time</p>
-      </div>
-      <div class="recipe-cooktime">
-        <h5><%=  @recipe.cook_time %></h5>
-        <p>Cooking Time</p>
-      </div>
-      <div>
-        <h5 class="servings"><%= @recipe.servings %></h5>
-        <p>Servings</p>
-      </div>
-    </div>
+<div class="item-b">
+  <div class="d-flex flex-column header-container" style="background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(https://source.unsplash.com/collection/251966/1600x900);">
+    <div class="d-flex justify-content-between">
+      <h2>Souvlaki</h2>
+      <a data-remote="true" rel="nofollow" data-method="post" href="/recipes/1/wishlist/new">
+        <i class="fas fa-heart mr-5 add-to-wishlist"></i>
+      </a>
   </div>
+
+  <div>
+      <div class="rating-stars no-reviews color-main-red">
+    (No reviews yet)
+  </div>
+
+  </div>
+
+  <div class="header-recipe-details d-flex mt-2">
+
+    <span class="">
+      <strong class=" header-text-bigger">Prep Time</strong>
+        47 min
+    </span>
+
+    <span class="mx-2">|</span>
+
+    <span class="">
+      <strong class=" header-text-bigger">Cooking Time</strong>
+        26 min
+    </span>
+
+    <span class="mx-2">|</span>
+
+    <span class="">
+      <strong class="header-text-bigger">Servings</strong>
+      0
+    </span>
+  </div>
+ </div>
+</div>
 
 
   <div class="item-c">
@@ -85,6 +110,5 @@
 
       <%= render "reviews/form", recipe: @recipe, review: Review.new %>
   </div>
-
 
 </div>

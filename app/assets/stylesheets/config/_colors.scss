@@ -15,7 +15,7 @@ $orange: #FF9900;
 $green: #6ABD55;
 
 $gray: #303030;
-
+$gray-secondary: #686868;
 
 $light-gray: #F4F4F4;
 
@@ -50,4 +50,6 @@ $lime: #f3ff93;
   color: $main-red;
 }
 
-
+.color-secondary {
+  color: $gray-secondary;
+}
