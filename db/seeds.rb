@@ -89,9 +89,32 @@ second_recipe_7_recipe_items.each do |recipe_item|
 end
 
 
+puts 'creating grocery items'
 gitem = GroceryItem.new(
     ingredient: Ingredient.first,
     user: nic,
     quantity: 1
     )
 gitem.save!
+
+puts 'Creating reviews'
+reviews = ["Super good, would not order again.", "What is this, this is so good!", "Gave me diarhea, I would love to eat more!", "This is the best vegan recipe I ever had!", "Vegan 4lyfe"]
+
+puts 'getting 5 recipes'
+fiverecipes = Recipe.all.sample(5)
+
+puts 'adding reviews to the recipes'
+fiverecipes.each do |recipe|
+  3.times do 
+    new_review = Review.new(
+      content: reviews.sample,
+      rating: rand(1..4)
+      )
+    new_review.recipe = recipe
+    new_review.user = nic
+    new_review.date = DateTime.now
+    new_review.save!
+  end
+end
+
+puts 'Done baby!'
