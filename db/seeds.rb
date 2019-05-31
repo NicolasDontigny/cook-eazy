@@ -88,7 +88,6 @@ second_recipe_7_recipe_items.each do |recipe_item|
   fitem.save!
 end
 
-
 puts 'creating grocery items'
 gitem = GroceryItem.new(
     ingredient: Ingredient.first,
@@ -105,7 +104,7 @@ fiverecipes = Recipe.all.sample(5)
 
 puts 'adding reviews to the recipes'
 fiverecipes.each do |recipe|
-  3.times do 
+  3.times do
     new_review = Review.new(
       content: reviews.sample,
       rating: rand(1..4)
