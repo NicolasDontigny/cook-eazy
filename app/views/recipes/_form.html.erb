@@ -10,13 +10,11 @@
     <%= form.simple_fields_for :recipe_items do |recipe_item|  %>
 
       <%= render "add_ingredient", recipe_item: recipe_item, ingredient_number: @ingredient_number %>
-      <div>
-      add more ingredients
-      <a href="#", id="add_ingredient"><i class="far fa-plus-square"></i></a>
-      </div>
 
     <% end %>
   </div>
+  add more ingredients
+  <a href="#", id="add_ingredient"><i class="far fa-plus-square"></i></a>
 
   <%= form.simple_fields_for :steps do |step|  %>
 

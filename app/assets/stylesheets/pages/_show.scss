@@ -1,4 +1,10 @@
 
+#reviews-list > li {
+  transition: opacity 1s ease;
+  list-style: none;
+}
+
+
 /* sidebar ingredients list*/
 .item-a {
   grid-area: ingredients;
@@ -72,6 +78,13 @@
   text-align: center;
   position: sticky;
   top: 15px;
+}
+
+
+
+#ingredients-list {
+  list-style: none;
+  padding: 0;
 }
 
 #title {
