@@ -3,6 +3,10 @@ class WishlistItemsController < ApplicationController
     @wishlist_items = WishlistItem.where(user: current_user).order('created_at DESC')
   end
 
+  def new
+
+  end
+
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @wishlist_item = WishlistItem.new
@@ -13,6 +17,7 @@ class WishlistItemsController < ApplicationController
 
     if @wishlist_item.save
       respond_to do |format|
+        raise
         format.html { redirect_to recipes_path }
         format.js { render 'new_wishlist_item.js.erb' }
       end

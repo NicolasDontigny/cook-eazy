@@ -18,41 +18,48 @@
         <!-- Display Ingredients, with color according to Missing, Insufficient or Matching -->
         <div id="ingredients-container" class="mt-4">
 
-          <div class="d-flex align-items-center justify-content-between">
-            <h4 class="mb-3 mt-4">Missing ingredients</h4>
-            <%= link_to "Add to Grocery List", add_grocery_items_path(recipe), class: "button button-main-green ml-3", method: :post %>
 
-          </div>
-          <ul class="popup-ingredients-list">
-            <% recipe.insufficient_ingredients(fridge_items).each do |recipe_item| %>
-              <li class="ingredient-red">
-                <i class="far fa-times-circle"></i>
-                <%= recipe_item.ingredient.name %>
-                (<%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %> missing)
-              </li>
-            <% end %>
+          <% unless recipe.insufficient_ingredients(fridge_items).count + recipe.missing_ingredients(fridge_items).count == 0 %>
+            <div class="d-flex align-items-center justify-content-between">
+              <h4 class="mb-3 mt-4">Missing ingredients</h4>
+              <%= link_to "Add to Grocery List", add_grocery_items_path(recipe), class: "button button-main-green ml-3", method: :post %>
 
-            <% recipe.missing_ingredients(fridge_items).each do |recipe_item| %>
-              <li class="ingredient-red">
-                <i class="far fa-times-circle"></i>
-                <%= recipe_item.ingredient.name %>
-                (<%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %> missing)
-              </li>
-            <% end %>
+            </div>
+            <ul class="popup-ingredients-list">
+              <% recipe.insufficient_ingredients(fridge_items).each do |recipe_item| %>
+                <li class="ingredient-red">
+                  <i class="far fa-times-circle"></i>
+                  <%= recipe_item.ingredient.name %>
+                  (<%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %> missing)
+                </li>
+              <% end %>
 
-          </ul>
+              <% recipe.missing_ingredients(fridge_items).each do |recipe_item| %>
+                <li class="ingredient-red">
+                  <i class="far fa-times-circle"></i>
+                  <%= recipe_item.ingredient.name %>
+                  (<%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %> missing)
+                </li>
+              <% end %>
 
-          <h4 class="mb-3">Ingredients I have</h4>
+            </ul>
+          <% end %>
 
-          <ul class="popup-ingredients-list">
-            <% recipe.matching_ingredients(fridge_items).each do |recipe_item| %>
-              <li class="ingredient-green">
-                <i class="far fa-check-circle"></i>
-                <%= recipe_item.ingredient.name %>
-                (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
-              </li>
-            <% end %>
-          </ul>
+          <% unless recipe.matching_ingredients(fridge_items).count == 0 %>
+
+            <h4 class="mb-3">Ingredients I have</h4>
+
+            <ul class="popup-ingredients-list">
+              <% recipe.matching_ingredients(fridge_items).each do |recipe_item| %>
+                <li class="ingredient-green">
+                  <i class="far fa-check-circle"></i>
+                  <%= recipe_item.ingredient.name %>
+                  (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
+                </li>
+              <% end %>
+            </ul>
+
+          <% end %>
 
 
 
