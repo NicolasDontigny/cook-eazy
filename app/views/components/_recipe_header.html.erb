@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-between">
     <h2><%= recipe.name %></h2>
     <%= link_to new_wishlist_item_path(recipe), method: :post, remote: true do %>
-      <i class="fas fa-heart mr-5 add-to-wishlist"></i>
+      <i class="fas fa-heart mr-3 add-to-wishlist"></i>
     <% end %>
   </div>
 
@@ -46,8 +46,12 @@
     </span>
   </div>
 
-  <div class="recipe-button mt-4">
-    <%= link_to "See Full Recipe", recipe_path(recipe), class: "button button-main-red mr-1", id: "show-page-button" %>
-  </div>
+  <!-- <div class="recipe-button mt-4"> -->
+    <%#= link_to "See Full Recipe", recipe_path(recipe), class: "button button-main-red mr-1 recipe-button mt-4", id: "show-page-button" %>
+
+    <%= link_to recipe_path(recipe), class: "mt-4", id: "show-page-button" do %>
+      <button class="button button-main-red mr-1 recipe-button">See Full Recipe</button>
+    <% end %>
+  <!-- </div> -->
 
 </div>

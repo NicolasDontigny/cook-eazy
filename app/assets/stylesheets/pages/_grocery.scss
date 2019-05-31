@@ -1,5 +1,5 @@
 #grocery-items-list {
-  font-size: 24px;
+  font-size: 21px;
   list-style: none;
   padding: 0;
   // line-height: 2;
@@ -50,12 +50,12 @@
 }
 
 .new_grocery_item {
-  margin: 16px auto 32px auto;
-  text-align: center;
+  // margin: 16px auto 32px auto;
+  // text-align: left;
 }
 
-.grocery-item-card, .new_grocery_item, #update-grocery {
-  width: 700px;
+.new_grocery_item {
+  box-sizing: border-box;
 }
 
 #update-grocery {

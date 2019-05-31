@@ -20,7 +20,9 @@
         <% (5 - recipe.rating.ceil).times do %>
           <i class="far fa-star"></i>
         <% end %>
-        (<%= recipe.reviews.count %>)
+        <span class="number-of-reviews">
+          (<%= recipe.reviews.count %>)
+        </span>
       <% end %>
   </div>
 <% end %>
