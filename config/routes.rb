@@ -39,6 +39,6 @@ Rails.application.routes.draw do
 
   # Wishist Routes
   get 'wishlist' => 'wishlist_items#index', as: :wishlist_items
-  # get 'recipes/:recipe_id/wishlist' => 'wishlist_items#create', as: :new_wishlist_item
-  post 'recipes/:recipe_id/wishlist' => 'wishlist_items#create', as: :new_wishlist_item
+  get 'recipes/:recipe_id/wishlist' => 'wishlist_items#create', as: :new_wishlist_item
+  # post 'recipes/:recipe_id/wishlist' => 'wishlist_items#create', as: :new_wishlist_item
 end

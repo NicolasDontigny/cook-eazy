@@ -17,7 +17,6 @@ class WishlistItemsController < ApplicationController
 
     if @wishlist_item.save
       respond_to do |format|
-        raise
         format.html { redirect_to recipes_path }
         format.js { render 'new_wishlist_item.js.erb' }
       end
