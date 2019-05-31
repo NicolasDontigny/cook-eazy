@@ -13,7 +13,7 @@ var closePopup = (event) => {
   var opacityBackground = document.querySelector('.opacity-background');
   opacityBackground.remove();
 
-  var recipePopupCard = document.querySelector('.recipe-card-popup');
+  var recipePopupCard = document.querySelector('.recipe-card-popup-container');
   recipePopupCard.remove();
 }
 
@@ -21,8 +21,8 @@ var addClickEventToBackground = () => {
   var opacityBackground = document.querySelector('.opacity-background');
   opacityBackground.addEventListener("click", closePopup);
 
-  // var opacityCard = document.querySelector('.recipe-card-popup');
-  // opacityCard.addEventListener("click", stopPropagation, true);
+  var opacityCard = document.querySelector('.recipe-card-popup');
+  opacityCard.addEventListener("click", stopPropagation, true);
 }
 
 var addClickEventToCloseButton = () => {
