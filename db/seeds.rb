@@ -1,76 +1,97 @@
-require 'faker'
-
+puts 'cleaning db'
 RecipeItem.destroy_all
+GroceryItem.destroy_all
 Recipe.destroy_all
 Ingredient.destroy_all
 User.destroy_all
+FridgeItem.destroy_all
+
+puts 'creating user'
 
 nic = User.create(
   email: 'nic@gmail.com',
   password: '1'
 )
 
-units_of_measure = ['mL', '', 'g', 'oz', 'L']
+puts 'call to API'
 
-big_step = "Eleifend ad dolor lorem habitant. Praesent lacus taciti, mollis aptent. Justo consectetur magnis ad cubilia ante mi consequat dolor turpis eleifend! Conubia, inceptos a condimentum tristique? Fringilla egestas tellus quam dui magnis a mus montes natoque? Torquent class eget porttitor maecenas cras ante. Dictum sociosqu eget euismod! Porta mollis ante ultricies enim orci adipiscing. Viverra ligula ante aptent nec viverra suspendisse; habitasse ultrices. Ridiculus bibendum eget, bibendum fringilla congue vivamus. Rutrum sollicitudin pulvinar eu elit. "
+response = JSON.parse(open("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?number=10&tags=vegan", {
+  "X-RapidAPI-Host" => "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+  "X-RapidAPI-Key" => "5d617a7d56msh634d28d65593c67p1f58d8jsn619c46a15563"
+}).read)
 
-ingredients = []
-40.times do
-  ingredient = Ingredient.new(name: Faker::Food.ingredient)
-  ingredient.unit_of_measure = units_of_measure.sample
-  ingredient.save
-  ingredients << ingredient
-end
+puts 'storing parsed json in recipes'
 
-10.times do
-  recipe = Recipe.new(
-    name: Faker::Food.dish,
-    prep_time: rand(80),
-    cook_time: rand(80),
-    servings: rand(5) + 1,
-    photo: "https://source.unsplash.com/collection/251966/1600x900",
-    difficulty: ["Easy", "Moderate", "Hard"].sample
-  )
-
-  recipe.user = nic
-  recipe.save
-
-  step = Step.new(content: big_step, order: 1)
-  step.recipe = recipe
-  step.save
-
-  step = Step.new(content: big_step, order: 2)
-  step.recipe = recipe
-  step.save
-
-  step = Step.new(content: big_step, order: 3)
-  step.recipe = recipe
-  step.save
+recipes = response['recipes']
 
 
+recipes.each do |recipe|
 
+  puts 'creating recipes'
 
-  7.times do
-    recipe_item = RecipeItem.new(quantity: rand(15) + 1)
-    recipe_item.recipe = recipe
-    recipe_item.ingredient = ingredients.sample
-    recipe_item.save unless RecipeItem.where(recipe: recipe).find_by(ingredient_id: recipe_item.ingredient.id)
+  new_recipe = Recipe.new(
+            name: recipe["title"],
+            prep_time: recipe["preparationMinutes"] || 0,
+            cook_time: recipe["cookingMinutes"] || 0,
+            servings: recipe["servings"],
+            photo: recipe["image"],
+            difficulty: ["Easy", "Moderate", "Hard"].sample)
+
+  recipe["extendedIngredients"].each do |do_ingredient|
+    new_recipe.recipe_items << RecipeItem.new(
+      quantity: do_ingredient["amount"].ceil,
+      ingredient: Ingredient.find_or_create_by(name: do_ingredient["name"])
+    )
   end
+
+  recipe["analyzedInstructions"][0]["steps"].each do |step|
+    new_recipe.steps << Step.new(
+      content: step["step"],
+      order: step["number"]
+    )
+  end
+
+  puts 'saving recipe user'
+  new_recipe.user = nic
+
+  puts 'saving recipe'
+  new_recipe.save!
+
+  puts 'Done creating recipes, steps and ingredients'
+end
+
+puts 'storing first recipe in a variable'
+first_recipe = Recipe.first
+puts 'getting first recipe first 7 ingredients'
+first_recipe_7_recipe_items = first_recipe.recipe_items.take(7)
+puts 'storing first recipe first 7 ingredients in Nic\'s fridge'
+first_recipe_7_recipe_items.each do |recipe_item|
+  fitem = FridgeItem.new(
+    ingredient: recipe_item.ingredient,
+    quantity: recipe_item.quantity,
+    user: nic
+    )
+  fitem.save!
+end
+
+puts 'storing second recipe in a variable'
+second_recipe = Recipe.second
+puts 'getting second recipe first 7 ingredients'
+second_recipe_7_recipe_items = second_recipe.recipe_items.take(7)
+puts 'storing second recipe first 7 ingredients in Nic\'s fridge'
+second_recipe_7_recipe_items.each do |recipe_item|
+  fitem = FridgeItem.new(
+    ingredient: recipe_item.ingredient,
+    quantity: recipe_item.quantity,
+    user: nic
+    )
+  fitem.save!
 end
 
 
-
-
-15.times do
-  item = GroceryItem.new(quantity: rand(10))
-  item.user = nic
-  item.ingredient = ingredients.sample
-  item.save unless GroceryItem.where(user: nic).find_by(ingredient_id: item.ingredient.id)
-end
-
-10.times do
-  item = FridgeItem.new(quantity: rand(10))
-  item.user = nic
-  item.ingredient = ingredients.sample
-  item.save
-end
+gitem = GroceryItem.new(
+    ingredient: Ingredient.first,
+    user: nic,
+    quantity: 1
+    )
+gitem.save!
