@@ -1,6 +1,7 @@
 import "bootstrap";
 import swal from 'sweetalert';
 import 'jquery'
+// import 'jquery_ujs'
 import slick from 'slick-carousel'
 import { loadDynamicBannerText } from '../components/banner';
 import { addStep } from '../plugins/add_step'

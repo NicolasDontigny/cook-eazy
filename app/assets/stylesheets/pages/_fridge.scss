@@ -1,0 +1,40 @@
+#fridge-items-list {
+  font-size: 1.3rem;
+  list-style: none;
+  padding: 0;
+  // line-height: 2;
+
+  i.checkbox {
+    margin-right: 8px;
+  }
+
+  .quantity {
+    margin-left: 16px;
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 50;
+
+    .quantity-text {
+
+    }
+  }
+
+  i.math {
+    font-size: 18px;
+    margin: 0 8px;
+  }
+
+
+}
+
+
+
+.new_grocery_item {
+  // margin: 16px auto 32px auto;
+  // text-align: left;
+}
+
+.new_grocery_item {
+  box-sizing: border-box;
+}

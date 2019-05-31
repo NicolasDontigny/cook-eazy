@@ -1,9 +1,22 @@
+console.log("HELLO");
+
 swal({
   title: `Added <%= @recipe.name %> to your wishlist!`,
   icon: "success",
   buttons: false
 })
 
+var insertNewWishlistRecipe = (recipeCardHTML) => {
+
+  var wishlistSlider = document.getElementById('wishlist-recipes-slider');
+
+  if (wishlistSlider) {
+    wishlistSlider.insertAdjacentHTML("beforeend", recipeCardHTML)
+  }
+
+}
+
+insertNewWishlistRecipe('<%= link_to recipe_popup_path(recipe), method: :post, class: "no-link wishlist-link px-3", remote: true do %><%= j render "recipes/recipe_card", recipe: recipe %><% end %>')
 
 var swalOverlay = document.querySelector('.swal-overlay');
 swalOverlay.setAttribute("id", "swal-overlay");

@@ -1,13 +1,13 @@
 
-<li class="grocery-item-card shadow" data-item-id="<%= item.id %>">
+<li class="grocery-item-card" data-item-id="<%= item.id %>">
   <div>
     <% if item.checked %>
       <%= link_to uncheck_grocery_item_path(item), method: 'patch', remote: true, class: "no-link" do %>
-        <i class="far fa-check-square checkbox color-main-green"></i>
+        <i class="far fa-check-square checkbox"></i>
       <% end %>
     <% else %>
       <%= link_to check_grocery_item_path(item), method: 'patch', remote: true, class: "no-link" do %>
-        <i class="far fa-square checkbox color-main-red"></i>
+        <i class="far fa-square checkbox"></i>
       <% end %>
     <% end %>
     <%= item.ingredient.name %>

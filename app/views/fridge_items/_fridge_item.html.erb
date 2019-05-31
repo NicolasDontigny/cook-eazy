@@ -1,15 +1,26 @@
-<li class="grocery-item-card fridge__item shadow" data-item-id="<%= item.id %>">
-  <%= item.ingredient.name %>
-  <span class="quantity">
-    <%= link_to decrease_fridge_item_path(item), method: 'patch', remote: true, class: "no-link" do %>
-      <i class='fas fa-minus math'></i>
-    <% end %>
-    <%= item.quantity %> <%= item.ingredient.unit_of_measure %>
-    <%= link_to increase_fridge_item_path(item), method: 'patch', remote: true, class: "no-link" do %>
-      <i class='fas fa-plus math'></i>
-    <% end %>
-    <%= link_to delete_fridge_item_path(item), method: 'delete', remote: true, class: "no-link" do %>
-      <i class="fas fa-trash-alt"></i>
-    <% end %>
-  </span>
-</li>
+
+
+
+
+ <li class="fridge-item-card" data-item-id="<%= item.id %>">
+   <div>
+     <%= item.ingredient.name %>
+   </div>
+   <div class="quantity">
+     <%= link_to decrease_fridge_item_path(item), method: 'patch', remote: true, class: "no-link" do %>
+       <i class='fas fa-minus math'></i>
+     <% end %>
+     <div class="quantity-text">
+       <span class="quantity-span"><%= item.quantity %></span>
+       <%= item.ingredient.unit_of_measure %>
+     </div>
+     <%= link_to increase_fridge_item_path(item), method: 'patch', remote: true, class: "no-link" do %>
+       <i class='fas fa-plus math'></i>
+     <% end %>
+   </div>
+   <div class="delete-grocery-item">
+     <%= link_to fridge_item_path(item), class: "delete-icon", method: :delete, remote: true do %>
+       <i class="fas fa-trash-alt"></i>
+     <% end %>
+   </div>
+ </li>

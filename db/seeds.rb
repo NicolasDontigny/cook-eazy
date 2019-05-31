@@ -96,30 +96,24 @@ gitem = GroceryItem.new(
     )
 gitem.save!
 
+puts 'Creating reviews'
+reviews = ["Super good, would not order again.", "What is this, this is so good!", "Gave me diarhea, I would love to eat more!", "This is the best vegan recipe I ever had!", "Vegan 4lyfe"]
 
 puts 'getting 5 recipes'
-5_recipes = Recipe.all.sample(5)
+fiverecipes = Recipe.all.sample(5)
 
 puts 'adding reviews to the recipes'
-5_recipes.each do |recipe|
+fiverecipes.each do |recipe|
   3.times do
     new_review = Review.new(
       content: reviews.sample,
-      quantity: rand(1..4)
+      rating: rand(1..4)
       )
-    review.recipe = recipe
-    review.user = user
-    review.save!
+    new_review.recipe = recipe
+    new_review.user = nic
+    new_review.date = DateTime.now
+    new_review.save!
   end
 end
 
-
-
-puts 'creating fake reviews'
-
-
-
-
-
-
-
+puts 'Done baby!'
