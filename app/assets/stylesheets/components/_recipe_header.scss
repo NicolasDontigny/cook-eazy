@@ -5,13 +5,17 @@
 
   width: 100%;
 
-  height: 200px;
+  height: auto;
 
-  padding: 16px;
+  padding: 24px;
 
-  h1, h2, span, .no-reviews {
+  h1, h2 {
     color: $gray;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  span, .no-reviews, .number-of-reviews {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
   }
 
   i.far.fa-star,

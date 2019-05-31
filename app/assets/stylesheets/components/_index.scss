@@ -14,9 +14,11 @@
 @import "checkbox";
 @import "recipe_card_popup";
 @import "info_circle";
-@import "header";
 @import "fridge_item";
 @import "recipe_header";
+@import "select2";
+@import "form";
+@import "scrollbar";
 
 
 
@@ -54,3 +56,4 @@ body {
   background-color: white;
   color: $gray;
 }
+

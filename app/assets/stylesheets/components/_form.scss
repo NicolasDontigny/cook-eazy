@@ -15,3 +15,11 @@
       margin-bottom: 20px
     }
 }
+
+.form-control {
+  padding: 0.375rem 1rem !important;
+}
+
+.form-group .form-control {
+  border-radius: 16px !important;
+}
