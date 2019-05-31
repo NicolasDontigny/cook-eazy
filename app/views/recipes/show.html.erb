@@ -46,7 +46,7 @@
 <div class="item-b">
   <div class="d-flex flex-column header-container" style="background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(https://source.unsplash.com/collection/251966/1600x900);">
     <div class="d-flex justify-content-between">
-      <h2>Souvlaki</h2>
+      <h2><%= @recipe.name %></h2>
       <a data-remote="true" rel="nofollow" data-method="post" href="/recipes/1/wishlist/new">
         <i class="fas fa-heart mr-5 add-to-wishlist"></i>
       </a>
@@ -54,7 +54,7 @@
 
   <div>
       <div class="rating-stars no-reviews color-main-red">
-    (No reviews yet)
+
   </div>
 
   </div>
@@ -63,21 +63,21 @@
 
     <span class="">
       <strong class=" header-text-bigger">Prep Time</strong>
-        47 min
+        <%= @recipe.prep_time %>
     </span>
 
     <span class="mx-2">|</span>
 
     <span class="">
       <strong class=" header-text-bigger">Cooking Time</strong>
-        26 min
+        <%= @recipe.cook_time %>
     </span>
 
     <span class="mx-2">|</span>
 
     <span class="">
       <strong class="header-text-bigger">Servings</strong>
-      0
+      <%= @recipe.servings %>
     </span>
   </div>
  </div>
