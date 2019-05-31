@@ -1,15 +1,20 @@
 <div class="container">
+  <div class="grocery-item-container">
+    <div class="row">
+      <div class="col-12 col-md-8 offset-md-2">
 
-  <h1>My Grocery items</h1>
+        <h2>My Grocery Items</h2>
 
-  <%= render "form", user: current_user, grocery_item: GroceryItem.new %>
+        <%= render "form", user: current_user, grocery_item: GroceryItem.new %>
 
-  <ul id="grocery-items-list" class="mt-3">
-    <% @grocery_items.each do |item| %>
-      <%= render "grocery_item", item: item %>
-    <% end %>
-  </ul>
+        <div id="grocery-items-list" class="mt-3">
+          <% @grocery_items.each do |item| %>
+            <%= render "grocery_item", item: item %>
+          <% end %>
+        </div>
 
-  <%= link_to "Update Grocery List", grocery_items_path, method: :patch, class: "btn btn-warning btn-lg", id: "update-grocery", remote: true %>
-
+        <%= link_to "Update Grocery List", grocery_items_path, method: :patch, class: "btn btn-warning btn-lg", id: "update-grocery", remote: true %>
+      </div>
+    </div>
+  </div>
 </div>
