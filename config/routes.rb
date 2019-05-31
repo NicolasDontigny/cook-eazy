@@ -6,12 +6,13 @@ Rails.application.routes.draw do
   # Recipes Routes
   get 'recipes' => 'recipes#index', as: :recipes
   get 'recipes/:id' => 'recipes#show', as: :recipe
+  get 'recipes/:recipe_id/add-to-grocery' => 'grocery_items#add', as: :add_grocery_items
   get 'recipes/:id/popup' => 'recipes#popup', as: :recipe_popup
   post 'recipes/:id/reviews' => 'reviews#create', as: :recipe_reviews
   get 'my-recipes', to: "recipes#index_owner", as: :my_recipes
   get 'recipe/new', to: 'recipes#new', as: :new_recipe
   post 'recipes', to: 'recipes#create'
-  post 'recipes/:recipe_id/add-to-grocery' => 'grocery_items#add', as: :add_grocery_items
+  post 'recipes/:recipe_id/add-to-grocery' => 'grocery_items#add'
 
   # Steps Routes
   get 'recipes/:recipe_id/steps' => 'steps#index', as: :recipe_steps
@@ -30,7 +31,7 @@ Rails.application.routes.draw do
   # Fridge Routes
   get 'fridge' => 'fridge_items#index', as: :fridge
   post 'fridge' => 'fridge_items#create', as: :add_fridge_item
-  delete 'fridge/:id/delete' => 'fridge_items#delete', as: :delete_fridge_item
+  delete 'fridge/:id' => 'fridge_items#delete', as: :fridge_item
   patch 'fridge/:id/increase' => 'fridge_items#increase', as: :increase_fridge_item
   patch 'fridge/:id/decrease' => 'fridge_items#decrease', as: :decrease_fridge_item
   patch 'fridge/fill' => 'fridge_items#fill'
@@ -38,5 +39,6 @@ Rails.application.routes.draw do
 
   # Wishist Routes
   get 'wishlist' => 'wishlist_items#index', as: :wishlist_items
-  post 'recipes/:recipe_id/wishlist/new' => 'wishlist_items#create', as: :new_wishlist_item
+  get 'recipes/:recipe_id/wishlist' => 'wishlist_items#create', as: :new_wishlist_item
+  # post 'recipes/:recipe_id/wishlist' => 'wishlist_items#create', as: :new_wishlist_item
 end

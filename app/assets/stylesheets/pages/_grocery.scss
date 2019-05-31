@@ -1,5 +1,5 @@
 #grocery-items-list {
-  font-size: 21px;
+  font-size: 1.3rem;
   list-style: none;
   padding: 0;
   // line-height: 2;
@@ -13,6 +13,8 @@
     width: 150px;
     display: flex;
     justify-content: space-between;
+    z-index: 50;
+
     .quantity-text {
 
     }
@@ -35,10 +37,25 @@
   transition: opacity 500ms ease;
   position: relative;
 
+  border-bottom: 1px solid $light-gray;
+
+  &:last-child {
+    border: none;
+  }
+
+
   .delete-grocery-item {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-left: 25px;
+
+    width: 80px;
     position: absolute;
-    right: -45px;
-    top: 14px;
+    right: -40px;
+    top: 0;
     opacity: 0;
   }
 
