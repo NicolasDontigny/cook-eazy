@@ -74,6 +74,7 @@ class RecipesController < ApplicationController
   def steps
     @steps = @recipe.steps.order(order: :asc)
     @length = @steps.length - 1
+
   end
 
   def done!

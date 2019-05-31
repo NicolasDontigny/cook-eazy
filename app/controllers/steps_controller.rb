@@ -3,6 +3,7 @@ class StepsController < ApplicationController
 
   def index
     @steps = @recipe.steps
+    @fridge_items = FridgeItem.where(user: current_user)
   end
 
   private

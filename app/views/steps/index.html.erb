@@ -2,12 +2,30 @@
   <!-- List the Ingredients -->
   <!-- <div class="list-ingredients col-3"> -->
   <div class="ingredients-list col-3">
-    <div id="title">Ingredients</div>
+    <div id="title-step">Ingredients</div>
     <ul>
-      <% recipe_items = RecipeItem.where("recipe_id=" + @recipe.id.to_s) %>
-        <% recipe_items.each do |item| %>
-          <% i = Ingredient.find(item.ingredient_id) %>
-          <li><%= i.name %></li>
+      <% @recipe.insufficient_ingredients(@fridge_items).each do |recipe_item| %>
+        <li class="ingredient-orange">
+          <i class="far fa-times-circle"></i>
+          <%= recipe_item.ingredient.name %>
+          (<%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %> missing)
+        </li>
+      <% end %>
+
+      <% @recipe.missing_ingredients(@fridge_items).each do |recipe_item| %>
+        <li class="ingredient-red">
+          <i class="far fa-times-circle"></i>
+          <%= recipe_item.ingredient.name %>
+          (need <%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %>)
+        </li>
+      <% end %>
+
+      <% @recipe.matching_ingredients(@fridge_items).each do |recipe_item| %>
+        <li class="ingredient-green">
+          <i class="far fa-check-circle"></i>
+          <%= recipe_item.ingredient.name %>
+          (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
+        </li>
       <% end %>
     </ul>
   </div>
@@ -22,7 +40,5 @@
     <%= render 'steps', steps: @steps %>
   </div>
 </div>
-  <!-- on click  -->
-  <%#= link_to_if params[:step_number].to_i > 0, "previous", "/recipes/#{@recipe.id}/steps/#{params[:step_number].to_i - 1}", method: :get ,:class => "btn btn-primary" %>
-  <%#= link_to_if  params[:step_number].to_i < @length, "next", "/recipes/#{@recipe.id}/steps/#{params[:step_number].to_i + 1}", method: :get ,:class => "btn btn-primary" %>
+
 

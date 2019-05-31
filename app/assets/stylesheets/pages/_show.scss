@@ -24,7 +24,11 @@
 /* Header with title,preptime,cooking time, servings*/
 .item-b {
   grid-area: header;
-  /*height: 50vh;*/
+
+  .header-container {
+    height: 230px;
+
+  }
 }
 
 /* List of steps*/
