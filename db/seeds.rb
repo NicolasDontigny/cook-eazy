@@ -17,7 +17,7 @@ puts 'call to API'
 
 response = JSON.parse(open("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?number=10&tags=vegan", {
   "X-RapidAPI-Host" => "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-  "X-RapidAPI-Key" => ENV['RapidAPI-Key']
+  "X-RapidAPI-Key" => ENV['X-RapidAPI-Key']
 }).read)
 
 puts 'storing parsed json in recipes'
