@@ -93,12 +93,12 @@
 
   <div class= "item-d recipe-reviews" >
     <% if @reviews.empty? %>
-        <ul id="reviews-list">
+        <ul id="reviews-list" class="reviews-list">
           <%= render "reviews/no_reviews" %>
         </ul>
     <% else %>
       <h4>What users say about this recipe</h4>
-      <ul id="reviews-list">
+      <ul id="reviews-list" class="reviews-list">
         <% @reviews.each do |review| %>
           <%= render "reviews/show_opacity1", review: review %>
         <% end %>

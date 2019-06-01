@@ -31,10 +31,10 @@ recipes.each do |recipe|
 
   new_recipe = Recipe.new(
             name: recipe["title"],
-            prep_time: recipe["preparationMinutes"] || 0,
-            cook_time: recipe["cookingMinutes"] || 0,
+            prep_time: recipe["preparationMinutes"] || 5,
+            cook_time: recipe["cookingMinutes"] || 5,
             servings: recipe["servings"],
-            photo: recipe["image"],
+            photo: recipe["image"] || 'https://source.unsplash.com/1600x900/?vegan',
             difficulty: ["Easy", "Moderate", "Hard"].sample)
 
   recipe["extendedIngredients"].each do |do_ingredient|
@@ -97,7 +97,7 @@ gitem = GroceryItem.new(
 gitem.save!
 
 puts 'Creating reviews'
-reviews = ["Super good, would not order again.", "What is this, this is so good!", "Gave me diarhea, I would love to eat more!", "This is the best vegan recipe I ever had!", "Vegan 4lyfe"]
+reviews = ["Super good, would not order again.", "What is this, this is so good!", "Gave me diarhea, I would love to eat more!", "This is the best vegan recipe I ever had!", "Vegan 4lyfe", "Drake approved!", "Martin loved it but still fell asleep while eating"]
 
 puts 'getting 5 recipes'
 fiverecipes = Recipe.all.sample(5)
