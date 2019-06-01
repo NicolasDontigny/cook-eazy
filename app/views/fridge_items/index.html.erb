@@ -3,15 +3,15 @@
     <div class="row">
       <div class="col-12 col-md-8 offset-md-2">
 
-        <h2>My Fridge Items</h2>
+        <h2>My Fridge</h2>
 
-        <%= render "form" %>
 
         <div id="fridge-items-list" class="mt-3 fridge-items-list">
           <% @fridge_items.each do |item| %>
             <%= render "fridge_item", item: item %>
           <% end %>
         </div>
+        <%= render "form" %>
       </div>
     </div>
   </div>
