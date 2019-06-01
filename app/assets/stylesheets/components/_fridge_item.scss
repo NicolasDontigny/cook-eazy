@@ -8,6 +8,18 @@
   transition: opacity 500ms ease;
   position: relative;
   margin-bottom: 1rem;
+  width: 90%;
+
+  @media (min-width: 900px) {
+    width: 100%;
+  }
+
+
+  &:hover {
+    .delete-grocery-item {
+      opacity: 0.4;
+    }
+  }
 
   .ingredient-name {
     font-size: 1rem;
@@ -29,20 +41,14 @@
     right: -43px;
     top: 0;
     opacity: 0;
-  }
-
-  &:hover {
-    .delete-grocery-item {
+    transition: opacity 0.2s ease-in;
+    &:hover {
       opacity: 1;
-    }
+     }
+    &:active {
+      opacity: 1;
+     }
   }
-
-  width: 90%;
-
-  @media (min-width: 900px) {
-    width: 100%;
-  }
-
 }
 
 .fridge-category {
