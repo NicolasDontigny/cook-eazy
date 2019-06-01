@@ -1,18 +1,46 @@
-<div class="container">
-  <div class="fridge-item-container">
-    <div class="row">
-      <div class="col-12 col-md-8 offset-md-2">
+<div class="container fridge__container">
 
-        <h2>My Fridge Items</h2>
+  <div class="fridge-wrapper">
 
-        <%= render "form" %>
+    <div>
+      <h2><i class="fas fa-door-open"></i>My Fridge</h2>
 
-        <div id="fridge-items-list" class="mt-3 fridge-items-list">
+      <div class="category-wrapper">
+
+        <div class="fridge-form"><%= render "form" %></div>
+
+        <% liquids = ['ml', 'bottle', 'l'] %>
+
+        <div class="category-list-new">
+          <h3 class="fridge-category">Liquids</h3>
+
           <% @fridge_items.each do |item| %>
-            <%= render "fridge_item", item: item %>
+            <% if liquids.include?(item.ingredient.unit_of_measure) %>
+
+              <div id="fridge-items-list" class="mt-3 fridge-items-list">
+                  <%= render "fridge_item", item: item %>
+              </div>
+            <% end %>
           <% end %>
         </div>
-      </div>
+
+        <div class="category-list-new">
+          <h3 class="fridge-category">Pantry & Fridge</h3>
+
+          <% @fridge_items.each do |item| %>
+            <% if !liquids.include?(item.ingredient.unit_of_measure) %>
+
+              <div id="fridge-items-list" class="mt-3 fridge-items-list">
+                  <%= render "fridge_item", item: item %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+
+      </div> <!-- end of category wraper -->
+
     </div>
-  </div>
+
+  </div> <!-- end of fridge wraper -->
+
 </div>
