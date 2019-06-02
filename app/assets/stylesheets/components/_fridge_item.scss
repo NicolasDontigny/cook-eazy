@@ -23,6 +23,7 @@
 
   .ingredient-name {
     font-size: 1rem;
+    // width: 10rem;
       @media (min-width: 900px) {
         font-size: 1.3rem;
     }
@@ -80,7 +81,7 @@
 }
 
 .quantity-text {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 
   @media (min-width: 900px) {
    font-size: 1rem;

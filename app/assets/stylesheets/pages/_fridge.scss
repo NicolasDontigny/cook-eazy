@@ -57,24 +57,26 @@
   // line-height: 2;
 
   i.checkbox {
-    margin-right: 8px;
+    margin-right: 0.5rem;
   }
 
   .quantity {
-    margin-left: 16px;
-    width: 150px;
+    margin-left: 1rem;
+    width: 9rem;
     display: flex;
+    flex-shrink: 0;
     justify-content: space-between;
+    align-items: center;
+    text-align: center;
     z-index: 50;
-
-    .quantity-text {
-
-    }
   }
 
   i.math {
-    font-size: 18px;
+    font-size: 0.85rem;
     margin: 0 8px;
+    @media (min-width: 900px) {
+      font-size: 1rem;
+    }
   }
 
 
