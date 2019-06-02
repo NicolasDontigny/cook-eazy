@@ -21,13 +21,24 @@
   }
 }
 
+
 .category-wrapper {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
 
   @media (min-width: 900px) {
-    flex-direction: row;
     margin-top: 2rem;
+    grid-template-columns: 20% 80%;
+    grid-gap: 1rem;
+  }
+}
+
+.category-grid__wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 900px) {
+    grid-template-columns: 1fr 1fr;
   }
 }
 

@@ -9,22 +9,26 @@
 
         <div class="fridge-form"><%= render "form" %></div>
 
-        <% @categories.each do |category| %>
+        <div class="category-grid__wrapper">
 
-          <div class="category-list-new">
-            <h3 class="fridge-category"><%= category %></h3>
+          <% @categories.each do |category| %>
 
-            <% @fridge_items.each do |item| %>
-              <% if category.include?(item.ingredient.category) %>
+            <div class="category-list-new">
+              <h3 class="fridge-category"><%= category %></h3>
 
-                <div id="fridge-items-list" class="mt-3 fridge-items-list">
-                    <%= render "fridge_item", item: item %>
-                </div>
+              <% @fridge_items.each do |item| %>
+                <% if category.include?(item.ingredient.category) %>
+
+                  <div id="fridge-items-list" class="mt-3 fridge-items-list">
+                      <%= render "fridge_item", item: item %>
+                  </div>
+                <% end %>
               <% end %>
-            <% end %>
-          </div>
+            </div>
 
-        <% end %>
+          <% end %>
+
+        </div>
 
       </div> <!-- end of category wraper -->
 

@@ -1,5 +1,5 @@
 class FridgeItemsController < ApplicationController
-  before_action :set_fridge, only: %i[index create fill]
+  before_action :set_fridge, only: %i[create fill]
   before_action :set_fridge_item, only: %i[delete decrease increase]
 
   def index
@@ -86,7 +86,13 @@ class FridgeItemsController < ApplicationController
   end
 
   def filtered_categories
-    filtered_categories = FridgeItem.all.map do |item|
+    set_fridge
+
+    sorted_fridge_items = @fridge_items.sort_by do |item|
+      item.ingredient.category
+    end
+
+    filtered_categories = sorted_fridge_items.map do |item|
       item.ingredient.category
     end
     filtered_categories.uniq!
