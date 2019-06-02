@@ -9,33 +9,22 @@
 
         <div class="fridge-form"><%= render "form" %></div>
 
-        <% liquids = ['ml', 'bottle', 'l'] %>
+        <% @categories.each do |category| %>
 
-        <div class="category-list-new">
-          <h3 class="fridge-category">Liquids</h3>
+          <div class="category-list-new">
+            <h3 class="fridge-category"><%= category %></h3>
 
-          <% @fridge_items.each do |item| %>
-            <% if liquids.include?(item.ingredient.unit_of_measure) %>
+            <% @fridge_items.each do |item| %>
+              <% if category.include?(item.ingredient.category) %>
 
-              <div id="fridge-items-list" class="mt-3 fridge-items-list">
-                  <%= render "fridge_item", item: item %>
-              </div>
+                <div id="fridge-items-list" class="mt-3 fridge-items-list">
+                    <%= render "fridge_item", item: item %>
+                </div>
+              <% end %>
             <% end %>
-          <% end %>
-        </div>
+          </div>
 
-        <div class="category-list-new">
-          <h3 class="fridge-category">Pantry & Fridge</h3>
-
-          <% @fridge_items.each do |item| %>
-            <% if !liquids.include?(item.ingredient.unit_of_measure) %>
-
-              <div id="fridge-items-list" class="mt-3 fridge-items-list">
-                  <%= render "fridge_item", item: item %>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
+        <% end %>
 
       </div> <!-- end of category wraper -->
 
