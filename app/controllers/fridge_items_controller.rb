@@ -4,6 +4,7 @@ class FridgeItemsController < ApplicationController
 
   def index
     @fridge_item = FridgeItem.new
+    @categories = filtered_categories
   end
 
   def create
@@ -82,5 +83,12 @@ class FridgeItemsController < ApplicationController
       format.html { redirect_to fridge_path }
       format.js { render 'refresh_item.js.erb' }
     end
+  end
+
+  def filtered_categories
+    filtered_categories = FridgeItem.all.map do |item|
+      item.ingredient.category
+    end
+    filtered_categories.uniq!
   end
 end

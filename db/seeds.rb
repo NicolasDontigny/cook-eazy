@@ -40,7 +40,7 @@ recipes.each do |recipe|
   recipe["extendedIngredients"].each do |do_ingredient|
     new_recipe.recipe_items << RecipeItem.new(
       quantity: do_ingredient["measures"]["metric"]["amount"].ceil,
-      ingredient: Ingredient.find_or_create_by(name: do_ingredient["name"], unit_of_measure: do_ingredient["measures"]["metric"]["unitShort"])
+      ingredient: Ingredient.find_or_create_by(name: do_ingredient["name"], unit_of_measure: do_ingredient["measures"]["metric"]["unitShort"], category: do_ingredient["aisle"])
     )
   end
 
