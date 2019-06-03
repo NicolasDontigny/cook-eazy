@@ -1,36 +1,17 @@
-<div class="recipe-card" data-recipe-id="<%= recipe.id %>">
-  <!-- <div class="ingredient-icons d-flex">
-    <div class="circle-icon circle-main-red mr-3">
-      <div>
-        <%= recipe.how_many_ingredients_to_buy(@fridge_items) %>
-      </div>
-    </div>
-    <div class="circle-icon circle-main-green">
-      <div>
-        <%= recipe.matching_ingredients(@fridge_items).count %>
-      </div>
-    </div>
-  </div> -->
+<div class="recipe-card" data-recipe-id="<%= recipe.id %>" data-toggle="modal", data-target="#recipe-modal-<%= recipe.id %>">
+
 
   <div class="recipe-card-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(<%= recipe.photo %>);"></div>
   <div class="recipe-details">
     <h4 class="mb-0"><%= recipe.name %></h4>
 
-<!--
-    <div class="missing-ingredients mt-1">
-      <span class="mr-2">
-        <i class="far fa-times-circle color-main-red"></i> <%= recipe.how_many_ingredients_to_buy(@fridge_items) %>
-      </span>
-      <i class="far fa-check-circle color-main-green"></i> <%= recipe.matching_ingredients(@fridge_items).count %>
-    </div> -->
-
     <div class="mt-1 d-flex align-items-center recipe-card-ingredients color-secondary">
       Ingredients
       <span class="ml-3 mr-3 ">
-        <i class="far fa-times-circle color-main-red mr-0"></i> <%= recipe.how_many_ingredients_to_buy(@fridge_items) %>
+        <i class="far fa-times-circle color-main-red mr-0"></i> <%= recipe.how_many_ingredients_to_buy(current_user) %>
       </span>
       <span class="">
-        <i class="far fa-check-circle color-main-green mr-0"></i> <%= recipe.matching_ingredients(@fridge_items).count %>
+        <i class="far fa-check-circle color-main-green mr-0"></i> <%= recipe.matching_ingredients(current_user).count %>
       </span>
     </div>
 
@@ -51,7 +32,7 @@
 
 
     <div class="mt-2">
-      <%= render 'star_rating', recipe: recipe %>
+      <%= render 'recipes/star_rating', recipe: recipe %>
     </div>
   </div>
 </div>

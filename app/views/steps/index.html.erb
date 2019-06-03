@@ -4,14 +4,6 @@
   <div class="ingredients-list col-3">
     <div id="title-step">Ingredients</div>
     <ul>
-      <% @recipe.insufficient_ingredients(@fridge_items).each do |recipe_item| %>
-        <li class="ingredient-orange">
-          <i class="far fa-times-circle"></i>
-          <%= recipe_item.ingredient.name %>
-          (<%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %> missing)
-        </li>
-      <% end %>
-
       <% @recipe.missing_ingredients(@fridge_items).each do |recipe_item| %>
         <li class="ingredient-red">
           <i class="far fa-times-circle"></i>
@@ -38,6 +30,18 @@
     </div>
 
     <%= render 'steps', steps: @steps %>
+
+    <div id="progress-bar" class="d-flex">
+      <%# @recipe.steps.each do |step| %>
+       <!--  <div class="progress-fraction flex-grow-1">
+
+        </div> -->
+      <%# end %>
+      <%= render "progress_bar", recipe: @recipe %>
+    </div>
+    <div id="done-cooking" class="mt-3" style="visibility: hidden;">
+      <button class="button button-main-red">Done Cooking!</button>
+    </div>
   </div>
 </div>
 

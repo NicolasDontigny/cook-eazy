@@ -1,4 +1,4 @@
-export const wishlistCarousel = () => {
+export var wishlistCarousel = () => {
   $(document).ready(function(){
     var wishlistContainer = document.getElementById('wishlist-recipes-slider');
 
@@ -16,7 +16,7 @@ export const wishlistCarousel = () => {
       }
 
       if (wishlistItems.length > 1) {
-        $('#wishlist-recipes-slider').slick({
+        $('#wishlist-recipes-slider').not('.slick-initialized').slick({
           prevArrow: '<div class="d-flex justify-content-center align-items-center chevron-div"><i class="fas fa-chevron-left"></i></div>',
           nextArrow: '<div class="d-flex justify-content-center align-items-center chevron-div"><i class="fas fa-chevron-right"></i></div>',
           slidesToShow: slidesToShow,
@@ -44,7 +44,24 @@ export const wishlistCarousel = () => {
         });
 
       }
+
     }
 
   });
 }
+
+const unslick = () => {
+  console.log("unslick");
+
+  $('#wishlist-recipes-slider').slick('unslick');
+}
+
+const slick = () => {
+  console.log("slick");
+
+  wishlistCarousel();
+}
+
+window.unslick = unslick;
+window.slick = slick;
+

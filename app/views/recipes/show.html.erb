@@ -11,14 +11,6 @@
     <div id="title">Ingredients</div>
     <ul>
 
-      <% @recipe.insufficient_ingredients(@fridge_items).each do |recipe_item| %>
-        <li class="ingredient-orange">
-          <i class="far fa-times-circle"></i>
-          <%= recipe_item.ingredient.name %>
-          (<%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %> missing)
-        </li>
-      <% end %>
-
       <% @recipe.missing_ingredients(@fridge_items).each do |recipe_item| %>
         <li class="ingredient-red">
           <i class="far fa-times-circle"></i>
@@ -46,9 +38,9 @@
   <div class="d-flex flex-column header-container" style="background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(<%= @recipe.photo %>);">
     <div class="d-flex justify-content-between">
       <h2><%= @recipe.name %></h2>
-      <a data-remote="true" rel="nofollow" data-method="post" href="/recipes/1/wishlist/new">
+      <%= link_to new_wishlist_item_path(@recipe), method: :post do %>
         <i class="fas fa-heart mr-5 add-to-wishlist"></i>
-      </a>
+      <% end %>
   </div>
 
   <div>

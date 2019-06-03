@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_fridge_items, only: %i[missing_ingredients insufficient_ingredients matching_ingredients how_many_ingredients_to_buy]
 
   protected
 
@@ -13,18 +14,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-  def missing_ingredients(recipe)
-    fridge_items = FridgeItem.where(user: current_user)
-
-    recipe.ingredients.each do |ingredient|
-      raise
-    end
-  end
-
-  def matching_ingredients(recipe)
-
-  end
 
   def fill_fridge(grocery_items)
     grocery_items.each do |grocery_item|
