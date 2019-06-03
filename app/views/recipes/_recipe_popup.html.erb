@@ -25,7 +25,6 @@
             <!-- Display Ingredients, with color according to Missing, Insufficient or Matching -->
             <div id="ingredients-container" class="mt-4">
 
-
               <% unless recipe.missing_ingredients(current_user).count == 0 %>
                 <div class="d-flex align-items-center justify-content-between">
                   <h4 class="mb-3 mt-4">Missing ingredients</h4>
@@ -41,9 +40,8 @@
                     </li>
                   <% end %>
 
-
-
                 </ul>
+
               <% end %>
 
               <% unless recipe.matching_ingredients(current_user).count == 0 %>
