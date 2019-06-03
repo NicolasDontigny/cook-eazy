@@ -7,34 +7,34 @@
 
 <!-- Ingredients List -->
     <div id="title">Ingredients</div>
-        <ul>
+        <%# <ul> %>
 
         <% @recipe.insufficient_ingredients(@fridge_items).each do |recipe_item| %>
-            <li class="ingredient-orange">
+            <div class="ingredient-orange">
             <i class="far fa-times-circle"></i>
             <%= recipe_item.ingredient.name.capitalize %>
             (<%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %> missing)
-            </li>
+            </div>
         <% end %>
 
         <% @recipe.missing_ingredients(@fridge_items).each do |recipe_item| %>
-            <li class="ingredient-red">
+            <div class="ingredient-red">
             <i class="far fa-times-circle"></i>
             <%= recipe_item.ingredient.name.capitalize %>
             (need <%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %>)
-            </li>
+            </div>
         <% end %>
 
         <% @recipe.matching_ingredients(@fridge_items).each do |recipe_item| %>
-            <li class="ingredient-green">
+            <div class="ingredient-green">
             <i class="far fa-check-circle"></i>
             <%= recipe_item.ingredient.name.capitalize %>
             (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
-            </li>
+            </div>
         <% end %>
         <div class="add-to-groc-button ml-2">
             <a class="button button-main-green" rel="nofollow" data-method="post" href="/recipes/<%= @recipe.id %>/add-to-grocery">Add to Grocery List</a>
         </div>
-        </ul>
+        <%# </ul> %>
     </div>
 </div>

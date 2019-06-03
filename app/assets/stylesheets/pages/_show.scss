@@ -114,8 +114,7 @@
 .sidenav {
   position: fixed;
   overflow-y: scroll;
-  top: 160px;
-  bottom: 0;
+  top: 60px;
   width: 270px;
 }
 
@@ -143,12 +142,9 @@
 */
 
 .start-cooking {
-  position: fixed;
-  margin: 35px 35px 35px 24px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   text-align: center;
-  // position: sticky;
-  // top: 115px;
-  top: 64px;
 }
 
 .add-to-groc-button {
@@ -161,8 +157,23 @@
   padding: 0;
 }
 
+.ingredient-red, .ingredient-green, .ingredient-orange {
+  padding-left: 10px;
+}
+
 .mobile-ingredient-list {
-  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+.start-cooking-mobile{
+  margin-right: 10px;
+}
+
+.mobile-cta{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
 }
 
 #title {
@@ -175,7 +186,11 @@
 .mobile-only {
   display: none;
 }
-
+.mobile-container {
+  margin-top: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
 @media (max-width: 1000px) {
   /* For a screen < 960px, this CSS will be read */
   .start-cooking {
