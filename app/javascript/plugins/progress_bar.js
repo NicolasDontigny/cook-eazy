@@ -39,14 +39,17 @@ var refreshBar = (event) => {
 }
 
 export var clickRightOrLeft = () => {
-  setTimeout(() => {
-    var chevronDivs = document.querySelectorAll('.chevron-div');
-    if (chevronDivs.length > 0) {
-      chevronDivs.forEach((chevronDiv) => {
-        chevronDiv.addEventListener('click', refreshBar);
-      });
+  if (document.querySelector('#progress-bar')) {
+    setTimeout(() => {
+      var chevronDivs = document.querySelectorAll('.chevron-div');
+      if (chevronDivs.length > 0) {
+        chevronDivs.forEach((chevronDiv) => {
+          chevronDiv.addEventListener('click', refreshBar);
+        });
 
-    }
+      }
 
-  }, 1000)
+    }, 1000)
+
+  }
 }

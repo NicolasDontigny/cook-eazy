@@ -1,6 +1,7 @@
 class FridgeItemsController < ApplicationController
   before_action :set_fridge, only: %i[index fill]
   before_action :set_fridge_item, only: %i[delete decrease increase]
+  before_action :set_fridge_items, only: %i[delete decrease increase]
 
   def index
     @fridge_item = FridgeItem.new

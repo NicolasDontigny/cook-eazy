@@ -12,11 +12,14 @@ class Recipe < ApplicationRecord
 
   # validates :steps, length: { minimum: 1 }
 
-  def missing_ingredients(fridge_items)
+  def missing_ingredients(user)
     missing_ingredients = []
+    fridge_items = FridgeItem.where(user: user)
 
     recipe_items.each do |recipe_item|
       if fridge_items.none? { |item| item.ingredient == recipe_item.ingredient }
+        missing_ingredients << recipe_item
+      elsif fridge_items.any? { |item| item.ingredient == recipe_item.ingredient && item.quantity < recipe_item.quantity }
         missing_ingredients << recipe_item
       end
     end
@@ -24,19 +27,20 @@ class Recipe < ApplicationRecord
     return missing_ingredients
   end
 
-  def insufficient_ingredients(fridge_items)
-    insufficient_ingredients = []
+  # def insufficient_ingredients(fridge_items)
+  #   insufficient_ingredients = []
 
-    recipe_items.each do |recipe_item|
-      if fridge_items.any? { |item| item.ingredient == recipe_item.ingredient && item.quantity < recipe_item.quantity }
-        insufficient_ingredients << recipe_item
-      end
-    end
-    return insufficient_ingredients
-  end
+  #   recipe_items.each do |recipe_item|
+  #     if fridge_items.any? { |item| item.ingredient == recipe_item.ingredient && item.quantity < recipe_item.quantity }
+  #       insufficient_ingredients << recipe_item
+  #     end
+  #   end
+  #   return insufficient_ingredients
+  # end
 
-  def matching_ingredients(fridge_items)
+  def matching_ingredients(user)
     matching_ingredients = []
+    fridge_items = FridgeItem.where(user: user)
 
     recipe_items.each do |recipe_item|
       if fridge_items.any? { |item| item.ingredient == recipe_item.ingredient && item.quantity >= recipe_item.quantity }
@@ -46,8 +50,8 @@ class Recipe < ApplicationRecord
     return matching_ingredients
   end
 
-  def how_many_ingredients_to_buy(fridge_items)
-    missing_ingredients(fridge_items).count + insufficient_ingredients(fridge_items).count
+  def how_many_ingredients_to_buy(user)
+    missing_ingredients(user).count
   end
 
   def rating
