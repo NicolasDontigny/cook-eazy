@@ -1,6 +1,8 @@
 var insertItem = (itemHTML) => {
-  fridge_list = document.querySelector('#fridge-items-list');
-  fridge_list.insertAdjacentHTML("afterbegin",itemHTML);
+  fridge_list = document.querySelector('.category-wrapper');
+  grid = document.querySelector('.category-grid__wrapper');
+  grid.remove();
+  fridge_list.insertAdjacentHTML("beforeend",itemHTML);
 }
 
-insertItem('<%= j render "fridge_item", item: @fridge_item %>');
+insertItem('<%= j render("category_grid_wrapper", categories: @categories, fridge_items: @fridge_items) %>');
