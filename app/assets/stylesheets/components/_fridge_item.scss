@@ -64,11 +64,13 @@
 
 .category-list-new {
 
-  margin-top: 1rem;
+  margin-top: 0.75rem;
+  display: inline-block;
+  width: 95%;
+  height: auto;
 
   @media (min-width: 900px) {
     margin-left: 2rem;
-    margin-top: 0;
   }
 }
 
@@ -100,50 +102,50 @@
 }
 
 // Old-css, keeping until checked if called in another page
-.grocery-item-card.fridge__item.shadow {
-  width: 100%;
-}
+// .grocery-item-card.fridge__item.shadow {
+//   width: 100%;
+// }
 
-.fridge-items-list {
-  padding-left: 0;
-}
+// .fridge-items-list {
+//   padding-left: 0;
+// }
 
 
-.fridge-item-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+// .fridge-item-card {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
 
-  background-color: white;
-  margin: 16px auto;
-  padding: 16px;
-  transition: opacity 500ms ease;
-  position: relative;
+//   background-color: white;
+//   margin: 16px auto;
+//   padding: 16px;
+//   transition: opacity 500ms ease;
+//   position: relative;
 
-  border-bottom: 1px solid $light-gray;
+//   border-bottom: 1px solid $light-gray;
 
-  &:last-child {
-    border: none;
-  }
+//   &:last-child {
+//     border: none;
+//   }
 
-  .delete-grocery-item {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+//   .delete-grocery-item {
+//     height: 100%;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
 
-    padding-left: 25px;
+//     padding-left: 25px;
 
-    width: 80px;
-    position: absolute;
-    right: -40px;
-    top: 0;
-    opacity: 0;
-  }
+//     width: 80px;
+//     position: absolute;
+//     right: -40px;
+//     top: 0;
+//     opacity: 0;
+//   }
 
-  &:hover {
-    .delete-grocery-item {
-      opacity: 1;
-    }
-  }
-}
+//   &:hover {
+//     .delete-grocery-item {
+//       opacity: 1;
+//     }
+//   }
+// }
