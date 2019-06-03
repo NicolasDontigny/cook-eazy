@@ -1,9 +1,3 @@
-swal({
-  title: `Added <%= @recipe.name %> to your wishlist!`,
-  icon: "success",
-  buttons: false
-})
-
 var insertNewWishlistRecipe = (recipeCardHTML) => {
 
   var wishlistLinks = document.querySelectorAll('.wishlist-link');
@@ -24,10 +18,15 @@ var insertNewWishlistRecipe = (recipeCardHTML) => {
     window.slick();
   }, 200)
 
-
 }
 
-insertNewWishlistRecipe('<%= link_to recipe_popup_path(@recipe), method: :post, class: "no-link wishlist-link px-3", remote: true do %><%= j render "recipes/recipe_card", recipe: @recipe %><% end %>')
+swal({
+  title: `Added <%= @recipe.name %> to your wishlist!`,
+  icon: "success",
+  buttons: false
+})
+
+insertNewWishlistRecipe('<div class="no-link wishlist-link px-3"><%= j render "recipes/recipe_card", recipe: @recipe %></div>')
 
 var swalOverlay = document.querySelector('.swal-overlay');
 swalOverlay.setAttribute("id", "swal-overlay");
@@ -42,3 +41,7 @@ setTimeout(() => {
 setTimeout(() => {
   swalOverlay.remove();
 }, 3000);
+
+
+
+
