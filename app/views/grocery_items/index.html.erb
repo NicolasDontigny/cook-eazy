@@ -1,4 +1,30 @@
-<div class="container">
+<div class="container fridge__container">
+
+  <div class="fridge-wrapper">
+
+    <div>
+      <h2><i class="fas fa-tasks"></i></i>Grocery list</h2>
+
+      <div class="category-wrapper">
+
+        <div class="fridge-form"><%= render "form", user: current_user, grocery_item: GroceryItem.new %></div>
+
+        <%= render "category_grid_wrapper", categories: @categories, grocery_items: @grocery_items %>
+
+
+      </div> <!-- end of category wrapper -->
+
+    </div>
+
+  </div> <!-- end of fridge wraper -->
+
+</div>
+
+
+
+
+
+<!-- <div class="container ">
   <div class="grocery-item-container">
     <div class="row">
       <div class="col-12 col-md-8 offset-md-2">
@@ -18,3 +44,4 @@
     </div>
   </div>
 </div>
+ -->

@@ -1,18 +1,9 @@
-var refreshForm = (innerHTML) => {
-  const newGroceryItemForm = document.getElementById('new_grocery_item');
-  newGroceryItemForm.innerHTML = innerHTML;
-}
-
 var insertItem = (itemHTML) => {
-  const groceryList = document.querySelector('#grocery-items-list');
-  groceryList.insertAdjacentHTML("afterbegin",
-    itemHTML
-  );
+  const grocery_list = document.querySelector('.category-wrapper');
+  grid = document.querySelector('.grocery-items__wrapper');
+  grid.remove();
+  grocery_list.insertAdjacentHTML("beforeend",itemHTML);
 }
 
-<% if @grocery_item.errors.any? %>
-  refreshForm('<%= j render "form", user: current_user, grocery_item: @grocery_item %>');
-<% else %>
-  insertItem('<%= j render "grocery_item", item: @grocery_item %>');
-  refreshForm('<%= j render "form", user: current_user, grocery_item: GroceryItem.new %>');
-<% end %>
+insertItem('<%= j render("category_grid_wrapper", categories: @categories, grocery_items: @grocery_items) %>');
+

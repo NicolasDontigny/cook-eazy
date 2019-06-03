@@ -1,4 +1,4 @@
-var deleteItem = (itemHTML) => {
+var deleteItem = () => {
   const id = <%= @fridge_item.id %>;
   fridge_item = document.querySelector(`.fridge-items-list[data-item-id='${id}']`);
   var categoryDiv = fridge_item.parentNode
@@ -8,8 +8,6 @@ var deleteItem = (itemHTML) => {
     categoryDiv.remove();
   }
 
-
-
 }
 
-deleteItem('<%= j render "fridge_item", item: @fridge_item %>');
+deleteItem();
