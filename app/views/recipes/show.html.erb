@@ -1,10 +1,10 @@
 <div class="page-container">
   <div class="sidenav">
-    <div class="item-a">
       <!-- change this button to Start Cooking -->
-      <div class="start-cooking mt-4">
-      <a class="button button-main-red mr-1" id="show-page-button" href="/recipes/<%= @recipe.id %>/steps">Start Cooking</a>
+      <div class="start-cooking">
+      <a class="button button-main-red ml-5" id="show-page-button" href="/recipes/<%= @recipe.id %>/steps">Start Cooking</a>
     </div>
+    <div class="item-a">
 
     <!-- Ingredients List -->
     <div id="title">Ingredients</div>
@@ -13,7 +13,7 @@
         <% @recipe.insufficient_ingredients(@fridge_items).each do |recipe_item| %>
           <li class="ingredient-orange">
             <i class="far fa-times-circle"></i>
-            <%= recipe_item.ingredient.name %>
+            <%= recipe_item.ingredient.name.capitalize %>
             (<%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %> missing)
           </li>
         <% end %>
@@ -21,19 +21,19 @@
         <% @recipe.missing_ingredients(@fridge_items).each do |recipe_item| %>
           <li class="ingredient-red">
             <i class="far fa-times-circle"></i>
-            <%= recipe_item.ingredient.name %>
-            (need <%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %>)
+            <%= recipe_item.ingredient.name.capitalize %>
+            (need<%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %>)
           </li>
         <% end %>
 
         <% @recipe.matching_ingredients(@fridge_items).each do |recipe_item| %>
           <li class="ingredient-green">
             <i class="far fa-check-circle"></i>
-            <%= recipe_item.ingredient.name %>
+            <%= recipe_item.ingredient.name.capitalize %>
             (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
           </li>
         <% end %>
-        <div class="add-to-groc-button">
+        <div class="add-to-groc-button ml-2">
           <a class="button button-main-green" rel="nofollow" data-method="post" href="/recipes/<%= @recipe.id %>/add-to-grocery">Add to Grocery List</a>
         </div>
       </ul>

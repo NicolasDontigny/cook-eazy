@@ -62,7 +62,7 @@
   /*overflow: scroll;*/
   ul {
     // position: sticky;
-    top: 210px;
+    // top: 210px;
   }
 
   li {
@@ -112,9 +112,11 @@
 }
 
 .sidenav {
-  position: sticky;
-  top: 56px;
-  height: 100vh;
+  position: fixed;
+  overflow-y: scroll;
+  top: 160px;
+  bottom: 0;
+  width: 270px;
 }
 
 /*.item-b {
@@ -141,10 +143,12 @@
 */
 
 .start-cooking {
-  margin: 35px 35px 35px -15px;
+  position: fixed;
+  margin: 35px 35px 35px 24px;
   text-align: center;
   // position: sticky;
-  top: 115px;
+  // top: 115px;
+  top: 64px;
 }
 
 .add-to-groc-button {
