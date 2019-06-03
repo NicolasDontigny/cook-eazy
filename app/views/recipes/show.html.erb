@@ -46,9 +46,9 @@
   <div class="d-flex flex-column header-container" style="background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(<%= @recipe.photo %>);">
     <div class="d-flex justify-content-between">
       <h2><%= @recipe.name %></h2>
-      <a data-remote="true" rel="nofollow" data-method="post" href="/recipes/1/wishlist/new">
+      <%= link_to new_wishlist_item_path(@recipe), method: :post do %>
         <i class="fas fa-heart mr-5 add-to-wishlist"></i>
-      </a>
+      <% end %>
   </div>
 
   <div>

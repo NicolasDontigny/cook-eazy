@@ -1,4 +1,4 @@
-export const wishlistCarousel = () => {
+export var wishlistCarousel = () => {
   $(document).ready(function(){
     var wishlistContainer = document.getElementById('wishlist-recipes-slider');
 
@@ -44,7 +44,31 @@ export const wishlistCarousel = () => {
         });
 
       }
+
+
+      var unslickCarouselButton = document.getElementById('unslick-carousel');
+
+      unslickCarouselButton.addEventListener('click', () => {
+        console.log("unslick");
+        $('#wishlist-recipes-slider').slick('unslick');
+
+        // wishlistCarousel();
+
+      })
+
+      var refreshCarouselButton = document.getElementById('refresh-carousel');
+
+      refreshCarouselButton.addEventListener('click', () => {
+        console.log("slick");
+
+        wishlistCarousel();
+
+      })
+
+
+
     }
 
   });
 }
+

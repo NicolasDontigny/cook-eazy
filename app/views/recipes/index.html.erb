@@ -27,7 +27,7 @@
 
     <% @recipes.each do |recipe| %>
 
-      <%= link_to recipe_popup_path(recipe), class: "no-link", remote: true do %>
+      <%= link_to recipe_popup_path(recipe), class: "no-link", 'data-toggle': "modal", 'data-target': "#recipe-modal-#{recipe.id}" do %>
 
         <%= render "recipe_card", recipe: recipe %>
 
@@ -39,4 +39,11 @@
 
 </div>
 
+<!-- Add the hidden Modals -->
+<% @recipes.each do |recipe| %>
+  <%= render "recipe_popup", recipe: recipe, fridge_items: @fridge_items %>
+<% end %>
 
+<!-- Add the hidden button to refresh Carousel -->
+<button id="unslick-carousel" style="display: none"></button>
+<button id="refresh-carousel" style="display: none"></button>
