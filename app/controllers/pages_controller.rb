@@ -7,4 +7,8 @@ class PagesController < ApplicationController
       redirect_to(recipes_path)
     end
   end
+
+  def test
+    @recipe = Recipe.second
+  end
 end

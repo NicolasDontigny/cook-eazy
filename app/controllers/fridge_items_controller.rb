@@ -1,6 +1,7 @@
 class FridgeItemsController < ApplicationController
-  before_action :set_fridge, only: %i[index create fill]
+  before_action :set_fridge, only: %i[index fill]
   before_action :set_fridge_item, only: %i[delete decrease increase]
+  before_action :set_fridge_items, only: %i[delete decrease increase]
 
   def index
     @fridge_item = FridgeItem.new
@@ -8,6 +9,7 @@ class FridgeItemsController < ApplicationController
   end
 
   def create
+    @categories = filtered_categories
     @fridge_item = FridgeItem.where(user: current_user).find_by(ingredient_id: params[:fridge_item][:ingredient_id])
 
     if @fridge_item
@@ -64,11 +66,15 @@ class FridgeItemsController < ApplicationController
 
   def render_create_js
     if @fridge_item.save
+      set_fridge
+      @categories = filtered_categories
       respond_to do |format|
         format.html { redirect_to fridge_path_path }
         format.js
       end
     else
+      set_fridge
+      @categories = filtered_categories
       respond_to do |format|
         format.html { render 'index' }
         format.js
@@ -95,6 +101,11 @@ class FridgeItemsController < ApplicationController
     filtered_categories = sorted_fridge_items.map do |item|
       item.ingredient.category
     end
-    filtered_categories.uniq!
+
+    if filtered_categories.length > 1
+      filtered_categories.uniq!
+    else
+      filtered_categories
+    end
   end
 end

@@ -1,17 +1,21 @@
 <div class="container">
 
   <% if @wishlist_recipes.count.positive? %>
-
-    <h2 class="">My Wishlist</h2>
+    <h2 class="wishlist-header">My Wishlist</h2>
+  <% else %>
+    <h2 class="wishlist-header hidden">My Wishlist</h2>
+  <% end %>
     <div class="wishlist-container row">
 
       <div id="wishlist-recipes-slider" class="col-12 d-flex">
 
         <% @wishlist_recipes.each do |recipe| %>
 
-          <%= link_to recipe_popup_path(recipe), class: "no-link wishlist-link px-3", remote: true do %>
+          <%#= link_to recipe_popup_path(recipe), class: "no-link wishlist-link px-3", remote: true do %>
+          <div class="no-link wishlist-link px-3">
             <%= render "recipe_card", recipe: recipe, wishlist: true %>
-          <% end %>
+          </div>
+          <%# end %>
 
         <% end %>
 
@@ -19,7 +23,6 @@
 
     </div>
 
-  <% end %>
 
   <h2 class="mt-3">Recommendations</h2>
 
@@ -27,11 +30,11 @@
 
     <% @recipes.each do |recipe| %>
 
-      <%= link_to recipe_popup_path(recipe), class: "no-link", remote: true do %>
+      <%#= link_to recipe_popup_path(recipe), class: "no-link", 'data-toggle': "modal", 'data-target': "#recipe-modal-#{recipe.id}" do %>
 
         <%= render "recipe_card", recipe: recipe %>
 
-      <% end %>
+      <%# end %>
 
     <% end %>
 
@@ -39,4 +42,11 @@
 
 </div>
 
+<!-- Add the hidden Modals -->
+<% @recipes.each do |recipe| %>
+  <%= render "recipe_popup", recipe: recipe, fridge_items: @fridge_items %>
+<% end %>
 
+<!-- Add the hidden button to refresh Carousel -->
+<!-- <button id="unslick-carousel" style="display: none"></button>
+<button id="refresh-carousel" style="display: none"></button> -->
