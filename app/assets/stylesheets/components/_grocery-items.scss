@@ -1,0 +1,85 @@
+.fas.fa-tasks {
+  color: $orange;
+  margin-right: 1rem;
+}
+
+.fridge-wrapper h2 {
+  text-align: center;
+
+@media (min-width: 900px) {
+    text-align: left;
+  }
+}
+
+.grocery-items__wrapper .fridge-category {
+  color: $orange;
+  margin-top: 1rem;
+
+  @media (min-width: 900px) {
+    margin-top: 0;
+  }
+}
+
+
+.grocery-item-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid $orange;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  border-radius:10px;
+  padding: 1rem;
+  transition: opacity 500ms ease;
+  position: relative;
+  margin-bottom: 1rem;
+  width: 90%;
+
+  @media (min-width: 900px) {
+    width: 100%;
+  }
+
+
+  &:hover {
+    .delete-grocery-item {
+      opacity: 0.4;
+    }
+  }
+
+  .ingredient-name {
+    font-size: 1rem;
+      @media (min-width: 900px) {
+        font-size: 1.3rem;
+    }
+
+  }
+
+  .delete-grocery-item {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-left: 25px;
+
+    width: 80px;
+    position: absolute;
+    right: -43px;
+    top: 0;
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+    &:hover {
+      opacity: 1;
+     }
+    &:active {
+      opacity: 1;
+     }
+  }
+}
+
+// .button.button-main-green.btn-grocery {
+//   background-color: $orange;
+// }
+
+// .button.button-main-red.button-center.button-lg.btn-update-groceries {
+//   background-color: $orange;
+// }
