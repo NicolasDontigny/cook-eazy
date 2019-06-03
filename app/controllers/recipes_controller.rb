@@ -4,6 +4,7 @@ class RecipesController < ApplicationController
   before_action :set_fridge_items, only: %i[index popup]
 
   def index
+    @fridge_items = FridgeItem.where(user: current_user)
     # Sort all existing recipes
     @recipes = Recipe.all.sort do |recipe1, recipe2|
       # For recipes that have the same number of missing ingredients

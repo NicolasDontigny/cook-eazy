@@ -8,6 +8,7 @@ import { addStep } from '../plugins/add_step'
 import { addIngredient } from '../plugins/add_ingredient'
 import { wishlistCarousel } from '../plugins/wishlist_carousel'
 import { stepsCarousel } from '../plugins/steps_carousel'
+import { clickOnRecipeCard } from '../plugins/add_to_wishlist'
 import { initSelect2 } from '../plugins/init_select2';
 import 'select2/dist/css/select2.css';
 
@@ -25,3 +26,5 @@ loadDynamicBannerText();
 wishlistCarousel();
 
 stepsCarousel();
+
+// clickOnRecipeCard();
