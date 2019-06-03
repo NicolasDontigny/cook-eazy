@@ -1,21 +1,22 @@
 <div class="category-grid__wrapper">
+  <% if categories %>
 
+    <% categories.each do |category| %>
 
-  <% categories.each do |category| %>
+      <div class="category-list-new">
+        <h3 class="fridge-category"><%= category unless category == '?' %></h3>
 
-    <div class="category-list-new">
-      <h3 class="fridge-category"><%= category unless category == '?' %></h3>
+        <% fridge_items.each do |item| %>
+          <% if category.include?(item.ingredient.category) %>
 
-      <% fridge_items.each do |item| %>
-        <% if category.include?(item.ingredient.category) %>
-
-          <div id="fridge-items-list" class="mt-3 fridge-items-list" data-item-id="<%= item.id %>">
-              <%= render "fridge_item", item: item %>
-          </div>
+            <div id="fridge-items-list" class="mt-3 fridge-items-list" data-item-id="<%= item.id %>">
+                <%= render "fridge_item", item: item %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+
+    <% end %>
 
   <% end %>
-
 </div>

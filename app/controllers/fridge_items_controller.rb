@@ -66,12 +66,14 @@ class FridgeItemsController < ApplicationController
   def render_create_js
     if @fridge_item.save
       set_fridge
+      @categories = filtered_categories
       respond_to do |format|
         format.html { redirect_to fridge_path_path }
         format.js
       end
     else
       set_fridge
+      @categories = filtered_categories
       respond_to do |format|
         format.html { render 'index' }
         format.js
