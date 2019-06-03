@@ -1,7 +1,6 @@
 <div class="page-container">
   <%= render "sidenav" %>
 
-
   <div class="item-b">
     <div class="d-flex flex-column header-container" style="background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(<%= @recipe.photo %>);">
       <div class="d-flex justify-content-between">
@@ -14,31 +13,29 @@
       <div>
         <br><div class="rating-stars no-reviews color-main-red"></div>
       </div>
-    </div>
 
-    <div class="header-recipe-details d-flex mt-2">
-      <span class="">
-        <strong class=" header-text-bigger">Prep Time</strong>
-          <%= @recipe.prep_time %>
-      </span>
+      <div class="header-recipe-details d-flex mt-2">
+        <span class="">
+          <strong class=" header-text-bigger">Prep Time</strong>
+            <%= @recipe.prep_time %>
+        </span>
 
-      <span class="mx-2">|</span>
+        <span class="mx-2">|</span>
 
-      <span class="">
-        <strong class=" header-text-bigger">Cooking Time</strong>
-          <%= @recipe.cook_time %>
-      </span>
+        <span class="">
+          <strong class=" header-text-bigger">Cooking Time</strong>
+            <%= @recipe.cook_time %>
+        </span>
 
-      <span class="mx-2">|</span>
+        <span class="mx-2">|</span>
 
-      <span class="">
-        <strong class="header-text-bigger">Servings</strong>
-        <%= @recipe.servings %>
-      </span>
+        <span class="">
+          <strong class="header-text-bigger">Servings</strong>
+          <%= @recipe.servings %>
+        </span>
+      </div>
     </div>
   </div>
-
-  
 
   <div class="item-c">
     <% @recipe.steps.each do |step| %>
