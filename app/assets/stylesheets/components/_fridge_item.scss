@@ -3,6 +3,7 @@
   justify-content: space-between;
   align-items: center;
   border: 1px solid $light-green;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
   border-radius:10px;
   padding: 1rem;
   transition: opacity 500ms ease;
@@ -23,7 +24,6 @@
 
   .ingredient-name {
     font-size: 1rem;
-    // width: 10rem;
       @media (min-width: 900px) {
         font-size: 1.3rem;
     }
