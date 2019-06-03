@@ -10,6 +10,7 @@
 
 .fridge-wrapper {
   display: flex;
+  width: 100%;
 
   h2 {
     text-align: center;
@@ -21,13 +22,27 @@
   }
 }
 
+
+
 .category-wrapper {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
 
   @media (min-width: 900px) {
-    flex-direction: row;
     margin-top: 2rem;
+    grid-template-columns: 20% 80%;
+    grid-gap: 1rem;
+  }
+}
+
+.category-grid__wrapper {
+
+  transition: all .5s ease-in-out;
+
+  @media (min-width: 900px) {
+    width: 90%;
+    column-width: 20rem;
+    column-gap: 1rem;
   }
 }
 
@@ -62,7 +77,7 @@
 
   .quantity {
     margin-left: 1rem;
-    width: 8rem;
+    width: 9rem;
     display: flex;
     flex-shrink: 0;
     justify-content: space-between;

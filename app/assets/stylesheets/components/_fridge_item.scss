@@ -3,6 +3,7 @@
   justify-content: space-between;
   align-items: center;
   border: 1px solid $light-green;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
   border-radius:10px;
   padding: 1rem;
   transition: opacity 500ms ease;
@@ -23,7 +24,6 @@
 
   .ingredient-name {
     font-size: 1rem;
-    // width: 10rem;
       @media (min-width: 900px) {
         font-size: 1.3rem;
     }
@@ -63,18 +63,20 @@
 
 
 .category-list-new {
-
-  margin-top: 1rem;
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  text-align: center;
 
   @media (min-width: 900px) {
     margin-left: 2rem;
-    margin-top: 0;
+    margin-top: 0.75rem;
+    width: 95%;
   }
 }
 
 .fridge-items-list {
   padding-left: 0;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -96,54 +98,5 @@
   @media (min-width: 900px) {
     display: inline;
     width: auto;
-  }
-}
-
-// Old-css, keeping until checked if called in another page
-.grocery-item-card.fridge__item.shadow {
-  width: 100%;
-}
-
-.fridge-items-list {
-  padding-left: 0;
-}
-
-
-.fridge-item-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  background-color: white;
-  margin: 16px auto;
-  padding: 16px;
-  transition: opacity 500ms ease;
-  position: relative;
-
-  border-bottom: 1px solid $light-gray;
-
-  &:last-child {
-    border: none;
-  }
-
-  .delete-grocery-item {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding-left: 25px;
-
-    width: 80px;
-    position: absolute;
-    right: -40px;
-    top: 0;
-    opacity: 0;
-  }
-
-  &:hover {
-    .delete-grocery-item {
-      opacity: 1;
-    }
   }
 }
