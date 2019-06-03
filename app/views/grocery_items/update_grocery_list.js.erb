@@ -1,20 +1,26 @@
-// import 'jquery'
-
 var removeGroceryItemCard = (card) => {
+  var categoryDiv = card.parentNode
+
   card.remove();
+
+  if (!categoryDiv.querySelector("div")) {
+    categoryDiv.remove();
+  }
 }
 
-var fadeOutGroceryItemCard = (card, ms) => {
-  card.style.opacity = 0;
-  setTimeout(() => { card.remove() }, ms);
-}
+// var fadeOutGroceryItemCard = (card, ms) => {
+//   card.style.opacity = 0;
+//   setTimeout(() => { card.remove() }, ms);
+// }
 
 var updateList = () => {
-  var groceryItems = []
+  // var groceryItems = []
   <% @grocery_items.each do |grocery_item| %>
     var id = <%= grocery_item.id %>
-    groceryItemCard = document.querySelector(`li[data-item-id='${id}']`)
-    fadeOutGroceryItemCard(groceryItemCard, 500)
+    // groceryItemCard = document.querySelector(`li[data-item-id='${id}']`)
+    groceryItemCard = document.querySelector(`.fridge-items-list[data-item-id='${id}']`);
+    // fadeOutGroceryItemCard(groceryItemCard, 500)
+    removeGroceryItemCard(groceryItemCard);
   <% end %>
 }
 

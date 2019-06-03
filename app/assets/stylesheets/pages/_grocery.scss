@@ -13,27 +13,28 @@
   font-size: 1.3rem;
   list-style: none;
   padding: 0;
-  // line-height: 2;
 
   i.checkbox {
     margin-right: 8px;
   }
 
   .quantity {
-    margin-left: 16px;
-    width: 150px;
+    margin-left: 1rem;
+    width: 9rem;
     display: flex;
+    flex-shrink: 0;
     justify-content: space-between;
+    align-items: center;
+    text-align: center;
     z-index: 50;
-
-    .quantity-text {
-
-    }
   }
 
   i.math {
-    font-size: 18px;
+    font-size: 0.85rem;
     margin: 0 8px;
+    @media (min-width: 900px) {
+      font-size: 1rem;
+    }
   }
 }
 
@@ -75,11 +76,6 @@
       opacity: 1;
     }
   }
-}
-
-.new_grocery_item {
-  // margin: 16px auto 32px auto;
-  // text-align: left;
 }
 
 .new_grocery_item {
