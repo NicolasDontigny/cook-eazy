@@ -47,3 +47,13 @@
     list-style: none;
   }
 }
+
+#progress-bar {
+  padding: 16px;
+}
+
+
+.progress-fraction {
+  height: 10px;
+  background-color: $main-green;
+}
