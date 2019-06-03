@@ -186,11 +186,13 @@
 .mobile-only {
   display: none;
 }
+
 .mobile-container {
   margin-top: 50px;
   margin-left: 10px;
   margin-right: 10px;
 }
+
 @media (max-width: 1000px) {
   /* For a screen < 960px, this CSS will be read */
   .start-cooking {
