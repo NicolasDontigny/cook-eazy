@@ -6,19 +6,23 @@ swal({
 
 var insertNewWishlistRecipe = (recipeCardHTML) => {
 
-  var unslickCarouselButton = document.getElementById('unslick-carousel');
-  unslickCarouselButton.click();
+  var wishlistLinks = document.querySelectorAll('.wishlist-link');
+
+  if (wishlistLinks.length > 1) {
+    window.unslick();
+  }
 
   setTimeout(() => {
+    var wishlistHeader = document.querySelector('.wishlist-header')
+    wishlistHeader.classList.remove("hidden");
+
     var wishlistSlider = document.getElementById('wishlist-recipes-slider');
     if (wishlistSlider) {
       wishlistSlider.insertAdjacentHTML("beforeend", recipeCardHTML)
     }
 
-    var refreshCarouselButton = document.getElementById('refresh-carousel');
-    refreshCarouselButton.click();
-
-  }, 1000)
+    window.slick();
+  }, 200)
 
 
 }

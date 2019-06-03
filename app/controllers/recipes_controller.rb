@@ -41,6 +41,7 @@ class RecipesController < ApplicationController
   end
 
   def popup
+    raise
     respond_to do |format|
       format.html { redirect_to recipe_path(@recipe) }
       format.js { render 'show_popup.js.erb', recipe: @recipe }
