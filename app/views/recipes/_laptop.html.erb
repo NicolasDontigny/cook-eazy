@@ -1,0 +1,67 @@
+<div class="page-container">
+  <%= render "sidenav" %>
+
+
+  <div class="item-b">
+    <div class="d-flex flex-column header-container" style="background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(<%= @recipe.photo %>);">
+      <div class="d-flex justify-content-between">
+        <h2><%= @recipe.name %></h2>
+        <a data-remote="true" rel="nofollow" data-method="post" href="/recipes/1/wishlist/new">
+          <i class="fas fa-heart mr-5 add-to-wishlist"></i>
+        </a>
+      </div>
+
+      <div>
+        <br><div class="rating-stars no-reviews color-main-red"></div>
+      </div>
+    </div>
+
+    <div class="header-recipe-details d-flex mt-2">
+      <span class="">
+        <strong class=" header-text-bigger">Prep Time</strong>
+          <%= @recipe.prep_time %>
+      </span>
+
+      <span class="mx-2">|</span>
+
+      <span class="">
+        <strong class=" header-text-bigger">Cooking Time</strong>
+          <%= @recipe.cook_time %>
+      </span>
+
+      <span class="mx-2">|</span>
+
+      <span class="">
+        <strong class="header-text-bigger">Servings</strong>
+        <%= @recipe.servings %>
+      </span>
+    </div>
+  </div>
+
+  
+
+  <div class="item-c">
+    <% @recipe.steps.each do |step| %>
+      <p><%= step.order %> - <%= step.content %></p>
+    <% end %>
+  </div>
+
+  <div class= "item-d recipe-reviews" >
+    <% if @reviews.empty? %>
+        <ul id="reviews-list" class="reviews-list">
+          <%= render "reviews/no_reviews" %>
+        </ul>
+    <% else %>
+      <h4>What users say about this recipe</h4>
+      <ul id="reviews-list" class="reviews-list">
+        <% @reviews.each do |review| %>
+          <%= render "reviews/show_opacity1", review: review %>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <h4 class="specs__title">Leave a Review</h4>
+
+    <%= render "reviews/form", recipe: @recipe, review: Review.new %>
+  </div>
+</div>
