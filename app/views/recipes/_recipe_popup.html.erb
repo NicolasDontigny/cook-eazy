@@ -29,7 +29,7 @@
               <% recipe.insufficient_ingredients(fridge_items).each do |recipe_item| %>
                 <li class="ingredient-red">
                   <i class="far fa-times-circle"></i>
-                  <%= recipe_item.ingredient.name %>
+                  <%= recipe_item.ingredient.name.capitalize %>
                   (<%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %> missing)
                 </li>
               <% end %>
@@ -37,7 +37,7 @@
               <% recipe.missing_ingredients(fridge_items).each do |recipe_item| %>
                 <li class="ingredient-red">
                   <i class="far fa-times-circle"></i>
-                  <%= recipe_item.ingredient.name %>
+                  <%= recipe_item.ingredient.name.capitalize %>
                   (<%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %> missing)
                 </li>
               <% end %>
@@ -53,7 +53,7 @@
               <% recipe.matching_ingredients(fridge_items).each do |recipe_item| %>
                 <li class="ingredient-green">
                   <i class="far fa-check-circle"></i>
-                  <%= recipe_item.ingredient.name %>
+                  <%= recipe_item.ingredient.name.capitalize %>
                   (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
                 </li>
               <% end %>
