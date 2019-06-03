@@ -15,7 +15,7 @@
           <% @categories.each do |category| %>
 
             <div class="category-list-new">
-              <h3 class="fridge-category"><%= category %></h3>
+              <h3 class="fridge-category"><%= category unless category == '?' %></h3>
 
               <% @fridge_items.each do |item| %>
                 <% if category.include?(item.ingredient.category) %>
