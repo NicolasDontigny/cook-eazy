@@ -29,7 +29,7 @@
               <% unless recipe.missing_ingredients(current_user).count == 0 %>
                 <div class="d-flex align-items-center justify-content-between">
                   <h4 class="mb-3 mt-4">Missing ingredients</h4>
-                  <%= link_to "Add to Grocery List", add_grocery_items_path(recipe), class: "button button-main-green ml-3", method: :post %>
+                  <%= link_to "Add to Grocery List", add_grocery_items_path(recipe), class: "button button-main-green ml-3", method: :post, remote: true %>
 
                 </div>
                 <ul class="popup-ingredients-list">
