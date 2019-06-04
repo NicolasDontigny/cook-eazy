@@ -6,7 +6,16 @@ class RecipesController < ApplicationController
   def index
     @fridge_items = FridgeItem.where(user: current_user)
     # Sort all existing recipes
-    @recipes = Recipe.all.sort do |recipe1, recipe2|
+
+    @query = params[:query]
+
+    if @query.present?
+      @recipes = Recipe.search_by_name(@query)
+    else
+      @recipes = Recipe.all
+    end
+
+    @recipes = @recipes.sort do |recipe1, recipe2|
       # For recipes that have the same number of missing ingredients
       # Sort them by the highest number of matching ingredients
       if recipe1.how_many_ingredients_to_buy(current_user) == recipe2.how_many_ingredients_to_buy(current_user)

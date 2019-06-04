@@ -10,7 +10,16 @@ class Recipe < ApplicationRecord
 
   accepts_nested_attributes_for :steps, :recipe_items
 
-  # validates :steps, length: { minimum: 1 }
+  include PgSearch
+  pg_search_scope :search_by_name,
+                  against: %i[name],
+                  associated_against: {
+                    ingredients: %i[name],
+                    steps: %i[content]
+                  },
+                  using: {
+                    tsearch: { prefix: true } # <-- now `superman batm` will return something!
+                  }
 
   def missing_ingredients(user)
     missing_ingredients = []
