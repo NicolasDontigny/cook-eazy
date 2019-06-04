@@ -55,14 +55,14 @@ export var clickRightOrLeft = () => {
 
     }, 1000)
 
+    var recipeStepsContainer = document.getElementById('recipe-steps');
+
+    var numberOfSteps = recipeStepsContainer.dataset.steps;
+    var doneCookingButton = document.getElementById('done-cooking')
+
+    if (numberOfSteps == 1) {
+      doneCookingButton.style.visibility = "visible";
+    }
   }
 
-  var recipeStepsContainer = document.getElementById('recipe-steps');
-
-  var numberOfSteps = recipeStepsContainer.dataset.steps;
-  var doneCookingButton = document.getElementById('done-cooking')
-
-  if (numberOfSteps == 1) {
-    doneCookingButton.style.visibility = "visible";
-  }
 }

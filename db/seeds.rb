@@ -9,7 +9,7 @@ FridgeItem.destroy_all
 puts 'creating user'
 
 nic = User.create(
-  email: 'nic@gmail.com',
+  username: 'duck',
   password: '1'
 )
 
