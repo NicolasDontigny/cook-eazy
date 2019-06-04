@@ -22,6 +22,7 @@ gem 'cloudinary', '~> 1.9.1'
 
 # Added after setup
 gem 'faker'
+gem 'pg_search'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
