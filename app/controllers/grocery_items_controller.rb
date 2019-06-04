@@ -151,7 +151,7 @@ class GroceryItemsController < ApplicationController
       item.ingredient.category
     end
     if filtered_categories.length > 1
-      filtered_categories.uniq!
+      filtered_categories.uniq
     else
       filtered_categories
     end
