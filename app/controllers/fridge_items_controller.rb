@@ -105,6 +105,11 @@ class FridgeItemsController < ApplicationController
     filtered_categories = sorted_fridge_items.map do |item|
       item.ingredient.category
     end
-    filtered_categories.uniq!
+
+    if filtered_categories.length > 1
+      filtered_categories.uniq!
+    else
+      filtered_categories
+    end
   end
 end

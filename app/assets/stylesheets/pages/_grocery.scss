@@ -1,3 +1,14 @@
+.grocery-items__wrapper {
+  transition: all .5s ease-in-out;
+
+  @media (min-width: 900px) {
+    width: 90%;
+    column-width: 20rem;
+    column-gap: 1rem;
+  }
+}
+
+
 #grocery-items-list {
   font-size: 1.3rem;
   list-style: none;
