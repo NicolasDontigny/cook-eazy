@@ -26,6 +26,12 @@
   <div id="browse-recipes">
     <div id="browse-recipes-top"></div>
 
+    <% if @recipes_ready.empty? && @recipes_not_ready.empty? %>
+
+      <h2 class="mt">Sorry, there are no recipes matching your search</h2>
+
+    <% end %>
+
     <% unless @recipes_ready.empty? %>
 
       <h2 class="mt">Ready to Cook</h2>
@@ -47,21 +53,24 @@
     <% end %>
 
 
-    <h2 class="mt-3">Recipes for You</h2>
+    <% unless @recipes_not_ready.empty? %>
+      <h2 class="mt-3">Recipes for You</h2>
 
-    <div class="recipes-container mt-3">
+      <div class="recipes-container mt-3">
 
-      <% @recipes_not_ready.each do |recipe| %>
+        <% @recipes_not_ready.each do |recipe| %>
 
-        <%# unless recipe.missing_ingredients(current_user).empty? %>
+          <%# unless recipe.missing_ingredients(current_user).empty? %>
 
-          <%= render "recipe_card", recipe: recipe %>
+            <%= render "recipe_card", recipe: recipe %>
 
-        <%# end %>
+          <%# end %>
 
-      <% end %>
+        <% end %>
 
-    </div>
+      </div>
+
+    <% end %>
   </div>
 
 </div>

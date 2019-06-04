@@ -2,7 +2,8 @@
   <%= text_field_tag :query,
     params[:query],
     class: "form-control search-input",
-    placeholder: "Search Recipes"
+    placeholder: "Search Recipes",
+    value: session[:query] || ""
   %>
 
   <button type="submit" class="search-submit"><i class="fas fa-search"></i></button>

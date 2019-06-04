@@ -10,7 +10,7 @@
 
   #browse-recipes-top {
     position: absolute;
-    top: -72px;
+    top: -136px;
   }
 }
 
@@ -26,4 +26,20 @@
   }
 }
 
+#search-filters {
+  position: sticky;
 
+  background: white;
+  width: 100vw;
+
+  padding: 12px 16px 12px 80px;
+
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+
+  z-index: 800;
+}
+
+#recipes-container {
+  padding-top: 64px;
+}

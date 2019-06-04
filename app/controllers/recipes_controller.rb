@@ -6,13 +6,27 @@ class RecipesController < ApplicationController
   def index
     @fridge_items = FridgeItem.where(user: current_user)
     # Sort all existing recipes
+    @search_filters = true
 
-    @query = params[:query]
+    if params[:query].present?
+      @query = params[:query]
+      session[:query] = params[:query]
+    else
+      session[:query] = nil if params[:time].blank? && params[:category].blank?
+      @query = session[:query]
+    end
+
+    @max_time = params[:time]
+    @category = params[:category]
 
     if @query.present?
       @recipes = Recipe.search_by_name(@query)
     else
       @recipes = Recipe.all
+    end
+
+    if @max_time.present? && @max_time != "no-limit"
+      @recipes = @recipes.reject { |recipe| recipe.prep_time + recipe.cook_time > @max_time.to_i }
     end
 
     @recipes = @recipes.sort do |recipe1, recipe2|
