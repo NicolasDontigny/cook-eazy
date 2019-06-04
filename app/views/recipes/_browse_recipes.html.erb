@@ -1,28 +1,5 @@
 <div class="container" id="recipes-container">
 
-  <% if @wishlist_recipes.count.positive? %>
-    <h2 class="wishlist-header">My Wishlist</h2>
-  <% else %>
-    <h2 class="wishlist-header hidden">My Wishlist</h2>
-  <% end %>
-    <div class="wishlist-container row">
-
-      <div id="wishlist-recipes-slider" class="col-12 d-flex">
-
-        <% @wishlist_recipes.each do |recipe| %>
-
-          <%#= link_to recipe_popup_path(recipe), class: "no-link wishlist-link px-3", remote: true do %>
-          <div class="no-link wishlist-link px-3">
-            <%= render "recipe_card", recipe: recipe, wishlist: true %>
-          </div>
-          <%# end %>
-
-        <% end %>
-
-      </div>
-
-    </div>
-
   <div id="browse-recipes">
     <div id="browse-recipes-top"></div>
 
@@ -70,7 +47,3 @@
 <% @recipes.each do |recipe| %>
   <%= render "recipe_popup", recipe: recipe, fridge_items: @fridge_items %>
 <% end %>
-
-<!-- Add the hidden button to refresh Carousel -->
-<!-- <button id="unslick-carousel" style="display: none"></button>
-<button id="refresh-carousel" style="display: none"></button> -->
