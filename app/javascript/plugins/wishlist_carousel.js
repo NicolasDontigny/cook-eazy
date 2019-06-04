@@ -17,8 +17,8 @@ export var wishlistCarousel = () => {
 
       if (wishlistItems.length > 1) {
         $('#wishlist-recipes-slider').not('.slick-initialized').slick({
-          prevArrow: '<div class="d-flex justify-content-center align-items-center chevron-div"><i class="fas fa-chevron-left"></i></div>',
-          nextArrow: '<div class="d-flex justify-content-center align-items-center chevron-div"><i class="fas fa-chevron-right"></i></div>',
+          prevArrow: '<div class="d-flex justify-content-center align-items-center chevron-div pr-3"><i class="fas fa-chevron-left"></i></div>',
+          nextArrow: '<div class="d-flex justify-content-center align-items-center chevron-div pl-3"><i class="fas fa-chevron-right"></i></div>',
           slidesToShow: slidesToShow,
           slidesToScroll: slidesToShow,
           infinite: true,

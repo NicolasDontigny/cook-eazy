@@ -36,3 +36,25 @@
     font-size: 1.1rem;
   }
 }
+
+.header-recipe-details {
+  display: flex;
+  flex-direction: column;
+
+  line-height: 1.5;
+
+  .line {
+    display: none;
+  }
+}
+
+@media (min-width: 576px) {
+.header-recipe-details {
+  flex-direction: row;
+
+  .line {
+    display: block;
+  }
+}
+}
+

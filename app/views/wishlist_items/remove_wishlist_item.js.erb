@@ -17,9 +17,31 @@ var removeWishlistRecipe = (recipeId) => {
     wishlistLink.remove();
 
     window.slick();
-  }, 200)
+  }, 0)
 
 
 }
 
+swal({
+  title: `Removed "<%= @recipe.name %>" from your wishlist!`,
+  icon: "success",
+  buttons: false
+})
+
+var swalOverlay = document.querySelector('.swal-overlay');
+swalOverlay.setAttribute("id", "swal-overlay");
+
+var swalAlert = document.querySelector('.swal-modal');
+swalAlert.setAttribute("id", "swal-modal");
+
+setTimeout(() => {
+  swalOverlay.style.opacity = 0;
+}, 2000)
+
+setTimeout(() => {
+  swalOverlay.remove();
+}, 3000);
+
+
 removeWishlistRecipe(<%= @recipe.id %>)
+
