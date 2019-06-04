@@ -1,5 +1,5 @@
 <li class="grocery-item-card" data-item-id="<%= item.id %>">
-  <div>
+  <div class="grocery-item-card__details">
     <% if item.checked %>
       <%= link_to uncheck_grocery_item_path(item), method: 'patch', remote: true, class: "no-link" do %>
         <i class="far fa-check-square checkbox"></i>

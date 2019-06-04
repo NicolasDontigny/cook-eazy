@@ -23,6 +23,8 @@
 
 .grocery-item-card {
   display: flex;
+  position: relative;
+  flex-direction: column; // to change if not working
   justify-content: space-between;
   align-items: center;
   border: 1px solid $orange !important;
@@ -51,6 +53,20 @@
         font-size: 1.3rem;
     }
 
+  }
+
+  .grocery-item-card__details .no-link .far.fa-square.checkbox {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 3%;
+  }
+
+  .grocery-item-card__details .no-link .far.fa-check-square.checkbox {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 3%;
   }
 
   .delete-grocery-item {
