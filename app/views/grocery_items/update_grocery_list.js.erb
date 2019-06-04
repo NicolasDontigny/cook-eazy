@@ -1,20 +1,46 @@
-// import 'jquery'
+swal({
+  title: `Added ingredients in your fridge!`,
+  icon: "success",
+  buttons: false
+})
+
+var swalOverlay = document.querySelector('.swal-overlay');
+swalOverlay.setAttribute("id", "swal-overlay");
+
+var swalAlert = document.querySelector('.swal-modal');
+swalAlert.setAttribute("id", "swal-modal");
+
+setTimeout(() => {
+  swalOverlay.style.opacity = 0;
+}, 2000)
+
+setTimeout(() => {
+  swalOverlay.remove();
+}, 3000);
 
 var removeGroceryItemCard = (card) => {
+  var categoryDiv = card.parentNode
+
   card.remove();
+
+  if (!categoryDiv.querySelector("div")) {
+    categoryDiv.remove();
+  }
 }
 
-var fadeOutGroceryItemCard = (card, ms) => {
-  card.style.opacity = 0;
-  setTimeout(() => { card.remove() }, ms);
-}
+// var fadeOutGroceryItemCard = (card, ms) => {
+//   card.style.opacity = 0;
+//   setTimeout(() => { card.remove() }, ms);
+// }
 
 var updateList = () => {
-  var groceryItems = []
+  // var groceryItems = []
   <% @grocery_items.each do |grocery_item| %>
     var id = <%= grocery_item.id %>
-    groceryItemCard = document.querySelector(`li[data-item-id='${id}']`)
-    fadeOutGroceryItemCard(groceryItemCard, 500)
+    // groceryItemCard = document.querySelector(`li[data-item-id='${id}']`)
+    groceryItemCard = document.querySelector(`.fridge-items-list[data-item-id='${id}']`);
+    // fadeOutGroceryItemCard(groceryItemCard, 500)
+    removeGroceryItemCard(groceryItemCard);
   <% end %>
 }
 

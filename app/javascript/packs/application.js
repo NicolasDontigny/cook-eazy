@@ -10,6 +10,8 @@ import { wishlistCarousel } from '../plugins/wishlist_carousel'
 import { stepsCarousel } from '../plugins/steps_carousel'
 import { clickOnRecipeCard } from '../plugins/add_to_wishlist'
 import { initSelect2 } from '../plugins/init_select2';
+import { clickRightOrLeft } from '../plugins/progress_bar';
+import { addEventToHearts } from '../plugins/heart_icon';
 import 'select2/dist/css/select2.css';
 
 // import { recipePopup } from '../plugins/recipe_popup'
@@ -26,5 +28,9 @@ loadDynamicBannerText();
 wishlistCarousel();
 
 stepsCarousel();
+
+clickRightOrLeft();
+
+addEventToHearts();
 
 // clickOnRecipeCard();

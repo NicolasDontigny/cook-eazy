@@ -1,5 +1,7 @@
-<div class="page-container">
+<div class="desktop-only">
+  <%= render "laptop" %>
 
+<<<<<<< HEAD
       <div class="item-a">
         <!-- change this button to Start Cooking -->
         <div class="start-cooking">
@@ -136,4 +138,10 @@
     <h4 class="specs__title">Leave a Review</h4>
     <%= render "reviews/form", recipe: @recipe, review: Review.new %>
   <div>
+=======
+</div>
+
+<div class="mobile-only">
+  <%= render "mobile" %>
+>>>>>>> bf11bb4baf390faf91d0ea9edbd1545b0a1f8dac
 </div>

@@ -1,29 +1,32 @@
+var insertNewWishlistRecipe = (recipeCardHTML) => {
+
+  var wishlistLinks = document.querySelectorAll('.wishlist-link');
+
+  if (wishlistLinks.length > 1) {
+    window.unslick();
+  }
+
+  setTimeout(() => {
+    var wishlistHeader = document.querySelector('.wishlist-header')
+    wishlistHeader.classList.remove("hidden");
+
+    var wishlistSlider = document.getElementById('wishlist-recipes-slider');
+    if (wishlistSlider) {
+      wishlistSlider.insertAdjacentHTML("beforeend", recipeCardHTML)
+    }
+
+    window.slick();
+  }, 200)
+
+}
+
 swal({
   title: `Added <%= @recipe.name %> to your wishlist!`,
   icon: "success",
   buttons: false
 })
 
-var insertNewWishlistRecipe = (recipeCardHTML) => {
-
-  var unslickCarouselButton = document.getElementById('unslick-carousel');
-  unslickCarouselButton.click();
-
-  setTimeout(() => {
-    var wishlistSlider = document.getElementById('wishlist-recipes-slider');
-    if (wishlistSlider) {
-      wishlistSlider.insertAdjacentHTML("beforeend", recipeCardHTML)
-    }
-
-    var refreshCarouselButton = document.getElementById('refresh-carousel');
-    refreshCarouselButton.click();
-
-  }, 1000)
-
-
-}
-
-insertNewWishlistRecipe('<%= link_to recipe_popup_path(@recipe), method: :post, class: "no-link wishlist-link px-3", remote: true do %><%= j render "recipes/recipe_card", recipe: @recipe %><% end %>')
+insertNewWishlistRecipe('<div class="no-link wishlist-link px-3"><%= j render "recipes/recipe_card", recipe: @recipe %></div>')
 
 var swalOverlay = document.querySelector('.swal-overlay');
 swalOverlay.setAttribute("id", "swal-overlay");
@@ -38,3 +41,7 @@ setTimeout(() => {
 setTimeout(() => {
   swalOverlay.remove();
 }, 3000);
+
+
+
+

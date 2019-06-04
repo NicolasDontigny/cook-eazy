@@ -1,7 +1,12 @@
-var deletedItemCard = document.querySelector(`li[data-item-id='<%= @id %>']`);
+var deleteItem = () => {
+  const id = <%= @grocery_item.id %>;
+  grocery_item = document.querySelector(`.fridge-items-list[data-item-id='${id}']`);
+  var categoryDiv = grocery_item.parentNode
+  grocery_item.remove();
 
-deletedItemCard.style.opacity = 0;
+  if (!categoryDiv.querySelector("div")) {
+    categoryDiv.remove();
+  }
+}
 
-setTimeout(() => { deletedItemCard.remove() }, 500);
-
-
+deleteItem();

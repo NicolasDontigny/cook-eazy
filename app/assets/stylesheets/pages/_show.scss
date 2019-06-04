@@ -61,7 +61,11 @@
   height: 100vh;
   overflow: scroll;
   ul {
+<<<<<<< HEAD
     position: sticky;
+=======
+    // position: sticky;
+>>>>>>> bf11bb4baf390faf91d0ea9edbd1545b0a1f8dac
     // top: 210px;
   }
 
@@ -109,7 +113,13 @@
     "ingredients reviews";
 
   margin-top: 4rem;
+}
 
+.sidenav {
+  position: fixed;
+  overflow-y: scroll;
+  top: 60px;
+  width: 270px;
 }
 
 // .item-b {
@@ -118,6 +128,7 @@
 //     max-width:100%;
 //     position: relative;
 
+<<<<<<< HEAD
 //     .add-to-wishlist {
 //       position: absolute;
 //       top:15px;
@@ -135,11 +146,17 @@
 // }
 
 
+=======
+>>>>>>> bf11bb4baf390faf91d0ea9edbd1545b0a1f8dac
 .start-cooking {
-  margin: 35px 35px 35px -15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   text-align: center;
+<<<<<<< HEAD
   // position: sticky;
   // top: 115px;
+=======
+>>>>>>> bf11bb4baf390faf91d0ea9edbd1545b0a1f8dac
 }
 
 .add-to-groc-button {
@@ -147,10 +164,28 @@
   text-align: center;
 }
 
-
 #ingredients-list {
   list-style: none;
   padding: 0;
+}
+
+.ingredient-red, .ingredient-green, .ingredient-orange {
+  padding-left: 10px;
+}
+
+.mobile-ingredient-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.start-cooking-mobile{
+  margin-right: 10px;
+}
+
+.mobile-cta{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
 }
 
 #title {
@@ -160,25 +195,40 @@
   top: 170px;
 }
 
+<<<<<<< HEAD
 
 @media (max-width: 960px) {
+=======
+.mobile-only {
+  display: none;
+}
+
+.mobile-container {
+  margin-top: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+@media (max-width: 1000px) {
+>>>>>>> bf11bb4baf390faf91d0ea9edbd1545b0a1f8dac
   /* For a screen < 960px, this CSS will be read */
-  .page-container {
-    width: 700px;
+  .start-cooking {
+    position: initial;
   }
+
+  .mobile-only { display: initial; }
+  .desktop-only { display: none; }
 }
 @media (max-width: 720px) {
   /* For a screen < 720px, this CSS will be read */
-  .page-container {
-    width: 500px;
+  .start-cooking {
+    position: initial;
   }
+  .mobile-only { display: initial; }
+  .desktop-only { display: none; }
 }
 @media (max-width: 540px) {
   /* For a screen < 540px, this CSS will be read */
-  .page-container {
-    width: 300px;
-  }
+  .mobile-only { display: initial; }
+  .desktop-only { display: none; }
 }
-
-
-

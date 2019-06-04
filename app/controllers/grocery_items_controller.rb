@@ -3,24 +3,22 @@ class GroceryItemsController < ApplicationController
 
   def index
     @grocery_items = GroceryItem.where(user: current_user).order('created_at DESC')
+    @categories = filtered_categories
     # @grocery_item = GroceryItem.new
   end
 
   def add
     @recipe = Recipe.find(params[:recipe_id])
-    @fridge_items = FridgeItem.where(user: current_user)
-    @missing_ingredients = @recipe.missing_ingredients(@fridge_items)
-    @insufficient_ingredients = @recipe.insufficient_ingredients(@fridge_items)
+    @missing_ingredients = @recipe.missing_ingredients(current_user)
 
     @missing_ingredients.each do |recipe_item|
       add_item_to_grocery_list(recipe_item)
     end
 
-    @insufficient_ingredients.each do |recipe_item|
-      add_item_to_grocery_list(recipe_item)
+    respond_to do |format|
+      format.html { redirect_to recipes_path }
+      format.js { render 'add.js.erb' }
     end
-
-    redirect_to grocery_items_path
   end
 
   def create
@@ -71,7 +69,6 @@ class GroceryItemsController < ApplicationController
   end
 
   def destroy
-    @id = @grocery_item.id
     @grocery_item.destroy
 
     respond_to do |format|
@@ -92,16 +89,18 @@ class GroceryItemsController < ApplicationController
 
   def render_create_js
     if @grocery_item.save
+      @grocery_items = GroceryItem.where(user: current_user).order('created_at DESC')
+      @categories = filtered_categories
       respond_to do |format|
         format.html { redirect_to grocery_items_path }
         format.js
       end
     else
       @grocery_items = GroceryItem.where(user: current_user)
-      # @grocery_item = GroceryItem.new
+      @categories = filtered_categories
       respond_to do |format|
         format.html { render 'index' }
-        format.js { render 'create.js.erb' }
+        format.js
       end
     end
   end
@@ -140,5 +139,21 @@ class GroceryItemsController < ApplicationController
     end
 
     @grocery_item.save!
+  end
+
+  def filtered_categories
+    @grocery_items = GroceryItem.where(user: current_user).order('created_at DESC')
+
+    sorted_grocery_items = @grocery_items.sort_by do |item|
+      item.ingredient.category
+    end
+    filtered_categories = sorted_grocery_items.map do |item|
+      item.ingredient.category
+    end
+    if filtered_categories.length > 1
+      filtered_categories.uniq
+    else
+      filtered_categories
+    end
   end
 end

@@ -1,10 +1,24 @@
 .add-to-wishlist {
   color: $main-green;
   font-size: 32px;
+<<<<<<< HEAD
   margin: 8px;
   &:hover {
     color: $main-green-hover;
   }
+=======
+  // &:hover {
+  //   color: $main-green-hover;
+  // }
+}
+
+.add-to-wishlist-empty {
+  color: $main-green;
+  font-size: 32px;
+  // &:hover {
+  //   color: $main-green-hover;
+  // }
+>>>>>>> bf11bb4baf390faf91d0ea9edbd1545b0a1f8dac
 }
 
 .delete-icon {
