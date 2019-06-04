@@ -1,8 +1,8 @@
 <div id="search-filters" class="d-flex align-items-center">
   <%= form_tag recipes_path + "#browse-recipes-top", class: "mr-3 search-form form-inline", method: :get do %>
   <div class="form-group mr-3">
-    <label for="time" class="mr-2">Maximum Time</label>
-    <select name="time" id="time" class="form-control">
+    <label for="max_time" class="mr-2">Maximum Time</label>
+    <select name="max_time" id="max_time" class="form-control">
       <!-- <%# if @max_time %>
         <option value="nil" selected="selected" disabled><%= @max_time %></option>
       <%# end %>

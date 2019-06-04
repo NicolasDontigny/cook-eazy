@@ -5,9 +5,15 @@
     <div class="d-flex flex-column header-container" style="background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(<%= @recipe.photo %>);">
       <div class="d-flex justify-content-between">
         <h2><%= @recipe.name %></h2>
-        <a data-remote="true" rel="nofollow" data-method="post" href="/recipes/1/wishlist/new">
-          <i class="fas fa-heart add-to-wishlist"></i>
-        </a>
+        <% if WishlistItem.where(recipe: @recipe).empty? %>
+          <%= link_to wishlist_item_path(@recipe), method: :post, remote: true do %>
+            <i class="far fa-heart mr-3 add-to-wishlist-empty"></i>
+          <% end %>
+        <% else %>
+          <%= link_to wishlist_item_path(@recipe), method: :delete, remote: true do %>
+            <i class="fas fa-heart mr-3 add-to-wishlist"></i>
+          <% end %>
+        <% end %>
       </div>
 
       <div>

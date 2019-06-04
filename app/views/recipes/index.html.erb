@@ -76,7 +76,7 @@
 </div>
 
 <!-- Add the hidden Modals -->
-<% @recipes.each do |recipe| %>
+<% Recipe.all.each do |recipe| %>
   <%= render "recipe_popup", recipe: recipe, fridge_items: @fridge_items %>
 <% end %>
 
