@@ -82,7 +82,7 @@
 /* List of steps*/
 .item-c {
   grid-area: steps;
-  height: 50vh;
+  // height: 50vh;
   margin: 13px;
   margin-left: 8px;
   margin-right: 8px;
@@ -101,8 +101,8 @@
 .page-container {
   width: 95vw;
   display: grid;
-  grid-column-gap: 30px;
-  grid-row-gap: 30px;
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
   grid-template-columns: 28% 72%;
   // grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas:
@@ -146,33 +146,21 @@
   padding-left: 10px;
 }
 
-// Mobile version
-.mobile-ingredient-list {
-  display: flex;
-  justify-content: space-around;
-  // flex-wrap: wrap;
-}
 .start-cooking-mobile{
-  margin-right: 10px;
+  margin-top: 24px;
+  margin-left: 20px;
 }
 
-.missing-ingredients, .matched-ingredients {
-  display: inline-block;
-  width: 360px;
-  vertical-align: top;
-}
-
-
-.mobile-cta{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 30px 0;
-}
+// .mobile-cta{
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   margin: 30px 0;
+// }
 
 #title {
   margin: 0 0 16px 0;
-  font-size: 24px;
+  font-size: 16px;
   // position: sticky;
   top: 170px;
   text-align: center;
@@ -184,6 +172,11 @@
 
 .mobile-container {
   margin-top: 50px;
+}
+
+.ingredients-start-button {
+  // display: flex;
+  margin: 24px;
 }
 
 @media (max-width: 1000px) {
