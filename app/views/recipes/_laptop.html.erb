@@ -39,7 +39,7 @@
 
   <div class="item-c">
     <% @recipe.steps.each do |step| %>
-      <p><%= step.order %> - <%= step.content %></p>
+      <p><strong><%= step.order %></strong> - <%= step.content %></p>
     <% end %>
   </div>
 
