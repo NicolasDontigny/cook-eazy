@@ -6,8 +6,11 @@ const debugTyped = document.getElementById('banner-typed-text');
 const loadDynamicBannerText = () => {
     if (debugTyped) {
         new Typed(debugTyped, {
-            strings: ["EAT.^1600 LOVE.^1600 SAVE.^1600"],
-            typeSpeed: 30,
+            strings: ["Cook Delicious Meals^1600", "Stop Wasting Food^1600", "Follow Simple Recipes Step-by-Step^1600"],
+            typeSpeed: 60,
+            smartBackspace: true,
+            loop: ["Cook Delicious Meals^1600", "Stop Wasting Food^1600", "Follow Simple Recipes Step-by-Step^1600"],
+            loopCount: Infinity,
             fadeOut: true,
             backSpeed: 0,
             backDelay: 0,
