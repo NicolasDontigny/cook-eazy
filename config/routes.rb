@@ -41,6 +41,9 @@ Rails.application.routes.draw do
   get 'wishlist' => 'wishlist_items#index', as: :wishlist_items
   # get 'recipes/:recipe_id/wishlist' => 'wishlist_items#create', as: :new_wishlist_item
   post 'recipes/:recipe_id/wishlist' => 'wishlist_items#create', as: :new_wishlist_item
+  # empty fridge when done cooking
+  patch 'recipes/:recipe_id/done' => 'fridge_items#empty', as: :empty_fridge
+
 
   get '/test' => 'pages#test', as: :test
 end
