@@ -58,6 +58,7 @@
   border: 1px solid #6c757d;
 
   transition: 200ms ease;
+  font-size: 1.3rem;
 
   &:hover {
     color: #fff;
@@ -67,3 +68,9 @@
   }
 }
 
+.button-devise {
+  border-radius: 16px;
+  padding: 8px 16px;
+
+  border: none;
+}
