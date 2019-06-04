@@ -9,7 +9,7 @@
 
         <% grocery_items.each do |item| %>
           <% if category == item.ingredient.category %>
-          <% raise %>
+
             <div id="fridge-items-list" class="mt-3 fridge-items-list" data-item-id="<%= item.id %>">
                 <%= render "grocery_item", item: item %>
             </div>
