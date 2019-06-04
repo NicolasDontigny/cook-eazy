@@ -2,6 +2,19 @@
 .swal-modal {
   padding: 16px 16px 24px 16px;
   width: auto;
-  max-width: 600px;
+  max-width: 90vw;
 }
 
+@media (min-width: 576px) {
+  #swal-modal,
+  .swal-modal {
+    max-width: 500px;
+  }
+}
+
+@media (min-width: 800px) {
+  #swal-modal,
+  .swal-modal {
+    max-width: 600px;
+  }
+}

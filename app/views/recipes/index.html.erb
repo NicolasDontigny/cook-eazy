@@ -24,17 +24,34 @@
     </div>
 
 
-  <h2 class="mt-3">Recommendations</h2>
+  <h2 class="mt">Ready to Cook</h2>
 
   <div class="recipes-container mt-3">
 
     <% @recipes.each do |recipe| %>
 
-      <%#= link_to recipe_popup_path(recipe), class: "no-link", 'data-toggle': "modal", 'data-target': "#recipe-modal-#{recipe.id}" do %>
+      <% if recipe.missing_ingredients(current_user).empty? %>
 
         <%= render "recipe_card", recipe: recipe %>
 
-      <%# end %>
+      <% end %>
+
+    <% end %>
+
+  </div>
+
+
+  <h2 class="mt-3">Recipes for You</h2>
+
+  <div class="recipes-container mt-3">
+
+    <% @recipes.each do |recipe| %>
+
+      <% unless recipe.missing_ingredients(current_user).empty? %>
+
+        <%= render "recipe_card", recipe: recipe %>
+
+      <% end %>
 
     <% end %>
 
