@@ -1,8 +1,12 @@
 var insertItem = (itemHTML) => {
-  fridge_list = document.querySelector('.category-wrapper');
+  const id = <%= @fridge_item.id %>;
+  fridgeList = document.querySelector('.category-wrapper');
   grid = document.querySelector('.category-grid__wrapper');
   grid.remove();
-  fridge_list.insertAdjacentHTML("beforeend",itemHTML);
+  fridgeList.insertAdjacentHTML("beforeend",itemHTML);
+  newItem = document.querySelector(`.fridge-item-card-new[data-item-id='${id}']`);
+  newItem.style.opacity = 0;
+  setTimeout(() => { newItem.style.opacity = 1 }, 200);
 }
 
 insertItem('<%= j render("category_grid_wrapper", categories: @categories, fridge_items: @fridge_items) %>');

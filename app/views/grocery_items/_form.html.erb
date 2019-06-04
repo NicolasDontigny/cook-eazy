@@ -1,5 +1,8 @@
-<%= simple_form_for [user, grocery_item], url: 'grocery-list', remote: true do |form| %>
-  <%= form.association :ingredient, input_html: { class: "select2", multiple: false } %>
-  <%= form.input :quantity %>
-  <%= form.submit "Add Ingredient", class: "button button-main-green btn-grocery" %>
-<% end %>
+<button data-toggle="collapse" data-target="#form">Add an item <i class="fas fa-chevron-circle-down grocery-arrow"><span class="ingredient-name"></i></span></button>
+<div id="form" class="collapse">
+  <%= simple_form_for [user, grocery_item], url: 'grocery-list', remote: true do |form| %>
+    <%= form.association :ingredient, input_html: { class: "select2", multiple: false } %>
+    <%= form.input :quantity %>
+    <%= form.submit "Add Ingredient", class: "button button-main-green fridge-button" %>
+  <% end %>
+</div>
