@@ -43,9 +43,13 @@ class FridgeItemsController < ApplicationController
   end
 
   def empty
+    @recipe_ingredients = Recipe.find(params["recipe_id"].to_i).ingredients
     @recipe_ingredients.each do |ingredient|
-      @fridge_item = FridgeItem.where(ingredient: ingredient)
-      @fridge_item.destroy!
+      if !@fridge.nil?
+        if @fridge_item = FridgeItem.where(ingredient: ingredient)
+          @fridge_item.destroy!
+        end
+      end
     end
   end
 
