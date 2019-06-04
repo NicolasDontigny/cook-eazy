@@ -8,6 +8,37 @@
   }
 }
 
+.grocery__logo {
+  display: none;
+
+  @media (min-width: 668px) and (max-width: 768px) {
+    display: inline;
+    position: absolute;
+    left: 20%;
+    top: -125%;
+  }
+
+  @media (min-width: 769px) {
+    display: inline;
+  }
+}
+
+.grocery__logo--mobile {
+  display: none;
+  @media (max-width: 500px) {
+    display: inline;
+    position: absolute;
+    left: 0;
+    top: -60%;
+  }
+  @media (min-width: 501px) and (max-width: 667px) {
+    left: 15%;
+    display: inline;
+    position: absolute;
+    top: -60%;
+  }
+}
+
 .fridge-form > .simple_form.new_grocery_item {
   display: flex;
   flex-direction: column;
