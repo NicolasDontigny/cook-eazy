@@ -8,7 +8,7 @@ FridgeItem.destroy_all
 
 puts 'creating user'
 
-nic = User.create(
+nic = User.new(
   username: 'duck',
   password: '1'
 )
