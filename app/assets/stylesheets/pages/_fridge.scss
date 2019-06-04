@@ -2,13 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  @media (max-width: 500px) {
-    margin-top: 6rem;
-  }
+  margin-top: 6rem;
 
   @media (min-width: 900px) {
     justify-content: space-between;
+    margin-top: 4rem;
   }
 }
 
@@ -107,13 +105,13 @@
   }
 }
 
-.fridge-form--mobile {
+.fridge-form--desktop {
   display: none;
 }
 
-@media (max-width: 1000px) {
-  .fridge-form--mobile { display: flex; }
-  .fridge-form--desktop { display: none; }
+@media (min-width: 900px) {
+  .fridge-form--mobile { display: none; }
+  .fridge-form--desktop { display: flex; }
 }
 
 .fas.fa-chevron-circle-down.grocery-arrow {
