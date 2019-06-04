@@ -4,7 +4,7 @@
             <div class="d-flex justify-content-between">
                 <h2><%= @recipe.name %></h2>
                 <a data-remote="true" rel="nofollow" data-method="post" href="/recipes/1/wishlist/new">
-                <i class="fas fa-heart mr-5 add-to-wishlist"></i>
+                <i class="fas fa-heart add-to-wishlist"></i>
                 </a>
              </div>
 
@@ -39,23 +39,27 @@
         <%# Ingredient List %>
     <div class="ingredient-list-scroll">
         <div id="title">Ingredients</div>
-        <div class="mobile-ingredient-list">
-            <% @recipe.missing_ingredients(current_user).each do |recipe_item| %>
-                <div class="ingredient-red">
-                <i class="far fa-times-circle"></i>
-                <%= recipe_item.ingredient.name.capitalize %>
-                (need <%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %>)
+            <div class="mobile-ingredient-list">
+                <div class="missing-ingredients">
+                    <% @recipe.missing_ingredients(current_user).each do |recipe_item| %>
+                        <div class="ingredient-red">
+                            <i class="far fa-times-circle"></i>
+                            <%= recipe_item.ingredient.name.capitalize %>
+                            (need <%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %>)
+                        </div>
+                    <% end %>
                 </div>
-            <% end %>
-            <% @recipe.matching_ingredients(current_user).each do |recipe_item| %>
-                <div class="ingredient-green">
-                <i class="far fa-check-circle"></i>
-                <%= recipe_item.ingredient.name.capitalize %>
-                (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
+                <div class="matched-ingredients">
+                    <% @recipe.matching_ingredients(current_user).each do |recipe_item| %>
+                        <div class="ingredient-green">
+                            <i class="far fa-check-circle"></i>
+                            <%= recipe_item.ingredient.name.capitalize %>
+                            (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
+                        </div>
+                    <% end %>
                 </div>
-            <% end %>
+            </div>
         </div>
-
         <%# Start Button %>
         <div class='mobile-cta'>
             <div class="start-cooking-mobile">

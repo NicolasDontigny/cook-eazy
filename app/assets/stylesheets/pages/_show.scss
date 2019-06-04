@@ -9,12 +9,10 @@
   list-style: none;
 }
 
-
 .fade_in {
   opacity: 0;
   transition: opacity 1s ease-in;
 }
-
 
 .review-card {
   padding: 1.5rem 0;
@@ -22,7 +20,6 @@
   -webkit-transition: opacity 2000ms linear;
   transition: opacity 1000ms linear;
 }
-
 
 .review-header {
   img {
@@ -45,7 +42,6 @@
   margin-top: 1rem;
 }
 
-
 .review-content {
   margin-top: 1rem;
   font-size: 1rem;
@@ -53,7 +49,6 @@
     font-size: 1.5rem;
   }
 }
-
 
 /* sidebar ingredients list*/
 .item-a {
@@ -76,6 +71,8 @@
 /* Header with title,preptime,cooking time, servings*/
 .item-b {
   grid-area: header;
+  margin-left: 8px;
+  margin-right: 8px;
 
   .header-container {
     height: 230px;
@@ -87,6 +84,8 @@
   grid-area: steps;
   height: 50vh;
   margin: 13px;
+  margin-left: 8px;
+  margin-right: 8px;
   overflow: scroll;
 }
 
@@ -95,6 +94,8 @@
   grid-area: reviews;
   text-align: center;
   height: 50vh;
+  margin-left: 8px;
+  margin-right: 8px;
   // overflow: scroll;
 }
 .page-container {
@@ -132,7 +133,7 @@
 }
 
 .add-to-groc-button {
-  margin: 55px 35px 35px -35px;
+  margin: 55px 0px 35px 0px;
   text-align: center;
 }
 
@@ -145,13 +146,22 @@
   padding-left: 10px;
 }
 
+// Mobile version
 .mobile-ingredient-list {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-around;
+  // flex-wrap: wrap;
 }
 .start-cooking-mobile{
   margin-right: 10px;
 }
+
+.missing-ingredients, .matched-ingredients {
+  display: inline-block;
+  width: 360px;
+  vertical-align: top;
+}
+
 
 .mobile-cta{
   display: flex;
@@ -161,10 +171,11 @@
 }
 
 #title {
-  margin: 0 0 10px 41px;
+  margin: 0 0 16px 0;
   font-size: 24px;
   // position: sticky;
   top: 170px;
+  text-align: center;
 }
 
 .mobile-only {
@@ -173,8 +184,6 @@
 
 .mobile-container {
   margin-top: 50px;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 
 @media (max-width: 1000px) {
