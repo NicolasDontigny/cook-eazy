@@ -81,17 +81,25 @@
   }
 }
 
+
 .fridge-form {
   display: flex;
   flex-direction: column;
-  // align-items: center;
   justify-content: center;
+  align-items: center;
   margin-top: 1rem;
-  order: 3;
+  position: fixed;
+  background-color: white;
+  top: 50px;
+  left: 0;
+  z-index: 100;
+  padding-bottom: 1rem;
+  width: 100%;
 
   @media (min-width: 900px) {
-    order: -1;
+    position: static;
     justify-content: flex-start;
+    order: -1;
   }
 }
 
