@@ -58,8 +58,8 @@
 /* sidebar ingredients list*/
 .item-a {
   grid-area: ingredients;
-  /*height: 100vh;*/
-  /*overflow: scroll;*/
+  height: 100vh;
+  overflow: scroll;
   ul {
     // position: sticky;
     // top: 210px;
@@ -83,18 +83,18 @@
 
 /* List of steps*/
 .item-c {
-  grid-area: steps;
-  /*height: 50vh;*/
-  /*margin: 13px;*/
-  /*overflow: scroll;*/
+  // grid-area: steps;
+  height: 50vh;
+  margin: 13px;
+  overflow: scroll;
 }
 
 /* */
 .item-d {
   grid-area: reviews;
   text-align: center;
-  /*height: 50vh;*/
-  /*overflow: scroll;*/
+  height: 50vh;
+  overflow: scroll;
 }
 .page-container {
   width: 95vw;
@@ -102,7 +102,7 @@
   grid-column-gap: 30px;
   grid-row-gap: 30px;
   grid-template-columns: 28% 72%;
-  /*grid-template-rows: 1fr 1fr 1fr;*/
+  // grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas:
     "ingredients header"
     "ingredients steps"
@@ -118,28 +118,11 @@
   width: 270px;
 }
 
-/*.item-b {
-  &.recipe-image {
-    max-height:100%;
-    max-width:100%;
-    position: relative;
-
-    .add-to-wishlist {
-      position: absolute;
-      top:15px;
-      right:15px;
-      width: 32px;
-      height: 32px;
-
-      i {
-        position: absolute;
-        top:0px;
-        right:0px;
-      }
-    }
-  }
-}
-*/
+// .item-b {
+//   &.recipe-image {
+//     max-height:100%;
+//     max-width:100%;
+//     position: relative;
 
 .start-cooking {
   margin-top: 15px;
