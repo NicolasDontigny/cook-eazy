@@ -1,5 +1,5 @@
 .recipe-card-popup {
-  width: 50vw;
+  width: 100%;
   height: 90%;
 
   background: white;
@@ -14,6 +14,21 @@
 
   .header-container {
     border-radius: 5px 5px 0 0;
+  }
+
+  .missing-ingredients-container {
+    padding-bottom: 16px;
+  }
+
+  .recipe-reviews {
+    margin-top: 32px;
+    h4 {
+      margin: 0;
+    }
+
+    #reviews-list > li:last-child {
+      border-bottom: none;
+    }
   }
 
   .popup-ingredients-list {
@@ -97,3 +112,29 @@
   z-index: 500;
   cursor: pointer;
 }
+
+.modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 0.5rem;
+    pointer-events: none;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+      max-width: 550px;
+      margin: 1.75rem auto;
+  }
+
+  .recipe-card-popup {
+    .missing-ingredients-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: 1rem;
+      padding-bottom: 0px;
+    }
+  }
+
+}
+

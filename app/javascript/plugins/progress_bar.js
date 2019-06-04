@@ -17,7 +17,10 @@ var refreshBar = (event) => {
     var rightChevronDiv = document.querySelector('.fa-chevron-right').parentNode;
     var doneCookingButton = document.getElementById('done-cooking')
 
-    if (order == numberOfSteps) {
+    if (numberOfSteps == 1) {
+      doneCookingButton.style.visibility = "visible";
+    }
+    else if (order == numberOfSteps) {
       rightChevronDiv.style.visibility = "hidden";
       leftChevronDiv.style.visibility = "visible";
 
@@ -49,7 +52,17 @@ export var clickRightOrLeft = () => {
 
       }
 
+
     }, 1000)
 
+    var recipeStepsContainer = document.getElementById('recipe-steps');
+
+    var numberOfSteps = recipeStepsContainer.dataset.steps;
+    var doneCookingButton = document.getElementById('done-cooking')
+
+    if (numberOfSteps == 1) {
+      doneCookingButton.style.visibility = "visible";
+    }
   }
+
 }

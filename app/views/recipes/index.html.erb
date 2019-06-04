@@ -1,4 +1,6 @@
-<div class="container">
+<%= render "components/main_banner" %>
+
+<div class="container" id="recipes-container">
 
   <% if @wishlist_recipes.count.positive? %>
     <h2 class="wishlist-header">My Wishlist</h2>
@@ -24,13 +26,34 @@
     </div>
 
 
-  <h2 class="mt-3">Recommendations</h2>
+  <% unless @recipes_ready.empty? %>
+
+    <h2 class="mt">Ready to Cook</h2>
+
+    <div class="recipes-container mt-3">
+
+      <% @recipes_ready.each do |recipe| %>
+
+        <%# if recipe.missing_ingredients(current_user).empty? %>
+
+          <%= render "recipe_card", recipe: recipe %>
+
+        <% end %>
+
+      <%# end %>
+
+    </div>
+
+  <% end %>
+
+
+  <h2 class="mt-3">Recipes for You</h2>
 
   <div class="recipes-container mt-3">
 
-    <% @recipes.each do |recipe| %>
+    <% @recipes_not_ready.each do |recipe| %>
 
-      <%#= link_to recipe_popup_path(recipe), class: "no-link", 'data-toggle': "modal", 'data-target': "#recipe-modal-#{recipe.id}" do %>
+      <%# unless recipe.missing_ingredients(current_user).empty? %>
 
         <%= render "recipe_card", recipe: recipe %>
 

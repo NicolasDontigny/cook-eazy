@@ -8,8 +8,8 @@ FridgeItem.destroy_all
 
 puts 'creating user'
 
-nic = User.create(
-  email: 'nic@gmail.com',
+nic = User.new(
+  username: 'duck',
   password: '1'
 )
 

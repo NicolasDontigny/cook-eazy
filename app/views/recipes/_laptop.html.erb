@@ -43,22 +43,5 @@
     <% end %>
   </div>
 
-  <div class= "item-d recipe-reviews" >
-    <% if @reviews.empty? %>
-        <ul id="reviews-list" class="reviews-list">
-          <%= render "reviews/no_reviews" %>
-        </ul>
-    <% else %>
-      <h4>What users say about this recipe</h4>
-      <ul id="reviews-list" class="reviews-list">
-        <% @reviews.each do |review| %>
-          <%= render "reviews/show_opacity1", review: review %>
-        <% end %>
-      </ul>
-    <% end %>
-
-    <h4 class="specs__title">Leave a Review</h4>
-
-    <%= render "reviews/form", recipe: @recipe, review: Review.new %>
-  </div>
+  <%= render "components/reviews", recipe: @recipe, reviews: @reviews, form: true %>
 </div>

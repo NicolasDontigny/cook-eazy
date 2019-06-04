@@ -17,6 +17,9 @@ class RecipesController < ApplicationController
       end
     end
 
+    @recipes_not_ready = @recipes.select { |recipe| recipe.missing_ingredients(current_user).length.positive? }
+    @recipes_ready = @recipes.select { |recipe| recipe.missing_ingredients(current_user).empty? }
+
     # Give all the recipes in the current user's wishlist
     @wishlist_recipes = []
     WishlistItem.where(user: current_user).each do |wishlist_item|

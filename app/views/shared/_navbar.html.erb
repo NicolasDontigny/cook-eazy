@@ -12,7 +12,7 @@
   <div class="collapse navbar-collapse justify-content-between cookbar" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <%= link_to "Recipes", recipes_path, class: "nav-link" %>
+        <%= link_to "Recipes", recipes_path + "#recipes-container", class: "nav-link" %>
       </li>
       <li class="nav-item">
         <%= link_to "My Fridge", fridge_path, class: "nav-link" %>
@@ -24,6 +24,9 @@
 
       <ul class="navbar-nav mr-0">
         <% if user_signed_in? %>
+          <li class="nav-item">
+            <a href="" class="nav-link disabled">Welcome, <%= current_user.username || "" %>!</a>
+          </li>
           <li class="nav-item dropdown">
             <%= image_tag avatar_for(current_user), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
 
