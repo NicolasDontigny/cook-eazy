@@ -8,7 +8,8 @@
 
       <div class="category-wrapper">
 
-        <div class="fridge-form"><%= render "form" %></div>
+        <div class="fridge-form fridge-form--mobile"><%= render "form" %></div>
+        <div class="fridge-form fridge-form--desktop"><%= render "form-desktop" %></div>
 
         <%= render "category_grid_wrapper", categories: @categories, fridge_items: @fridge_items %>
 

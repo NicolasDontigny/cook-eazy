@@ -2,13 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  @media (max-width: 500px) {
-    margin-top: 6rem;
-  }
+  margin-top: 4rem;
 
   @media (min-width: 900px) {
     justify-content: space-between;
+    margin-top: 0;
   }
 }
 
@@ -105,6 +103,15 @@
     justify-content: flex-start;
     order: -1;
   }
+}
+
+.fridge-form--desktop {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .fridge-form--mobile { display: none; }
+  .fridge-form--desktop { display: flex; }
 }
 
 .fas.fa-chevron-circle-down.grocery-arrow {

@@ -8,7 +8,9 @@
 
       <div class="category-wrapper">
 
-        <div class="fridge-form"><%= render "form", user: current_user, grocery_item: GroceryItem.new %></div>
+        <div class="fridge-form fridge-form--mobile"><%= render "form", user: current_user, grocery_item: GroceryItem.new %></div>
+
+        <div class="fridge-form fridge-form--desktop"><%= render "form-desktop", user: current_user, grocery_item: GroceryItem.new %></div>
 
         <%= render "category_grid_wrapper", categories: @categories, grocery_items: @grocery_items %>
 
