@@ -107,6 +107,15 @@
   }
 }
 
+.fridge-form--mobile {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  .fridge-form--mobile { display: flex; }
+  .fridge-form--desktop { display: none; }
+}
+
 .fas.fa-chevron-circle-down.grocery-arrow {
   font-size: 1.3rem;
   color: $orange;
