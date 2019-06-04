@@ -7,13 +7,9 @@
       <% end %>
     <% else %>
       <%= link_to wishlist_item_path(recipe), method: :delete, remote: true do %>
-        <i class="fas fa-heart mr-3 add-to-wishlist"></i>
+        <i class="fas fa-heart add-to-wishlist"></i>
       <% end %>
     <% end %>
-  </div>
-
-  <div>
-    <%= render 'star_rating', recipe: recipe %>
   </div>
 
   <div class="header-recipe-details d-flex mt-2">
