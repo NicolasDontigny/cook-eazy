@@ -4,7 +4,7 @@
   <div class="ingredients-list col-3">
     <div id="title-step">Ingredients</div>
     <ul>
-      <% @recipe.missing_ingredients(@fridge_items).each do |recipe_item| %>
+      <% @recipe.missing_ingredients(current_user).each do |recipe_item| %>
         <li class="ingredient-red">
           <i class="far fa-times-circle"></i>
           <%= recipe_item.ingredient.name %>
@@ -12,7 +12,7 @@
         </li>
       <% end %>
 
-      <% @recipe.matching_ingredients(@fridge_items).each do |recipe_item| %>
+      <% @recipe.matching_ingredients(current_user).each do |recipe_item| %>
         <li class="ingredient-green">
           <i class="far fa-check-circle"></i>
           <%= recipe_item.ingredient.name %>
