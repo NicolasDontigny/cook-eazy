@@ -42,7 +42,6 @@
 .fridge-form > .simple_form.new_grocery_item {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .fridge-form .form-group.select.required.grocery_item_ingredient {
@@ -62,7 +61,7 @@
 
   .quantity {
     margin-left: 1rem;
-    width: 9rem;
+    width: 8rem;
     display: flex;
     flex-shrink: 0;
     justify-content: space-between;
