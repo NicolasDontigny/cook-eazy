@@ -61,11 +61,7 @@
   height: 100vh;
   overflow: scroll;
   ul {
-<<<<<<< HEAD
-    position: sticky;
-=======
     // position: sticky;
->>>>>>> bf11bb4baf390faf91d0ea9edbd1545b0a1f8dac
     // top: 210px;
   }
 
@@ -128,26 +124,6 @@
 //     max-width:100%;
 //     position: relative;
 
-<<<<<<< HEAD
-//     .add-to-wishlist {
-//       position: absolute;
-//       top:15px;
-//       right:15px;
-//       width: 32px;
-//       height: 32px;
-
-//       i {
-//         position: absolute;
-//         top:0px;
-//         right:0px;
-//       }
-//     }
-//   }
-// }
-
-
-=======
->>>>>>> bf11bb4baf390faf91d0ea9edbd1545b0a1f8dac
 .start-cooking {
   margin-top: 15px;
   margin-bottom: 15px;
@@ -190,10 +166,6 @@
   top: 170px;
 }
 
-<<<<<<< HEAD
-
-@media (max-width: 960px) {
-=======
 .mobile-only {
   display: none;
 }
@@ -205,7 +177,6 @@
 }
 
 @media (max-width: 1000px) {
->>>>>>> bf11bb4baf390faf91d0ea9edbd1545b0a1f8dac
   /* For a screen < 960px, this CSS will be read */
   .start-cooking {
     position: initial;
