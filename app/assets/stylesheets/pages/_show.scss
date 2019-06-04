@@ -59,6 +59,8 @@
 .item-a {
   grid-area: ingredients;
   height: 100vh;
+  padding: 16px;
+  line-height: 24px;
   overflow: scroll;
   ul {
     // position: sticky;
@@ -77,13 +79,12 @@
 
   .header-container {
     height: 230px;
-
   }
 }
 
 /* List of steps*/
 .item-c {
-  // grid-area: steps;
+  grid-area: steps;
   height: 50vh;
   margin: 13px;
   overflow: scroll;
@@ -94,7 +95,7 @@
   grid-area: reviews;
   text-align: center;
   height: 50vh;
-  overflow: scroll;
+  // overflow: scroll;
 }
 .page-container {
   width: 95vw;
@@ -125,8 +126,8 @@
 //     position: relative;
 
 .start-cooking {
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 24px;
+  margin-bottom: 24px;
   text-align: center;
 }
 
