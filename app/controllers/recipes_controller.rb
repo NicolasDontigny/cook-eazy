@@ -16,8 +16,17 @@ class RecipesController < ApplicationController
       @query = session[:query]
     end
 
-    @max_time = params[:time]
-    @category = params[:category]
+    if params[:max_time].present? && params[:category].present?
+      @max_time = params[:max_time]
+      @category = params[:category]
+      session[:max_time] = params[:max_time]
+      session[:category] = params[:category]
+    else
+      session[:max_time] = nil if params[:query].blank?
+      session[:category] = nil if params[:query].blank?
+      @max_time = session[:max_time]
+      @category = session[:category]
+    end
 
     if @query.present?
       @recipes = Recipe.search_by_name(@query)
