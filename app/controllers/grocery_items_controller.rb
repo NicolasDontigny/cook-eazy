@@ -150,9 +150,8 @@ class GroceryItemsController < ApplicationController
     filtered_categories = sorted_grocery_items.map do |item|
       item.ingredient.category
     end
-
     if filtered_categories.length > 1
-      filtered_categories.uniq!
+      filtered_categories.uniq
     else
       filtered_categories
     end

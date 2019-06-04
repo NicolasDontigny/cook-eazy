@@ -22,6 +22,9 @@
   }
 }
 
+.fridge__body {
+  width: 100%;
+}
 
 
 .category-wrapper {
@@ -69,11 +72,6 @@
   font-size: 1.3rem;
   list-style: none;
   padding: 0;
-  // line-height: 2;
-
-  i.checkbox {
-    margin-right: 0.5rem;
-  }
 
   .quantity {
     margin-left: 1rem;
@@ -96,13 +94,3 @@
 
 
 }
-
-.fas.fa-door-open {
-  color: $main-green;
-  font-size: 2rem;
-  margin-right: 1rem
-}
-
-// .new_grocery_item {
-//   box-sizing: border-box;
-// }

@@ -2,7 +2,6 @@ var deleteItem = () => {
   const id = <%= @grocery_item.id %>;
   grocery_item = document.querySelector(`.fridge-items-list[data-item-id='${id}']`);
   var categoryDiv = grocery_item.parentNode
-  grocery_item.style.opacity = 0;
   grocery_item.remove();
 
   if (!categoryDiv.querySelector("div")) {
@@ -10,4 +9,4 @@ var deleteItem = () => {
   }
 }
 
-setTimeout(() => { deleteItem() }, 500);
+deleteItem();
