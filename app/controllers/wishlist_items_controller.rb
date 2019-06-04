@@ -1,4 +1,6 @@
 class WishlistItemsController < ApplicationController
+  before_action :set_recipe, only: %i[create destroy]
+
   def index
     @wishlist_items = WishlistItem.where(user: current_user).order('created_at DESC')
   end
@@ -8,7 +10,6 @@ class WishlistItemsController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.find(params[:recipe_id])
     @wishlist_item = WishlistItem.new
     @wishlist_item.user = current_user
 
@@ -28,5 +29,24 @@ class WishlistItemsController < ApplicationController
         format.js { render 'new_wishlist_item_exists.js.erb' }
       end
     end
+  end
+
+  def destroy
+    @wishlist_item = WishlistItem.find_by(recipe: @recipe)
+
+    @wishlist_item.destroy
+
+    @wishlist_empty = WishlistItem.all.empty?
+
+    respond_to do |format|
+      format.html { redirect_to recipes_path }
+      format.js { render 'remove_wishlist_item.js.erb' }
+    end
+  end
+
+  private
+
+  def set_recipe
+    @recipe = Recipe.find(params[:recipe_id])
   end
 end

@@ -1,0 +1,25 @@
+var removeWishlistRecipe = (recipeId) => {
+
+  var wishlistLinks = document.querySelectorAll('.wishlist-link');
+
+  if (wishlistLinks.length > 1) {
+    window.unslick();
+  }
+
+  setTimeout(() => {
+    if (<%= @wishlist_empty %>) {
+      var wishlistHeader = document.querySelector('.wishlist-header')
+      wishlistHeader.classList.add("hidden");
+    }
+
+    var wishlistLink = document.querySelector(`.recipe-card[data-recipe-id="${recipeId}"]`).parentNode;
+
+    wishlistLink.remove();
+
+    window.slick();
+  }, 200)
+
+
+}
+
+removeWishlistRecipe(<%= @recipe.id %>)

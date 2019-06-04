@@ -9,19 +9,16 @@ class GroceryItemsController < ApplicationController
 
   def add
     @recipe = Recipe.find(params[:recipe_id])
-    @fridge_items = FridgeItem.where(user: current_user)
-    @missing_ingredients = @recipe.missing_ingredients(@fridge_items)
-    @insufficient_ingredients = @recipe.insufficient_ingredients(@fridge_items)
+    @missing_ingredients = @recipe.missing_ingredients(current_user)
 
     @missing_ingredients.each do |recipe_item|
       add_item_to_grocery_list(recipe_item)
     end
 
-    @insufficient_ingredients.each do |recipe_item|
-      add_item_to_grocery_list(recipe_item)
+    respond_to do |format|
+      format.html { redirect_to recipes_path }
+      format.js { render 'add.js.erb' }
     end
-
-    redirect_to grocery_items_path
   end
 
   def create
