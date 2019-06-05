@@ -40,7 +40,7 @@
   margin-right: 10px;
 
   .header-container {
-    max-height: 230px;
+    max-height: 260px;
   }
 }
 
@@ -50,7 +50,7 @@
   margin-right: 10px;
   width: 100%;
   .header-container {
-    max-height: 260px;
+    max-height: 230px;
   }
 }
 
@@ -102,8 +102,7 @@
 //     position: relative;
 
 .start-cooking {
-  margin-top: 24px;
-  margin-bottom: 24px;
+  margin: 24px auto 0 auto;
   text-align: center;
 }
 
@@ -145,6 +144,14 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+#title {
+  margin: 8px 0 8px 0;
+  font-size: 16px;
+  // position: sticky;
+  top: 170px;
+  text-align: center;
+} 
 
 #ingredient-title {
   margin: 8px 0 8px 0;
