@@ -16,7 +16,13 @@
         <% end %>
       </div>
 
-          <%= render "star_rating", recipe: @recipe %>
+      <div class="reviews-stars-and-text-container">
+        <div class="d-flex align-items-center">
+          <%= render 'star_rating', recipe: @recipe %>
+          <%= link_to "Leave a Review", recipe_path(@recipe) + "#leave-a-review", class: "ml-2" %>
+        </div>
+      </div>
+
 
       <div class="header-recipe-details d-flex mt-2">
         <span class="">
@@ -47,5 +53,5 @@
     <% end %>
   </div>
 
-  <%= render "components/reviews", recipe: @recipe, form: true, show_page: true %>
+  <%= render "components/reviews", recipe: @recipe, form: true, show_page: true, mobile: false %>
 </div>
