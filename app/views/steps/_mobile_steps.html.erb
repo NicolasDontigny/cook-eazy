@@ -1,0 +1,56 @@
+
+<div class="steps-header">
+  <img src="<%= @recipe.photo %>" alt="">
+  <h1><%= @recipe.name %></h1>
+</div>
+<div id="progress-bar" class="d-flex">
+    <%# @recipe.steps.each do |step| %>
+   <!--  <div class="progress-fraction flex-grow-1">
+
+    </div> -->
+  <%# end %>
+  <%= render "progress_bar", recipe: @recipe %>
+</div>
+<div id="recipe-steps" data-steps="<%= @steps.count %>" class="recipe-steps d-flex align-items-center">
+  <% @steps.each do |step| %>
+
+    <div class="recipe-step text-center">
+      <span class="recipe-order"><%= step.order %></span> - <%= step.content %>
+      <% if step == @steps.last %>
+      <!-- <div id="done-cooking" class="mt-3">
+        <button class="button button-main-red">Done Cooking!</button>
+      </div> -->
+      <% end %>
+    </div>
+
+  <% end %>
+</div>
+<div id='steps-dots' class="text-center d-flex justify-content-center"></div>
+
+
+
+<div id="done-cooking" class="mt-3" style="text-align: center;display: none;">
+  <% @recipe_ingredients = @recipe.ingredients %>
+  <% #raise %>
+  <%= link_to "Done Cooking", empty_fridge_path(@recipe), method: :patch, class: "button button-main-red button-center button-lg" %>
+</div>
+<div class="ingredients-list">
+    <div id="title-step">Ingredients</div>
+    <ul>
+      <% @recipe.missing_ingredients(current_user).each do |recipe_item| %>
+        <li class="ingredient-red">
+          <i class="far fa-times-circle"></i>
+          <%= recipe_item.ingredient.name %>
+          (need <%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %>)
+        </li>
+      <% end %>
+
+      <% @recipe.matching_ingredients(current_user).each do |recipe_item| %>
+        <li class="ingredient-green">
+          <i class="far fa-check-circle"></i>
+          <%= recipe_item.ingredient.name %>
+          (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
+        </li>
+      <% end %>
+    </ul>
+  </div>

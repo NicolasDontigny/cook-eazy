@@ -46,6 +46,18 @@ class GroceryItemsController < ApplicationController
     render_refresh_js
   end
 
+  def check_all
+    @grocery_items = GroceryItem.where(user: current_user)
+
+    if @grocery_items.all? { |grocery_item| grocery_item.checked == true }
+      @grocery_items.update(checked: false)
+    else
+      @grocery_items.update(checked: true)
+    end
+
+    render_refresh_all_js
+  end
+
   def decrease
     @grocery_item.quantity -= 1 unless @grocery_item.quantity == 1
 
@@ -111,6 +123,13 @@ class GroceryItemsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to grocery_items_path }
       format.js { render 'refresh_item.js.erb' }
+    end
+  end
+
+  def render_refresh_all_js
+    respond_to do |format|
+      format.html { redirect_to grocery_items_path }
+      format.js { render 'refresh_all_items.js.erb' }
     end
   end
 

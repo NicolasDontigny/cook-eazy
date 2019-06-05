@@ -1,0 +1,16 @@
+var refreshItem = (itemHTML, checkboxHTML, id) => {
+  grocery_item = document.querySelector(`li[data-item-id='${id}']`)
+  grocery_item.insertAdjacentHTML("afterend", itemHTML);
+  grocery_item.remove();
+
+  const checkbox = document.querySelector(`a[data='checkbox']`);
+  checkbox.insertAdjacentHTML("afterend", checkboxHTML);
+  checkbox.remove();
+}
+
+
+<% @grocery_items.each do |grocery_item| %>
+
+  refreshItem('<%= j render "grocery_item", item: grocery_item %>', '<%= j render "checkbox", grocery_items: @grocery_items %>', <%= grocery_item.id %>);
+
+<% end %>

@@ -14,7 +14,6 @@
 
         <%= render "category_grid_wrapper", categories: @categories, grocery_items: @grocery_items %>
 
-
       </div> <!-- end of category wrapper -->
 
       <%= link_to "Update Grocery List", grocery_items_path, method: :patch, class: "button button-main-red button-center button-lg btn-update-groceries", id: "update-grocery", remote: true %>

@@ -1,42 +1,38 @@
-<div id="search-filters" class="d-flex align-items-center">
-  <%= form_tag recipes_path + "#browse-recipes-top", class: "mr-3 search-form form-inline", method: :get do %>
-  <div class="form-group mr-3">
-    <label for="max_time" class="mr-2">Maximum Time</label>
-    <select name="max_time" id="max_time" class="form-control">
-      <!-- <%# if @max_time %>
-        <option value="nil" selected="selected" disabled><%= @max_time %></option>
-      <%# end %>
-      <option value="no-limit">No limit</option>
-      <option value="15">15 minutes</option>
-      <option value="30">30 minutes</option>
-      <option value="45">45 minutes</option>
-      <option value="60">1 hour</option> -->
-      <%= options_for_select([['No limit', 'no-limit'], ['15 minutes', 15], ['30 minutes', 30], ['45 minutes', 45],['1 hour', 60]], max_time) %>
-    </select>
-  </div>
-  <div class="form-group mr-3">
-    <label for="category" class="mr-2">Category</label>
-    <select name="category" id="category" class="form-control">
-      <option value="all">All</option>
-      <option value="breakfast">Breakfast</option>
-      <option value="lunch">Lunch</option>
-      <option value="dinner">Dinner</option>
-      <option value="snack">Snack</option>
-    </select>
+<div id="filters-container">
+  <!-- <button id="toggle-filters" type="button" data-toggle="collapse" data-target="#search-filters" aria-expanded="false" aria-controls="search-filters">FILTERS</button> -->
+
+  <div id="toggle-filters" >
+    <button type="button"><i class="fas fa-sliders-h"></i></button>
   </div>
 
-    <button type="submit" class="btn btn-primary">Filter</button>
-  <% end %>
-</div>
+  <div id="search-filters" class="d-flex align-items-center filters-collapsed">
+    <%= form_tag recipes_path + "#browse-recipes-top", class: "mr-3 search-form form-inline", method: :get do %>
+    <div class="form-group mr-3">
+      <label for="max_time" class="mr-2">Max Time</label>
+      <select name="max_time" id="max_time" class="form-control">
+        <!-- <%# if @max_time %>
+          <option value="nil" selected="selected" disabled><%= @max_time %></option>
+        <%# end %>
+        <option value="no-limit">No limit</option>
+        <option value="15">15 minutes</option>
+        <option value="30">30 minutes</option>
+        <option value="45">45 minutes</option>
+        <option value="60">1 hour</option> -->
+        <%= options_for_select([['No limit', 'no-limit'], ['15 minutes', 15], ['30 minutes', 30], ['45 minutes', 45],['1 hour', 60]], max_time) %>
+      </select>
+    </div>
+    <div class="form-group mr-3">
+      <label for="category" class="mr-2">Category</label>
+      <select name="category" id="category" class="form-control">
+        <option value="all">All</option>
+        <option value="breakfast">Breakfast</option>
+        <option value="lunch">Lunch</option>
+        <option value="dinner">Dinner</option>
+        <option value="snack">Snack</option>
+      </select>
+    </div>
 
-<div style="display: none">
-  <%= form_tag recipes_path + "#browse-recipes-top", class: "mr-3 search-form", method: :get do %>
-    <label for="time">Minimum Time</label>
-    <%= check_box_tag 'time', class: 'minimum-time-checkbox' %>
-
-    <label for="category" class="ml-3">Category</label>
-    <%= check_box_tag 'category', class: 'category-checkbox' %>
-
-    <button type="submit" class="btn btn-primary">Filter</button>
-  <% end %>
+      <button type="submit" class="btn btn-primary" id="filter-button">Filter</button>
+    <% end %>
+  </div>
 </div>
