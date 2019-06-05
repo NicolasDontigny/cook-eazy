@@ -11,7 +11,12 @@
       <% end %>
     </ul>
   <% end %>
-  <div id="leave-a-review">
+
+  <% if mobile %>
+    <div id="leave-a-review-mobile">
+  <% else %>
+    <div id="leave-a-review">
+  <% end %>
     <% if form %>
 
       <h4 class="specs__title">Leave a Review</h4>
