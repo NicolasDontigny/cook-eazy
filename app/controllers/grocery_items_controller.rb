@@ -48,14 +48,12 @@ class GroceryItemsController < ApplicationController
 
   def check_all
     @grocery_items = GroceryItem.where(user: current_user)
-    # debugger
-    # if @grocery_items.all? { |grocery_item| grocery_item.checked == true }
-    #   @grocery_items.update_all(checked: false)
-    # else
-    #   @grocery_items.update_all(checked: true)
-    # end
 
-    @grocery_items.update_all(checked: true)
+    if @grocery_items.all? { |grocery_item| grocery_item.checked == true }
+      @grocery_items.update(checked: false)
+    else
+      @grocery_items.update(checked: true)
+    end
 
     render_refresh_all_js
   end
