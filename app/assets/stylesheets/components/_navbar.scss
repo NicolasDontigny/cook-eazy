@@ -50,3 +50,68 @@
 .nav-item .avatar {
   cursor: pointer;
 }
+
+
+.navbar-collapse {
+  display: flex;
+  align-items: flex-start;
+
+  ul {
+    align-items: flex-start;
+  }
+}
+
+.nav-item.dropdown a {
+  margin-right: 8px;
+}
+
+.search-form {
+      margin-right: 0 !important;
+}
+
+#navbar-search-bar {
+  display: block;
+}
+
+#collapse-search-bar {
+  display: none;
+}
+
+.nav-item.dropdown {
+  display: none !important;
+}
+
+.dropdown-mobile {
+  text-align: right;
+
+  a {
+    padding: 8px 0;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .nav-item.dropdown a {
+    margin-right: 0;
+  }
+
+  .search-form {
+        margin-right: 1rem !important;
+  }
+
+  #navbar-search-bar {
+    display: none;
+  }
+
+  #collapse-search-bar {
+    display: block;
+  }
+
+  .dropdown-mobile {
+    display: none;
+  }
+
+  .nav-item.dropdown {
+    display: flex !important;
+  }
+}
