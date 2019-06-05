@@ -1,59 +1,48 @@
 <div class="mobile-container">
-    <div class="item-b">
-        <div class="d-flex flex-column header-container" style="background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(<%= @recipe.photo %>);">
+    <div class="mobile-item-b">
+        <div class="d-flex flex-column header-container" style="background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url(<%= @recipe.photo %>);">
             <div class="d-flex justify-content-between">
                 <h2><%= @recipe.name %></h2>
-
-                <% if WishlistItem.where(recipe: @recipe).empty? %>
-                  <%= link_to wishlist_item_path(@recipe), method: :post, remote: true do %>
-                    <i class="far fa-heart mr-3 add-to-wishlist-empty"></i>
-                  <% end %>
-                <% else %>
-                  <%= link_to wishlist_item_path(@recipe), method: :delete, remote: true do %>
-                    <i class="fas fa-heart mr-3 add-to-wishlist"></i>
-                  <% end %>
-                <% end %>
-
+                <a data-remote="true" rel="nofollow" data-method="post" href="/recipes/1/wishlist/new">
+                <i class="fas fa-heart add-to-wishlist"></i>
+                </a>
              </div>
 
-            <div>
-                <br><div class="rating-stars no-reviews color-main-red">
-                </div>
-            </div>
+                <%= render "star_rating", recipe: @recipe %>
 
             <div class="header-recipe-details d-flex mt-2">
-            <span class="">
-                <strong class=" header-text-bigger">Prep Time</strong>
-                <%= @recipe.prep_time %>
-            </span>
+                <span class="">
+                    <strong class="header-text-bigger">Prep Time</strong>
+                    <%= @recipe.prep_time %>
+                </span>
 
-            <span class="mx-2">|</span>
+                <span class="mx-2 line">|</span>
 
-            <span class="">
-                <strong class=" header-text-bigger">Cooking Time</strong>
-                <%= @recipe.cook_time %>
-            </span>
+                <span class="">
+                    <strong class=" header-text-bigger">Cooking Time</strong>
+                    <%= @recipe.cook_time %>
+                </span>
 
-            <span class="mx-2">|</span>
+                <span class="mx-2 line">|</span>
 
-            <span class="">
-                <strong class="header-text-bigger">Servings</strong>
-                <%= @recipe.servings %>
-            </span>
+                <span class="">
+                  <strong class="header-text-bigger">Servings</strong>
+                  <%= @recipe.servings %>
+                </span>
+            </div>
+            <%# Start Button %>
+            <div class="start-cooking-mobile">
+                <a class="button button-main-red" id="show-page-button" href="/recipes/<%= @recipe.id %>/steps">Start Cooking</a>
             </div>
         </div>
     </div>
 
-    <%# Start Button %>
-    <div class="start-cooking-mobile">
-        <a class="button button-main-red" id="show-page-button" href="/recipes/<%= @recipe.id %>/steps">Start Cooking</a>
-    </div>
 
         <%# Ingredient List %>
     <div class="ingredients-start-button">
-        <div id="title" class="btn btn-outline-success" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Ingredients</div>
+        <div id="ingredient-title" class="btn btn-outline-success" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Ingredients</div>
             <div class="mobile-ingredient-list collapse" id="collapseExample">
-                <div class="card-body">
+                <div class="card card-body">
                     <div class="missing-ingredients">
                         <% @recipe.missing_ingredients(current_user).each do |recipe_item| %>
                             <div class="ingredient-red">
@@ -71,10 +60,10 @@
                                 (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
                             </div>
                         <% end %>
-                    </div>
-                </div>
-                <div>
-                    <a class="button button-main-green" rel="nofollow" data-method="post" href="/recipes/<%= @recipe.id %>/add-to-grocery">Add to Grocery List</a>
+                    </div><br>
+                    <div class="collapsed-grocery-button">
+                        <a class="button button-main-green" rel="nofollow" data-method="post" href="/recipes/<%= @recipe.id %>/add-to-grocery">Add to Grocery List</a>
+                    </div><br>
                 </div>
             </div>
         </div>
@@ -88,5 +77,22 @@
     </div>
 
     <%# Reviews %>
-    <%= render "components/reviews", recipe: @recipe, reviews: @reviews, form: true %>
+    <div class= "item-d recipe-reviews" >
+        <% if @reviews.empty? %>
+            <ul id="reviews-list" class="reviews-list">
+                <%= render "reviews/no_reviews" %>
+            </ul>
+        <% else %>
+            <h4>What users say about this recipe</h4>
+            <ul id="reviews-list" class="reviews-list">
+            <% @reviews.each do |review| %>
+                <%= render "reviews/show_opacity1", review: review %>
+            <% end %>
+            </ul>
+        <% end %>
+
+        <h4 class="specs__title">Leave a Review</h4>
+
+        <%= render "reviews/form", recipe: @recipe, review: Review.new %>
+    </div>
 </div>
