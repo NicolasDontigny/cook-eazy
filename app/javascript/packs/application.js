@@ -13,6 +13,7 @@ import { initSelect2 } from '../plugins/init_select2';
 import { clickRightOrLeft } from '../plugins/progress_bar';
 import { addEventToHearts } from '../plugins/heart_icon';
 import 'select2/dist/css/select2.css';
+import { addClickEventToStars } from '../plugins/ratings';
 
 // import { recipePopup } from '../plugins/recipe_popup'
 // import { closeButton } from '../plugins/close_button'
@@ -33,21 +34,4 @@ clickRightOrLeft();
 
 addEventToHearts();
 
-// clickOnRecipeCard();
-
-
-$(document).ready(function(){
-    // Check Radio-box
-    $(".rating input:radio").attr("checked", false);
-
-    $('.rating input').click(function () {
-        $(".rating span").removeClass('checked');
-        $(this).parent().addClass('checked');
-    });
-
-    $('input:radio').change(
-      function(){
-        var userRating = this.value;
-        alert(userRating);
-    });
-});
+addClickEventToStars();

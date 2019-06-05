@@ -1,6 +1,8 @@
 function refreshForm(innerHTML) {
   const newReviewForm = document.getElementById('new_review'); // id provided by simple_form
   newReviewForm.innerHTML = innerHTML;
+
+  window.addClickEventToStars();
 }
 
 function addReview(reviewHTML) {
