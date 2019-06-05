@@ -83,7 +83,11 @@
     <div class= "item-d recipe-reviews" >
         <% if @reviews.empty? %>
             <ul id="reviews-list" class="reviews-list">
-                <%= render "reviews/no_reviews" %>
+              <li>
+                <div class="no-reviews border-top">
+                    <br>There are no reviews yet for this recipe. Be the first to leave one!
+                </div>
+              </li>
             </ul>
         <% else %>
             <h4>What users say about this recipe</h4>
@@ -94,8 +98,10 @@
             </ul>
         <% end %>
 
-        <h4 class="specs__title">Leave a Review</h4>
+        <div id="leave-a-review">
+          <h4 class="specs__title">Leave a Review</h4>
 
-        <%= render "reviews/form", recipe: @recipe, review: Review.new %>
+          <%= render "reviews/form", recipe: @recipe, review: Review.new %>
+        </div>
     </div>
 </div>

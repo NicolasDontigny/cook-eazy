@@ -4,7 +4,7 @@
 <div class= "item-d recipe-reviews" >
   <% if recipe.reviews.empty? %>
       <ul id="reviews-list" class="reviews-list">
-        <%= render "reviews/no_reviews" %>
+        <%= render "reviews/no_reviews", recipe: recipe %>
       </ul>
   <% else %>
     <h4>What users say about this recipe</h4>
@@ -14,12 +14,13 @@
       <% end %>
     </ul>
   <% end %>
+  <div id="leave-a-review">
+    <% if form %>
 
-  <% if form %>
+      <h4 class="specs__title">Leave a Review</h4>
 
-    <h4 class="specs__title">Leave a Review</h4>
+      <%= render "reviews/form", recipe: recipe, review: Review.new %>
 
-    <%= render "reviews/form", recipe: recipe, review: Review.new %>
-
-  <% end %>
+    <% end %>
+  </div>
 </div>
