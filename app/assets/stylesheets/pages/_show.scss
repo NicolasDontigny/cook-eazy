@@ -38,10 +38,7 @@
   grid-area: header;
   margin-left: 10px;
   margin-right: 10px;
-
-  .header-container {
-    max-height: 260px;
-  }
+  max-height: 260px;
 }
 
 .mobile-item-b {
@@ -50,7 +47,7 @@
   margin-right: 10px;
   width: 100%;
   .header-container {
-    max-height: 260px;
+    max-height: 300px;
   }
 }
 
