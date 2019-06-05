@@ -5,15 +5,9 @@
     <div class="d-flex flex-column header-container" style="background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(<%= @recipe.photo %>);">
       <div class="d-flex justify-content-between">
         <h2><%= @recipe.name %></h2>
-        <% if WishlistItem.where(recipe: @recipe).empty? %>
-          <%= link_to wishlist_item_path(@recipe), method: :post, remote: true do %>
-            <i class="far fa-heart mr-3 add-to-wishlist-empty"></i>
-          <% end %>
-        <% else %>
-          <%= link_to wishlist_item_path(@recipe), method: :delete, remote: true do %>
-            <i class="fas fa-heart mr-3 add-to-wishlist"></i>
-          <% end %>
-        <% end %>
+        <a data-remote="true" rel="nofollow" data-method="post" href="/recipes/1/wishlist/new">
+          <i class="fas fa-heart add-to-wishlist"></i>
+        </a>
       </div>
 
       <div>
@@ -49,5 +43,22 @@
     <% end %>
   </div>
 
-  <%= render "components/reviews", recipe: @recipe, reviews: @reviews, form: true %>
+  <div class= "item-d recipe-reviews" >
+    <% if @reviews.empty? %>
+        <ul id="reviews-list" class="reviews-list">
+          <%= render "reviews/no_reviews" %>
+        </ul>
+    <% else %>
+      <h4>What users say about this recipe</h4>
+      <ul id="reviews-list" class="reviews-list">
+        <% @reviews.each do |review| %>
+          <%= render "reviews/show_opacity1", review: review %>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <h4 class="specs__title">Leave a Review</h4>
+
+    <%= render "reviews/form", recipe: @recipe, review: Review.new %>
+  </div>
 </div>
