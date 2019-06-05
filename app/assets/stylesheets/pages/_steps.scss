@@ -20,6 +20,12 @@
       border-radius: 0;
       width: 100%;
     }
+    @media (min-width: 800px) {
+      height: 100%;
+    }
+    @media (min-width: 800px) {
+      display: flex;
+    }
   }
   h1{
     padding-left: 30px;
