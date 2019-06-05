@@ -1,0 +1,12 @@
+var refreshItem = (itemHTML, id) => {
+  grocery_item = document.querySelector(`li[data-item-id='${id}']`)
+  grocery_item.insertAdjacentHTML("afterend", itemHTML);
+  grocery_item.remove();
+}
+
+
+<% @grocery_items.each do |grocery_item| %>
+
+  refreshItem('<%= j render "grocery_item", item: grocery_item %>', <%= grocery_item.id %>);
+
+<% end %>

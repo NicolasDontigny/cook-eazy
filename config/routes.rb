@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   # Grocery Lists Routes
   get 'grocery-list' => 'grocery_items#index', as: :grocery_items
   post 'grocery-list' => 'grocery_items#create', as: :new_grocery_item
+  patch 'grocery-list/check-all' => 'grocery_items#check_all', as: :check_all_grocery_items
   patch 'grocery-list/:id/check' => 'grocery_items#check', as: :check_grocery_item
   patch 'grocery-list/:id/uncheck' => 'grocery_items#uncheck', as: :uncheck_grocery_item
   patch 'grocery-list/:id/increase' => 'grocery_items#increase', as: :increase_grocery_item
