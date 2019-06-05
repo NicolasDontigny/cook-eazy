@@ -9,12 +9,10 @@
   list-style: none;
 }
 
-
 .fade_in {
   opacity: 0;
   transition: opacity 1s ease-in;
 }
-
 
 
 /* sidebar ingredients list*/
@@ -38,6 +36,8 @@
 /* Header with title,preptime,cooking time, servings*/
 .item-b {
   grid-area: header;
+  margin-left: 8px;
+  margin-right: 8px;
 
   .header-container {
     height: 230px;
@@ -47,8 +47,10 @@
 /* List of steps*/
 .item-c {
   grid-area: steps;
-  height: 50vh;
+  // height: 50vh;
   margin: 13px;
+  margin-left: 8px;
+  margin-right: 8px;
   overflow: scroll;
 }
 
@@ -57,13 +59,15 @@
   grid-area: reviews;
   text-align: center;
   height: 50vh;
+  margin-left: 8px;
+  margin-right: 8px;
   // overflow: scroll;
 }
 .page-container {
   width: 95vw;
   display: grid;
-  grid-column-gap: 30px;
-  grid-row-gap: 30px;
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
   grid-template-columns: 28% 72%;
   // grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas:
@@ -94,7 +98,7 @@
 }
 
 .add-to-groc-button {
-  margin: 55px 35px 35px -35px;
+  margin: 55px 0px 35px 0px;
   text-align: center;
 }
 
@@ -107,26 +111,24 @@
   padding-left: 10px;
 }
 
-.mobile-ingredient-list {
-  display: flex;
-  flex-wrap: wrap;
-}
 .start-cooking-mobile{
-  margin-right: 10px;
+  margin-top: 24px;
+  margin-left: 20px;
 }
 
-.mobile-cta{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 30px 0;
-}
+// .mobile-cta{
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   margin: 30px 0;
+// }
 
 #title {
-  margin: 0 0 10px 41px;
-  font-size: 24px;
+  margin: 0 0 16px 0;
+  font-size: 16px;
   // position: sticky;
   top: 170px;
+  text-align: center;
 }
 
 .mobile-only {
@@ -135,8 +137,11 @@
 
 .mobile-container {
   margin-top: 50px;
-  margin-left: 10px;
-  margin-right: 10px;
+}
+
+.ingredients-start-button {
+  // display: flex;
+  margin: 24px;
 }
 
 @media (max-width: 1000px) {

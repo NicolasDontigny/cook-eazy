@@ -3,6 +3,7 @@
         <div class="d-flex flex-column header-container" style="background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(<%= @recipe.photo %>);">
             <div class="d-flex justify-content-between">
                 <h2><%= @recipe.name %></h2>
+
                 <% if WishlistItem.where(recipe: @recipe).empty? %>
                   <%= link_to wishlist_item_path(@recipe), method: :post, remote: true do %>
                     <i class="far fa-heart mr-3 add-to-wishlist-empty"></i>
@@ -12,6 +13,7 @@
                     <i class="fas fa-heart mr-3 add-to-wishlist"></i>
                   <% end %>
                 <% end %>
+
              </div>
 
             <div>
@@ -42,33 +44,38 @@
         </div>
     </div>
 
-        <%# Ingredient List %>
-    <div class="ingredient-list-scroll">
-        <div id="title">Ingredients</div>
-        <div class="mobile-ingredient-list">
-            <% @recipe.missing_ingredients(current_user).each do |recipe_item| %>
-                <div class="ingredient-red">
-                <i class="far fa-times-circle"></i>
-                <%= recipe_item.ingredient.name.capitalize %>
-                (need <%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %>)
-                </div>
-            <% end %>
-            <% @recipe.matching_ingredients(current_user).each do |recipe_item| %>
-                <div class="ingredient-green">
-                <i class="far fa-check-circle"></i>
-                <%= recipe_item.ingredient.name.capitalize %>
-                (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
-                </div>
-            <% end %>
-        </div>
+    <%# Start Button %>
+    <div class="start-cooking-mobile">
+        <a class="button button-main-red" id="show-page-button" href="/recipes/<%= @recipe.id %>/steps">Start Cooking</a>
+    </div>
 
-        <%# Start Button %>
-        <div class='mobile-cta'>
-            <div class="start-cooking-mobile">
-                <a class="button button-main-red" id="show-page-button" href="/recipes/<%= @recipe.id %>/steps">Start Cooking</a>
-            </div>
-            <div>
-                <a class="button button-main-green" rel="nofollow" data-method="post" href="/recipes/<%= @recipe.id %>/add-to-grocery">Add to Grocery List</a>
+        <%# Ingredient List %>
+    <div class="ingredients-start-button">
+        <div id="title" class="btn btn-outline-success" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Ingredients</div>
+            <div class="mobile-ingredient-list collapse" id="collapseExample">
+                <div class="card-body">
+                    <div class="missing-ingredients">
+                        <% @recipe.missing_ingredients(current_user).each do |recipe_item| %>
+                            <div class="ingredient-red">
+                                <i class="far fa-times-circle"></i>
+                                <%= recipe_item.ingredient.name.capitalize %>
+                                (need <%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %>)
+                            </div>
+                        <% end %>
+                    </div>
+                    <div class="matched-ingredients">
+                        <% @recipe.matching_ingredients(current_user).each do |recipe_item| %>
+                            <div class="ingredient-green">
+                                <i class="far fa-check-circle"></i>
+                                <%= recipe_item.ingredient.name.capitalize %>
+                                (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+                <div>
+                    <a class="button button-main-green" rel="nofollow" data-method="post" href="/recipes/<%= @recipe.id %>/add-to-grocery">Add to Grocery List</a>
+                </div>
             </div>
         </div>
     </div>
