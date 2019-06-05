@@ -3,7 +3,7 @@
   background-position: center;
   // border-radius: 5px 5px 5px 5px;
   width: 100%;
-  // height: auto;
+  height: auto;
   padding: 24px;
 
   h1, h2 {
@@ -36,7 +36,7 @@
 
 .header-recipe-details {
   display: flex;
-  // flex-direction: column;
+  flex-direction: column;
   line-height: 1.5;
 
   .line {
@@ -45,12 +45,12 @@
 }
 
 @media (min-width: 576px) {
-.header-recipe-details {
-  flex-direction: row;
+  .header-recipe-details {
+    flex-direction: row;
 
   .line {
     display: block;
+   }
   }
-}
 }
 
