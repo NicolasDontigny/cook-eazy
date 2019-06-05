@@ -13,7 +13,7 @@
                 <% end %>
               <% end %>
              </div>
-
+          
             <div class="reviews-stars-and-text-container">
               <div class="d-flex align-items-center">
                 <%= render 'star_rating', recipe: @recipe %>
@@ -27,14 +27,14 @@
                     <%= @recipe.prep_time %>
                 </span>
 
-                <span class="mx-2">|</span>
+                <span class="mx-2 line">|</span>
 
                 <span class="">
                     <strong class=" header-text-bigger">Cooking Time</strong>
                     <%= @recipe.cook_time %>
                 </span>
 
-                <span class="mx-2">|</span>
+                <span class="mx-2 line">|</span>
 
                 <span class="">
                   <strong class="header-text-bigger">Servings</strong>

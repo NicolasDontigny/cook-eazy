@@ -1,7 +1,7 @@
 var insertItem = (itemHTML) => {
   const id = <%= @grocery_item.id %>;
   const grocery_list = document.querySelector('.category-wrapper');
-   grid = document.querySelector('.grocery-items__wrapper');
+  grid = document.querySelector('.grocery-items__wrapper');
   grid.remove();
   grocery_list.insertAdjacentHTML("beforeend",itemHTML);
   newItem = document.querySelector(`.grocery-item-card[data-item-id='${id}']`);
