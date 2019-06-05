@@ -1,5 +1,6 @@
 .navbar-lewagon-white {
   background-color: white;
+  z-index: 900;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -35,4 +36,17 @@
 
 .navbar.fixed-top {
   z-index: 400;
+}
+
+
+.navbar-light .navbar-nav .nav-link.disabled {
+    color: $gray;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: $gray;
+}
+
+.nav-item .avatar {
+  cursor: pointer;
 }

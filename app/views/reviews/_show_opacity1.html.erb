@@ -2,7 +2,7 @@
   <div class="review-header d-flex align-items-center">
     <%= image_tag avatar_for(review.user)%>
     <div class="review-owner-info">
-      <p><strong><%= review.user.email %></strong></p>
+      <p><strong><%= review.user.username %></strong></p>
       <p class="date"><%= review.date.strftime("%b %d, %Y") %></p>
     </div>
   </div>

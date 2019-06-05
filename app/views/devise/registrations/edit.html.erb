@@ -7,7 +7,8 @@
         <%= f.error_notification %>
 
         <div class="form-inputs">
-          <%= f.input :email, required: true, autofocus: true %>
+          <%#= f.input :email, required: true, autofocus: true %>
+          <%= f.input :username, required: true, autofocus: true %>
 
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
@@ -34,7 +35,7 @@
         </div><br>
 
         <div class="form-actions">
-          <%= f.button :submit, "Save", class: "btn btn-primary" %>
+          <%= f.button :submit, "Save", class: "button-devise button-main-green" %>
         </div>
       <% end %>
 

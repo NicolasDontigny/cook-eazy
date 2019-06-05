@@ -1,22 +1,29 @@
 <div class="d-flex flex-column header-container" style="background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(<%= recipe.photo %>);">
   <div class="d-flex justify-content-between">
     <h2><%= recipe.name %></h2>
-    <% if WishlistItem.where(recipe: recipe).empty? %>
-      <%= link_to wishlist_item_path(recipe), method: :post, remote: true do %>
-        <i class="far fa-heart mr-3 add-to-wishlist-empty"></i>
+    <% if user_signed_in? %>
+      <% if WishlistItem.where(recipe: recipe).empty? %>
+        <%= link_to wishlist_item_path(recipe), method: :post, remote: true do %>
+          <i class="far fa-heart mr-3 add-to-wishlist-empty"></i>
+        <% end %>
+      <% else %>
+        <%= link_to wishlist_item_path(recipe), method: :delete, remote: true do %>
+          <i class="fas fa-heart mr-3 add-to-wishlist"></i>
+        <% end %>
       <% end %>
+
     <% else %>
-      <%= link_to wishlist_item_path(recipe), method: :delete, remote: true do %>
-        <i class="fas fa-heart mr-3 add-to-wishlist"></i>
+      <%= link_to new_user_session_path do %>
+        <i class="far fa-heart mr-3 add-to-wishlist-empty"></i>
       <% end %>
     <% end %>
   </div>
 
-  <div>	
-    <%= render 'star_rating', recipe: recipe %>	
+  <div>
+    <%= render 'star_rating', recipe: recipe %>
   </div>
 
-  <div class="header-recipe-details d-flex mt-2">
+  <div class="header-recipe-details mt-2">
 
     <span class="">
       <strong class=" header-text-bigger">Prep Time</strong>
@@ -30,7 +37,7 @@
       <% end %>
     </span>
 
-    <span class="mx-2">|</span>
+    <span class="mx-2 line">|</span>
 
     <span class="">
       <strong class=" header-text-bigger">Cooking Time</strong>
@@ -44,7 +51,7 @@
       <% end %>
     </span>
 
-    <span class="mx-2">|</span>
+    <span class="mx-2 line">|</span>
 
     <span class="">
       <strong class="header-text-bigger">Servings</strong>

@@ -6,7 +6,39 @@ class RecipesController < ApplicationController
   def index
     @fridge_items = FridgeItem.where(user: current_user)
     # Sort all existing recipes
-    @recipes = Recipe.all.sort do |recipe1, recipe2|
+    @search_filters = true
+
+    if params[:query].present?
+      @query = params[:query]
+      session[:query] = params[:query]
+    else
+      session[:query] = nil if params[:time].blank? && params[:category].blank?
+      @query = session[:query]
+    end
+
+    if params[:max_time].present? && params[:category].present?
+      @max_time = params[:max_time]
+      @category = params[:category]
+      session[:max_time] = params[:max_time]
+      session[:category] = params[:category]
+    else
+      session[:max_time] = nil if params[:query].blank?
+      session[:category] = nil if params[:query].blank?
+      @max_time = session[:max_time]
+      @category = session[:category]
+    end
+
+    if @query.present?
+      @recipes = Recipe.search_by_name(@query)
+    else
+      @recipes = Recipe.all
+    end
+
+    if @max_time.present? && @max_time != "no-limit"
+      @recipes = @recipes.reject { |recipe| recipe.prep_time + recipe.cook_time > @max_time.to_i }
+    end
+
+    @recipes = @recipes.sort do |recipe1, recipe2|
       # For recipes that have the same number of missing ingredients
       # Sort them by the highest number of matching ingredients
       if recipe1.how_many_ingredients_to_buy(current_user) == recipe2.how_many_ingredients_to_buy(current_user)
@@ -16,6 +48,9 @@ class RecipesController < ApplicationController
         recipe1.how_many_ingredients_to_buy(current_user) <=> recipe2.how_many_ingredients_to_buy(current_user)
       end
     end
+
+    @recipes_not_ready = @recipes.select { |recipe| recipe.missing_ingredients(current_user).length.positive? }
+    @recipes_ready = @recipes.select { |recipe| recipe.missing_ingredients(current_user).empty? }
 
     # Give all the recipes in the current user's wishlist
     @wishlist_recipes = []

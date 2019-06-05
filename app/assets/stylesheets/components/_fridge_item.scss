@@ -1,6 +1,7 @@
 .fridge-item-card-new {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   border: 1px solid $light-green;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
@@ -23,7 +24,7 @@
   }
 
   .ingredient-name {
-    font-size: 1rem;
+    font-size: 1.3rem;
       @media (min-width: 900px) {
         font-size: 1.3rem;
     }
@@ -83,7 +84,7 @@
 }
 
 .quantity-text {
-  font-size: 0.85rem;
+  font-size: 1.3rem;
 
   @media (min-width: 900px) {
    font-size: 1rem;
@@ -97,6 +98,5 @@
 
   @media (min-width: 900px) {
     display: inline;
-    width: auto;
   }
 }

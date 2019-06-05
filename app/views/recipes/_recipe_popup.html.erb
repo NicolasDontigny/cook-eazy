@@ -15,20 +15,21 @@
 
           <%= render 'components/recipe_header', recipe: recipe %>
 
-  <!--         <div class="close-popup">
-            <i class="fas fa-times"></i>
-          </div>
- -->
           <div class="popup-card-container px-4">
 
 
             <!-- Display Ingredients, with color according to Missing, Insufficient or Matching -->
-            <div id="ingredients-container" class="mt-4">
+            <div class="ingredients-container mt-4">
 
               <% unless recipe.missing_ingredients(current_user).count == 0 %>
-                <div class="d-flex align-items-center justify-content-between">
-                  <h4 class="mb-3 mt-4">Missing ingredients</h4>
-                  <%= link_to "Add to Grocery List", add_grocery_items_path(recipe), class: "button button-main-green ml-3", method: :post, remote: true %>
+                <div class="missing-ingredients-container">
+                  <h4 class="mb-0">Missing ingredients</h4>
+
+                  <% if user_signed_in? %>
+                    <%= link_to "Add to Grocery List", add_grocery_items_path(recipe), class: "button button-main-green", method: :post, remote: true %>
+                  <% else %>
+                    <%= link_to "Add to Grocery List", new_user_session_path, class: "button button-main-green" %>
+                  <% end %>
 
                 </div>
                 <ul class="popup-ingredients-list">
@@ -61,10 +62,13 @@
               <% end %>
 
             </div>
-          </div>
+            <%= render "components/reviews", recipe: recipe, form: false %>
 
-        <!-- End of recipe-card-popup-scrollable -->
+          </div>
+          <!-- End of recipe-card-container -->
+
         </div>
+        <!-- End of recipe-card-popup-scrollable -->
       </div>
       <!-- End of Recipe Card Popup -->
 

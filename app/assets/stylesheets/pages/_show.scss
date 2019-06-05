@@ -14,41 +14,6 @@
   transition: opacity 1s ease-in;
 }
 
-.review-card {
-  padding: 1.5rem 0;
-  border-bottom: 1px solid $light-gray;
-  -webkit-transition: opacity 2000ms linear;
-  transition: opacity 1000ms linear;
-}
-
-.review-header {
-  img {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-  }
-  .review-owner-info {
-    margin-left: 1rem;
-    p {
-      margin: 0;
-      &.date {
-        font-size: 1rem;
-      }
-    }
-  }
-}
-
-.review-rating {
-  margin-top: 1rem;
-}
-
-.review-content {
-  margin-top: 1rem;
-  font-size: 1rem;
-  &.no-reviews {
-    font-size: 1.5rem;
-  }
-}
 
 /* sidebar ingredients list*/
 .item-a {

@@ -1,0 +1,49 @@
+<div class="container" id="recipes-container">
+
+  <div id="browse-recipes">
+    <div id="browse-recipes-top"></div>
+
+    <% unless @recipes_ready.empty? %>
+
+      <h2 class="mt">Ready to Cook</h2>
+
+      <div class="recipes-container mt-3">
+
+        <% @recipes_ready.each do |recipe| %>
+
+          <%# if recipe.missing_ingredients(current_user).empty? %>
+
+            <%= render "recipe_card", recipe: recipe %>
+
+          <% end %>
+
+        <%# end %>
+
+      </div>
+
+    <% end %>
+
+
+    <h2 class="mt-3">Recipes for You</h2>
+
+    <div class="recipes-container mt-3">
+
+      <% @recipes_not_ready.each do |recipe| %>
+
+        <%# unless recipe.missing_ingredients(current_user).empty? %>
+
+          <%= render "recipe_card", recipe: recipe %>
+
+        <%# end %>
+
+      <% end %>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Add the hidden Modals -->
+<% @recipes.each do |recipe| %>
+  <%= render "recipe_popup", recipe: recipe, fridge_items: @fridge_items %>
+<% end %>

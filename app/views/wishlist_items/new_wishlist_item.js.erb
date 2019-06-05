@@ -16,12 +16,12 @@ var insertNewWishlistRecipe = (recipeCardHTML) => {
     }
 
     window.slick();
-  }, 200)
+  }, 0)
 
 }
 
 swal({
-  title: `Added <%= @recipe.name %> to your wishlist!`,
+  title: `Added "<%= @recipe.name %>" to your wishlist!`,
   icon: "success",
   buttons: false
 })

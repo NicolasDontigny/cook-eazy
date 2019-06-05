@@ -8,16 +8,50 @@
   }
 }
 
+.grocery__logo {
+  display: none;
+
+  @media (min-width: 668px) and (max-width: 768px) {
+    display: inline;
+    position: absolute;
+    left: 20%;
+    top: -100%;
+  }
+
+  @media (min-width: 769px) {
+    display: inline;
+  }
+}
+
+.grocery__logo--mobile {
+  display: none;
+  @media (max-width: 500px) {
+    display: inline;
+    position: absolute;
+    left: 0;
+    top: -60%;
+  }
+  @media (min-width: 501px) and (max-width: 667px) {
+    left: 15%;
+    display: inline;
+    position: absolute;
+    top: -60%;
+  }
+}
+
 .fridge-form > .simple_form.new_grocery_item {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .fridge-form .form-group.select.required.grocery_item_ingredient {
   display: flex;
   flex-direction: column;
   width: 100%
+}
+
+.grocery-item-card .quantity {
+  margin: 0;
 }
 
 #grocery-items-list {
@@ -31,7 +65,7 @@
 
   .quantity {
     margin-left: 1rem;
-    width: 9rem;
+    width: 8rem;
     display: flex;
     flex-shrink: 0;
     justify-content: space-between;

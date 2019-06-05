@@ -4,11 +4,12 @@
 
     <div class="fridge__body">
       <!-- <h2><i class="fas fa-door-open"></i>My Fridge</h2> -->
-        <h2><%= image_tag "fridge-green.png", alt: "", width: 100 %>My Fridge</h2>
+        <h2><%= image_tag "fridge-green.png", alt: "fridge logo", class: "fridge__logo--mobile", width: 70 %><%= image_tag "fridge-green.png", alt: "fridge logo", class: "fridge__logo", width: 100 %>My Fridge</h2>
 
       <div class="category-wrapper">
 
-        <div class="fridge-form"><%= render "form" %></div>
+        <div class="fridge-form fridge-form--mobile"><%= render "form" %></div>
+        <div class="fridge-form fridge-form--desktop"><%= render "form-desktop" %></div>
 
         <%= render "category_grid_wrapper", categories: @categories, fridge_items: @fridge_items %>
 

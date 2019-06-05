@@ -20,6 +20,8 @@
 @import "form";
 @import "scrollbar";
 @import "grocery-items";
+@import "reviews";
+@import "ratings";
 
 
 
@@ -37,9 +39,18 @@
 }
 
 .container {
-  padding-top: 32px;
+  padding-top: 16px;
   padding-bottom: 32px;
-  margin-top: 4rem;
+
+}
+
+body {
+  padding-top: 4.5rem;
+}
+
+#recipes-container {
+  margin-top: 0;
+  // padding-top: 4.5rem;
 }
 
 body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {

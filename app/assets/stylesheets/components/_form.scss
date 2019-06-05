@@ -23,3 +23,38 @@
 .form-group .form-control {
   border-radius: 16px !important;
 }
+
+.search-input {
+  border: 1px solid $main-green;
+  // color: $main-green;
+
+  border-radius: 16px;
+
+  &:focus {
+    border-color: $main-green;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(118, 162, 30, 0.25);
+
+  }
+}
+
+.search-input:-internal-autofill-selected {
+    background-color: rgb(118, 162, 30) !important;
+    background-image: none !important;
+    color: rgb(0, 0, 0) !important;
+}
+
+.search-form {
+  display:flex;
+
+  // border: 1px solid $main-green;
+  position: relative;
+
+  button.search-submit {
+    background-color: transparent;
+    border: none;
+    color: $main-green;
+
+    margin-left: -32px;
+  }
+}

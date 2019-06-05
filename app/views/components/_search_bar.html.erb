@@ -1,0 +1,10 @@
+<%= form_tag recipes_path + "#browse-recipes-top", class: "mr-3 search-form", method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control search-input",
+    placeholder: "Search Recipes",
+    value: session[:query] || ""
+  %>
+
+  <button type="submit" class="search-submit"><i class="fas fa-search"></i></button>
+<% end %>
