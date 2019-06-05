@@ -1,6 +1,14 @@
-<li>
-  <div class="no-reviews border-top">
-      <br>There are no reviews yet for this recipe.
-      <%= link_to "Be the first to leave one!", recipe_path(recipe) + "#leave-a-review"  %>
-  </div>
-</li>
+<% if show_page %>
+  <li>
+    <div class="no-reviews border-top">
+        <br>There are no reviews yet for this recipe. Be the first to leave one!
+    </div>
+  </li>
+<% else %>
+  <li>
+    <div class="no-reviews border-top">
+        <br>There are no reviews yet for this recipe.
+        <%= link_to "Be the first to leave one!", recipe_path(recipe) + "#leave-a-review"  %>
+    </div>
+  </li>
+<% end %>
