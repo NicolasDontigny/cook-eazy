@@ -4,7 +4,7 @@ var refreshBar = (event) => {
 
     var progressFraction = document.querySelector('.progress-fraction');
 
-    var recipeStepsContainer = document.getElementById('recipe-steps');
+    var recipeStepsContainer = document.getElementById('recipe-steps-mobile');
 
     var numberOfSteps = recipeStepsContainer.dataset.steps;
 
@@ -15,28 +15,28 @@ var refreshBar = (event) => {
 
     var leftChevronDiv = document.querySelector('.fa-chevron-left').parentNode;
     var rightChevronDiv = document.querySelector('.fa-chevron-right').parentNode;
-    var doneCookingButton = document.getElementById('done-cooking')
+    var doneCookingButton = document.getElementById('done-cooking-mobile')
 
     if (numberOfSteps == 1) {
-      doneCookingButton.style.display= "inherit";
+      doneCookingButton.style.visibility = "visible";
     }
     else if (order == numberOfSteps) {
       rightChevronDiv.style.visibility = "hidden";
       leftChevronDiv.style.visibility = "visible";
 
-      doneCookingButton.style.display= "inherit";
+      doneCookingButton.style.visibility = "visible";
     }
     else if (order == 1) {
       leftChevronDiv.style.visibility = "hidden";
       rightChevronDiv.style.visibility = "visible";
 
-      doneCookingButton.style.display= "none";
+      doneCookingButton.style.visibility = "hidden";
     }
     else {
       leftChevronDiv.style.visibility = "visible";
       rightChevronDiv.style.visibility = "visible";
 
-      doneCookingButton.style.display= "none";
+      doneCookingButton.style.visibility = "hidden";
     }
   }, 200)
 }
@@ -61,7 +61,7 @@ export var clickRightOrLeft = () => {
     var doneCookingButton = document.getElementById('done-cooking')
 
     if (numberOfSteps == 1) {
-      doneCookingButton.style.display = "inherit";
+      doneCookingButton.style.visibility = "visible";
     }
   }
 
