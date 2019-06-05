@@ -36,3 +36,54 @@
     font-size: 1.5rem;
   }
 }
+
+.rating-inputs {
+  padding: 0;
+  margin: 8px 0;
+  list-style: none;
+  display: inline-block;
+
+  transform: rotate(180deg);
+
+  input {
+    display: none;
+  }
+
+  li {
+    display: inline-block;
+    transform: rotate(-180deg);
+
+    &.grayed i {
+      color: lightgray !important;
+    }
+
+    label {
+      margin: 0;
+    }
+
+    i {
+      font-size: 24px;
+      cursor: pointer;
+
+      &.gray {
+        color: lightgray;
+
+      }
+    }
+
+    &:hover i,
+    &:hover ~ li i,
+    &.selected i,
+    &.selected ~ li i {
+      color: $main-green;
+    }
+  }
+}
+
+#new_review {
+  padding-bottom: 2rem;
+}
+
+.page-container .recipe-reviews {
+  text-align: left;
+}

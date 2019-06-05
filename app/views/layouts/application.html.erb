@@ -12,7 +12,11 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
-  <body>
+  <% if @no_navbar %>
+    <body>
+  <% else %>
+    <body style="padding-top: 4.5rem;">
+  <% end %>
     <%= render 'shared/navbar' unless @no_navbar%>
 
     <%= render 'shared/flashes' %>
