@@ -1,0 +1,88 @@
+#max_time, #category, #filter-button {
+  padding: 4px 8px !important;
+  height: auto;
+}
+
+#filter-button {
+  border-radius: 16px;
+}
+
+#toggle-filters {
+  height: 100%;
+  width: 59px;
+
+  // visibility: hidden;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  z-index: 900;
+
+  button {
+    border: none;
+    background: lightgray;
+    height: 59px;
+    width: 100%;
+  }
+
+  i {
+    font-size: 32px;
+    padding-top: 8px;
+  }
+}
+
+#search-filters {
+  background: white;
+  width: 100vw;
+
+  padding: 12px 16px 12px 80px;
+
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  position: relative;
+
+  z-index: 800;
+
+  transition: opacity 0.5s ease;
+
+  visibility: visible;
+}
+
+#recipes-container {
+  padding-top: 64px;
+}
+
+#filters-container {
+  width: 100vw;
+  position: relative;
+}
+
+
+@media (max-width: 643px) {
+  #search-filters {
+    visibility: hidden;
+  }
+
+  #search-filters .search-form {
+    display: block;
+    width: 100%;
+
+    .form-group {
+      // display: flex;
+    }
+
+    .form-control {
+      display: inline-block;
+      width: auto;
+    }
+  }
+
+  #toggle-filters {
+    visibility: visible;
+  }
+}
