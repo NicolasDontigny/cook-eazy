@@ -1,0 +1,13 @@
+<% if grocery_items.all? { |grocery_item| grocery_item.checked == true } %>
+
+  <%= link_to check_all_grocery_items_path, method: 'patch', remote: true, class: "no-link", data: "checkbox" do %>
+    <i class="far fa-check-square checkbox"></i>
+  <% end %>
+
+<% else %>
+
+  <%= link_to check_all_grocery_items_path, method: 'patch', remote: true, class: "no-link",  data: "checkbox"  do %>
+    <i class="far fa-square checkbox"></i>
+  <% end %>
+
+<% end %>
