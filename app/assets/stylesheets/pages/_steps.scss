@@ -1,5 +1,7 @@
 #recipe-steps {
   width: 100%;
+  padding: 0 45px;
+  margin-top: 20px;
 }
 
 .ingredients-row {
@@ -8,12 +10,34 @@
 }
 
 .steps-header {
-  padding: 45px;
-  margin-bottom: 16px;
+  padding: 0px 45px;
+  margin-bottom: 20px;
   img {
     width: 300px;
     border-radius: 5%;
     margin-top: 10px;
+    @media (max-width: 540px) {
+      border-radius: 0;
+      width: 100%;
+    }
+  }
+  h1{
+    padding-left: 30px;
+    font-weight: bolder;
+    @media (max-width: 540px) {
+
+    position: absolute;
+      top: calc(50% - 30px);
+      color: white;
+      font-size: 30px;
+      padding: 0 10px;
+      text-align: center;
+    }
+  }
+  @media (max-width: 540px) {
+    position: relative;
+    margin: 0;
+    padding: 0;
   }
 }
 
@@ -39,17 +63,27 @@
   #title-step {
     margin: 70px 0 0 70px;
     font-size: 24px;
+    @media (max-width: 540px) {
+      margin: 0 10px;
+    }
   }
   ul {
     margin-top: 13px;
-    margin-left: -20px;
+    padding-left: 10px;
     line-height: 2;
     list-style: none;
+  }
+  @media (max-width: 540px) {
+    margin-top: 15px;
+    text-align: center;
   }
 }
 
 #progress-bar {
-  padding: 16px;
+  padding: 0 45px;
+  @media (max-width: 540px) {
+    padding: 0;
+  }
 }
 
 
@@ -57,3 +91,16 @@
   height: 10px;
   background-color: $main-green;
 }
+
+.recipe-step{
+  padding: 0 30px;
+}
+
+/*Responsive for Steps*/
+
+/*@media (max-width: 960px) {
+   For a screen < 960px, this CSS will be read
+  .mobile-only { display: none; }
+  .desktop-only { display: initial; }
+}*/
+
