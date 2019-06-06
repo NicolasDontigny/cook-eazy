@@ -55,7 +55,10 @@ class FridgeItemsController < ApplicationController
       end
     end
 
-    redirect_to recipe_steps_path(@recipe)
+    respond_to do |format|
+      format.html { redirect_to recipes_path }
+      format.js { render 'recipes/done' }
+    end
   end
 
   private
