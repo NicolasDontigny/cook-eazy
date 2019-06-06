@@ -10,3 +10,5 @@ var insertItem = (itemHTML) => {
 }
 
 insertItem('<%= j render("category_grid_wrapper", categories: @categories, grocery_items: @grocery_items) %>');
+
+window.updateCheckbox(<%= GroceryItem.where(user: current_user).empty? %>);

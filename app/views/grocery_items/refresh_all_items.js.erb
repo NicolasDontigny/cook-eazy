@@ -1,4 +1,4 @@
-var refreshItem = (itemHTML, id, checkBoxHTML) => {
+var refreshItem = (itemHTML, id) => {
   grocery_item = document.querySelector(`li[data-item-id='${id}']`)
   grocery_item.insertAdjacentHTML("afterend", itemHTML);
   grocery_item.remove();
