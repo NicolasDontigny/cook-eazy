@@ -7,11 +7,12 @@
 
     <div class="mt-1 d-flex align-items-center recipe-card-ingredients color-secondary">
       Ingredients
+      <% ingredients_to_buy = recipe.how_many_ingredients_to_buy(current_user) %>
       <span class="ml-3 mr-3 ">
-        <i class="far fa-times-circle color-main-red mr-0"></i> <%= recipe.how_many_ingredients_to_buy(current_user) %>
+        <i class="far fa-times-circle color-main-red mr-0"></i> <%= ingredients_to_buy %>
       </span>
       <span class="">
-        <i class="far fa-check-circle color-main-green mr-0"></i> <%= recipe.matching_ingredients(current_user).count %>
+        <i class="far fa-check-circle color-main-green mr-0"></i> <%= recipe.ingredients.count - ingredients_to_buy %>
       </span>
     </div>
 
