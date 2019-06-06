@@ -38,18 +38,11 @@
   grid-area: header;
   margin-left: 10px;
   margin-right: 10px;
-  max-height: 260px;
+    .header-container {
+      min-height: 220px;
+    }
 }
 
-.mobile-item-b {
-  grid-area: header;
-  // margin-left: 10px;
-  margin-right: 10px;
-  width: 100%;
-  .header-container {
-    max-height: 300px;
-  }
-}
 
 /* List of steps*/
 .item-c {
@@ -78,10 +71,10 @@
   grid-template-columns: 28% 72%;
   // grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas:
-    "ingredients header"
-    "ingredients steps"
-    "ingredients reviews";
-
+  "ingredients header"
+  "ingredients steps"
+  "ingredients reviews";
+  
   margin-top: 4rem;
 }
 
@@ -93,17 +86,17 @@
 }
 
 // .item-b {
-//   &.recipe-image {
-//     max-height:100%;
-//     max-width:100%;
-//     position: relative;
-
-.start-cooking {
-  margin: 24px auto 0 auto;
-  text-align: center;
-}
-
-.add-to-groc-button {
+  //   &.recipe-image {
+    //     max-height:100%;
+    //     max-width:100%;
+    //     position: relative;
+    
+    .start-cooking {
+      margin: 24px auto 0 auto;
+      text-align: center;
+    }
+    
+    .add-to-groc-button {
   margin: 55px 0px 35px 0px;
   text-align: center;
 }
@@ -119,6 +112,17 @@
 
 // Mobile
 
+.mobile-item-b {
+  grid-area: header;
+  // margin-left: 10px;
+  margin-right: 10px;
+  width: 100%;
+  .mobile-header-container {
+    min-height: 260px;
+    padding: 16px;
+  }
+}
+
 .start-cooking-mobile{
   width: 86vw;
   margin-right: auto;
@@ -128,9 +132,9 @@
 }
 
 // .mobile-cta{
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
 //   margin: 30px 0;
 // }
 
