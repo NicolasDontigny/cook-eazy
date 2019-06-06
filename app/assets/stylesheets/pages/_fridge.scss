@@ -28,36 +28,51 @@
 .fridge__logo {
   display: none;
 
-  @media (min-width: 668px) and (max-width: 768px) {
-    display: inline;
-    position: absolute;
-    left: 25%;
-    top: -65%;
-  }
+  // @media (min-width: 668px) and (max-width: 768px) {
+  //   display: inline;
+  //   position: absolute;
+  //   left: 25%;
+  //   top: -65%;
+  // }
 
-  @media (min-width: 769px) {
-    display: inline;
-  }
+  // @media (min-width: 769px) {
+  //   display: inline;
+  // }
 }
 
 .fridge__logo--mobile {
-  display: none;
+  width: 5rem;
   @media (max-width: 500px) {
     display: inline;
     position: absolute;
-    left: 10%;
-    top: -50%;
+    left: 18%;
+    top: -75%;
   }
-  @media (min-width: 501px) and (max-width: 667px) {
-    left: 24%;
+  @media (min-width: 501px) {
+    left: 19%;
+    top: -75%;
     display: inline;
     position: absolute;
-    top: -50%;
   }
-}
 
-.fridge__body {
-  width: 100%;
+  @media (min-width: 768px) {
+    left: 28%;
+    top: -75%;
+    display: inline;
+    position: absolute;
+  }
+
+  @media (min-width: 900px) {
+    left: -11%;
+    top: -75%;
+    display: inline;
+    position: absolute;
+  }
+
+  @media (min-width: 990px) {
+    display: inline-block;
+    position: initial;
+  }
 }
 
 

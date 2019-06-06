@@ -5,8 +5,8 @@
 
   <%# Ingredient Button, Remove Collapse after%>
   <div id="mobile-ingredient-title" class="btn btn-outline-success btn-lg btn-block" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Ingredients</div>
-    <div class="mobile-ingredient-list collapse" id="collapseExample">
-      <%# <div class="card card-body"> %>
+    <div class="mobile-steps-list collapse" id="collapseExample">
+      <div class="card steps-card-body">
         <div>
           <!-- <ul> -->
             <% @recipe.recipe_items.each do |recipe_item| %>
@@ -25,8 +25,6 @@
       </div>
     </div>
   </div>
-  <div class="steps-header">
-    <img src="<%= @recipe.photo %>" alt="">
 
     <h1><%= @recipe.name %></h1>
   </div>
