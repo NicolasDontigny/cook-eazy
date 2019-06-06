@@ -26,12 +26,21 @@
 
 .grocery__logo--mobile {
   width: 5rem;
-  @media (max-width: 500px) {
+
+  @media (max-width: 376px) {
+    display: inline;
+    position: absolute;
+    left: -2%;
+    top: -75%;
+  }
+
+  @media (min-width: 377px) and (max-width: 500px) {
     display: inline;
     position: absolute;
     left: 6%;
     top: -75%;
   }
+
   @media (min-width: 501px) {
     left: 10%;
     top: -75%;
