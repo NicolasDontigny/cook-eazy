@@ -11,7 +11,7 @@ function addReview(reviewHTML) {
 
   if (title) {
     reviews.removeChild(reviews.children[0]);
-    reviews.insertAdjacentHTML('afterbegin', '<h4 class="fade_in">What users say about this recipe</h4>');
+    // reviews.insertAdjacentHTML('afterbegin', '<h4 class="fade_in">What users say about this recipe</h4>');
     const titleFade = document.querySelector('.fade_in');
     setTimeout(() => { titleFade.style.opacity = 1 }, 200);
   }

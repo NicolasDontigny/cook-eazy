@@ -21,48 +21,64 @@
             <!-- Display Ingredients, with color according to Missing, Insufficient or Matching -->
             <div class="ingredients-container mt-4">
 
-              <% unless recipe.missing_ingredients(current_user).count == 0 %>
-                <div class="missing-ingredients-container">
-                  <h4 class="mb-0">Missing ingredients</h4>
+              <% if user_signed_in? %>
+                <% unless recipe.missing_ingredients(current_user).count == 0 %>
+                  <div class="missing-ingredients-container">
+                    <h4 class="">Missing ingredients</h4>
 
-                  <% if user_signed_in? %>
-                    <%= link_to "Add to Grocery List", add_grocery_items_path(recipe), class: "button button-main-green", method: :post, remote: true %>
-                  <% else %>
-                    <%= link_to "Add to Grocery List", new_user_session_path, class: "button button-main-green" %>
-                  <% end %>
+                    <% if user_signed_in? %>
+                      <%= link_to "Add to Grocery List", add_grocery_items_path(recipe), class: "button button-main-green", method: :post, remote: true %>
+                    <% else %>
+                      <%= link_to "Add to Grocery List", new_user_session_path, class: "button button-main-green" %>
+                    <% end %>
 
-                </div>
+                  </div>
+                  <ul class="popup-ingredients-list">
+                    <% recipe.missing_ingredients(current_user).each do |recipe_item| %>
+                      <li class="ingredient-red">
+                        <i class="far fa-times-circle"></i>
+                        <%= recipe_item.ingredient.name %>
+                        <strong>(<%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %> missing)</strong>
+                      </li>
+                    <% end %>
+
+                  </ul>
+
+                <% end %>
+
+                <% unless recipe.matching_ingredients(current_user).count == 0 %>
+
+                  <h4 class="mb-3">Ingredients I have</h4>
+
+                  <ul class="popup-ingredients-list">
+                    <% recipe.matching_ingredients(current_user).each do |recipe_item| %>
+                      <li class="ingredient-green">
+                        <i class="far fa-check-circle"></i>
+                        <strong><%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %></strong>
+                        <%= recipe_item.ingredient.name %>
+                      </li>
+                    <% end %>
+                  </ul>
+
+                <% end %>
+
+              <!-- If user is not signed in, only show list of ingredients of the recipe -->
+              <% else %>
+                <h4 class="mb-3">Ingredients</h4>
+
                 <ul class="popup-ingredients-list">
-                  <% recipe.missing_ingredients(current_user).each do |recipe_item| %>
-                    <li class="ingredient-red">
-                      <i class="far fa-times-circle"></i>
-                      <%= recipe_item.ingredient.name %>
-                      (<%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %> missing)
-                    </li>
-                  <% end %>
-
-                </ul>
-
-              <% end %>
-
-              <% unless recipe.matching_ingredients(current_user).count == 0 %>
-
-                <h4 class="mb-3">Ingredients I have</h4>
-
-                <ul class="popup-ingredients-list">
-                  <% recipe.matching_ingredients(current_user).each do |recipe_item| %>
+                  <% recipe.recipe_items.each do |recipe_item| %>
                     <li class="ingredient-green">
-                      <i class="far fa-check-circle"></i>
+                      <i class="fas fa-leaf"></i>
+                      <strong><%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %></strong>
                       <%= recipe_item.ingredient.name %>
-                      (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
                     </li>
                   <% end %>
                 </ul>
-
               <% end %>
 
             </div>
-            <%= render "components/reviews", recipe: recipe, form: false %>
+            <%= render "components/reviews", recipe: recipe, form: false, show_page: false, mobile: false %>
 
           </div>
           <!-- End of recipe-card-container -->

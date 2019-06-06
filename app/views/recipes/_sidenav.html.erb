@@ -12,16 +12,16 @@
         <% @recipe.missing_ingredients(current_user).each do |recipe_item| %>
             <div class="ingredient-red">
             <i class="far fa-times-circle"></i>
+            <strong><%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %></strong>
             <%= recipe_item.ingredient.name.capitalize %>
-            (need <%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %>)
             </div>
         <% end %>
 
         <% @recipe.matching_ingredients(current_user).each do |recipe_item| %>
             <div class="ingredient-green">
             <i class="far fa-check-circle"></i>
+            <strong><%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %></strong>
             <%= recipe_item.ingredient.name.capitalize %>
-            (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
             </div>
         <% end %>
         <div class="add-to-groc-button ml-2">
