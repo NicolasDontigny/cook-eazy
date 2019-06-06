@@ -1,3 +1,6 @@
+<% content_for :meta_title, "#{@recipe.name} - #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_image, cl_image_path(@recipe.photo.path) %>
+
 <div class="mobile-container">
     <div class="mobile-item-b">
         <div class="d-flex flex-column header-container" style="background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url(<%= @recipe.photo %>);">
