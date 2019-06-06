@@ -319,3 +319,14 @@ recipe4.recipe_items.take(7).each do |recipe_item|
     quantity: recipe_item.quantity
   )
 end
+
+
+CookedRecipe.create(
+  user: nic,
+  recipe: Recipe.first
+)
+
+CookedRecipe.create(
+  user: nic,
+  recipe: Recipe.second
+)
