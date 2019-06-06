@@ -114,7 +114,8 @@ reviews = ["Super good, would not order again.", "What is this, this is so good!
 
 recipes_jsons = []
 
-recipes.first(10).each do |recipe|
+recipes.each do |recipe|
+# recipes.first(10).each do |recipe|
 
   # recipe = JSON.parse(open("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/#{id}/information", {
   #   "X-RapidAPI-Host" => "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
