@@ -41,8 +41,8 @@
         <% @recipes_ready.each do |recipe| %>
 
           <%# if recipe.missing_ingredients(current_user).empty? %>
-
-            <%= render "recipe_card", recipe: recipe %>
+            <%# missing_ingredients = recipe.missing_ingredients(current_user) %>
+            <%= render "recipe_card", recipe: recipe  %>
 
           <% end %>
 
