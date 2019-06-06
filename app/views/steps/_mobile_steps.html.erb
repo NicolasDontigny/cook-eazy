@@ -30,7 +30,7 @@
   <div id="done-cooking" class="mt-3" style="text-align: center;display: none;">
     <% @recipe_ingredients = @recipe.ingredients %>
     <% #raise %>
-    <%= link_to "Done Cooking", empty_fridge_path(@recipe), method: :patch, class: "button button-main-red button-center button-lg" %>
+    <%= link_to "Done Cooking", empty_fridge_path(@recipe), method: :patch, remote: true, class: "button button-main-red button-center button-lg" %>
   </div>
 
   <%# Ingredient Collapse Button %>
