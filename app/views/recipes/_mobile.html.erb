@@ -1,14 +1,28 @@
+<% content_for :meta_title, "#{@recipe.name} - #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_image, cl_image_path(@recipe.photo) %>
+
 <div class="mobile-container">
     <div class="mobile-item-b">
         <div class="d-flex flex-column mobile-header-container" style="background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url(<%= @recipe.photo %>);">
             <div class="d-flex justify-content-between">
-                <h2><%= @recipe.name %></h2>
-                <a data-remote="true" rel="nofollow" data-method="post" href="/recipes/1/wishlist/new">
-                <i class="fas fa-heart add-to-wishlist"></i>
-                </a>
+              <h2><%= @recipe.name %></h2>
+              <% if WishlistItem.where(recipe: @recipe).empty? %>
+                <%= link_to wishlist_item_path(@recipe), method: :post, remote: true do %>
+                  <i class="far fa-heart mr-3 add-to-wishlist-empty"></i>
+                <% end %>
+              <% else %>
+                <%= link_to wishlist_item_path(@recipe), method: :delete, remote: true do %>
+                  <i class="fas fa-heart mr-3 add-to-wishlist"></i>
+                <% end %>
+              <% end %>
              </div>
 
-                <%= render "star_rating", recipe: @recipe %>
+            <div class="reviews-stars-and-text-container">
+              <div class="d-flex align-items-center">
+                <%= render 'star_rating', recipe: @recipe %>
+                <%= link_to "Leave a Review", recipe_path(@recipe) + "#leave-a-review-mobile", class: "ml-2" %>
+              </div>
+            </div>
 
             <div class="header-recipe-details d-flex mt-2">
                 <span class="">
@@ -47,8 +61,8 @@
                         <% @recipe.missing_ingredients(current_user).each do |recipe_item| %>
                             <div class="ingredient-red">
                                 <i class="far fa-times-circle"></i>
+                                <strong><%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %></strong>
                                 <%= recipe_item.ingredient.name.capitalize %>
-                                (need <%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %>)
                             </div>
                         <% end %>
                     </div>
@@ -56,8 +70,8 @@
                         <% @recipe.matching_ingredients(current_user).each do |recipe_item| %>
                             <div class="ingredient-green">
                                 <i class="far fa-check-circle"></i>
+                                <strong><%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %></strong>
                                 <%= recipe_item.ingredient.name.capitalize %>
-                                (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
                             </div>
                         <% end %>
                     </div><br>
@@ -77,22 +91,5 @@
     </div>
 
     <%# Reviews %>
-    <div class= "item-d recipe-reviews" >
-        <% if @reviews.empty? %>
-            <ul id="reviews-list" class="reviews-list">
-                <%= render "reviews/no_reviews" %>
-            </ul>
-        <% else %>
-            <h4>What users say about this recipe</h4>
-            <ul id="reviews-list" class="reviews-list">
-            <% @reviews.each do |review| %>
-                <%= render "reviews/show_opacity1", review: review %>
-            <% end %>
-            </ul>
-        <% end %>
-
-        <h4 class="specs__title">Leave a Review</h4>
-
-        <%= render "reviews/form", recipe: @recipe, review: Review.new %>
-    </div>
+    <%= render "components/reviews", recipe: @recipe, form: true, show_page: true, mobile: true %>
 </div>

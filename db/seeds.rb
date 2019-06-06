@@ -5,6 +5,7 @@ Recipe.destroy_all
 Ingredient.destroy_all
 User.destroy_all
 FridgeItem.destroy_all
+Tag.destroy_all
 
 puts 'creating user'
 
@@ -38,10 +39,20 @@ recipes.each do |recipe|
             difficulty: ["Easy", "Moderate", "Hard"].sample)
 
   recipe["extendedIngredients"].each do |do_ingredient|
-    new_recipe.recipe_items << RecipeItem.new(
-      quantity: do_ingredient["measures"]["metric"]["amount"].ceil,
-      ingredient: Ingredient.find_or_create_by(name: do_ingredient["name"], unit_of_measure: do_ingredient["measures"]["metric"]["unitShort"], category: do_ingredient["aisle"].split(';').first)
-    )
+    ingredient = Ingredient.find_or_create_by(name: do_ingredient["name"], unit_of_measure: do_ingredient["measures"]["metric"]["unitShort"], category: do_ingredient["aisle"].split(';').first)
+    quantity = do_ingredient["measures"]["metric"]["amount"].ceil
+
+    recipe_item = RecipeItem.find_by(recipe: new_recipe, ingredient: ingredient)
+
+    if recipe_item
+      recipe_item.quantity += quantity
+      recipe_item.save
+    else
+      new_recipe.recipe_items << RecipeItem.new(
+        quantity: quantity,
+        ingredient: ingredient
+      )
+    end
   end
 
   recipe["analyzedInstructions"][0]["steps"].each do |step|
@@ -50,6 +61,14 @@ recipes.each do |recipe|
       order: step["number"]
     )
   end
+
+  recipe["dishTypes"].each do |dish_type|
+    new_recipe.tag_items << TagItem.new(
+      tag: Tag.find_or_create_by(name: dish_type)
+    )
+    puts dish_type
+  end
+  puts new_recipe.tag_items
 
   puts 'saving recipe user'
   new_recipe.user = nic

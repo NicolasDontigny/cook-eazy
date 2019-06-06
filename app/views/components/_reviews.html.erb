@@ -1,10 +1,7 @@
-
-
-
 <div class= "item-d recipe-reviews" >
   <% if recipe.reviews.empty? %>
       <ul id="reviews-list" class="reviews-list">
-        <%= render "reviews/no_reviews" %>
+        <%= render "reviews/no_reviews", recipe: recipe, show_page: show_page %>
       </ul>
   <% else %>
     <h4>What users say about this recipe</h4>
@@ -15,11 +12,27 @@
     </ul>
   <% end %>
 
-  <% if form %>
-
-    <h4 class="specs__title">Leave a Review</h4>
-
-    <%= render "reviews/form", recipe: recipe, review: Review.new %>
-
+  <% if mobile %>
+    <div id="leave-a-review-mobile">
+  <% else %>
+    <div id="leave-a-review">
   <% end %>
+    <% if form %>
+
+      <h4 class="specs__title">Leave a Review</h4>
+
+      <%# if show_page %>
+        <!-- <li>
+          <div class="no-reviews border-top">
+              <br>There are no reviews yet for this recipe. Be the first to leave one!
+          </div>
+        </li> -->
+      <%# else %>
+
+        <%= render "reviews/form", recipe: recipe, review: Review.new %>
+
+      <%# end %>
+
+    <% end %>
+  </div>
 </div>

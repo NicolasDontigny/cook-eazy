@@ -14,6 +14,7 @@ import { clickRightOrLeft } from '../plugins/progress_bar';
 import { addEventToHearts } from '../plugins/heart_icon';
 import 'select2/dist/css/select2.css';
 import { addClickEventToStars } from '../plugins/ratings';
+import { updateCheckbox } from '../plugins/update_checkbox';
 import { makeFiltersCollapsable } from '../plugins/filters_collapse';
 
 // import { recipePopup } from '../plugins/recipe_popup'

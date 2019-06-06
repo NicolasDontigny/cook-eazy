@@ -1,5 +1,26 @@
-<%# <h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p> %>
+<div class="landing-page" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);">
 
-<%= render "components/main_banner" %>
+  <div class="devise-buttons d-flex">
+    <%= link_to('Login', new_user_session_path, class: "button-banner")  %>
+    <%= link_to('Sign Up', new_user_registration_path, class: "button-banner ml-3")  %>
+  </div>
 
+  <div class="landing-typed">
+    <h1>
+      <span id="banner-typed-text"><strong></strong></span>
+    </h1>
+  </div>
+    <!-- # views/devise/menu/_login_items.html.erb -->
+  <div class="landing-btn">
+
+    <% unless user_signed_in? %>
+    <!-- <div class="mt-5"> -->
+      <%= link_to('Browse Recipes', recipes_path, class: "button-banner") %>
+
+    <!-- </div> -->
+    <% end %>
+
+
+    </div>
+  </div>
+</div>

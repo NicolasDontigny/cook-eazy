@@ -44,6 +44,14 @@ class FridgeItemsController < ApplicationController
 
   def empty
     @recipe = Recipe.find(params["recipe_id"].to_i)
+
+    cooked_recipe = CookedRecipe.new(
+      recipe: @recipe,
+      user: current_user
+    )
+
+    cooked_recipe.save
+
     @recipe_items = @recipe.recipe_items
     @recipe_items.each do |recipe_item|
       @fridge_item = FridgeItem.find_by(ingredient: recipe_item.ingredient)
@@ -55,7 +63,10 @@ class FridgeItemsController < ApplicationController
       end
     end
 
-    redirect_to recipe_steps_path(@recipe)
+    respond_to do |format|
+      format.html { redirect_to recipes_path }
+      format.js { render 'recipes/done' }
+    end
   end
 
   private

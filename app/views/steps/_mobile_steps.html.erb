@@ -1,7 +1,12 @@
 <div class="steps-mobile-container">
+
+  <div class="steps-header" style = "background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('<%= @recipe.photo %>'); height: 270px;">
+    <!-- <img src="<%= @recipe.photo %>" alt=""> -->
+
   <%# Ingredient Button, Remove Collapse after%>
   <div id="mobile-ingredient-title" class="btn btn-outline-success btn-lg btn-block" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Ingredients</div>
     <div class="mobile-ingredient-list collapse" id="collapseExample">
+<<<<<<< HEAD
       <div class="card steps-card-body">
         <div class="missing-ingredients">
           <% @recipe.missing_ingredients(current_user).each do |recipe_item| %>
@@ -11,16 +16,21 @@
               (need <%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %>)
             </div>
           <% end %>
+=======
+      <%# <div class="card card-body"> %>
+        <div>
+          <!-- <ul> -->
+            <% @recipe.recipe_items.each do |recipe_item| %>
+              <div class="ingredient-green">
+                <i class="fas fa-leaf"></i>
+                <strong><%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %></strong>
+                <%= recipe_item.ingredient.name %>
+              </div>
+            <% end %>
+          <!-- </ul> -->
+
+>>>>>>> master
         </div>
-        <div class="matched-ingredients">
-          <% @recipe.matching_ingredients(current_user).each do |recipe_item| %>
-            <div class="ingredient-green">
-              <i class="far fa-check-circle"></i>
-              <%= recipe_item.ingredient.name.capitalize %>
-              (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
-            </div>
-          <% end %>
-        </div><br>
         <div class="collapsed-grocery-button">
           <a class="button button-main-green" rel="nofollow" data-method="post" href="/recipes/<%= @recipe.id %>/add-to-grocery">Add to Grocery List</a>
         </div><br>
@@ -29,6 +39,7 @@
   </div>
   <div class="steps-header">
     <img src="<%= @recipe.photo %>" alt="">
+
     <h1><%= @recipe.name %></h1>
   </div>
   <div id="progress-bar" class="d-flex">
@@ -58,6 +69,7 @@
   <div id="done-cooking" class="mt-3" style="text-align: center;display: none;">
     <% @recipe_ingredients = @recipe.ingredients %>
     <% #raise %>
-    <%= link_to "Done Cooking", empty_fridge_path(@recipe), method: :patch, class: "button button-main-red button-center button-lg" %>
-  </div> 
+    <%= link_to "Done Cooking", empty_fridge_path(@recipe), method: :patch, remote: true, class: "button button-main-red button-center button-lg" %>
+  </div>
+
 </div>
