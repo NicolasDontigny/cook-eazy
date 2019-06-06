@@ -5,6 +5,7 @@ Recipe.destroy_all
 Ingredient.destroy_all
 User.destroy_all
 FridgeItem.destroy_all
+Tag.destroy_all
 
 puts 'creating user'
 
@@ -65,7 +66,9 @@ recipes.each do |recipe|
     new_recipe.tag_items << TagItem.new(
       tag: Tag.find_or_create_by(name: dish_type)
     )
+    puts dish_type
   end
+  puts new_recipe.tag_items
 
   puts 'saving recipe user'
   new_recipe.user = nic
