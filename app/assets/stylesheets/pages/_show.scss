@@ -38,7 +38,7 @@
   grid-area: header;
   margin-left: 10px;
   margin-right: 10px;
-  min-height: 230px;
+  // min-height: 230px;
 }
 
 
@@ -173,6 +173,8 @@
 
 .collapsed-grocery-button {
   text-align: center;
+  margin-top: 24px;
+  margin-bottom: -16px;
 }
 
 @media (max-width: 1000px) {

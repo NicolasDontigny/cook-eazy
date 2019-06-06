@@ -5,19 +5,8 @@
 
   <%# Ingredient Button, Remove Collapse after%>
   <div id="mobile-ingredient-title" class="btn btn-outline-success btn-lg btn-block" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Ingredients</div>
-    <div class="mobile-ingredient-list collapse" id="collapseExample">
-<<<<<<< HEAD
+    <div class="mobile-steps-list collapse" id="collapseExample">
       <div class="card steps-card-body">
-        <div class="missing-ingredients">
-          <% @recipe.missing_ingredients(current_user).each do |recipe_item| %>
-            <div class="ingredient-red">
-              <i class="far fa-times-circle"></i>
-              <%= recipe_item.ingredient.name.capitalize %>
-              (need <%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %>)
-            </div>
-          <% end %>
-=======
-      <%# <div class="card card-body"> %>
         <div>
           <!-- <ul> -->
             <% @recipe.recipe_items.each do |recipe_item| %>
@@ -29,7 +18,6 @@
             <% end %>
           <!-- </ul> -->
 
->>>>>>> master
         </div>
         <div class="collapsed-grocery-button">
           <a class="button button-main-green" rel="nofollow" data-method="post" href="/recipes/<%= @recipe.id %>/add-to-grocery">Add to Grocery List</a>
@@ -37,8 +25,6 @@
       </div>
     </div>
   </div>
-  <div class="steps-header">
-    <img src="<%= @recipe.photo %>" alt="">
 
     <h1><%= @recipe.name %></h1>
   </div>
