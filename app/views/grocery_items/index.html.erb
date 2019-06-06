@@ -6,7 +6,7 @@
   <div class="fridge-wrapper">
 
     <div class="fridge__body">
-      <h2><%= image_tag "grocery-orange.png", alt: "Grocery logo", width: 100, class: "grocery__logo" %><%= image_tag "grocery-orange.png", alt: "Grocery logo", width: 70, class: "grocery__logo--mobile" %>My Grocery List</h2>
+      <h2><%= image_tag "grocery-orange.png", alt: "Grocery logo", class: "grocery__logo--mobile" %>My Grocery List</h2>
 
       <div class="category-wrapper">
 
@@ -22,7 +22,7 @@
 
       </div> <!-- end of category wrapper -->
 
-        <div class="mobile-only">
+        <div class="mobile-only-checkbox">
           <%= render "checkbox", grocery_items: @grocery_items unless @grocery_items.empty? %>
         </div>
         <%= link_to "Update Grocery List", grocery_items_path, method: :patch, class: "button button-main-red button-center button-lg btn-update-groceries", id: "update-grocery", remote: true %>
