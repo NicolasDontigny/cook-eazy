@@ -38,6 +38,8 @@ class RecipesController < ApplicationController
       @recipes = @recipes.reject { |recipe| recipe.prep_time + recipe.cook_time > @max_time.to_i }
     end
 
+    if @category.present? && @category != 'all'
+
     @recipes = @recipes.sort do |recipe1, recipe2|
       # For recipes that have the same number of missing ingredients
       # Sort them by the highest number of matching ingredients
