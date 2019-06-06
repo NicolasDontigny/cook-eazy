@@ -22,6 +22,7 @@
 @import "grocery-items";
 @import "reviews";
 @import "ratings";
+@import "filters";
 
 
 
@@ -44,9 +45,9 @@
 
 }
 
-body {
-  padding-top: 1.5rem;
-}
+// body {
+//   padding-top: 4.5rem;
+// }
 
 #recipes-container {
   margin-top: 0;

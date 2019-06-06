@@ -2,6 +2,8 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_many :recipe_items, dependent: :destroy
   has_many :ingredients, through: :recipe_items
+  has_many :tag_items, dependent: :destroy
+  has_many :tags, through: :tag_items
   has_many :reviews, dependent: :destroy
   has_many :steps, dependent: :destroy
 

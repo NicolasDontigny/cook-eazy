@@ -1,25 +1,49 @@
-<%= simple_form_for [recipe, review], remote: true do |form| %>
-  <%= form.input :content %>
-  <div class="form-group select required">
-    <label class="form-control-label select required" for="review_rating">Rating <abbr title="required">*</abbr></label>
-<!--     <select class="form-control select required" name="review[rating]" id="review_rating">
-      <option value=""></option>
-      <option value="1">1 star</option>
-      <option value="2">2 stars</option>
-      <option value="3">3 stars</option>
-      <option value="4">4 stars</option>
-      <option value="5">5 stars</option>
-    </select> -->
 
-    <div class="rating" id="review_rating">
-        <span><input type="radio" name="review[rating]" id="str5" value="5"><label for="str5"><i class="fas fa-star"></i></label></span>
-        <span><input type="radio" name="review[rating]" id="str4" value="4"><label for="str4"><i class="fas fa-star"></i></label></span>
-        <span><input type="radio" name="review[rating]" id="str3" value="3"><label for="str3"><i class="fas fa-star"></i></label></span>
-        <span><input type="radio" name="review[rating]" id="str2" value="2"><label for="str2"><i class="fas fa-star"></i></label></span>
-        <span><input type="radio" name="review[rating]" id="str1" value="1"><label for="str1"><i class="fas fa-star"></i></label></span>
+<% if user_signed_in? %>
+
+  <%= simple_form_for [recipe, review], remote: true do |form| %>
+    <div class="form-group select required">
+  <!--
+      <div class="rating" id="review_rating">
+          <span><input type="radio" name="review[rating]" id="str5" value="5"><label for="str5"><i class="fas fa-star"></i></label></span>
+          <span><input type="radio" name="review[rating]" id="str4" value="4"><label for="str4"><i class="fas fa-star"></i></label></span>
+          <span><input type="radio" name="review[rating]" id="str3" value="3"><label for="str3"><i class="fas fa-star"></i></label></span>
+          <span><input type="radio" name="review[rating]" id="str2" value="2"><label for="str2"><i class="fas fa-star"></i></label></span>
+          <span><input type="radio" name="review[rating]" id="str1" value="1"><label for="str1"><i class="fas fa-star"></i></label></span>
+      </div> -->
+
+      <ul class="rating-inputs">
+        <li>
+          <input type="radio" name="review[rating]" id="star5" value="5">
+          <label for="star5"><i class="fas fa-star gray"></i></label>
+        </li>
+        <li>
+          <input type="radio" name="review[rating]" id="star4" value="4">
+          <label for="star4"><i class="fas fa-star gray"></i></label>
+        </li>
+        <li>
+          <input type="radio" name="review[rating]" id="star3" value="3">
+          <label for="star3"><i class="fas fa-star gray"></i></label>
+        </li>
+        <li>
+          <input type="radio" name="review[rating]" id="star2" value="2">
+          <label for="star2"><i class="fas fa-star gray"></i></label>
+        </li>
+        <li>
+          <input type="radio" name="review[rating]" id="star1" value="1">
+          <label for="star1"><i class="fas fa-star gray"></i></label>
+        </li>
+      </ul>
     </div>
-  </div>
-  <%= hidden_field_tag(:recipe_id, recipe.id) %>
 
-  <%= form.submit "Add Review", class: "btn btn-primary" %>
+    <%= form.input :content, label: false %>
+    <%= hidden_field_tag(:recipe_id, recipe.id) %>
+
+    <%= form.submit "Add Review", class: "btn btn-primary" %>
+  <% end %>
+
+<% else %>
+  <div class="mt-3 mb-5">
+    <%= link_to "Log In", new_user_session_path %> to leave a review!
+  </div>
 <% end %>

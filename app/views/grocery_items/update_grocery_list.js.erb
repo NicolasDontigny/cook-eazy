@@ -45,3 +45,5 @@ var updateList = () => {
 }
 
 updateList();
+
+window.updateCheckbox(<%= GroceryItem.where(user: current_user).empty? %>);

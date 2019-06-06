@@ -1,9 +1,16 @@
 <div class="fixed-top">
-  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-lewagon-white">
+  <div class="navbar navbar-expand-md navbar-light navbar-lewagon navbar-lewagon-white">
     <%= link_to recipes_path, class: "navbar-brand" do %>
       <!-- <i class="fas fa-leaf logo"></i> -->
       <%= image_tag "cookeazy.png", alt: "Cookeazy", width: 200 %>
     <% end %>
+
+    <ul class="navbar-nav mr-auto" id="navbar-search-bar">
+      <li class="nav-item">
+         <%= render "components/search_bar" %>
+      </li>
+    </ul>
+
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -11,30 +18,35 @@
 
 
     <div class="collapse navbar-collapse justify-content-between cookbar" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <%= link_to "Recipes", recipes_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "My Fridge", fridge_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Groceries", grocery_items_path, class: "nav-link" %>
-        </li>
-      </ul>
 
-    <!--   <ul>
-        <li class="nav-item"> -->
-          <%= render "components/search_bar" %>
-  <!--       </li>
-      </ul>
-   -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <%= link_to "Recipes", recipes_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "My Fridge", fridge_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Groceries", grocery_items_path, class: "nav-link" %>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav mr-auto" id="collapse-search-bar">
+          <li class="nav-item">
+             <%= render "components/search_bar" %>
+          </li>
+        </ul>
+
         <ul class="navbar-nav mr-0">
           <% if user_signed_in? %>
-            <li class="nav-item">
-              <a href="" class="nav-link disabled">Welcome, <%= current_user.username || "" %>!</a>
-            </li>
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item">
+            </li> -->
+            <li class="nav-item dropdown d-flex align-items-center">
+              <a href="" class="nav-link disabled">
+                <% if current_user && current_user.username %>
+                  <%= current_user.username.capitalize  %>
+                <% end %>
+              </a>
               <%= image_tag avatar_for(current_user), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
 
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -43,6 +55,11 @@
                 <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item cookdrop" %>
               </div>
             </li>
+            <div class="dropdown-mobile">
+              <%= link_to "My recipes", my_recipes_path, class: "dropdown-item cookdrop" %>
+              <%= link_to "Account Settings", edit_user_registration_path, class: "dropdown-item cookdrop" %>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item cookdrop" %>
+            </div>
           <% else %>
             <li class="nav-item">
               <%= link_to "Login", new_user_session_path, class: "nav-link" %>
@@ -55,5 +72,8 @@
 
     </div>
   </div>
+  <% if @search_filters %>
+    <!-- <button id="toggle-filters" type="button" data-toggle="collapse" data-target="#search-filters" aria-expanded="false" aria-controls="search-filters">FILTERS</button> -->
+  <% end %>
   <%= render 'components/search_filters', max_time: @max_time if @search_filters %>
 </div>

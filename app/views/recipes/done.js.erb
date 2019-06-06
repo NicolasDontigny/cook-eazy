@@ -1,0 +1,19 @@
+swal({
+  title: `Removed recipe ingredients from your fridge!`,
+  icon: "success",
+  buttons: false
+})
+
+var swalOverlay = document.querySelector('.swal-overlay');
+swalOverlay.setAttribute("id", "swal-overlay");
+
+var swalAlert = document.querySelector('.swal-modal');
+swalAlert.setAttribute("id", "swal-modal");
+
+setTimeout(() => {
+  swalOverlay.style.opacity = 0;
+}, 2000)
+
+setTimeout(() => {
+  swalOverlay.remove();
+}, 3000);

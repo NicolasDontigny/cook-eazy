@@ -1,0 +1,64 @@
+<div class="steps-mobile-container">
+  <div class="steps-header">
+    <img src="<%= @recipe.photo %>" alt="">
+    <h1><%= @recipe.name %></h1>
+  </div>
+  <div id="progress-bar" class="d-flex">
+      <%# @recipe.steps.each do |step| %>
+     <!--  <div class="progress-fraction flex-grow-1">
+
+      </div> -->
+    <%# end %>
+    <%= render "progress_bar", recipe: @recipe %>
+  </div>
+  <div id="recipe-steps" data-steps="<%= @steps.count %>" class="recipe-steps d-flex align-items-center">
+    <% @steps.each do |step| %>
+
+      <div class="recipe-step text-center">
+        <span class="recipe-order"><%= step.order %></span> - <%= step.content %>
+        <% if step == @steps.last %>
+        <!-- <div id="done-cooking" class="mt-3">
+          <button class="button button-main-red">Done Cooking!</button>
+        </div> -->
+        <% end %>
+      </div>
+
+    <% end %>
+  </div>
+  <div id='steps-dots' class="text-center d-flex justify-content-center"></div>
+
+  <div id="done-cooking" class="mt-3" style="text-align: center;display: none;">
+    <% @recipe_ingredients = @recipe.ingredients %>
+    <% #raise %>
+    <%= link_to "Done Cooking", empty_fridge_path(@recipe), method: :patch, remote: true, class: "button button-main-red button-center button-lg" %>
+  </div>
+
+  <%# Ingredient Collapse Button %>
+  <div id="ingredient-title" class="btn btn-outline-success" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Ingredients</div>
+    <div class="mobile-ingredient-list collapse" id="collapseExample">
+      <div class="card card-body">
+        <div class="missing-ingredients">
+          <% @recipe.missing_ingredients(current_user).each do |recipe_item| %>
+            <div class="ingredient-red">
+              <i class="far fa-times-circle"></i>
+              <%= recipe_item.ingredient.name.capitalize %>
+              (need <%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %>)
+            </div>
+          <% end %>
+        </div>
+        <div class="matched-ingredients">
+          <% @recipe.matching_ingredients(current_user).each do |recipe_item| %>
+            <div class="ingredient-green">
+              <i class="far fa-check-circle"></i>
+              <%= recipe_item.ingredient.name.capitalize %>
+              (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
+            </div>
+          <% end %>
+        </div><br>
+        <div class="collapsed-grocery-button">
+          <a class="button button-main-green" rel="nofollow" data-method="post" href="/recipes/<%= @recipe.id %>/add-to-grocery">Add to Grocery List</a>
+        </div><br>
+      </div>
+    </div>
+  </div>
+</div>
