@@ -39,6 +39,10 @@ class RecipesController < ApplicationController
     end
 
     if @category.present? && @category != 'all'
+      @recipes = @recipes.select do |recipe|
+        recipe.tags.any? { |tag| tag.name == @category }
+      end
+    end
 
     @recipes = @recipes.sort do |recipe1, recipe2|
       # For recipes that have the same number of missing ingredients
