@@ -1,8 +1,5 @@
 <div class="steps-mobile-container">
 
-  <div class="steps-header" style = "background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('<%= @recipe.photo %>'); height: 270px;">
-    <h1><%= @recipe.name %></h1>
-
   <%# Ingredient Button, Remove Collapse after%>
   <div id="mobile-ingredient-title" class="btn btn-outline-success btn-lg btn-block" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Ingredients</div>
     <div class="mobile-steps-list collapse" id="collapseExample">
@@ -24,6 +21,11 @@
         </div><br>
       </div>
     </div>
+  </div>
+
+  <div class="steps-header" style = "background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('<%= @recipe.photo %>'); background-size:cover; background-position: center; height: 270px;">
+    <!-- <img src="<%= @recipe.photo %>" alt=""> -->
+    <h1><%= @recipe.name %></h1>
   </div>
 
   </div>
