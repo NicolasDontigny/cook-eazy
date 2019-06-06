@@ -1,8 +1,8 @@
 <div class="steps-mobile-container">
-  <%# Ingredient Collapse Button %>
-  <div id="mobile-ingredient-title" class="btn btn-outline-success" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Ingredients</div>
+  <%# Ingredient Button, Remove Collapse after%>
+  <div id="mobile-ingredient-title" class="btn btn-success" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Ingredients</div>
     <div class="mobile-ingredient-list collapse" id="collapseExample">
-      <div class="card card-body">
+      <%# <div class="card card-body"> %>
         <div class="missing-ingredients">
           <% @recipe.missing_ingredients(current_user).each do |recipe_item| %>
             <div class="ingredient-red">
@@ -24,7 +24,7 @@
         <div class="collapsed-grocery-button">
           <a class="button button-main-green" rel="nofollow" data-method="post" href="/recipes/<%= @recipe.id %>/add-to-grocery">Add to Grocery List</a>
         </div><br>
-      </div>
+      <%# </div> %>
     </div>
   </div>
   <div class="steps-header">
