@@ -49,10 +49,7 @@ export var clickRightOrLeft = () => {
         chevronDivs.forEach((chevronDiv) => {
           chevronDiv.addEventListener('click', refreshBar);
         });
-
       }
-
-
     }, 1000)
 
     var recipeStepsContainer = document.getElementById('recipe-steps');
