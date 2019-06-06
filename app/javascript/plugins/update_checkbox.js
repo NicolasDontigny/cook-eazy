@@ -1,6 +1,7 @@
 const updateCheckbox = (empty) => {
   console.log(empty)
   const checkboxes = document.querySelectorAll(`a[data='checkbox']`);
+  console.log(checkboxes)
   if (checkboxes) {
     if (empty) {
       // checkbox.insertAdjacentHTML("afterend", checkboxHTML);

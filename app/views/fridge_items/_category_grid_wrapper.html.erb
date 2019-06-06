@@ -7,7 +7,7 @@
       <div class="category-list-new">
         <h3 class="fridge-category"><%= category unless category == '?' %></h3>
 
-        <% fridge_items.each do |item| %>
+        <% fridge_items.sort.each do |item| %>
 
           <% if category == item.ingredient.category %>
 

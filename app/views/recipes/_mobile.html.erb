@@ -1,6 +1,9 @@
+<% content_for :meta_title, "#{@recipe.name} - #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_image, cl_image_path(@recipe.photo) %>
+
 <div class="mobile-container">
     <div class="mobile-item-b">
-        <div class="d-flex flex-column header-container" style="background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url(<%= @recipe.photo %>);">
+        <div class="d-flex flex-column mobile-header-container" style="background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url(<%= @recipe.photo %>);">
             <div class="d-flex justify-content-between">
               <h2><%= @recipe.name %></h2>
               <% if WishlistItem.where(recipe: @recipe).empty? %>
@@ -13,7 +16,7 @@
                 <% end %>
               <% end %>
              </div>
-          
+
             <div class="reviews-stars-and-text-container">
               <div class="d-flex align-items-center">
                 <%= render 'star_rating', recipe: @recipe %>
@@ -58,8 +61,8 @@
                         <% @recipe.missing_ingredients(current_user).each do |recipe_item| %>
                             <div class="ingredient-red">
                                 <i class="far fa-times-circle"></i>
+                                <strong><%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %></strong>
                                 <%= recipe_item.ingredient.name.capitalize %>
-                                (need <%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %>)
                             </div>
                         <% end %>
                     </div>
@@ -67,8 +70,8 @@
                         <% @recipe.matching_ingredients(current_user).each do |recipe_item| %>
                             <div class="ingredient-green">
                                 <i class="far fa-check-circle"></i>
+                                <strong><%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %></strong>
                                 <%= recipe_item.ingredient.name.capitalize %>
-                                (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
                             </div>
                         <% end %>
                     </div><br>
@@ -83,7 +86,7 @@
     <%# Steps %>
     <div class="item-c">
     <% @recipe.steps.each do |step| %>
-        <p><%= step.order %> - <%= step.content %></p>
+        <p style="font-size:20px;"><%= step.order %> - <%= step.content %></p>
     <% end %>
     </div>
 

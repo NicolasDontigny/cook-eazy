@@ -1,4 +1,4 @@
-var refreshItem = (itemHTML, id, checkBoxHTML) => {
+var refreshItem = (itemHTML, id) => {
   grocery_item = document.querySelector(`li[data-item-id='${id}']`)
   grocery_item.insertAdjacentHTML("afterend", itemHTML);
   grocery_item.remove();
@@ -16,11 +16,24 @@ var refreshItem = (itemHTML, id, checkBoxHTML) => {
 
 var checkBoxItems = document.querySelectorAll(`a[data='checkbox']`);
 
-checkBoxItems.forEach(checkBoxItem => {
-  checkBoxItem.querySelector('i').classList.toggle('fa-check-square');
-  checkBoxItem.querySelector('i').classList.toggle('fa-square');
+<% if @grocery_items.all? { |grocery_item| grocery_item.checked == true } %>
+
+  checkBoxItems.forEach(checkBoxItem => {
+    checkBoxItem.querySelector('i').classList.add('fa-check-square');
+    checkBoxItem.querySelector('i').classList.remove('fa-square');
     }
   );
+
+<% else %>
+
+  checkBoxItems.forEach(checkBoxItem => {
+    checkBoxItem.querySelector('i').classList.add('fa-square');
+    checkBoxItem.querySelector('i').classList.remove('fa-check-square');
+    }
+  );
+
+<% end %>
+
 
 // checkBoxItem.querySelector('i').classList.toggle('fa-check-square');
 // checkBoxItem.querySelector('i').classList.toggle('fa-square');

@@ -2,24 +2,19 @@
   <!-- List the Ingredients -->
   <!-- <div class="list-ingredients col-3"> -->
   <div class="ingredients-list col-3">
-    <div id="title-step">Ingredients</div>
-    <ul>
-      <% @recipe.missing_ingredients(current_user).each do |recipe_item| %>
-        <li class="ingredient-red">
-          <i class="far fa-times-circle"></i>
-          <%= recipe_item.ingredient.name %>
-          (need <%= recipe_item.how_many_missing %> <%= recipe_item.ingredient.unit_of_measure %>)
-        </li>
-      <% end %>
 
-      <% @recipe.matching_ingredients(current_user).each do |recipe_item| %>
+    <div id="title-step">Ingredients</div>
+
+    <ul>
+      <% @recipe.recipe_items.each do |recipe_item| %>
         <li class="ingredient-green">
-          <i class="far fa-check-circle"></i>
+          <i class="fas fa-leaf"></i>
+          <strong><%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %></strong>
           <%= recipe_item.ingredient.name %>
-          (<%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %>)
         </li>
       <% end %>
     </ul>
+
   </div>
 
   <!-- list the steps -->

@@ -24,7 +24,7 @@
               <% if user_signed_in? %>
                 <% unless recipe.missing_ingredients(current_user).count == 0 %>
                   <div class="missing-ingredients-container">
-                    <h4 class="mb-0">Missing ingredients</h4>
+                    <h4 class="">Missing ingredients</h4>
 
                     <% if user_signed_in? %>
                       <%= link_to "Add to Grocery List", add_grocery_items_path(recipe), class: "button button-main-green", method: :post, remote: true %>
@@ -64,7 +64,17 @@
 
               <!-- If user is not signed in, only show list of ingredients of the recipe -->
               <% else %>
-                HELLO
+                <h4 class="mb-3">Ingredients</h4>
+
+                <ul class="popup-ingredients-list">
+                  <% recipe.recipe_items.each do |recipe_item| %>
+                    <li class="ingredient-green">
+                      <i class="fas fa-leaf"></i>
+                      <strong><%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %></strong>
+                      <%= recipe_item.ingredient.name %>
+                    </li>
+                  <% end %>
+                </ul>
               <% end %>
 
             </div>

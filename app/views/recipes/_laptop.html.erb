@@ -1,3 +1,6 @@
+<% content_for :meta_title, "#{@recipe.name} - #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_image, cl_image_path(@recipe.photo) %>
+
 <div class="page-container">
   <%= render "sidenav" %>
 
