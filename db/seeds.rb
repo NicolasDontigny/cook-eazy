@@ -51,6 +51,12 @@ recipes.each do |recipe|
     )
   end
 
+  recipe["dishTypes"].each do |dish_type|
+    new_recipe.tag_items << TagItem.new(
+      tag: Tag.find_or_create_by(name: dish_type)
+    )
+  end
+
   puts 'saving recipe user'
   new_recipe.user = nic
 
