@@ -1,0 +1,4 @@
+meta_product_name: "CookEazy"
+meta_title: "CookEazy: Plant-Based recipe to avoid food waste"
+meta_description: "CookEazy is a website that encourages users to cook plant-based recipes based on what they have in their fridge to avoid food waste"
+meta_image: "cookeazycover.jpeg" # should exist in `app/assets/images/`

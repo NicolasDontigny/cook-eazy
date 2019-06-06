@@ -46,4 +46,8 @@ class ApplicationController < ActionController::Base
       fridge_item.save!
     end
   end
+
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
 end
