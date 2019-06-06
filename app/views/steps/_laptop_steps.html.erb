@@ -44,5 +44,7 @@
         <%# raise %>
         <%= link_to "Done Cooking", empty_fridge_path(@recipe), method: :patch, remote: true, class: "button button-main-red button-center button-lg" %>
       </div>
+      <a class="d-flex justify-content-center mt-3" id="back-to-recipe" href="/recipes/<%= @recipe.id %>">Back to Recipe</a>
   </div>
+
 </div>
