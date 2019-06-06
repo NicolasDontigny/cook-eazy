@@ -42,7 +42,15 @@
 
 .fridge__logo--mobile {
   width: 5rem;
-  @media (max-width: 500px) {
+
+  @media (max-width: 376px) {
+    display: inline;
+    position: absolute;
+    left: 6%;
+    top: -75%;
+  }
+
+  @media (min-width: 377px) and (max-width: 500px) {
     display: inline;
     position: absolute;
     left: 18%;
@@ -112,11 +120,11 @@
   transform: translateX(-50%);
   z-index: 100;
   padding-bottom: 1rem;
-  width: 35%;
+  width: 45%;
   border-radius: 0 0 5px 5px;
-  border-right: 0.5px solid $orange;
-  border-left: 0.5px solid $orange;
-  border-bottom: 0.5px solid $orange;
+  border-right: 0.5px solid $main-green;
+  border-left: 0.5px solid $main-green;
+  border-bottom: 0.5px solid $main-green;
 
   @media (min-width: 900px) {
     position: static;
@@ -129,6 +137,12 @@
   }
 }
 
+.groceries {
+  border-right: 0.5px solid $orange;
+  border-left: 0.5px solid $orange;
+  border-bottom: 0.5px solid $orange;
+}
+
 .fridge-form--desktop {
   display: none;
 }
@@ -138,12 +152,14 @@
   .fridge-form--desktop { display: flex; }
 }
 
-.fas.fa-chevron-circle-down.grocery-arrow {
+.fas.fa-chevron-circle-down.grocery-arrow,
+.fas.fa-chevron-up.grocery-arrow {
   font-size: 1.3rem;
   color: $orange;
 }
 
-.fas.fa-chevron-circle-down.fridge-arrow {
+.fas.fa-chevron-circle-down.fridge-arrow,
+.fas.fa-chevron-up.fridge-arrow {
   font-size: 1.3rem;
   color: $main-green;
 }

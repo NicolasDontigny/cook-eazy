@@ -10,7 +10,7 @@
 
       <div class="category-wrapper">
 
-        <div class="fridge-form fridge-form--mobile"><%= render "form", user: current_user, grocery_item: GroceryItem.new %></div>
+        <div class="fridge-form fridge-form--mobile groceries"><%= render "form", user: current_user, grocery_item: GroceryItem.new %></div>
 
         <div class="fridge-form fridge-form--desktop">
           <%= render "form-desktop", user: current_user, grocery_item: GroceryItem.new %>
