@@ -17,7 +17,12 @@
   }
 
   .missing-ingredients-container {
-    padding-bottom: 16px;
+    // padding-bottom: 16px;
+    margin-bottom: 1rem;
+
+    h4 {
+      margin-bottom: 1rem;
+    }
   }
 
   .recipe-reviews {
@@ -146,8 +151,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-left: 1rem;
+      margin-bottom: 0;
       padding-bottom: 0px;
+
+      h4 {
+        margin-bottom: 0;
+      }
     }
   }
 

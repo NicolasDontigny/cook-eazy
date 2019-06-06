@@ -75,5 +75,7 @@
   <% if @search_filters %>
     <!-- <button id="toggle-filters" type="button" data-toggle="collapse" data-target="#search-filters" aria-expanded="false" aria-controls="search-filters">FILTERS</button> -->
   <% end %>
-  <%= render 'components/search_filters', max_time: @max_time if @search_filters %>
+
+  <%= render 'components/search_filters', max_time: @max_time, category: @category if @search_filters %>
+
 </div>
