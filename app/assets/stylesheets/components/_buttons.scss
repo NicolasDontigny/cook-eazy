@@ -1,6 +1,6 @@
 .button {
   border-radius: 16px;
-  padding: 12px 8px;
+  padding: 12px 12px;
   border: none;
   font-weight: bold;
 }
@@ -47,6 +47,20 @@
     text-decoration: none;
   }
 }
+
+
+.button-primary {
+  background-color: $primary;
+  color: white;
+
+  &:hover {
+    background-color: $primary;
+    opacity: 0.9;
+    color: white;
+    text-decoration: none;
+  }
+}
+
 
 
 .button-banner {

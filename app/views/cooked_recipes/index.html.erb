@@ -1,0 +1,107 @@
+<div class="container owner__container">
+
+  <div class="d-flex justify-content-between align-items-center my-3 top-header">
+    <h2>Recipes Awaiting my Review</h2>
+  </div>
+
+  <% @unreviewed_recipes.each do |cooked_recipe| %>
+
+    <% recipe = cooked_recipe.recipe %>
+
+    <div class="card-product cooked-recipe-card" data-recipe-id="<%= recipe.id %>">
+      <img src="<%= recipe.photo %>" alt="food image">
+      <div class="card-product-infos">
+        <div class="card-product-title">
+          <h3><%= recipe.name %></h3>
+
+        </div>
+        <%= render 'recipes/star_rating', recipe: recipe %>
+        <div class="info_wrapper">
+          <div>
+            <ul>
+              <li><i class="fas fa-leaf"></i> Prep. time: <% if recipe.prep_time > 60 %>
+                              <%= (recipe.prep_time / 60).floor %>
+                              <% unless recipe.prep_time % 60 == 0 %> h
+                                <%= recipe.prep_time % 60 %> min
+                              <% end %>
+                              <% else %>
+                                <%= recipe.prep_time %> min
+                              <% end %>
+              </li>
+              <li><i class="fas fa-leaf"></i> Cook. time: <% if recipe.cook_time > 60 %>
+                                <%= (recipe.cook_time / 60).floor %>
+                                <% unless recipe.cook_time % 60 == 0 %> h
+                                  <%= recipe.cook_time % 60 %> min
+                                <% end %>
+                                <% else %>
+                                  <%= recipe.cook_time %> min
+                                <% end %>
+              </li>
+              <li><i class="fas fa-leaf"></i> serves: <%= recipe.servings %> people</li>
+              <li><i class="fas fa-leaf"></i> <%= recipe.steps.length %> steps</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card__button d-flex">
+          <%= link_to "More info", recipe_path(recipe), class: "button button-main-red" %>
+          <%= link_to "Leave a Review", recipe_path(recipe) + "#leave-a-review", class: "button button-primary ml-3" %>
+        </div>
+      </div>
+    </div>
+
+
+  <% end %>
+
+
+  <div class="d-flex justify-content-between align-items-center my-3 top-header">
+    <h2>Recipes I have cooked</h2>
+  </div>
+
+  <% @reviewed_recipes.each do |cooked_recipe| %>
+
+    <% recipe = cooked_recipe.recipe %>
+
+    <div class="card-product" data-recipe-id="<%= recipe.id %>">
+      <img src="<%= recipe.photo %>" alt="food image">
+      <div class="card-product-infos">
+        <div class="card-product-title">
+          <h3><%= recipe.name %></h3>
+
+        </div>
+        <%= render 'recipes/star_rating', recipe: recipe %>
+        <div class="info_wrapper">
+          <div>
+            <ul>
+              <li><i class="fas fa-leaf"></i> Prep. time: <% if recipe.prep_time > 60 %>
+                              <%= (recipe.prep_time / 60).floor %>
+                              <% unless recipe.prep_time % 60 == 0 %> h
+                                <%= recipe.prep_time % 60 %> min
+                              <% end %>
+                              <% else %>
+                                <%= recipe.prep_time %> min
+                              <% end %>
+              </li>
+              <li><i class="fas fa-leaf"></i> Cook. time: <% if recipe.cook_time > 60 %>
+                                <%= (recipe.cook_time / 60).floor %>
+                                <% unless recipe.cook_time % 60 == 0 %> h
+                                  <%= recipe.cook_time % 60 %> min
+                                <% end %>
+                                <% else %>
+                                  <%= recipe.cook_time %> min
+                                <% end %>
+              </li>
+              <li><i class="fas fa-leaf"></i> serves: <%= recipe.servings %> people</li>
+              <li><i class="fas fa-leaf"></i> <%= recipe.steps.length %> steps</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card__button">
+          <%= link_to "More info", recipe_path(recipe), class: "button button-main-red" %>
+        </div>
+      </div>
+    </div>
+
+
+  <% end %>
+
+</div>
