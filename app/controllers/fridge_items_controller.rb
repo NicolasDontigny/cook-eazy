@@ -44,6 +44,14 @@ class FridgeItemsController < ApplicationController
 
   def empty
     @recipe = Recipe.find(params["recipe_id"].to_i)
+
+    cooked_recipe = CookedRecipe.new(
+      recipe: @recipe,
+      user: current_user
+    )
+
+    cooked_recipe.save
+
     @recipe_items = @recipe.recipe_items
     @recipe_items.each do |recipe_item|
       @fridge_item = FridgeItem.find_by(ingredient: recipe_item.ingredient)

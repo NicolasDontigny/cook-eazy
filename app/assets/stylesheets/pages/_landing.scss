@@ -5,8 +5,15 @@
   background-position: center;
   padding: 150px 0;
   height: 100vh;
+  position: relative;
 
   z-index: 1500;
+
+  .devise-buttons {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
 }
 
 .landing-page h1 {
@@ -19,14 +26,23 @@
 }
 
 .landing-typed {
-    height: 3.7rem;
-    margin-left: 16vh;
-    margin-top: 32px;
-    margin-bottom: 8px;
+    height: 11.1rem;
+    padding: 32px 32px 8px 32px;
+
+    @media screen and (min-width: 560px) {
+      height: 7.4rem;
+      padding: 32px 16vh 8px 16vh;
+    }
 }
 
 .landing-btn {
-    margin-left: 16vh;
+  margin-left: 32px;
+
+  margin-top: 4rem;
+
+  @media screen and (min-width: 560px) {
+    margin-left: 16vh
+  }
 }
 
 .btn {

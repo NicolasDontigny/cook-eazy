@@ -8,6 +8,7 @@ class Recipe < ApplicationRecord
   has_many :steps, dependent: :destroy
 
   has_many :wishlist_items, dependent: :destroy
+  has_many :cooked_recipes, dependent: :destroy
   has_many :users, through: :wishlist_items
 
   accepts_nested_attributes_for :steps, :recipe_items
