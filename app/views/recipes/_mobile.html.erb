@@ -85,7 +85,7 @@
 
     <%# Steps %>
     <div class="item-c">
-    <% @recipe.steps.each do |step| %>
+    <% @recipe.steps.order('steps.order ASC').each do |step| %>
         <p style="font-size:20px;"><%= step.order %> - <%= step.content %></p>
     <% end %>
     </div>

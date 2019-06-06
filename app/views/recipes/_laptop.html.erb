@@ -51,7 +51,7 @@
   </div>
 
   <div class="item-c">
-    <% @recipe.steps.each do |step| %>
+    <% @recipe.steps.order('steps.order ASC').each do |step| %>
       <p><strong><%= step.order %></strong> - <%= step.content %></p>
     <% end %>
   </div>
