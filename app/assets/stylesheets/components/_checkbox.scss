@@ -14,3 +14,10 @@
     font-size: 1.3rem;
   }
 }
+
+.mobile-only-checkbox {
+  @media (min-width: 900px) {
+    display: none;
+  }
+}
+
