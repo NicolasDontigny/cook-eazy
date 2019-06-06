@@ -1,6 +1,14 @@
+// Changes made by MZ
+#mobile-ingredient-title {
+  position: absolute;
+  left: 0px;
+  // right: 0px;
+  z-index: 1;
+}
+
 #recipe-steps {
   width: 100%;
-  padding: 0 45px;
+  padding: 0 29px;
   margin-top: 20px;
 }
 
@@ -13,9 +21,10 @@
   padding: 0px 45px;
   margin-bottom: 20px;
   img {
+    z-index: 2;
     width: 300px;
     border-radius: 5%;
-    margin-top: 10px;
+    // margin-top: 10px;
     @media (max-width: 540px) {
       border-radius: 0;
       width: 100%;

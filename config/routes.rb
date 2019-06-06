@@ -50,4 +50,7 @@ Rails.application.routes.draw do
   delete 'recipes/:recipe_id/wishlist' => 'wishlist_items#destroy'
 
   get '/test' => 'pages#test', as: :test
+
+  # DoneRecipes Routes
+  get 'cooked-recipes' => 'cooked_recipes#index', as: :cooked_recipes
 end

@@ -1,6 +1,33 @@
 <div class="steps-mobile-container">
+
+  <div class="steps-header" style = "background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('<%= @recipe.photo %>'); height: 270px;">
+    <!-- <img src="<%= @recipe.photo %>" alt=""> -->
+
+  <%# Ingredient Button, Remove Collapse after%>
+  <div id="mobile-ingredient-title" class="btn btn-success" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Ingredients</div>
+    <div class="mobile-ingredient-list collapse" id="collapseExample">
+      <%# <div class="card card-body"> %>
+        <div>
+          <!-- <ul> -->
+            <% @recipe.recipe_items.each do |recipe_item| %>
+              <div class="ingredient-green">
+                <i class="fas fa-leaf"></i>
+                <strong><%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %></strong>
+                <%= recipe_item.ingredient.name %>
+              </div>
+            <% end %>
+          <!-- </ul> -->
+
+        </div>
+        <div class="collapsed-grocery-button">
+          <a class="button button-main-green" rel="nofollow" data-method="post" href="/recipes/<%= @recipe.id %>/add-to-grocery">Add to Grocery List</a>
+        </div><br>
+      <%# </div> %>
+    </div>
+  </div>
   <div class="steps-header">
     <img src="<%= @recipe.photo %>" alt="">
+
     <h1><%= @recipe.name %></h1>
   </div>
   <div id="progress-bar" class="d-flex">
@@ -33,25 +60,4 @@
     <%= link_to "Done Cooking", empty_fridge_path(@recipe), method: :patch, remote: true, class: "button button-main-red button-center button-lg" %>
   </div>
 
-  <%# Ingredient Collapse Button %>
-  <div id="ingredient-title" class="btn btn-outline-success" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Ingredients</div>
-    <div class="mobile-ingredient-list collapse" id="collapseExample">
-      <div class="card card-body">
-
-        <div>
-          <!-- <ul> -->
-            <% @recipe.recipe_items.each do |recipe_item| %>
-              <div class="ingredient-green">
-                <i class="fas fa-leaf"></i>
-                <strong><%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %></strong>
-                <%= recipe_item.ingredient.name %>
-              </div>
-            <% end %>
-          <!-- </ul> -->
-
-        </div>
-
-      </div>
-    </div>
-  </div>
 </div>
