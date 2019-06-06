@@ -4,57 +4,60 @@
 <div class="page-container">
   <%= render "sidenav" %>
 
-  <div class="item-b">
-    <div class="d-flex flex-column header-container" style="background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url(<%= @recipe.photo %>);">
-      <div class="d-flex justify-content-between">
-        <h2><%= @recipe.name %></h2>
-        <% if WishlistItem.where(recipe: @recipe).empty? %>
-          <%= link_to wishlist_item_path(@recipe), method: :post, remote: true do %>
-            <i class="far fa-heart mr-3 add-to-wishlist-empty"></i>
+    <div class="item-b">
+      <div class="d-flex flex-column header-container" style="background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url(<%= @recipe.photo %>);">
+        <div class="d-flex justify-content-between">
+          <h2><%= @recipe.name %></h2>
+          <% if WishlistItem.where(recipe: @recipe).empty? %>
+            <%= link_to wishlist_item_path(@recipe), method: :post, remote: true do %>
+              <i class="far fa-heart mr-3 add-to-wishlist-empty"></i>
+            <% end %>
+          <% else %>
+            <%= link_to wishlist_item_path(@recipe), method: :delete, remote: true do %>
+              <i class="fas fa-heart mr-3 add-to-wishlist"></i>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= link_to wishlist_item_path(@recipe), method: :delete, remote: true do %>
-            <i class="fas fa-heart mr-3 add-to-wishlist"></i>
-          <% end %>
-        <% end %>
-      </div>
+        </div>
 
-      <div class="reviews-stars-and-text-container">
-        <div class="d-flex align-items-center">
-          <%= render 'star_rating', recipe: @recipe %>
-          <%= link_to "Leave a Review", recipe_path(@recipe) + "#leave-a-review", class: "ml-2" %>
+        <div class="reviews-stars-and-text-container">
+          <div class="d-flex align-items-center">
+            <%= render 'star_rating', recipe: @recipe %>
+            <%= link_to "Leave a Review", recipe_path(@recipe) + "#leave-a-review", class: "ml-2" %>
+          </div>
+        </div>
+
+
+        <div class="header-recipe-details d-flex mt-2">
+          <span class="">
+            <strong class=" header-text-bigger">Prep Time</strong>
+              <%= @recipe.prep_time %>
+          </span>
+
+          <span class="mx-2">|</span>
+
+          <span class="">
+            <strong class=" header-text-bigger">Cooking Time</strong>
+              <%= @recipe.cook_time %>
+          </span>
+
+          <span class="mx-2">|</span>
+
+          <span class="">
+            <strong class="header-text-bigger">Servings</strong>
+            <%= @recipe.servings %>
+          </span>
+        </div>
+        <div class="start-cooking">
+          <a class="button button-main-red" id="show-page-button" href="/recipes/<%= @recipe.id %>/steps">Start Cooking</a>
         </div>
       </div>
-
-
-      <div class="header-recipe-details d-flex mt-2">
-        <span class="">
-          <strong class=" header-text-bigger">Prep Time</strong>
-            <%= @recipe.prep_time %>
-        </span>
-
-        <span class="mx-2">|</span>
-
-        <span class="">
-          <strong class=" header-text-bigger">Cooking Time</strong>
-            <%= @recipe.cook_time %>
-        </span>
-
-        <span class="mx-2">|</span>
-
-        <span class="">
-          <strong class="header-text-bigger">Servings</strong>
-          <%= @recipe.servings %>
-        </span>
-      </div>
     </div>
-  </div>
 
-  <div class="item-c">
-    <% @recipe.steps.order('steps.order ASC').each do |step| %>
-      <p><strong><%= step.order %></strong> - <%= step.content %></p>
-    <% end %>
-  </div>
+    <div class="item-c">
+      <% @recipe.steps.order('steps.order ASC').each do |step| %>
+        <p><strong><%= step.order %></strong> - <%= step.content %></p>
+      <% end %>
+    </div>
 
-  <%= render "components/reviews", recipe: @recipe, form: true, show_page: true, mobile: false %>
+    <%= render "components/reviews", recipe: @recipe, form: true, show_page: true, mobile: false %>
 </div>

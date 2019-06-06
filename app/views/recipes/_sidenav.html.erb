@@ -1,32 +1,27 @@
 <div class="sidenav">
-    <!-- change this button to Start Cooking -->
-    <div class="start-cooking">
-    <a class="button button-main-red" id="show-page-button" href="/recipes/<%= @recipe.id %>/steps">Start Cooking</a>
-</div>
-<div class="item-a">
+    <div class="item-a">
+        <!-- Ingredients List -->
+        <div id="title"><strong>Ingredients</strong></div>
+            <%# <ul> %>
 
-<!-- Ingredients List -->
-    <div id="title"><strong>Ingredients</strong></div>
-        <%# <ul> %>
+            <% @recipe.missing_ingredients(current_user).each do |recipe_item| %>
+                <div class="ingredient-red">
+                    <i class="far fa-times-circle"></i>
+                    <strong><%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %></strong>
+                    <%= recipe_item.ingredient.name.capitalize %>
+                </div>
+            <% end %>
 
-        <% @recipe.missing_ingredients(current_user).each do |recipe_item| %>
-            <div class="ingredient-red">
-            <i class="far fa-times-circle"></i>
-            <strong><%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %></strong>
-            <%= recipe_item.ingredient.name.capitalize %>
+            <% @recipe.matching_ingredients(current_user).each do |recipe_item| %>
+                <div class="ingredient-green">
+                    <i class="far fa-check-circle"></i>
+                    <strong><%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %></strong>
+                    <%= recipe_item.ingredient.name.capitalize %>
+                </div>
+            <% end %>
+            <div class="add-to-groc-button ml-2">
+                <a class="button button-main-green" rel="nofollow" data-method="post" href="/recipes/<%= @recipe.id %>/add-to-grocery">Add to Grocery List</a>
             </div>
-        <% end %>
-
-        <% @recipe.matching_ingredients(current_user).each do |recipe_item| %>
-            <div class="ingredient-green">
-            <i class="far fa-check-circle"></i>
-            <strong><%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %></strong>
-            <%= recipe_item.ingredient.name.capitalize %>
-            </div>
-        <% end %>
-        <div class="add-to-groc-button ml-2">
-            <a class="button button-main-green" rel="nofollow" data-method="post" href="/recipes/<%= @recipe.id %>/add-to-grocery">Add to Grocery List</a>
-        </div>
-        <%# </ul> %>
+            <%# </ul> %>
     </div>
 </div>
