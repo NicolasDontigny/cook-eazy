@@ -1,9 +1,19 @@
 // Changes made by MZ
 #mobile-ingredient-title {
-  position: absolute;
-  left: 0px;
-  // right: 0px;
-  z-index: 1;
+  text-align: center;
+}
+
+.mobile-ingredient-list {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+}
+
+.steps-card-body {
+  flex: 1 1 auto;
+  padding: 1.25rem;
+  margin: 1rem;
+  line-height: 1.75rem;
 }
 
 #recipe-steps {
@@ -21,10 +31,10 @@
   padding: 0px 45px;
   margin-bottom: 20px;
   img {
-    z-index: 2;
+    z-index: 1;
     width: 300px;
     border-radius: 5%;
-    // margin-top: 10px;
+    // margin-top: 22px;
     @media (max-width: 540px) {
       border-radius: 0;
       width: 100%;
