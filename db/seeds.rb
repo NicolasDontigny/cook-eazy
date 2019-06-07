@@ -264,62 +264,62 @@ puts 'Done baby!'
 
 
 # Destroying recipes with ugly pictures
-# Recipe.find_by(name: 'Homemade Flour Tortillas').destroy
-# Recipe.find_by(name: 'Poppy Seed Hamantaschen Bagels').destroy
-# Recipe.find_by(name: 'Spicy Dried Apricot Jam').destroy
-# Recipe.find_by(name: 'Gingery Eggplant Edamame Stew').destroy
+Recipe.find_by(name: 'Homemade Flour Tortillas').destroy
+Recipe.find_by(name: 'Poppy Seed Hamantaschen Bagels').destroy
+Recipe.find_by(name: 'Spicy Dried Apricot Jam').destroy
+Recipe.find_by(name: 'Gingery Eggplant Edamame Stew').destroy
 
 # Updating recipes I want to cook this week
-# recipe1 = Recipe.find_by(name: 'Curried Cauliflower Salad with Currants and Pine Nuts')
-# recipe2 = Recipe.find_by(name: 'Italian Vegetable Quinoa Bowls')
-# recipe3 = Recipe.find_by(name: 'chocolate covered strawberries | strawberry s')
-# recipe4 = Recipe.find_by(name: 'Sweet Potato and Kale Salad')
+recipe1 = Recipe.find_by(name: 'Curried Cauliflower Salad with Currants and Pine Nuts')
+recipe2 = Recipe.find_by(name: 'Italian Vegetable Quinoa Bowls')
+recipe3 = Recipe.find_by(name: 'chocolate covered strawberries | strawberry s')
+recipe4 = Recipe.find_by(name: 'Sweet Potato and Kale Salad')
 
-# recipe1.recipe_items.each do |recipe_item|
-#   FridgeItem.create(
-#     user: nic,
-#     ingredient: recipe_item.ingredient,
-#     quantity: recipe_item.quantity
-#   )
-# end
+recipe1.recipe_items.each do |recipe_item|
+  FridgeItem.create(
+    user: nic,
+    ingredient: recipe_item.ingredient,
+    quantity: recipe_item.quantity
+  )
+end
 
-# recipe1.reviews.each do |review|
-#   review.destroy
-# end
+recipe1.reviews.each do |review|
+  review.destroy
+end
 
-# new_review = Review.new(
-#   content: reviews.sample,
-#   rating: 5,
-#   recipe: recipe1,
-#   user: martin,
-#   date: DateTime.now
-# )
+new_review = Review.new(
+  content: reviews.sample,
+  rating: 5,
+  recipe: recipe1,
+  user: martin,
+  date: DateTime.now
+)
 
-# new_review = Review.new(
-#   content: reviews.sample,
-#   rating: 5,
-#   recipe: recipe1,
-#   user: stephane,
-#   date: DateTime.now
-# )
+new_review = Review.new(
+  content: reviews.sample,
+  rating: 5,
+  recipe: recipe1,
+  user: stephane,
+  date: DateTime.now
+)
 
-# new_review.save
+new_review.save
 
-# recipe2.recipe_items.take(8).each do |recipe_item|
-#   FridgeItem.create(
-#     user: nic,
-#     ingredient: recipe_item.ingredient,
-#     quantity: recipe_item.quantity
-#   )
-# end
+recipe2.recipe_items.take(8).each do |recipe_item|
+  FridgeItem.create(
+    user: nic,
+    ingredient: recipe_item.ingredient,
+    quantity: recipe_item.quantity
+  )
+end
 
-# recipe4.recipe_items.take(7).each do |recipe_item|
-#   FridgeItem.create(
-#     user: nic,
-#     ingredient: recipe_item.ingredient,
-#     quantity: recipe_item.quantity
-#   )
-# end
+recipe4.recipe_items.take(7).each do |recipe_item|
+  FridgeItem.create(
+    user: nic,
+    ingredient: recipe_item.ingredient,
+    quantity: recipe_item.quantity
+  )
+end
 
 
 CookedRecipe.create(
