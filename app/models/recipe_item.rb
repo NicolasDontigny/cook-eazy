@@ -4,7 +4,7 @@ class RecipeItem < ApplicationRecord
 
   def how_many_missing
     # Try to find this recipeItem ingredient in my fridge
-    fridge_item = FridgeItem.find_by(ingredient: ingredient)
+    fridge_item = ingredient.fridge_items.to_a.find { |fi| fi.ingredient_id == ingredient.id }
 
     # If I have this same ingredient in my fridge, AND I don't have enough
     if fridge_item && fridge_item.quantity < quantity

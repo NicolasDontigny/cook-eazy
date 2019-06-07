@@ -20,27 +20,27 @@ var insertNewWishlistRecipe = (recipeCardHTML) => {
 
 }
 
-swal({
-  title: `Added "<%= @recipe.name %>" to your wishlist!`,
-  icon: "success",
-  buttons: false
-})
+// swal({
+//   title: `Added "<%= @recipe.name %>" to your wishlist!`,
+//   icon: "success",
+//   buttons: false
+// })
 
-insertNewWishlistRecipe('<div class="no-link wishlist-link px-3"><%= j render "recipes/recipe_card", recipe: @recipe %></div>')
+insertNewWishlistRecipe('<div class="no-link wishlist-link px-3"><%= j render "recipes/recipe_card", recipe: @recipe, missing_ingredients: @missing_ingredients %></div>')
 
-var swalOverlay = document.querySelector('.swal-overlay');
-swalOverlay.setAttribute("id", "swal-overlay");
+// var swalOverlay = document.querySelector('.swal-overlay');
+// swalOverlay.setAttribute("id", "swal-overlay");
 
-var swalAlert = document.querySelector('.swal-modal');
-swalAlert.setAttribute("id", "swal-modal");
+// var swalAlert = document.querySelector('.swal-modal');
+// swalAlert.setAttribute("id", "swal-modal");
 
-setTimeout(() => {
-  swalOverlay.style.opacity = 0;
-}, 2000)
+// setTimeout(() => {
+//   swalOverlay.style.opacity = 0;
+// }, 2000)
 
-setTimeout(() => {
-  swalOverlay.remove();
-}, 3000);
+// setTimeout(() => {
+//   swalOverlay.remove();
+// }, 3000);
 
 
 

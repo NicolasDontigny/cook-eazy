@@ -10,7 +10,7 @@
 
         <% @wishlist_recipes.each do |recipe| %>
 
-          <% missing_ingredients = recipe.missing_ingredients(current_user) %>
+          <% missing_ingredients = recipe.missing_ingredients(@user) %>
 
           <div class="no-link wishlist-link px-3">
             <%= render "recipe_card", recipe: recipe, missing_ingredients: missing_ingredients %>
@@ -33,7 +33,7 @@
 
     <% end %>
 
-    <% unless !user_signed_in? %>
+    <% if user_signed_in? %>
 
       <h2 class="mt" id="ready-to-cook">Ready to Cook</h2>
 
@@ -41,7 +41,7 @@
 
         <% @recipes.each do |recipe| %>
 
-            <% missing_ingredients = recipe.missing_ingredients(current_user) %>
+            <% missing_ingredients = recipe.missing_ingredients(@user) %>
 
             <% if missing_ingredients.count.zero? %>
 
@@ -65,9 +65,9 @@
 
         <% @recipes.each do |recipe| %>
 
-          <% missing_ingredients = recipe.missing_ingredients(current_user) %>
+          <% missing_ingredients = recipe.missing_ingredients(@user) %>
 
-          <% if (recipe.recipe_items.count - missing_ingredients.count).zero? %>
+          <% unless (missing_ingredients.length).zero? %>
 
             <%= render "recipe_card", recipe: recipe, missing_ingredients: missing_ingredients %>
 
@@ -84,9 +84,11 @@
 
 </div>
 
-<% @wishlist_recipes.each do |recipe| %>
-  <% unless @recipes.include? recipe %>
-    <% missing_ingredients = recipe.missing_ingredients(current_user) %>
-    <%= render "recipe_popup", recipe: recipe, missing_ingredients: missing_ingredients %>
+<% if user_signed_in? %>
+  <% @wishlist_recipes.each do |recipe| %>
+    <% unless @recipes.include? recipe %>
+      <% missing_ingredients = recipe.missing_ingredients(@user) %>
+      <%= render "recipe_popup", recipe: recipe, missing_ingredients: missing_ingredients %>
+    <% end %>
   <% end %>
 <% end %>

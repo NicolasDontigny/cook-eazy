@@ -95,3 +95,13 @@
 
   border: none;
 }
+
+.close {
+  color: white;
+  opacity: 1;
+
+  &:hover {
+    color: white;
+    opacity: 0.9;
+  }
+}

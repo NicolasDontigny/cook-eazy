@@ -35,16 +35,19 @@ class Recipe < ApplicationRecord
     #     missing_ingredients << recipe_item
     #   end
     # end
+    return recipe_items unless user
 
     # return missing_ingredients
     user_ingredients = user.fridge_items
     user_ingredient_ids = user_ingredients.pluck(:ingredient_id)
     recipe_items.select do |item|
-      !(user_ingredient_ids.include? item.ingredient_id) || item.quantity > user_ingredients.find_by(ingredient: item.ingredient).quantity
+      !(user_ingredient_ids.include? item.ingredient_id) || item.quantity > user_ingredients.to_a.find { |fi| fi.ingredient_id == item.ingredient_id }.quantity
     end
   end
 
   def matching_ingredients(user)
+    return [] unless user
+
     user_ingredients = user.fridge_items
     user_ingredient_ids = user_ingredients.pluck(:ingredient_id)
     recipe_items.where(ingredient_id: user_ingredient_ids).select do |item|

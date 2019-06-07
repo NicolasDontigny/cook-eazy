@@ -5,7 +5,7 @@
   <%= render "sidenav" %>
 
     <div class="item-b">
-      <div class="d-flex flex-column header-container" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(<%= @recipe.photo %>);">
+      <div class="d-flex flex-column header-container" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(<%= @recipe.photo %>);">
         <div class="d-flex justify-content-between">
           <h2><%= @recipe.name %></h2>
           <% if WishlistItem.where(recipe: @recipe).empty? %>

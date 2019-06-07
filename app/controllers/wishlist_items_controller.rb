@@ -13,7 +13,7 @@ class WishlistItemsController < ApplicationController
     @wishlist_item = WishlistItem.new
     @wishlist_item.user = current_user
 
-    @fridge_items = FridgeItem.where(user: current_user)
+    @missing_ingredients = @recipe.missing_ingredients(current_user)
 
     # Only add the recipe if it is not already in the Wishlist
     @wishlist_item.recipe = @recipe unless WishlistItem.find_by(recipe: @recipe)

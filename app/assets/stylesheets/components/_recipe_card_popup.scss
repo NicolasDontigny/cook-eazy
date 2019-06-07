@@ -7,13 +7,13 @@
 
   cursor: default;
 
-  border-radius: 5px;
+  // border-radius: 5px;
   position: relative;
 
   // padding: 16px;
 
   .header-container {
-    border-radius: 5px 5px 0 0;
+    // border-radius: 5px 5px 0 0;
   }
 
   .missing-ingredients-container {
@@ -79,10 +79,10 @@
 }
 
 .review-header-popup {
-  color: lightgreen;
-  &:hover {
-    color: $green;
-  }
+  // color: lightgreen;
+  // &:hover {
+  //   color: $green;
+  // }
 }
 
 .ingredient-red i {
