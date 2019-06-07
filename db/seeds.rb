@@ -338,7 +338,7 @@ recipe4.reviews.each do |review|
 end
 
 new_review1 = Review.new(
-  content: 'Martin loved it but still fell asleep while eating',
+  content: 'Pretty impressive. Very easy to make, super healthy. I highly recommend it. Would maybe add a few spices to it.',
   rating: 5,
   recipe: recipe1,
   user: stephane,
@@ -348,7 +348,7 @@ new_review1 = Review.new(
 new_review1.save
 
 new_review2 = Review.new(
-  content: 'Not cool, Steph, not cool...zZzzZzzzzZZ',
+  content: 'As I never have much time to do anything besides sleeping and computer programming, I love this quick, healthy easy-to-make recipe. First thing I do when I wake up in the morning. ',
   rating: 5,
   recipe: recipe1,
   user: martin,
