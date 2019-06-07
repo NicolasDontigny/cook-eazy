@@ -2,27 +2,39 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 4rem;
+  margin-top: 3rem;
 
   @media (min-width: 900px) {
     justify-content: space-between;
-    margin-top: 0;
+    margin: 1.5rem 1rem;
+
   }
 }
 
 .fridge-wrapper {
   display: flex;
+  justify-content: center;
   width: 100%;
+
+  @media (min-width: 900px) {
+    width: auto;
+  }
 
   h2 {
     text-align: center;
     position:relative;
+    margin-top: 1rem;
 
     @media (min-width: 900px) {
       text-align: left;
+      margin-left: 3rem;
     }
 
   }
+}
+
+.fridge__body {
+  width: 100%;
 }
 
 .fridge__logo {
@@ -86,11 +98,11 @@
 
 .category-wrapper {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 100%;
 
   @media (min-width: 900px) {
     margin-top: 2rem;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 20vw 70vw;
     grid-gap: 1rem;
   }
 }
@@ -141,6 +153,12 @@
   border-right: 0.5px solid $orange;
   border-left: 0.5px solid $orange;
   border-bottom: 0.5px solid $orange;
+  width: 60%;
+  button {
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+    font-size: 1.2rem;
+  }
 }
 
 .fridge-form--desktop {

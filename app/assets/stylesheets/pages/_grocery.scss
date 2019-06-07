@@ -1,8 +1,8 @@
 .grocery-items__wrapper {
-  transition: all .5s ease-in-out;
+  width: 100%;
 
   @media (min-width: 900px) {
-    width: 90%;
+    width: 65vw;
     column-width: 20rem;
     column-gap: 1rem;
   }
@@ -30,7 +30,7 @@
   @media (max-width: 376px) {
     display: inline;
     position: absolute;
-    left: -2%;
+    left: -5%;
     top: -75%;
   }
 
@@ -56,16 +56,16 @@
   }
 
   @media (min-width: 900px) {
-    left: -11%;
+    left: -9%;
     top: -75%;
     display: inline;
     position: absolute;
   }
 
-  @media (min-width: 990px) {
-    display: inline-block;
-    position: initial;
-  }
+  // @media (min-width: 990px) {
+  //   display: inline-block;
+  //   position: initial;
+  // }
 }
 
 .fridge-form > .simple_form.new_grocery_item {
