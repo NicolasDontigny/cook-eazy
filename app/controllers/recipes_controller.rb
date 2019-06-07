@@ -28,9 +28,9 @@ class RecipesController < ApplicationController
     end
 
     if @query.present?
-      @recipes = Recipe.search_by_name(@query)
+      @recipes = Recipe.search_by_name(@query).includes(:ingredients)
     else
-      @recipes = Recipe.all
+      @recipes = Recipe.all.includes(ingredients: [:fridge_items, :recipe_items])
     end
 
     if @max_time.present? && @max_time != "no-limit"
@@ -45,6 +45,8 @@ class RecipesController < ApplicationController
 
     if user_signed_in?
 
+      @user = User.includes(:fridge_items).where(id: current_user.id)[0]
+
       @recipes = @recipes.sort do |recipe1, recipe2|
         # # For recipes that have the same number of missing ingredients
         # # Sort them by the highest number of matching ingredients
@@ -52,7 +54,7 @@ class RecipesController < ApplicationController
         #   recipe2.matching_ingredients(current_user).count <=> recipe1.matching_ingredients(current_user).count
         # # Otherwise, sort them by the least missing ingredients
         # else
-          recipe1.how_many_ingredients_to_buy(current_user) <=> recipe2.how_many_ingredients_to_buy(current_user)
+          recipe1.how_many_ingredients_to_buy(@user) <=> recipe2.how_many_ingredients_to_buy(@user)
         # end
       end
 
