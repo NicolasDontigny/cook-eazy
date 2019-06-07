@@ -53,7 +53,7 @@
   }
 
   .step_wrapper {
-    height: 35vh;
+    // height: 35vh;
   }
 }
 
@@ -87,12 +87,16 @@
   grid-row-gap: 24px;
   grid-template-columns: 28% 72%;
   grid-column-start: 2;
-  margin-top: 2rem;
+  // margin-top: 2rem;
   // grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas:
   "ingredients header"
   "ingredients steps"
   "ingredients reviews";
+
+  .slick-track {
+    height: 40vh;
+  }
 }
 
 .sidenav {
@@ -171,7 +175,7 @@
 }
 
 #title {
-  margin: 23px 0 15px -10px;
+  margin: 0 0 15px -10px;
   // padding: 12px;
   font-size: 24px;
   // position: sticky;
