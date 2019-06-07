@@ -76,9 +76,14 @@
       font-weight: bold;
     }
   }
-
 }
 
+.review-header-popup {
+  color: lightgreen;
+  &:hover {
+    color: $green;
+  }
+}
 
 .ingredient-red i {
   color: red;
@@ -114,8 +119,6 @@
   left: 0;
 
 }
-
-
 
 .opacity-background {
   background: rgba(0, 0, 0, 0.5);
@@ -159,6 +162,5 @@
       }
     }
   }
-
 }
 
