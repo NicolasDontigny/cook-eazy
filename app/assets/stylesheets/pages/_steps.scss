@@ -30,7 +30,10 @@
 
 .steps-header {
   padding: 0px 45px;
-  margin-bottom: 20px;
+  color: white;
+  min-height: 270px;
+  background-size: cover;
+  margin: 35px 47px 20px 47px;
   img {
     z-index: 1;
     width: 300px;
@@ -49,6 +52,7 @@
   }
   h1{
     padding-left: 30px;
+    color: white;
     font-weight: bolder;
     @media (max-width: 540px) {
 
@@ -121,7 +125,7 @@
 .progress-fraction {
   height: 20px;
   border-radius: 5px;
-  background-color: rgba(158, 31, 31, 0.9);
+  background-color: #658917;
   @media (max-width: 540px) {
     border-radius: 0px;
   }
