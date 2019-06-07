@@ -2,27 +2,44 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 4rem;
+  margin-top: 3rem;
 
   @media (min-width: 900px) {
     justify-content: space-between;
-    margin-top: 0;
+    margin: 1.5rem 1rem;
+
   }
 }
 
 .fridge-wrapper {
   display: flex;
+  justify-content: center;
   width: 100%;
+
+  @media (min-width: 900px) {
+    width: auto;
+  }
 
   h2 {
     text-align: center;
     position:relative;
+    margin-top: 1.1rem;
 
     @media (min-width: 900px) {
       text-align: left;
+      padding-left: 3rem;
     }
-
   }
+}
+
+h2.fridgeh2 {
+  @media (min-width: 990px) {
+    padding: 0;
+  }
+}
+
+.fridge__body {
+  width: 100%;
 }
 
 .fridge__logo {
@@ -42,7 +59,15 @@
 
 .fridge__logo--mobile {
   width: 5rem;
-  @media (max-width: 500px) {
+
+  @media (max-width: 376px) {
+    display: inline;
+    position: absolute;
+    left: 6%;
+    top: -75%;
+  }
+
+  @media (min-width: 377px) and (max-width: 500px) {
     display: inline;
     position: absolute;
     left: 18%;
@@ -63,7 +88,7 @@
   }
 
   @media (min-width: 900px) {
-    left: -11%;
+    left: -3%;
     top: -75%;
     display: inline;
     position: absolute;
@@ -78,11 +103,11 @@
 
 .category-wrapper {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 100%;
 
   @media (min-width: 900px) {
     margin-top: 2rem;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 20vw 70vw;
     grid-gap: 1rem;
   }
 }
@@ -108,17 +133,50 @@
   position: fixed;
   background-color: white;
   top: 50px;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 100;
-  padding-bottom: 1rem;
-  width: 100%;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  padding-bottom: 0.5rem;
+  width: 60%;
+  border-radius: 0 0 5px 5px;
+  border-right: 0.5px solid $main-green;
+  border-left: 0.5px solid $main-green;
+  border-bottom: 0.5px solid $main-green;
+
+  button {
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 376px) {
+    width: 80%;
+  }
 
   @media (min-width: 900px) {
     position: static;
     justify-content: flex-start;
     order: -1;
-    box-shadow: none;
+    width: 100%;
+    border: none;
+    transform: none;
+  }
+}
+
+.groceries {
+  border-right: 0.5px solid $orange;
+  border-left: 0.5px solid $orange;
+  border-bottom: 0.5px solid $orange;
+  border-radius: 0 0 5px 5px;
+  width: 60%;
+
+  @media (max-width: 376px) {
+    width: 80%;
+  }
+  button {
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -131,12 +189,14 @@
   .fridge-form--desktop { display: flex; }
 }
 
-.fas.fa-chevron-circle-down.grocery-arrow {
+.fas.fa-chevron-circle-down.grocery-arrow,
+.fas.fa-chevron-circle-up.grocery-arrow {
   font-size: 1.3rem;
   color: $orange;
 }
 
-.fas.fa-chevron-circle-down.fridge-arrow {
+.fas.fa-chevron-circle-down.fridge-arrow,
+.fas.fa-chevron-circle-up.fridge-arrow {
   font-size: 1.3rem;
   color: $main-green;
 }
