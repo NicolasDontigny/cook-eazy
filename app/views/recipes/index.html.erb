@@ -67,7 +67,7 @@
 
           <% missing_ingredients = recipe.missing_ingredients(@user) %>
 
-          <% if (recipe.recipe_items.length - missing_ingredients.length).zero? %>
+          <% unless (missing_ingredients.length).zero? %>
 
             <%= render "recipe_card", recipe: recipe, missing_ingredients: missing_ingredients %>
 

@@ -163,13 +163,14 @@ recipes.each do |recipe|
 
   puts 'creating recipes'
 
-  new_recipe = Recipe.new(
-            name: recipe["title"],
-            prep_time: recipe["preparationMinutes"] || 5,
-            cook_time: recipe["cookingMinutes"] || 5,
-            servings: recipe["servings"],
-            photo: recipe["image"] || 'https://source.unsplash.com/1600x900/?vegan',
-            difficulty: ["Easy", "Moderate", "Hard"].sample)
+  new_recipe =  Recipe.new(
+                  name: recipe["title"],
+                  prep_time: recipe["preparationMinutes"] || 5,
+                  cook_time: recipe["cookingMinutes"] || 5,
+                  servings: recipe["servings"],
+                  photo: recipe["image"] || 'https://source.unsplash.com/1600x900/?vegan',
+                  difficulty: ["Easy", "Moderate", "Hard"].sample
+                )
 
   recipe["extendedIngredients"].each do |do_ingredient|
     ingredient = Ingredient.find_or_create_by(name: do_ingredient["name"], unit_of_measure: do_ingredient["measures"]["metric"]["unitShort"], category: do_ingredient["aisle"].split(';').first)
