@@ -126,6 +126,7 @@ class RecipesController < ApplicationController
   end
 
   def done!
+    binding.pry
     @ingredients = @recipe.ingredients
     empty_fridge(@ingredients)
   end

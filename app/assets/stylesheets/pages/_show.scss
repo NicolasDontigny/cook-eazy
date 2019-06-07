@@ -61,6 +61,7 @@
   margin-left: 10px;
   margin-right: 10px;
   overflow: scroll;
+  background-color: color;
 }
 
 .item-c p {
@@ -101,10 +102,10 @@
     //     max-height:100%;
     //     max-width:100%;
     //     position: relative;
-    
-.start-cooking { 
+
+.start-cooking {
   margin: 56px 0 0 0;
-  // text-align: center; 
+  // text-align: center;
 }
 
 .add-to-groc-button {
@@ -133,7 +134,7 @@
     padding: 16px;
   }
 }
- 
+
 .mobile-review-link {
   color: lightgreen;
   &hover {
@@ -170,7 +171,7 @@
   font-size: 24px;
   // position: sticky;
   text-align: center;
-} 
+}
 
 #ingredient-title {
   margin: 12px 0 8px 5px;

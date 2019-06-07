@@ -17,6 +17,7 @@ import { addClickEventToStars } from '../plugins/ratings';
 import { updateCheckbox } from '../plugins/update_checkbox';
 import { makeFiltersCollapsable } from '../plugins/filters_collapse';
 import { toggle } from '../plugins/arrow_toggle';
+import { slidedown } from '../plugins/slidedown';
 
 import { hideReadyToCookIfEmpty } from '../plugins/hide_ready_to_cook';
 
@@ -35,8 +36,6 @@ wishlistCarousel();
 
 stepsCarousel();
 
-clickRightOrLeft();
-
 addEventToHearts();
 
 addClickEventToStars();
@@ -46,3 +45,5 @@ makeFiltersCollapsable();
 toggle();
 
 hideReadyToCookIfEmpty();
+
+clickRightOrLeft();

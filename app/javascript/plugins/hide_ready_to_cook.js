@@ -5,6 +5,10 @@ export const hideReadyToCookIfEmpty = () => {
     if (h2) {
       const readyToCookContainer = document.getElementById('ready-to-cook-container');
 
+// <<<<<<< HEAD
+//     if (readyToCookContainer) {
+// =======
+// >>>>>>> master
       const numberOfRecipeCards = readyToCookContainer.querySelectorAll('.recipe-card').length;
 
       if (numberOfRecipeCards == 0) {

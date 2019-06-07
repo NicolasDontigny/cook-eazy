@@ -47,10 +47,46 @@
             <%= @recipe.servings %>
           </span>
         </div>
+        <% if @recipe.steps.count == 1 || @recipe.steps.count == 0 %>
+          <div class="start-cooking mt-3" style="display: block; max-width: 140px; text-align: center;">
+            <%= link_to empty_fridge_path(@recipe), class: "link_to_done", remote: true, method: :patch do %>
+            <div class="button button-main-red">Done Cooking!</div>
+            <% end %>
+          </div>
+        <% else %>
         <div class="start-cooking">
-          <a class="button button-main-red" id="show-page-button" href="/recipes/<%= @recipe.id %>/steps">Start Cooking</a>
+          <a class="button button-main-red" id="show-page-button" href="#">Start Cooking</a>
         </div>
+        <% end %>
+
+
       </div>
+      <% unless @recipe.steps.count == 1 || @recipe.steps.count == 0 %>
+        <div class="step_wrapper">
+          <div id="progress-bar" class="progress-fraction" style="width: <%= 100 / @recipe.steps.count.to_f %>%">
+          </div>
+          <div id="recipe-steps" data-steps="<%= @recipe.steps.count %>" class="recipe-steps d-flex align-items-center">
+            <% last_item_index = @recipe.steps.count - 1%>
+            <% @recipe.steps.reverse.each_with_index do |step, index| %>
+
+              <div class="recipe-step text-center">
+                <span class="recipe-order"><%= step.order %>&nbsp;-&nbsp;</span>
+                <span style="max-width: 60%;"> <%= step.content %></span>
+                <% if index == last_item_index %>
+                  <div id="done-cooking" class="mt-3">
+                    <%= link_to empty_fridge_path(@recipe), class: "link_to_done", remote: true, method: :patch do %>
+                    <div class="button button-main-red" style="margin-left: auto; margin-right: auto; max-width: 20vw;">Done Cooking!</div>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+
+            <% end %>
+          </div>
+          <div id='steps-dots' class="text-center d-flex justify-content-center"></div>
+
+        </div>
+      <% end %>
     </div>
 
     <div class="item-c">

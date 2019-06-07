@@ -112,8 +112,11 @@
 #progress-bar {
   /*border: $main-green solid;*/
   background: rgba(118, 162, 30, 0.4);
-  margin: 0 45px 0 45px;
-  border-radius: 5px;
+  // margin: 0 45px 0 45px;
+  margin: 0px;
+  border-radius: 0px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   @media (max-width: 540px) {
     padding: 0;
     margin: 0;
@@ -143,3 +146,20 @@
   .desktop-only { display: initial; }
 }*/
 
+.step_wrapper {
+  // display: none;
+  // opacity: 0;
+  transition: 1s all ease;
+  max-height: 0px;
+  overflow: hidden;
+
+}
+
+#done-cooking {
+  display: none;
+}
+
+
+.link_to_done:hover {
+  text-decoration: none;
+}
