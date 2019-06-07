@@ -43,12 +43,17 @@
   grid-area: header;
   margin-left: 10px;
   margin-right: 10px;
+
   // min-height: 230px;
   .leave-review-link {
     color: lightgreen;
     &:hover {
       color: $green;
     }
+  }
+
+  .step_wrapper {
+    height: 35vh;
   }
 }
 
