@@ -22,7 +22,7 @@
             <div class="ingredients-container mt-4">
 
               <% if user_signed_in? %>
-                <% unless recipe.missing_ingredients(current_user).count == 0 %>
+                <% unless missing_ingredients.count == 0 %>
                   <div class="missing-ingredients-container">
                     <h4 class="">Missing ingredients</h4>
 
@@ -34,7 +34,7 @@
 
                   </div>
                   <ul class="popup-ingredients-list">
-                    <% recipe.missing_ingredients(current_user).each do |recipe_item| %>
+                    <% missing_ingredients.each do |recipe_item| %>
                       <li class="ingredient-red">
                         <i class="far fa-times-circle"></i>
                         <%= recipe_item.ingredient.name %>
@@ -46,12 +46,16 @@
 
                 <% end %>
 
-                <% unless recipe.matching_ingredients(current_user).count == 0 %>
+                <% unless recipe.recipe_items.count - missing_ingredients.count <= 0 %>
+
+                  <% missing_ingredients_ids = missing_ingredients.pluck(:ingredient_id) %>
+
+                  <% matching_ingredients = recipe.recipe_items.where.not(ingredient_id: missing_ingredients_ids) %>
 
                   <h4 class="mb-3">Ingredients I have</h4>
 
                   <ul class="popup-ingredients-list">
-                    <% recipe.matching_ingredients(current_user).each do |recipe_item| %>
+                    <% matching_ingredients.each do |recipe_item| %>
                       <li class="ingredient-green">
                         <i class="far fa-check-circle"></i>
                         <strong><%= recipe_item.quantity %> <%= recipe_item.ingredient.unit_of_measure %></strong>

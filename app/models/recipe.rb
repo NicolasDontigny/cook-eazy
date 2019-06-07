@@ -44,17 +44,6 @@ class Recipe < ApplicationRecord
     end
   end
 
-  # def insufficient_ingredients(fridge_items)
-  #   insufficient_ingredients = []
-
-  #   recipe_items.each do |recipe_item|
-  #     if fridge_items.any? { |item| item.ingredient == recipe_item.ingredient && item.quantity < recipe_item.quantity }
-  #       insufficient_ingredients << recipe_item
-  #     end
-  #   end
-  #   return insufficient_ingredients
-  # end
-
   def matching_ingredients(user)
     user_ingredients = user.fridge_items
     user_ingredient_ids = user_ingredients.pluck(:ingredient_id)

@@ -10,11 +10,11 @@
 
         <% @wishlist_recipes.each do |recipe| %>
 
-          <%#= link_to recipe_popup_path(recipe), class: "no-link wishlist-link px-3", remote: true do %>
+          <% missing_ingredients = recipe.missing_ingredients(current_user) %>
+
           <div class="no-link wishlist-link px-3">
-            <%= render "recipe_card", recipe: recipe, wishlist: true %>
+            <%= render "recipe_card", recipe: recipe, missing_ingredients: missing_ingredients %>
           </div>
-          <%# end %>
 
         <% end %>
 
@@ -27,60 +27,66 @@
   <div id="browse-recipes">
     <div id="browse-recipes-top"></div>
 
-    <% if @recipes_ready.empty? && @recipes_not_ready.empty? %>
+    <% if @recipes.empty? %>
 
       <h2 class="mt">Sorry, there are no recipes matching your search</h2>
 
     <% end %>
 
-    <% unless @recipes_ready.empty? || !user_signed_in? %>
+    <% unless !user_signed_in? %>
 
-      <h2 class="mt">Ready to Cook</h2>
+      <h2 class="mt" id="ready-to-cook">Ready to Cook</h2>
 
-      <div class="recipes-container mt-3">
+      <div class="recipes-container mt-3" id="ready-to-cook-container">
 
-        <% @recipes_ready.each do |recipe| %>
+        <% @recipes.each do |recipe| %>
 
-          <%# if recipe.missing_ingredients(current_user).empty? %>
-            <%# missing_ingredients = recipe.missing_ingredients(current_user) %>
-            <%= render "recipe_card", recipe: recipe  %>
+            <% missing_ingredients = recipe.missing_ingredients(current_user) %>
 
-          <% end %>
+            <% if missing_ingredients.count.zero? %>
 
-        <%# end %>
+              <%= render "recipe_card", recipe: recipe, missing_ingredients: missing_ingredients %>
 
-      </div>
+              <%= render "recipe_popup", recipe: recipe, missing_ingredients: missing_ingredients %>
 
-    <% end %>
-
-
-    <% unless @recipes_not_ready.empty? %>
-      <h2 class="mt-3">Recipes for You</h2>
-
-      <div class="recipes-container mt-3">
-
-        <% @recipes_not_ready.each do |recipe| %>
-
-          <%# unless recipe.missing_ingredients(current_user).empty? %>
-
-            <%= render "recipe_card", recipe: recipe %>
-
-          <%# end %>
+            <% end %>
 
         <% end %>
 
       </div>
 
     <% end %>
+
+
+    <%# unless @recipes_not_ready.empty? %>
+      <h2 class="mt-3">Recipes for You</h2>
+
+      <div class="recipes-container mt-3">
+
+        <% @recipes.each do |recipe| %>
+
+          <% missing_ingredients = recipe.missing_ingredients(current_user) %>
+
+          <% if (recipe.recipe_items.count - missing_ingredients.count).zero? %>
+
+            <%= render "recipe_card", recipe: recipe, missing_ingredients: missing_ingredients %>
+
+            <%= render "recipe_popup", recipe: recipe, missing_ingredients: missing_ingredients %>
+
+          <% end %>
+
+        <% end %>
+
+      </div>
+
+    <%# end %>
   </div>
 
 </div>
 
-<!-- Add the hidden Modals -->
-<% Recipe.all.each do |recipe| %>
-  <%= render "recipe_popup", recipe: recipe, fridge_items: @fridge_items %>
+<% @wishlist_recipes.each do |recipe| %>
+  <% unless @recipes.include? recipe %>
+    <% missing_ingredients = recipe.missing_ingredients(current_user) %>
+    <%= render "recipe_popup", recipe: recipe, missing_ingredients: missing_ingredients %>
+  <% end %>
 <% end %>
-
-<!-- Add the hidden button to refresh Carousel -->
-<!-- <button id="unslick-carousel" style="display: none"></button>
-<button id="refresh-carousel" style="display: none"></button> -->
