@@ -9,6 +9,8 @@ const updateCheckbox = (empty) => {
         checkbox.style.visibility = "hidden";
           }
         );
+        const button = document.querySelector('.btn-update-groceries');
+        button.remove();
       // checkbox.style.visibility = "hidden";
     }
     else {
@@ -20,6 +22,9 @@ const updateCheckbox = (empty) => {
         checkbox.firstChild.nextElementSibling.classList.add('fa-square')
           }
         );
+      const fridgeBody = document.querySelector('.fridge__body');
+      fridgeBody.insertAdjacentHTML('beforeend', `<a class="button button-main-red button-center button-lg btn-update-groceries" id="update-grocery" data-remote="true" rel="nofollow" data-method="patch" href="/grocery-list">Update Grocery List</a>
+`)
       // checkbox.style.visibility = "visible";
       // // console.log(checkbox.firstChild);
       // checkbox.firstChild.nextElementSibling.classList.remove('fa-check-square');
