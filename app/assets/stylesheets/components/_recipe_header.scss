@@ -8,12 +8,13 @@
   min-height: 270px;
 
   h1, h2 {
-    color: $gray;
+    color: white;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   }
 
   span, .no-reviews, .number-of-reviews {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    color: white;
   }
 
   i.far.fa-star,
@@ -28,6 +29,7 @@
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     font-size: 1.1rem;
     cursor: pointer;
+    color: white;
   }
 
   .reviews-stars-and-text-container {
@@ -60,7 +62,7 @@
 @media (min-width: 576px) {
   .header-recipe-details {
     flex-direction: row;
-
+    color: white;
   .line {
     display: block;
    }
