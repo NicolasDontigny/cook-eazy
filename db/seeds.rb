@@ -378,7 +378,7 @@ new_review3.save
 
 
 new_review4 = Review.new(
-  content: 'Found all the ingredients on Travel Med. No sketchy at all',
+  content: 'Found all the ingredients on Travel Med. Not sketchy at all',
   rating: 5,
   recipe: recipe2,
   user: romain,
