@@ -308,7 +308,7 @@ Recipe.find_by(name: 'Spicy Dried Apricot Jam').destroy
 Recipe.find_by(name: 'Gingery Eggplant Edamame Stew').destroy
 
 # Updating recipes I want to cook this week
-recipe1 = Recipe.find_by(name: 'Curried Cauliflower Salad with Currants and Pine Nuts')
+recipe1 = Recipe.find_by(name: 'Stripped Green Smoothie Bowl + Superfoods 101')
 recipe2 = Recipe.find_by(name: 'Italian Vegetable Quinoa Bowls')
 recipe3 = Recipe.find_by(name: 'chocolate covered strawberries | strawberry s')
 recipe4 = Recipe.find_by(name: 'Sweet Potato and Kale Salad')
@@ -447,3 +447,20 @@ CookedRecipe.create(
   user: nic,
   recipe: Recipe.second
 )
+
+Review.create(
+  content: 'It was ok, a bit salty',
+  rating: 3,
+  recipe: Recipe.first,
+  user: nic,
+  date: DateTime.now
+)
+
+Review.create(
+  content: 'So good!',
+  rating: 5,
+  recipe: Recipe.second,
+  user: nic,
+  date: DateTime.now
+)
+
