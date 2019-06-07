@@ -21,8 +21,10 @@ class RecipesController < ApplicationController
       session[:max_time] = params[:max_time]
       session[:category] = params[:category]
     else
-      session[:max_time] = nil if params[:query].blank?
-      session[:category] = nil if params[:query].blank?
+      # session[:max_time] = nil if params[:query].blank?
+      # session[:category] = nil if params[:query].blank?
+      session[:max_time] = nil
+      session[:category] = nil
       @max_time = session[:max_time]
       @category = session[:category]
     end
