@@ -19,7 +19,7 @@ const updateCheckbox = (empty) => {
         checkbox.style.visibility = "visible";
         // console.log(checkbox.firstChild);
         checkbox.firstChild.nextElementSibling.classList.remove('fa-check-square');
-        checkbox.firstChild.nextElementSibling.classList.add('fa-square')
+        checkbox.firstChild.nextElementSibling.classList.add('fa-square');
           }
         );
       const fridgeBody = document.querySelector('.fridge__body');

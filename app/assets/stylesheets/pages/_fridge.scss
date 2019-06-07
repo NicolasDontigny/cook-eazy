@@ -136,7 +136,7 @@ h2.fridgeh2 {
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
   width: 60%;
   border-radius: 0 0 5px 5px;
   border-right: 0.5px solid $main-green;
@@ -157,7 +157,6 @@ h2.fridgeh2 {
     position: static;
     justify-content: flex-start;
     order: -1;
-    box-shadow: none;
     width: 100%;
     border: none;
     transform: none;
@@ -191,13 +190,13 @@ h2.fridgeh2 {
 }
 
 .fas.fa-chevron-circle-down.grocery-arrow,
-.fas.fa-chevron-up.grocery-arrow {
+.fas.fa-chevron-circle-up.grocery-arrow {
   font-size: 1.3rem;
   color: $orange;
 }
 
 .fas.fa-chevron-circle-down.fridge-arrow,
-.fas.fa-chevron-up.fridge-arrow {
+.fas.fa-chevron-circle-up.fridge-arrow {
   font-size: 1.3rem;
   color: $main-green;
 }

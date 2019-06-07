@@ -1,14 +1,15 @@
 export const toggle = () => {
-  fridgeArrow = document.querySelector('.fridge-arrow');
-  groceryArrow = document.querySelector('.grocery-arrow');
+
+  const fridgeArrow = document.querySelector('.fridge-arrow');
+  const groceryArrow = document.querySelector('.grocery-arrow');
 
   if (fridgeArrow || groceryArrow) {
 
     const toggle = (arrow) => {
       const button = arrow.parentNode;
-      button.addEventListener('click', {
-        arrow.classList.toggle('.fa-chevron-circle-down');
-        arrow.classList.toggle('.fa-chevron-up');
+      button.addEventListener('click', () => {
+        arrow.classList.toggle('fa-chevron-circle-down');
+        arrow.classList.toggle('fa-chevron-circle-up');
         }
       );
     }
@@ -24,5 +25,8 @@ export const toggle = () => {
         arrowToggle(groceryArrow);
       }
     }
+
+    arrowDropdown();
+
   }
 }
