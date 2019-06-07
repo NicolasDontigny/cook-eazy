@@ -11,25 +11,62 @@ puts 'creating user'
 
 nic = User.new(
   username: 'NicTheDuck',
-  password: '1'
+  password: '1',
+  remote_avatar_url: 'https://avatars1.githubusercontent.com/u/45007853?s=460&v=4'
 )
 
 michael = User.new(
   username: 'Mikey-Mike',
-  password: '1'
+  password: '1',
+  remote_avatar_url: 'https://avatars0.githubusercontent.com/u/46545944?s=460&v=4'
 )
 
 stephane = User.new(
   username: 'StephTheStud',
-  password: '1'
+  password: '1',
+  remote_avatar_url: 'https://avatars0.githubusercontent.com/u/37821714?v=4'
 )
 
 martin = User.new(
   username: 'SnoozyMart',
-  password: '1'
+  password: '1',
+  remote_avatar_url: 'https://avatars0.githubusercontent.com/u/19353631?s=460&v=4'
 )
 
-users = [michael, stephane, martin]
+romain = User.new(
+  username: 'RomanoTaVu',
+  password: '1',
+  remote_avatar_url: 'https://avatars3.githubusercontent.com/u/46905898?s=460&v=4'
+)
+
+joe = User.new(
+  username: 'JoeDaMan',
+  password: '1',
+  remote_avatar_url: 'https://avatars0.githubusercontent.com/u/513571?s=460&v=4'
+)
+
+
+diego = User.new(
+  username: 'DiegoMuffin',
+  password: '1',
+  remote_avatar_url: 'https://avatars2.githubusercontent.com/u/47044890?s=460&v=4'
+)
+
+
+marc = User.new(
+  username: 'MarkyMark',
+  password: '1',
+  remote_avatar_url: 'https://avatars2.githubusercontent.com/u/46682321?s=460&v=4'
+)
+
+
+alex = User.new(
+  username: '3pac',
+  password: '1',
+  remote_avatar_url: 'https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/qgczv1dvxxqvpqbaulce.jpg'
+)
+
+users = [michael, stephane, martin, romain, joe, diego, marc, alex]
 
 puts 'call to API'
 
@@ -287,23 +324,38 @@ recipe1.reviews.each do |review|
   review.destroy
 end
 
-new_review = Review.new(
-  content: reviews.sample,
-  rating: 5,
-  recipe: recipe1,
-  user: martin,
-  date: DateTime.now
-)
+recipe2.reviews.each do |review|
+  review.destroy
+end
 
-new_review = Review.new(
-  content: reviews.sample,
+recipe3.reviews.each do |review|
+  review.destroy
+end
+
+recipe4.reviews.each do |review|
+  review.destroy
+end
+
+new_review1 = Review.new(
+  content: 'Martin loved it but still fell asleep while eating',
   rating: 5,
   recipe: recipe1,
   user: stephane,
   date: DateTime.now
 )
 
-new_review.save
+new_review1.save
+
+new_review2 = Review.new(
+  content: 'Not cool, Steph, not cool...zZzzZzzzzZZ',
+  rating: 5,
+  recipe: recipe1,
+  user: martin,
+  date: DateTime.now
+)
+
+new_review2.save
+
 
 recipe2.recipe_items.take(8).each do |recipe_item|
   FridgeItem.create(
@@ -312,6 +364,69 @@ recipe2.recipe_items.take(8).each do |recipe_item|
     quantity: recipe_item.quantity
   )
 end
+
+
+new_review3 = Review.new(
+  content: 'Best meal before yoga',
+  rating: 4,
+  recipe: recipe2,
+  user: michael,
+  date: DateTime.now
+)
+
+new_review3.save
+
+
+new_review4 = Review.new(
+  content: 'Found all the ingredients on Travel Med. No sketchy at all',
+  rating: 5,
+  recipe: recipe2,
+  user: romain,
+  date: DateTime.now
+)
+
+new_review4.save
+
+
+new_review5 = Review.new(
+  content: 'Arkangel told me to eat it',
+  rating: 5,
+  recipe: recipe3,
+  user: joe,
+  date: DateTime.now
+)
+
+new_review5.save
+
+new_review6 = Review.new(
+  content: 'Good. But I like muffins from the dep better',
+  rating: 4,
+  recipe: recipe3,
+  user: diego,
+  date: DateTime.now
+)
+
+new_review6.save
+
+new_review7 = Review.new(
+  content: 'I invented it but Alex stole it from me',
+  rating: 5,
+  recipe: recipe4,
+  user: marc,
+  date: DateTime.now
+)
+
+new_review7.save
+
+new_review8 = Review.new(
+  content: 'I like flowers',
+  rating: 5,
+  recipe: recipe4,
+  user: alex,
+  date: DateTime.now
+)
+
+new_review8.save
 
 recipe4.recipe_items.take(7).each do |recipe_item|
   FridgeItem.create(
