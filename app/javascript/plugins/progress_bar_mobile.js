@@ -16,7 +16,8 @@ var refreshBar = (event) => {
     var leftChevronDiv = document.querySelector('.fa-chevron-left').parentNode;
     var rightChevronDiv = document.querySelector('.fa-chevron-right').parentNode;
     var doneCookingButton = document.getElementById('done-cooking-mobile')
-
+    console.log(numberOfSteps)
+    console.log(order)
     if (numberOfSteps == 1) {
       doneCookingButton.style.visibility = "visible";
     }
@@ -43,6 +44,7 @@ var refreshBar = (event) => {
 
 export var clickRightOrLeft = () => {
   if (document.querySelector('#progress-bar')) {
+    console.log("progressbar is on page")
     setTimeout(() => {
       var chevronDivs = document.querySelectorAll('.chevron-div');
       if (chevronDivs.length > 0) {

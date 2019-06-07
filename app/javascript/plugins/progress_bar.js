@@ -11,13 +11,17 @@ var refreshBar = (event) => {
     var width = 100 / numberOfSteps * order
 
     progressFraction.style.width = `${width}%`
-
+    console.log(numberOfSteps)
+    console.log(order)
 
     var leftChevronDiv = document.querySelector('.fa-chevron-left').parentNode;
     var rightChevronDiv = document.querySelector('.fa-chevron-right').parentNode;
     var doneCookingButton = document.getElementById('done-cooking')
 
-    if (numberOfSteps == 1) {
+    if (numberOfSteps === order) {
+      doneCookingButton.style.display= "inherit";
+    }
+    else if (numberOfSteps == 1) {
       doneCookingButton.style.display= "inherit";
     }
     else if (order == numberOfSteps) {
@@ -43,6 +47,7 @@ var refreshBar = (event) => {
 
 export var clickRightOrLeft = () => {
   if (document.querySelector('#progress-bar')) {
+    console.log("progressbar is on page")
     setTimeout(() => {
       var chevronDivs = document.querySelectorAll('.chevron-div');
       if (chevronDivs.length > 0) {
@@ -50,6 +55,7 @@ export var clickRightOrLeft = () => {
           chevronDiv.addEventListener('click', refreshBar);
         });
       }
+      refreshBar("")
     }, 1000)
 
     var recipeStepsContainer = document.getElementById('recipe-steps');
