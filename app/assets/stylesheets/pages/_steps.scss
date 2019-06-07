@@ -34,7 +34,7 @@
   img {
     z-index: 1;
     width: 300px;
-    border-radius: 5%;
+    border-radius: 5px;
     // margin-top: 22px;
     @media (max-width: 540px) {
       border-radius: 0;
@@ -106,16 +106,25 @@
 }
 
 #progress-bar {
-  padding: 0 45px;
+  /*border: $main-green solid;*/
+  background: rgba(118, 162, 30, 0.4);
+  margin: 0 45px 0 45px;
+  border-radius: 5px;
   @media (max-width: 540px) {
     padding: 0;
+    margin: 0;
+    border-radius: 0px;
   }
 }
 
 
 .progress-fraction {
-  height: 10px;
-  background-color: $main-green;
+  height: 20px;
+  border-radius: 5px;
+  background-color: rgba(158, 31, 31, 0.9);
+  @media (max-width: 540px) {
+    border-radius: 0px;
+  }
 }
 
 .recipe-step{
