@@ -44,7 +44,7 @@
             <li class="nav-item dropdown d-flex align-items-center">
               <a href="" class="nav-link disabled">
                 <% if current_user && current_user.username %>
-                  <%= current_user.username.capitalize  %>
+                  <%= current_user.username.titleize  %>
                 <% end %>
               </a>
               <%= image_tag avatar_for(current_user), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
