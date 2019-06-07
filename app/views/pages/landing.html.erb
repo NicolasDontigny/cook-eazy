@@ -1,9 +1,18 @@
 <div class="landing-page" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);">
 
-  <div class="devise-buttons d-flex">
-    <%= link_to('Login', new_user_session_path, class: "button-banner")  %>
-    <%= link_to('Sign Up', new_user_registration_path, class: "button-banner ml-3")  %>
-  </div>
+  <% if !user_signed_in? %>
+    <div class="devise-buttons d-flex">
+      <%= link_to('Login', new_user_session_path, class: "button-banner")  %>
+      <%= link_to('Sign Up', new_user_registration_path, class: "button-banner ml-3")  %>
+    </div>
+  <% else %>
+    <div class="devise-buttons d-flex">
+      <div class="username d-flex align-items-center justify-content-center">
+        Welcome, <%= current_user.username.titleize  %>!
+      </div>
+      <%= image_tag avatar_for(current_user), class: "avatar ml-3" %>
+    </div>
+  <% end %>
 
   <div class="landing-typed">
     <h1>
@@ -13,12 +22,12 @@
     <!-- # views/devise/menu/_login_items.html.erb -->
   <div class="landing-btn">
 
-    <% unless user_signed_in? %>
+    <%# unless user_signed_in? %>
     <!-- <div class="mt-5"> -->
       <%= link_to('Browse Recipes', recipes_path, class: "button-banner") %>
 
     <!-- </div> -->
-    <% end %>
+    <%# end %>
 
 
     </div>
