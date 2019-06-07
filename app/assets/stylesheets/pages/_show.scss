@@ -39,6 +39,12 @@
   margin-left: 10px;
   margin-right: 10px;
   // min-height: 230px;
+  .leave-review-link {
+    color: lightgreen;
+    &:hover {
+      color: $green;
+    }
+  }
 }
 
 
@@ -70,7 +76,7 @@
   grid-row-gap: 24px;
   grid-template-columns: 28% 72%;
   grid-column-start: 2;
-  margin-top: 4rem;
+  margin-top: 2rem;
   // grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas:
   "ingredients header"
