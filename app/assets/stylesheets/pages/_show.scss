@@ -19,8 +19,8 @@
 .item-a {
   grid-area: ingredients;
   height: 100vh;
-  padding: 16px;
-  line-height: 24px;
+  padding: 24px;
+  line-height: 28px;
   overflow: scroll;
   ul {
     // position: sticky;
@@ -38,7 +38,7 @@
   grid-area: header;
   margin-left: 10px;
   margin-right: 10px;
-  min-height: 230px;
+  // min-height: 230px;
 }
 
 
@@ -69,13 +69,13 @@
   grid-column-gap: 24px;
   grid-row-gap: 24px;
   grid-template-columns: 28% 72%;
+  grid-column-start: 2;
+  margin-top: 4rem;
   // grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas:
   "ingredients header"
   "ingredients steps"
   "ingredients reviews";
-  
-  margin-top: 4rem;
 }
 
 .sidenav {
@@ -91,12 +91,12 @@
     //     max-width:100%;
     //     position: relative;
     
-    .start-cooking {
-      margin: 24px auto 0 auto;
-      text-align: center;
-    }
-    
-    .add-to-groc-button {
+.start-cooking { 
+  margin: 56px 0 0 0;
+  // text-align: center; 
+}
+
+.add-to-groc-button {
   margin: 55px 0px 35px 0px;
   text-align: center;
 }
@@ -148,14 +148,14 @@
 
 #title {
   margin: 8px 0 8px 0;
-  font-size: 16px;
+  font-size: 18px;
   // position: sticky;
   top: 170px;
   text-align: center;
 } 
 
 #ingredient-title {
-  margin: 8px 0 8px 0;
+  margin: 12px 0 8px 5px;
   font-size: 16px;
   // position: sticky;
   top: 170px;
@@ -173,6 +173,8 @@
 
 .collapsed-grocery-button {
   text-align: center;
+  margin-top: 24px;
+  margin-bottom: -16px;
 }
 
 @media (max-width: 1000px) {

@@ -45,14 +45,14 @@ class RecipesController < ApplicationController
     end
 
     @recipes = @recipes.sort do |recipe1, recipe2|
-      # For recipes that have the same number of missing ingredients
-      # Sort them by the highest number of matching ingredients
-      if recipe1.how_many_ingredients_to_buy(current_user) == recipe2.how_many_ingredients_to_buy(current_user)
-        recipe2.matching_ingredients(current_user).count <=> recipe1.matching_ingredients(current_user).count
-      # Otherwise, sort them by the least missing ingredients
-      else
+      # # For recipes that have the same number of missing ingredients
+      # # Sort them by the highest number of matching ingredients
+      # if recipe1.how_many_ingredients_to_buy(current_user) == recipe2.how_many_ingredients_to_buy(current_user)
+      #   recipe2.matching_ingredients(current_user).count <=> recipe1.matching_ingredients(current_user).count
+      # # Otherwise, sort them by the least missing ingredients
+      # else
         recipe1.how_many_ingredients_to_buy(current_user) <=> recipe2.how_many_ingredients_to_buy(current_user)
-      end
+      # end
     end
 
     @recipes_not_ready = @recipes.select { |recipe| recipe.missing_ingredients(current_user).length.positive? }
@@ -65,14 +65,14 @@ class RecipesController < ApplicationController
     end
 
     @wishlist_recipes.sort do |recipe1, recipe2|
-      # For recipes that have the same number of missing ingredients
-      # Sort them by the highest number of matching ingredients
-      if recipe1.how_many_ingredients_to_buy(@fridge_items) == recipe2.how_many_ingredients_to_buy(@fridge_items)
-        recipe2.matching_ingredients(@fridge_items).count <=> recipe1.matching_ingredients(@fridge_items).count
-      # Otherwise, sort them by the least missing ingredients
-      else
+      # # For recipes that have the same number of missing ingredients
+      # # Sort them by the highest number of matching ingredients
+      # if recipe1.how_many_ingredients_to_buy(@fridge_items) == recipe2.how_many_ingredients_to_buy(@fridge_items)
+      #   recipe2.matching_ingredients(@fridge_items).count <=> recipe1.matching_ingredients(@fridge_items).count
+      # # Otherwise, sort them by the least missing ingredients
+      # else
         recipe1.how_many_ingredients_to_buy(@fridge_items) <=> recipe2.how_many_ingredients_to_buy(@fridge_items)
-      end
+      # end
     end
   end
 
