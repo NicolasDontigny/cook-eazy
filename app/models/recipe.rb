@@ -35,6 +35,7 @@ class Recipe < ApplicationRecord
     #     missing_ingredients << recipe_item
     #   end
     # end
+    return recipe_items unless user
 
     # return missing_ingredients
     user_ingredients = user.fridge_items
@@ -45,6 +46,8 @@ class Recipe < ApplicationRecord
   end
 
   def matching_ingredients(user)
+    return [] unless user
+
     user_ingredients = user.fridge_items
     user_ingredient_ids = user_ingredients.pluck(:ingredient_id)
     recipe_items.where(ingredient_id: user_ingredient_ids).select do |item|

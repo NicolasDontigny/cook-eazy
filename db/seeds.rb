@@ -10,7 +10,7 @@ Tag.destroy_all
 puts 'creating user'
 
 nic = User.new(
-  username: 'NicTheDuck',
+  username: 'Nic the Duck',
   password: '1',
   remote_avatar_url: 'https://avatars1.githubusercontent.com/u/45007853?s=460&v=4'
 )
@@ -22,39 +22,39 @@ michael = User.new(
 )
 
 stephane = User.new(
-  username: 'StephTheStud',
+  username: 'Steph The Stud',
   password: '1',
   remote_avatar_url: 'https://avatars0.githubusercontent.com/u/37821714?v=4'
 )
 
 martin = User.new(
-  username: 'SnoozyMart',
+  username: 'Snoozy Mart',
   password: '1',
   remote_avatar_url: 'https://avatars0.githubusercontent.com/u/19353631?s=460&v=4'
 )
 
 romain = User.new(
-  username: 'RomanoTaVu',
+  username: 'Romano TaVu',
   password: '1',
   remote_avatar_url: 'https://avatars3.githubusercontent.com/u/46905898?s=460&v=4'
 )
 
 joe = User.new(
-  username: 'JoeDaMan',
+  username: 'Joe Da Man',
   password: '1',
   remote_avatar_url: 'https://avatars0.githubusercontent.com/u/513571?s=460&v=4'
 )
 
 
 diego = User.new(
-  username: 'DiegoMuffin',
+  username: 'Diego Muffin',
   password: '1',
   remote_avatar_url: 'https://avatars2.githubusercontent.com/u/47044890?s=460&v=4'
 )
 
 
 marc = User.new(
-  username: 'MarkyMark',
+  username: 'Marky Mark',
   password: '1',
   remote_avatar_url: 'https://avatars2.githubusercontent.com/u/46682321?s=460&v=4'
 )

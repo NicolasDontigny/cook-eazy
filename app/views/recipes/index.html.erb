@@ -33,7 +33,7 @@
 
     <% end %>
 
-    <% unless !user_signed_in? %>
+    <% if user_signed_in? %>
 
       <h2 class="mt" id="ready-to-cook">Ready to Cook</h2>
 
@@ -84,9 +84,11 @@
 
 </div>
 
-<% @wishlist_recipes.each do |recipe| %>
-  <% unless @recipes.include? recipe %>
-    <% missing_ingredients = recipe.missing_ingredients(current_user) %>
-    <%= render "recipe_popup", recipe: recipe, missing_ingredients: missing_ingredients %>
+<% if user_signed_in? %>
+  <% @wishlist_recipes.each do |recipe| %>
+    <% unless @recipes.include? recipe %>
+      <% missing_ingredients = recipe.missing_ingredients(current_user) %>
+      <%= render "recipe_popup", recipe: recipe, missing_ingredients: missing_ingredients %>
+    <% end %>
   <% end %>
 <% end %>
