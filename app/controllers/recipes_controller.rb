@@ -4,7 +4,6 @@ class RecipesController < ApplicationController
   before_action :set_fridge_items, only: %i[index popup]
 
   def index
-    # @fridge_items = FridgeItem.where(user: current_user)
     # Sort all existing recipes
     @search_filters = true
 
@@ -57,43 +56,41 @@ class RecipesController < ApplicationController
         # end
       end
 
-      @recipes_not_ready = @recipes.select { |recipe| recipe.missing_ingredients(current_user).length.positive? }
-      @recipes_ready = @recipes.select { |recipe| recipe.missing_ingredients(current_user).empty? }
+      # @recipes_not_ready = @recipes.select { |recipe| recipe.missing_ingredients(current_user).length.positive? }
+      # @recipes_ready = @recipes.select { |recipe| recipe.missing_ingredients(current_user).empty? }
 
       # Give all the recipes in the current user's wishlist
       @wishlist_recipes = []
-      WishlistItem.where(user: current_user).each do |wishlist_item|
+      current_user.wishlist_items.each do |wishlist_item|
         @wishlist_recipes << wishlist_item.recipe
       end
 
-      @wishlist_recipes.sort do |recipe1, recipe2|
+      # @wishlist_recipes.sort do |recipe1, recipe2|
         # # For recipes that have the same number of missing ingredients
         # # Sort them by the highest number of matching ingredients
         # if recipe1.how_many_ingredients_to_buy(@fridge_items) == recipe2.how_many_ingredients_to_buy(@fridge_items)
         #   recipe2.matching_ingredients(@fridge_items).count <=> recipe1.matching_ingredients(@fridge_items).count
         # # Otherwise, sort them by the least missing ingredients
         # else
-          recipe1.how_many_ingredients_to_buy(current_user) <=> recipe2.how_many_ingredients_to_buy(current_user)
+          # recipe1.how_many_ingredients_to_buy(current_user) <=> recipe2.how_many_ingredients_to_buy(current_user)
         # end
-      end
-    else
-      @recipes_not_ready = @recipes
-      @recipes_ready = []
+      # end
+
     end
   end
 
   def index_owner
     @current_user = current_user
-    @recipes = Recipe.where(user: current_user)
+    @recipes = current_user.recipes
   end
 
-  def popup
-    raise
-    respond_to do |format|
-      format.html { redirect_to recipe_path(@recipe) }
-      format.js { render 'show_popup.js.erb', recipe: @recipe }
-    end
-  end
+  # def popup
+  #   raise
+  #   respond_to do |format|
+  #     format.html { redirect_to recipe_path(@recipe) }
+  #     format.js { render 'show_popup.js.erb', recipe: @recipe }
+  #   end
+  # end
 
   def new
     @recipe = Recipe.new
