@@ -16,5 +16,18 @@ export const hideReadyToCookIfEmpty = () => {
       }
     }
 
+    const h2RecipesForYou = document.getElementById('recipes-for-you');
+
+    if (h2RecipesForYou) {
+      const recipesForYouContainer = document.getElementById('recipes-for-you-container');
+
+      const numberOfRecipeCardsRecipes = recipesForYouContainer.querySelectorAll('.recipe-card').length;
+
+      if (numberOfRecipeCardsRecipes == 0) {
+        h2RecipesForYou.style.display = 'none';
+      }
+    }
+
+
   });
 }
