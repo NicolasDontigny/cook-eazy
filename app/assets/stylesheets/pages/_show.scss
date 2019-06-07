@@ -128,10 +128,6 @@
     padding: 16px;
   }
 }
-
-.mobile-item-b h2 {
-  color: white;
-}
  
 .mobile-review-link {
   color: lightgreen;
@@ -183,15 +179,10 @@
   display: none;
 }
 
-// .mobile-container {
-// }
-
-.header-recipe-details {
-  color: white;
-  h2 {
-    color: white;
-  }
+.mobile-container {
+  // margin-top: 50px;
 }
+
 
 .collapsed-grocery-button {
   text-align: center;

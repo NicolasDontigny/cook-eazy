@@ -8,11 +8,11 @@
               <h2><%= @recipe.name %></h2>
               <% if WishlistItem.where(recipe: @recipe).empty? %>
                 <%= link_to wishlist_item_path(@recipe), method: :post, remote: true do %>
-                  <i class="far fa-heart add-to-wishlist-empty"></i>
+                  <i class="far fa-heart mr-3 add-to-wishlist-empty"></i>
                 <% end %>
               <% else %>
                 <%= link_to wishlist_item_path(@recipe), method: :delete, remote: true do %>
-                  <i class="fas fa-heart add-to-wishlist"></i>
+                  <i class="fas fa-heart mr-3 add-to-wishlist"></i>
                 <% end %>
               <% end %>
              </div>

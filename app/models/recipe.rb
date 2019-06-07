@@ -25,41 +25,31 @@ class Recipe < ApplicationRecord
                   }
 
   def missing_ingredients(user)
-    missing_ingredients = []
-    fridge_items = FridgeItem.where(user: user)
+    # missing_ingredients = []
+    # fridge_items = FridgeItem.where(user: user)
 
-    recipe_items.each do |recipe_item|
-      if fridge_items.none? { |item| item.ingredient == recipe_item.ingredient }
-        missing_ingredients << recipe_item
-      elsif fridge_items.any? { |item| item.ingredient == recipe_item.ingredient && item.quantity < recipe_item.quantity }
-        missing_ingredients << recipe_item
-      end
+    # recipe_items.each do |recipe_item|
+    #   if fridge_items.none? { |item| item.ingredient == recipe_item.ingredient }
+    #     missing_ingredients << recipe_item
+    #   elsif fridge_items.any? { |item| item.ingredient == recipe_item.ingredient && item.quantity < recipe_item.quantity }
+    #     missing_ingredients << recipe_item
+    #   end
+    # end
+
+    # return missing_ingredients
+    user_ingredients = user.fridge_items
+    user_ingredient_ids = user_ingredients.pluck(:ingredient_id)
+    recipe_items.select do |item|
+      !(user_ingredient_ids.include? item.ingredient_id) || item.quantity > user_ingredients.find_by(ingredient: item.ingredient).quantity
     end
-
-    return missing_ingredients
   end
 
-  # def insufficient_ingredients(fridge_items)
-  #   insufficient_ingredients = []
-
-  #   recipe_items.each do |recipe_item|
-  #     if fridge_items.any? { |item| item.ingredient == recipe_item.ingredient && item.quantity < recipe_item.quantity }
-  #       insufficient_ingredients << recipe_item
-  #     end
-  #   end
-  #   return insufficient_ingredients
-  # end
-
   def matching_ingredients(user)
-    matching_ingredients = []
-    fridge_items = FridgeItem.where(user: user)
-
-    recipe_items.each do |recipe_item|
-      if fridge_items.any? { |item| item.ingredient == recipe_item.ingredient && item.quantity >= recipe_item.quantity }
-        matching_ingredients << recipe_item
-      end
+    user_ingredients = user.fridge_items
+    user_ingredient_ids = user_ingredients.pluck(:ingredient_id)
+    recipe_items.where(ingredient_id: user_ingredient_ids).select do |item|
+      item.quantity <= user_ingredients.find_by(ingredient: item.ingredient).quantity
     end
-    return matching_ingredients
   end
 
   def how_many_ingredients_to_buy(user)

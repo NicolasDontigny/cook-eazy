@@ -19,8 +19,9 @@
 
   <!-- list the steps -->
   <div class="col-9">
-    <div class="steps-header d-flex justify-content-between align-items-center">
-      <img src="<%= @recipe.photo %>">
+    <div class="steps-header d-flex justify-content-between align-items-center"
+      style = "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @recipe.photo %>);">
+      <!-- <img src="<%= @recipe.photo %>"> -->
       <h1 ><%= @recipe.name %></h1>
     </div>
     <div id="progress-bar" class="d-flex">

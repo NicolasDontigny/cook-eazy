@@ -16,6 +16,9 @@ import 'select2/dist/css/select2.css';
 import { addClickEventToStars } from '../plugins/ratings';
 import { updateCheckbox } from '../plugins/update_checkbox';
 import { makeFiltersCollapsable } from '../plugins/filters_collapse';
+import { toggle } from '../plugins/arrow_toggle';
+
+import { hideReadyToCookIfEmpty } from '../plugins/hide_ready_to_cook';
 
 // import { recipePopup } from '../plugins/recipe_popup'
 // import { closeButton } from '../plugins/close_button'
@@ -39,3 +42,7 @@ addEventToHearts();
 addClickEventToStars();
 
 makeFiltersCollapsable();
+
+toggle();
+
+hideReadyToCookIfEmpty();

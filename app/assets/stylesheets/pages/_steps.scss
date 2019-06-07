@@ -30,11 +30,14 @@
 
 .steps-header {
   padding: 0px 45px;
-  margin-bottom: 20px;
+  color: white;
+  min-height: 270px;
+  background-size: cover;
+  margin: 35px 47px 20px 47px;
   img {
     z-index: 1;
     width: 300px;
-    border-radius: 5%;
+    border-radius: 5px;
     // margin-top: 22px;
     @media (max-width: 540px) {
       border-radius: 0;
@@ -49,6 +52,7 @@
   }
   h1{
     padding-left: 30px;
+    color: white;
     font-weight: bolder;
     @media (max-width: 540px) {
 
@@ -106,16 +110,25 @@
 }
 
 #progress-bar {
-  padding: 0 45px;
+  /*border: $main-green solid;*/
+  background: rgba(118, 162, 30, 0.4);
+  margin: 0 45px 0 45px;
+  border-radius: 5px;
   @media (max-width: 540px) {
     padding: 0;
+    margin: 0;
+    border-radius: 0px;
   }
 }
 
 
 .progress-fraction {
-  height: 10px;
-  background-color: $main-green;
+  height: 20px;
+  border-radius: 5px;
+  background-color: #658917;
+  @media (max-width: 540px) {
+    border-radius: 0px;
+  }
 }
 
 .recipe-step{
