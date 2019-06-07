@@ -163,3 +163,23 @@
 .link_to_done:hover {
   text-decoration: none;
 }
+
+.page-container {
+  .slick-slide {
+    height: 40vh;
+
+    > div {
+      height: 100%;
+
+      .recipe-step {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+
+        height: 40vh;
+
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

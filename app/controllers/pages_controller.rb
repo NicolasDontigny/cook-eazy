@@ -4,9 +4,9 @@ class PagesController < ApplicationController
   def landing
 
     @no_navbar = true
-    if user_signed_in?
-      redirect_to(recipes_path)
-    end
+    # if user_signed_in?
+    #   redirect_to(recipes_path)
+    # end
   end
 
   def test
